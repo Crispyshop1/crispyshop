@@ -1,105 +1,31 @@
-me/2347051885555?text=Hello%20Crispy%2C%20I%20would%20like%20to%20purchase%20your%20COD%20Mobile%20account." target="_blank">
-          <button class="whatsapp-btn">💬 Buy on WhatsApp</button>
-        </a>
-      </div>
-    </div>
+<button class="whatsapp-btn sold-btn">
+            SOLD OUT
+          </button>
+        `;
+      }
 
-  </div>
-</section>
+      card.innerHTML = `
+        <img src="${product.image}" alt="${product.name}">
 
+        <h3>${product.name}</h3>
 
-<!-- DLS -->
-<section id="dls">
-  <h2 class="section-title">⚽ DLS</h2>
+        <p class="price">
+          ₦${product.price.toLocaleString()}
+        </p>
 
-  <div class="products">
+        <p class="${isAvailable ? "available" : "sold"}">
+          ● ${product.status.toUpperCase()}
+        </p>
 
-    <div class="product">
-      <img src="photo_2026-08-19_23-05-25.jpg" alt="DLS Account">
+        ${button}
+      `;
 
-      <h3>DLS Account</h3>
+      productContainer.appendChild(card);
+    });
 
-      <p class="price">₦0</p>
-
-      <p class="available">● AVAILABLE</p>
-
-      <div class="checkout">
-        <p>Ready to purchase?</p>
-
-        <a href="https://wa.me/2347051885555?text=Hello%20Crispy%2C%20I%20would%20like%20to%20purchase%20your%20DLS%20account." target="_blank">
-          <button class="whatsapp-btn">💬 Buy on WhatsApp</button>
-        </a>
-      </div>
-    </div>
-
-  </div>
-</section>
-
-
-<!-- EFOOTBALL -->
-<section id="efootball">
-  <h2 class="section-title">⚽ eFootball</h2>
-
-  <div class="products">
-
-    <div class="product">
-
-      <img
-        src="photo_2026-08-19_23-05-25.jpg"
-        alt="eFootball Account"
-      >
-
-      <h3>eFootball Account</h3>
-
-      <p class="price">₦20,000</p>
-
-      <p class="available">● AVAILABLE</p>
-
-      <div class="checkout">
-        <p>Ready to purchase?</p>
-
-        <a href="https://wa.me/2347051885555?text=Hello%20Crispy%2C%20I%20would%20like%20to%20purchase%20your%20eFootball%20account%20for%20%E2%82%A620%2C000." target="_blank">
-          <button class="whatsapp-btn">💬 Buy on WhatsApp</button>
-        </a>
-      </div>
-
-    </div>
-
-  </div>
-</section>
-
-
-<!-- FC MOBILE -->
-<section id="fcmobile">
-  <h2 class="section-title">🏆 FC Mobile</h2>
-
-  <div class="products">
-
-    <div class="product">
-      <img src="photo_2026-08-19_23-05-25.jpg" alt="FC Mobile Account">
-
-      <h3>FC Mobile Account</h3>
-
-      <p class="price">₦0</p>
-
-      <p class="available">● AVAILABLE</p>
-
-      <div class="checkout">
-        <p>Ready to purchase?</p>
-
-        <a href="https://wa.me/2347051885555?text=Hello%20Crispy%2C%20I%20would%20like%20to%20purchase%20your%20FC%20Mobile%20account." target="_blank">
-          <button class="whatsapp-btn">💬 Buy on WhatsApp</button>
-        </a>
-      </div>
-    </div>
-
-  </div>
-</section>
-
-
-<footer>
-  © 2026 Crispyshop
-</footer>
+    store.appendChild(section);
+  });
+</script>
 
 </body>
 </html>
