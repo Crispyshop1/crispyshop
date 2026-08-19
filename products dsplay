@@ -1,0 +1,9 @@
+const products = [
+  {
+    name: "eFootball Account",
+    game: "eFootball",
+    price: 20000,
+    status: "available",
+    image: "photo_2026-08-19_23-05-25.jpg"
+  }
+];
