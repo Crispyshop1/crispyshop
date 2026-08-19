@@ -14,24 +14,33 @@
     body {
       margin: 0;
       font-family: Arial, sans-serif;
-      background: #0f0f0f;
       color: white;
+
+      background-image:
+        linear-gradient(rgba(0, 0, 0, 0.78), rgba(0, 0, 0, 0.78)),
+        url("photo_2026-08-19_23-20-31.jpg");
+
+      background-size: cover;
+      background-position: center;
+      background-attachment: fixed;
+      background-repeat: no-repeat;
+      min-height: 100vh;
     }
 
     header {
-      background: #181818;
+      background: rgba(20, 20, 20, 0.85);
       padding: 30px 20px;
       text-align: center;
-      border-bottom: 1px solid #292929;
+      border-bottom: 1px solid #333;
     }
 
     header h1 {
       margin: 0;
-      font-size: 36px;
+      font-size: 38px;
     }
 
     header p {
-      color: #aaa;
+      color: #ccc;
       margin-top: 8px;
     }
 
@@ -39,18 +48,17 @@
       display: grid;
       grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
       gap: 20px;
-      padding: 30px 20px;
+      padding: 35px 20px;
       max-width: 1100px;
       margin: auto;
     }
 
     .product {
-      background: #1b1b1b;
-      border: 1px solid #292929;
+      background: rgba(20, 20, 20, 0.92);
+      border: 1px solid #333;
       border-radius: 16px;
       padding: 15px;
       text-align: center;
-      overflow: hidden;
     }
 
     .product img {
@@ -58,18 +66,15 @@
       height: 190px;
       object-fit: cover;
       border-radius: 12px;
-      background: #252525;
     }
 
     .product h2 {
       margin: 15px 0 8px;
-      font-size: 21px;
     }
 
     .price {
       font-size: 22px;
       font-weight: bold;
-      margin: 8px 0;
     }
 
     .available {
@@ -90,14 +95,10 @@
       margin-top: 8px;
     }
 
-    button:hover {
-      background: #00a844;
-    }
-
     footer {
       text-align: center;
-      padding: 30px 20px;
-      color: #777;
+      padding: 30px;
+      color: #aaa;
     }
   </style>
 </head>
@@ -112,10 +113,11 @@
   <section class="products">
 
     <div class="product">
-     <img
-  src="photo_2026-08-19_23-05-25.jpg"
-  alt="eFootball Account"
->
+
+      <img
+        src="photo_2026-08-19_23-05-25.jpg"
+        alt="eFootball Account"
+      >
 
       <h2>eFootball Account</h2>
 
@@ -123,9 +125,13 @@
 
       <p class="available">● AVAILABLE</p>
 
-      <a href="https://wa.me/2347051885555?text=Hello%20Crispy%2C%20I%20would%20like%20to%20purchase%20your%20eFootball%20account%20of%20%E2%82%A620%2C000." target="_blank">
-  <button>Buy Now</button>
-</a>
+      <a
+        href="https://wa.me/2347051885555?text=Hello%20Crispy%2C%20I%20would%20like%20to%20purchase%20your%20eFootball%20account%20of%20%E2%82%A620%2C000."
+        target="_blank"
+      >
+        <button>Buy Now</button>
+      </a>
+
     </div>
 
   </section>
