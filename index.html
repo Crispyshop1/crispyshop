@@ -1,71 +1,494 @@
-jpg" alt="DLS Account">
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-      <h3>DLS Account</h3>
+  <title>Game Account Sales | Crispy Shop</title>
 
-      <p class="price">₦0</p>
+  <style>
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
 
-      <p class="available">● AVAILABLE</p>
+    body {
+      font-family: Arial, Helvetica, sans-serif;
+      background:
+        radial-gradient(circle at 50% 20%, rgba(0, 110, 255, 0.12), transparent 35%),
+        radial-gradient(circle at 50% 80%, rgba(255, 0, 180, 0.08), transparent 35%),
+        #070914;
+      color: white;
+      min-height: 100vh;
+    }
 
-      <a href="https://wa.me/2347051885555?text=Hello%20Crispy%2C%20I%20would%20like%20to%20purchase%20your%20DLS%20account." target="_blank">
-        <button class="whatsapp-btn">💬 Buy on WhatsApp</button>
-      </a>
-    </div>
+    header {
+      text-align: center;
+      padding: 25px 15px 20px;
+      background: linear-gradient(180deg, #030714, #080b1b);
+      border-bottom: 1px solid rgba(0, 170, 255, 0.15);
+    }
 
-  </div>
-</section>
+    .logo {
+      width: 170px;
+      max-width: 65%;
+      height: auto;
+      object-fit: contain;
+      margin-bottom: 12px;
+    }
+
+    .title {
+      font-size: 30px;
+      font-weight: 900;
+      letter-spacing: 2px;
+      background: linear-gradient(90deg, #ffffff, #00c8ff);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      margin-bottom: 22px;
+    }
+
+    .tabs {
+      display: flex;
+      justify-content: center;
+      gap: 15px;
+    }
+
+    .tab {
+      border: none;
+      padding: 15px 30px;
+      min-width: 145px;
+      border-radius: 30px;
+      background: #151719;
+      color: #b9bdc8;
+      font-size: 16px;
+      font-weight: bold;
+      cursor: pointer;
+      transition: 0.25s;
+    }
+
+    .tab.active {
+      background: #ff4d55;
+      color: white;
+      box-shadow: 0 0 25px rgba(255, 77, 85, 0.45);
+    }
+
+    .tab:hover {
+      transform: translateY(-2px);
+    }
+
+    .admin-button {
+      position: absolute;
+      top: 25px;
+      right: 18px;
+      width: 45px;
+      height: 45px;
+      border-radius: 50%;
+      border: none;
+      background: #121522;
+      color: white;
+      font-size: 22px;
+      cursor: pointer;
+      box-shadow: 0 0 20px rgba(0, 180, 255, 0.15);
+    }
+
+    main {
+      min-height: 500px;
+      padding: 45px 18px;
+    }
+
+    .game-section {
+      display: none;
+    }
+
+    .game-section.active {
+      display: block;
+    }
+
+    .empty-message {
+      max-width: 500px;
+      margin: 80px auto;
+      text-align: center;
+      color: #b8bdca;
+      font-size: 20px;
+      line-height: 1.4;
+    }
+
+    .products {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+      gap: 25px;
+      max-width: 1100px;
+      margin: auto;
+    }
+
+    .product {
+      background: rgba(18, 22, 38, 0.95);
+      border: 1px solid rgba(0, 190, 255, 0.15);
+      border-radius: 18px;
+      padding: 15px;
+      overflow: hidden;
+      box-shadow: 0 10px 35px rgba(0, 0, 0, 0.35);
+    }
+
+    .product img {
+      width: 100%;
+      height: 210px;
+      object-fit: cover;
+      border-radius: 12px;
+    }
+
+    .product h3 {
+      margin: 15px 0 8px;
+      font-size: 20px;
+    }
+
+    .price {
+      color: #00d9ff;
+      font-size: 21px;
+      font-weight: bold;
+    }
+
+    .available {
+      color: #36e58c;
+      margin: 10px 0 15px;
+      font-size: 14px;
+      font-weight: bold;
+    }
+
+    .whatsapp-btn {
+      width: 100%;
+      border: none;
+      border-radius: 10px;
+      padding: 13px;
+      background: #20c76b;
+      color: white;
+      font-size: 16px;
+      font-weight: bold;
+      cursor: pointer;
+    }
+
+    footer {
+      text-align: center;
+      padding: 25px;
+      color: #666c7b;
+      font-size: 13px;
+    }
+
+    /* ADMIN PANEL */
+
+    .modal {
+      display: none;
+      position: fixed;
+      inset: 0;
+      background: rgba(0, 0, 0, 0.75);
+      z-index: 999;
+      align-items: center;
+      justify-content: center;
+      padding: 20px;
+    }
+
+    .modal.show {
+      display: flex;
+    }
+
+    .admin-panel {
+      width: 100%;
+      max-width: 430px;
+      background: #111525;
+      border-radius: 18px;
+      padding: 25px;
+      border: 1px solid rgba(0, 200, 255, 0.2);
+    }
+
+    .admin-panel h2 {
+      margin-bottom: 20px;
+    }
+
+    .
+admin-panel input,
+    .admin-panel select {
+      width: 100%;
+      padding: 13px;
+      margin-bottom: 12px;
+      border-radius: 9px;
+      border: 1px solid #2d3448;
+      background: #080b16;
+      color: white;
+      outline: none;
+    }
+
+    .admin-panel button {
+      width: 100%;
+      padding: 13px;
+      border: none;
+      border-radius: 9px;
+      margin-top: 5px;
+      cursor: pointer;
+      font-weight: bold;
+    }
+
+    .add-btn {
+      background: #00aaff;
+      color: white;
+    }
+
+    .close-btn {
+      background: #252a3a;
+      color: white;
+    }
+
+    @media (max-width: 600px) {
+      .title {
+        font-size: 26px;
+      }
+
+      .logo {
+        width: 150px;
+      }
+
+      .tab {
+        min-width: 125px;
+        padding: 13px 20px;
+      }
+
+      .admin-button {
+        top: 15px;
+        right: 12px;
+      }
+
+      main {
+        padding-top: 25px;
+      }
+    }
+  </style>
+</head>
+
+<body>
+
+<header>
+
+  <!-- YOUR LOGO -->
+  <img
+    src="crispy-shop-logo.jpg"
+    alt="Crispy Shop"
+    class="logo"
+  >
+
+  <h1 class="title">GAME ACCOUNT SALES</h1>
+
+  <button class="admin-button" onclick="openAdmin()">⚙️</button>
+
+  <div class="tabs">
+    <button class="tab active" onclick="showGame('freefire', this)">
+      Free Fire
+    </button>
+
+    <button class="tab" onclick="showGame('efootball', this)">
+      eFootball
+    </button>
+  </div>
+
+</header>
 
 
-<!-- EFOOTBALL -->
-<section id="eFootball">
-  <h2 class="section-title">⚽ eFootball</h2>
+<main>
 
-  <div class="products">
+  <!-- FREE FIRE -->
+  <section id="freefire" class="game-section active">
 
-    <div class="product">
-      <img src="photo_2026-08-19_23-05-25.jpg" alt="eFootball Account">
+    <div id="freefireProducts" class="products">
 
-      <h3>eFootball Account</h3>
+      <div class="empty-message">
+        No accounts published yet.<br>
+        Open Admin Panel to list the first account!
+      </div>
 
-      <p class="price">₦20,000</p>
+    </div>
 
-      <p class="available">● AVAILABLE</p>
-
-      <a href="https://wa.me/2347051885555?text=Hello%20Crispy%2C%20I%20would%20like%20to%20purchase%20your%20eFootball%20account%20for%20%E2%82%A620%2C000." target="_blank">
-        <button class="whatsapp-btn">💬 Buy on WhatsApp</button>
-      </a>
-    </div>
-
-  </div>
-</section>
+  </section>
 
 
-<!-- FC MOBILE -->
-<section id="FC-Mobile">
-  <h2 class="section-title">🏆 FC Mobile</h2>
+  <!-- EFOOTBALL -->
+  <section id="efootball" class="game-section">
 
-  <div class="products">
+    <div id="efootballProducts" class="products">
 
-    <div class="product">
-      <img src="photo_2026-08-19_23-05-25.jpg" alt="FC Mobile Account">
+      <div class="empty-message">
+        No accounts published yet.<br>
+        Open Admin Panel to list the first account!
+      </div>
 
-      <h3>FC Mobile Account</h3>
+    </div>
 
-      <p class="price">₦0</p>
+  </section>
 
-      <p class="available">● AVAILABLE</p>
-
-      <a href="https://wa.me/2347051885555?text=Hello%20Crispy%2C%20I%20would%20like%20to%20purchase%20your%20FC%20Mobile%20account." target="_blank">
-        <button class="whatsapp-btn">💬 Buy on WhatsApp</button>
-      </a>
-    </div>
-
-  </div>
-</section>
+</main>
 
 
 <footer>
-  © 2026 Crispyshop
+  © 2026 Crispy Shop
 </footer>
+
+
+<!-- ADMIN MODAL -->
+
+<div id="adminModal" class="modal">
+
+  <div class="admin-panel">
+
+    <h2>⚙️ Admin Panel</h2>
+
+    <input
+      type="password"
+      id="adminPassword"
+      placeholder="Admin password"
+    >
+
+    <select id="game">
+      <option value="freefire">Free Fire</option>
+      <option value="efootball">eFootball</option>
+    </select>
+
+    <input
+      type="text"
+      id="accountName"
+      placeholder="Account name"
+    >
+
+    <input
+      type="number"
+      id="accountPrice"
+      placeholder="Price in Naira"
+    >
+
+    <input
+      type="text"
+      id="accountImage"
+      placeholder="Image filename e.g. account.jpg"
+    >
+
+    <button class="add-btn" onclick="addAccount()">
+      Add Account
+    </button>
+
+    <button class="close-btn" onclick="closeAdmin()">
+      Close
+    </button>
+
+  </div>
+
+</div>
+
+
+<script>
+
+  /*
+    CHANGE THIS PASSWORD BEFORE USING THE ADMIN PANEL.
+  */
+
+  const ADMIN_PASSWORD = "1234";
+
+
+  function showGame(game, button) {
+
+    document.querySelectorAll(".game-section").forEach(section => {
+      section.classList.remove("active");
+    });
+
+    document.getElementById(game).classList.add("active");
+
+    document.querySelectorAll(".tab").forEach(tab => {
+      tab.classList.remove("active");
+    });
+
+    button.classList.add("active");
+  }
+
+
+  function openAdmin() {
+    document.getElementById("adminModal").classList.add("show");
+  }
+
+
+  function closeAdmin() {
+    document.getElementById("adminModal").classList.remove("show");
+  }
+
+
+  function addAccount() {
+
+    const password =
+      document.getElementById("adminPassword").value;
+
+    if (password !== ADMIN_PASSWORD) {
+      alert("Wrong admin password.");
+      return;
+    }
+
+    const game =
+      document.getElementById("game").value;
+
+    const name =
+      document.getElementById("accountName").value.trim();
+
+    const price =
+      document.getElementById("accountPrice").value.trim();
+
+    const image =
+      document.getElementById("accountImage").value.trim();
+
+    if (!name  !price  !image) {
+      alert("Please fill in all account details.");
+      return;
+    }
+
+    const product = document.createElement("div");
+
+    product.className = "product";
+
+    product.innerHTML = `
+      <img src="${image}" alt="${name}">
+
+      <h3>${name}</h3>
+
+      <p class="price">₦${Number(price).toLocaleString()}</p>
+
+      <p class="available">● AVAILABLE</p>
+
+      <a
+        href="https://wa.me/2347051885555?text=${encodeURIComponent(
+          "Hello Crispy, I would like to purchase your " + name + " account."
+        )}"
+        target="_blank"
+      >
+        <button class="whatsapp-btn">
+          💬 Buy on WhatsApp
+        </button>
+      </a>
+    `;
+
+    const container =
+      document.getElementById(game + "Products");
+
+    const emptyMessage =
+      container.querySelector(".empty-message");
+
+    if (emptyMessage) {
+      emptyMessage.remove();
+    }
+
+    container.appendChild(product);
+
+    document.getElementById("accountName").value = "";
+    document.getElementById("accountPrice").value = "";
+    document.getElementById("accountImage").value = "";
+
+    alert("Account added successfully!");
+
+  }
+
+</script>
 
 </body>
 </html>
