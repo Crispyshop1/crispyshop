@@ -762,6 +762,22 @@
       */
 
       container.appendChild(product);
+      window.firebaseAddDoc(
+  window.firebaseCollection(window.db, "accounts"),
+  {
+    game: game,
+    name: name,
+    price: Number(price),
+    image: image
+  }
+)
+.then(() => {
+  console.log("Account saved to Firebase.");
+})
+.catch((error) => {
+  console.error("Firebase save error:", error);
+  alert("Account was added, but could not be saved permanently.");
+});
 
 
       /*
