@@ -438,7 +438,7 @@ Thank you for choosing Crispy Shop ❤️
       document.getElementById("accountImage").value.trim();
 
 
- if (!name  !price  !image) {
+ if (!name  || !price || !image) {
       alert("Please fill in all account details.");
       return;
     }
