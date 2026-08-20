@@ -564,18 +564,25 @@
     button.classList.add("active");
   }
 
+function openAdmin() {
+  const user = window.auth?.currentUser;
 
-  function openAdmin() {
-
-    const modal =
-      document.getElementById("adminModal");
-
-    if (modal) {
-      modal.classList.add("show");
-    }
-
+  if (!user) {
+    alert("Please sign in.");
+    return;
   }
 
+  if (user.email !== "YOUR_ADMIN_EMAIL") {
+    return;
+  }
+
+  const modal =
+    document.getElementById("adminModal");
+
+  if (modal) {
+    modal.classList.add("show");
+  }
+}
 
   function closeAdmin() {
 
