@@ -20,16 +20,16 @@
 
     body {
       font-family: Arial, Helvetica, sans-serif;
-      background: #000000;
-      color: white;
+      background: #0a0a0a;
+      color: #FFFFFF;
     }
 
     header {
       position: relative;
       text-align: center;
       padding: 25px 15px 20px;
-      background: #000;
-      border-bottom: 1px solid rgba(0, 170, 255, 0.15);
+      background: #0a0a0a;
+      border-bottom: 1px solid #FFD400;
     }
 
     .logo {
@@ -45,8 +45,8 @@
       font-size: 30px;
       font-weight: 900;
       letter-spacing: 2px;
-      color: #ffffff;
-      text-shadow: 0 0 8px rgba(255, 255, 255, 0.35);
+      color: #FFFFFF;
+      text-shadow: 0 0 8px rgba(255, 212, 0, 0.45);
       margin-bottom: 22px;
     }
 
@@ -58,12 +58,12 @@
     }
 
     .tab {
-      border: none;
+      border: 1px solid transparent;
       padding: 15px 30px;
       min-width: 145px;
       border-radius: 30px;
-      background: #151719;
-      color: #b9bdc8;
+      background: #2a2a2a;
+      color: #FFFFFF;
       font-size: 16px;
       font-weight: bold;
       cursor: pointer;
@@ -71,13 +71,14 @@
     }
 
     .tab.active {
-      background: #ff4d55;
-      color: white;
-      box-shadow: 0 0 25px rgba(255, 77, 85, 0.45);
+      background: #FFD400;
+      color: #0a0a0a;
+      box-shadow: 0 0 25px rgba(255, 212, 0, 0.45);
     }
 
     .tab:hover {
       transform: translateY(-2px);
+      border-color: #FFD400;
     }
 
     /* ADMIN BUTTON */
@@ -89,22 +90,25 @@
       width: 45px;
       height: 45px;
       border-radius: 50%;
-      border: none;
-      background: #121522;
-      color: white;
+      border: 1px solid #FFD400;
+      background: #2a2a2a;
+      color: #FFFFFF;
       font-size: 22px;
       cursor: pointer;
-      box-shadow: 0 0 20px rgba(0, 180, 255, 0.15);
+      box-shadow: 0 0 20px rgba(255, 212, 0, 0.45);
       z-index: 10;
     }
 
     .admin-button:hover {
       transform: scale(1.05);
+      background: #FFD400;
+      color: #0a0a0a;
     }
 
     main {
       min-height: 500px;
       padding: 45px 18px;
+      background: #0a0a0a;
     }
 
     .game-section {
@@ -119,7 +123,7 @@
       max-width: 500px;
       margin: 80px auto;
       text-align: center;
-      color: #b8bdca;
+      color: #FFFFFF;
       font-size: 20px;
       line-height: 1.4;
     }
@@ -133,12 +137,12 @@
     }
 
     .product {
-      background: rgba(18, 22, 38, 0.95);
-      border: 1px solid rgba(0, 190, 255, 0.15);
+      background: #111111;
+      border: 1px solid #FFD400;
       border-radius: 18px;
       padding: 15px;
       overflow: hidden;
-      box-shadow: 0 10px 35px rgba(0, 0, 0, 0.35);
+      box-shadow: 0 10px 35px rgba(0, 0, 0, 0.5);
     }
 
     .product img {
@@ -151,16 +155,17 @@
     .product h3 {
       margin: 15px 0 8px;
       font-size: 20px;
+      color: #FFFFFF;
     }
 
     .price {
-      color: #00d9ff;
+      color: #FFD400;
       font-size: 21px;
       font-weight: bold;
     }
 
     .available {
-      color: #36e58c;
+      color: #FFD400;
       margin: 10px 0 15px;
       font-size: 14px;
       font-weight: bold;
@@ -168,20 +173,26 @@
 
     .whatsapp-btn {
       width: 100%;
-      border: none;
+      border: 1px solid #FFD400;
       border-radius: 10px;
       padding: 13px;
-      background: #20c76b;
-      color: white;
+      background: #FFD400;
+      color: #0a0a0a;
       font-size: 16px;
       font-weight: bold;
       cursor: pointer;
     }
 
+    .whatsapp-btn:hover {
+      box-shadow: 0 0 18px rgba(255, 212, 0, 0.45);
+    }
+
     footer {
       text-align: center;
       padding: 25px;
-      color: #666c7b;
+      color: #FFFFFF;
+      background: #0a0a0a;
+      border-top: 1px solid #FFD400;
       font-size: 13px;
     }
 
@@ -191,7 +202,7 @@
       display: none;
       position: fixed;
       inset: 0;
-      background: rgba(0, 0, 0, 0.75);
+      background: rgba(0, 0, 0, 0.85);
       z-index: 999;
       align-items: center;
       justify-content: center;
@@ -205,14 +216,17 @@
     .admin-panel {
       width: 100%;
       max-width: 430px;
-      background: #111525;
+      background: #111111;
       border-radius: 18px;
       padding: 25px;
-      border: 1px solid rgba(0, 200, 255, 0.2);
+      border: 1px solid #FFD400;
+      box-shadow: 0 0 30px rgba(255, 212, 0, 0.45);
     }
 
     .admin-panel h2 {
       margin-bottom: 20px;
+      color: #FFD400;
+      text-align: center;
     }
 
     .admin-panel input,
@@ -221,10 +235,15 @@
       padding: 13px;
       margin-bottom: 12px;
       border-radius: 9px;
-      border: 1px solid #2d3448;
-      background: #080b16;
-      color: white;
+      border: 1px solid #FFD400;
+      background: #0a0a0a;
+      color: #FFFFFF;
       outline: none;
+    }
+
+    .admin-panel input:focus,
+    .admin-panel select:focus {
+      box-shadow: 0 0 12px rgba(255, 212, 0, 0.45);
     }
 
     .admin-panel button {
@@ -238,13 +257,14 @@
     }
 
     .add-btn {
-      background: #00aaff;
-      color: white;
+      background: #FFD400;
+      color: #0a0a0a;
     }
 
     .close-btn {
-      background: #252a3a;
-      color: white;
+      background: #2a2a2a;
+      color: #FFFFFF;
+      border: 1px solid #FFD400 !important;
     }
 
     /* MOBILE */
@@ -333,7 +353,6 @@
 
 <header>
 
-  <!-- CRISPY SHOP LOGO -->
   <img
     src="logo.png"
     alt="Crispy Shop"
@@ -401,84 +420,54 @@
 
 <main>
 
-  <!-- FREE FIRE -->
-
   <section id="freefire" class="game-section active">
-
     <div id="freefireProducts" class="products">
-
       <div class="empty-message">
         Please enjoy your shopping!<br>
         Thank you for choosing Crispy Shop ❤️<br>
         Open Admin Panel to list the first account!
       </div>
-
     </div>
-
   </section>
 
-
-  <!-- EFOOTBALL -->
 
   <section id="efootball" class="game-section">
-
     <div id="efootballProducts" class="products">
-
       <div class="empty-message">
         No accounts published yet.<br>
         Open Admin Panel to list the first account!
       </div>
-
     </div>
-
   </section>
 
-
-  <!-- COD MOBILE -->
 
   <section id="codmobile" class="game-section">
-
     <div id="codmobileProducts" class="products">
-
       <div class="empty-message">
         No accounts published yet.<br>
         Open Admin Panel to list the first account!
       </div>
-
     </div>
-
   </section>
 
-
-  <!-- DLS -->
 
   <section id="dls" class="game-section">
-
     <div id="dlsProducts" class="products">
-
       <div class="empty-message">
         No accounts published yet.<br>
         Open Admin Panel to list the first account!
       </div>
-
     </div>
-
   </section>
 
 
-  <!-- FC MOBILE -->
-
   <section id="fcmobile" class="game-section">
-
     <div id="fcmobileProducts" class="products">
-
       <div class="empty-message">
         No accounts published yet.<br>
         Open Admin Panel to list the first account!
       </div>
-
     </div>
-
   </section>
 
 </main>
@@ -504,13 +493,11 @@
     >
 
     <select id="game">
-
       <option value="freefire">Free Fire</option>
       <option value="efootball">eFootball</option>
       <option value="codmobile">COD Mobile</option>
       <option value="dls">DLS</option>
       <option value="fcmobile">FC Mobile</option>
-
     </select>
 
     <input
@@ -554,17 +541,8 @@
 
 <script>
 
-  /*
-    ADMIN PASSWORD
-    Change this before using the Admin Panel.
-  */
-
   const ADMIN_PASSWORD = "1234";
 
-
-  /*
-    SHOW GAME
-  */
 
   function showGame(game, button) {
 
@@ -572,7 +550,8 @@
       section.classList.remove("active");
     });
 
-    const selectedGame = document.getElementById(game);
+    const selectedGame =
+      document.getElementById(game);
 
     if (selectedGame) {
       selectedGame.classList.add("active");
@@ -586,13 +565,10 @@
   }
 
 
-  /*
-    OPEN ADMIN PANEL
-  */
-
   function openAdmin() {
 
-    const modal = document.getElementById("adminModal");
+    const modal =
+      document.getElementById("adminModal");
 
     if (modal) {
       modal.classList.add("show");
@@ -601,13 +577,10 @@
   }
 
 
-  /*
-    CLOSE ADMIN PANEL
-  */
-
   function closeAdmin() {
 
-    const modal = document.getElementById("adminModal");
+    const modal =
+      document.getElementById("adminModal");
 
     if (modal) {
       modal.classList.remove("show");
@@ -616,11 +589,7 @@
   }
 
 
-  /*
-    ADD ACCOUNT
-  */
-
-  function addAccount() {
+  async function addAccount() {
 
     const password =
       document.getElementById("adminPassword").value;
@@ -638,55 +607,25 @@
       document.getElementById("accountImage").files[0];
 
 
-    /*
-      CHECK PASSWORD
-    */
-
     if (password !== ADMIN_PASSWORD) {
-
       alert("Wrong admin password.");
-
       return;
     }
 
-
-    /*
-      CHECK ACCOUNT DETAILS
-    */
 
     if (!name || !price || !imageFile) {
-
       alert("Please fill in all account details.");
-
       return;
     }
 
-
-    /*
-      READ IMAGE
-    */
 
     const reader = new FileReader();
 
 
-    reader.onload = function (e) {
+    reader.onload = async function (e) {
 
       const image = e.target.result;
 
-
-      /*
-        CREATE PRODUCT
-      */
-
-      const product =
-        document.createElement("div");
-
-      product.className = "product";
-
-
-      /*
-        WHATSAPP LINK
-      */
 
       const whatsappMessage =
         "Hello Crispy, I would like to purchase your " +
@@ -699,9 +638,11 @@
         encodeURIComponent(whatsappMessage);
 
 
-      /*
-        PRODUCT HTML
-      */
+      const product =
+        document.createElement("div");
+
+      product.className = "product";
+
 
       product.innerHTML = `
 
@@ -736,17 +677,9 @@
       `;
 
 
-      /*
-        FIND PRODUCT CONTAINER
-      */
-
       const container =
         document.getElementById(game + "Products");
 
-
-      /*
-        REMOVE EMPTY MESSAGE
-      */
 
       const emptyMessage =
         container.querySelector(".empty-message");
@@ -757,47 +690,47 @@
       }
 
 
-      /*
-        ADD PRODUCT
-      */
-
       container.appendChild(product);
-      window.firebaseAddDoc(
-  window.firebaseCollection(window.db, "accounts"),
-  {
-    game: game,
-    name: name,
-    price: Number(price),
-    image: image
-  }
-)
-.then(() => {
-  console.log("Account saved to Firebase.");
-})
-.catch((error) => {
-  console.error("Firebase save error:", error);
-  alert("Account was added, but could not be saved permanently.");
-});
 
 
       /*
-        CLEAR FORM
+        SAVE TO FIREBASE
       */
+
+      try {
+
+        await window.firebaseAddDoc(
+          window.firebaseCollection(
+            window.db,
+            "accounts"
+          ),
+          {
+            game: game,
+            name: name,
+            price: Number(price),
+            image: image
+          }
+        );
+
+        alert("Account added successfully!");
+
+      } catch (error) {
+
+        console.error(
+          "Firebase save error:",
+          error
+        );
+
+        alert(
+          "Account appeared on the page, but could not be saved permanently."
+        );
+      }
+
 
       document.getElementById("accountName").value = "";
-
       document.getElementById("accountPrice").value = "";
-
       document.getElementById("accountImage").value = "";
-
       document.getElementById("adminPassword").value = "";
-
-
-      /*
-        SUCCESS MESSAGE
-      */
-
-      alert("Account added successfully!");
 
     };
 
@@ -818,12 +751,12 @@
   } from "https://www.gstatic.com/firebasejs/12.8.0/firebase-app.js";
 
 
-  import {getFirestore,
-collection,
-addDoc,
-getDocs,
-          window.firebaseGetDocs = getDocs;
-serverTimestampserverTimestamp
+  import {
+    getFirestore,
+    collection,
+    addDoc,
+    getDocs,
+    serverTimestamp
   } from "https://www.gstatic.com/firebasejs/12.8.0/firebase-firestore.js";
 
 
@@ -856,78 +789,134 @@ serverTimestampserverTimestamp
 
   const db =
     getFirestore(app);
+
+
   window.db = db;
   window.firebaseCollection = collection;
-window.firebaseAddDoc = addDoc;
+  window.firebaseAddDoc = addDoc;
+  window.firebaseGetDocs = getDocs;
 
-async function loadAccounts() {
-  try {
-    const snapshot = await window.firebaseGetDocs(
-      window.firebaseCollection(window.db, "accounts")
-    );
 
-    snapshot.forEach((doc) => {
-      const account = doc.data();
+  /*
+    LOAD SAVED ACCOUNTS
+  */
 
-      const container =
-        document.getElementById(account.game + "Products");
+  async function loadAccounts() {
 
-      if (!container) return;
+    try {
 
-      const emptyMessage =
-        container.querySelector(".empty-message");
+      const snapshot =
+        await window.firebaseGetDocs(
+          window.firebaseCollection(
+            window.db,
+            "accounts"
+          )
+        );
 
-      if (emptyMessage) {
-        emptyMessage.remove();
-      }
 
-      const product =
-        document.createElement("div");
+      snapshot.forEach((doc) => {
 
-      product.className = "product";
+        const account =
+          doc.data();
 
-      const whatsappMessage =
-        "Hello Crispy, I would like to purchase your " +
-        account.name +
-        " account.";
 
-      const whatsappLink =
-        "https://wa.me/2347051885555?text=" +
-        encodeURIComponent(whatsappMessage);
+        const container =
+          document.getElementById(
+            account.game + "Products"
+          );
 
-      product.innerHTML = `
-        <img src="${account.image}" alt="${account.name}">
 
-        <h3>${account.name}</h3>
+        if (!container) {
+          return;
+        }
 
-        <p class="price">
-          ₦${Number(account.price).toLocaleString()}
-        </p>
 
-        <p class="available">
-          ● AVAILABLE
-        </p>
+        const emptyMessage =
+          container.querySelector(
+            ".empty-message"
+          );
 
-        <a
-          href="${whatsappLink}"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <button class="whatsapp-btn" type="button">
-            💬 Buy on WhatsApp
-          </button>
-        </a>
-      `;
 
-      container.appendChild(product);
-    });
+        if (emptyMessage) {
+          emptyMessage.remove();
+        }
 
-  } catch (error) {
-    console.error("Could not load accounts:", error);
+
+        const product =
+          document.createElement("div");
+
+
+        product.className =
+          "product";
+
+
+        const whatsappMessage =
+          "Hello Crispy, I would like to purchase your " +
+          account.name +
+          " account.";
+
+
+        const whatsappLink =
+          "https://wa.me/2347051885555?text=" +
+          encodeURIComponent(
+            whatsappMessage
+          );
+
+
+        product.innerHTML = `
+
+          <img
+            src="${account.image}"
+            alt="${account.name}"
+          >
+
+          <h3>
+            ${account.name}
+          </h3>
+
+          <p class="price">
+            ₦${Number(account.price).toLocaleString()}
+          </p>
+
+          <p class="available">
+            ● AVAILABLE
+          </p>
+
+          <a
+            href="${whatsappLink}"
+            target="_blank"
+            rel="noopener noreferrer"
+          >
+            <button
+              class="whatsapp-btn"
+              type="button"
+            >
+              💬 Buy on WhatsApp
+            </button>
+          </a>
+
+        `;
+
+
+        container.appendChild(product);
+
+      });
+
+
+    } catch (error) {
+
+      console.error(
+        "Could not load accounts:",
+        error
+      );
+
+    }
+
   }
-}
 
-loadAccounts();
+
+  loadAccounts();
+
 </script>
 
 
