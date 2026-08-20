@@ -7,13 +7,17 @@
 
 <style>
 *{box-sizing:border-box;margin:0;padding:0}
+
 html{scroll-behavior:smooth}
+
 body{
   background:#030506;
   color:#fff;
   font-family:Arial,Helvetica,sans-serif;
+  overflow-x:hidden;
 }
-button,input,select,textarea{font-family:inherit}
+
+button,input,select,textarea{font:inherit}
 button{cursor:pointer}
 
 :root{
@@ -30,37 +34,36 @@ header{
   min-height:82px;
   display:flex;
   align-items:center;
-  gap:18px;
+  gap:20px;
   padding:10px 28px;
   background:#030506;
   border-bottom:2px solid var(--yellow);
   position:sticky;
   top:0;
-  z-index:1000;
+  z-index:100;
 }
 
 .logo{
   width:155px;
-  max-height:65px;
+  height:60px;
   object-fit:contain;
   display:block;
 }
 
 nav{
   display:flex;
-  align-items:center;
-  justify-content:center;
   gap:28px;
   flex:1;
+  justify-content:center;
 }
 
 nav a{
-  position:relative;
   color:#fff;
   text-decoration:none;
   font-size:13px;
-  font-weight:bold;
-  padding:18px 0;
+  font-weight:900;
+  padding:20px 0;
+  position:relative;
 }
 
 nav a:hover,
@@ -73,7 +76,7 @@ nav a.active:after{
   position:absolute;
   left:0;
   right:0;
-  bottom:4px;
+  bottom:8px;
   height:3px;
   background:var(--yellow);
 }
@@ -81,7 +84,7 @@ nav a.active:after{
 .header-actions{
   display:flex;
   align-items:center;
-  gap:8px;
+  gap:10px;
 }
 
 .header-icon{
@@ -91,29 +94,33 @@ nav a.active:after{
   place-items:center;
   color:var(--teal);
   background:transparent;
-  border:0;
-  font-size:23px;
+  border:1px solid transparent;
+  border-radius:5px;
+  font-size:22px;
 }
 
-.header-icon:hover{color:var(--yellow)}
+.header-icon:hover{
+  border-color:var(--teal);
+  color:var(--yellow);
+}
 
 .account-btn,
 .yellow-btn{
   background:var(--yellow);
   color:#050708;
   border:1px solid var(--yellow);
-  padding:12px 17px;
+  padding:12px 18px;
   border-radius:4px;
-  font-weight:bold;
+  font-weight:900;
 }
 
 .outline-btn{
   background:transparent;
   color:var(--yellow);
   border:1px solid var(--yellow);
-  padding:12px 17px;
+  padding:12px 18px;
   border-radius:4px;
-  font-weight:bold;
+  font-weight:900;
 }
 
 .outline-btn:hover{
@@ -124,8 +131,8 @@ nav a.active:after{
 .menu-btn{
   display:none;
   background:transparent;
-  border:1px solid var(--yellow);
   color:var(--yellow);
+  border:1px solid var(--yellow);
   width:42px;
   height:42px;
   font-size:24px;
@@ -188,7 +195,7 @@ nav a.active:after{
 }
 
 .profile-section{
-  border-top:1px solid #153d3d;
+  border-top:1px solid #153f40;
   margin-top:20px;
   padding-top:18px;
 }
@@ -200,7 +207,7 @@ nav a.active:after{
 }
 
 .profile-section p{
-  color:#b7c0c3;
+  color:#c0c7c9;
   margin:10px 0;
   font-size:13px;
   line-height:1.5;
@@ -238,8 +245,8 @@ nav a.active:after{
   border:1px solid var(--teal);
   overflow:hidden;
   background:
-    linear-gradient(rgba(0,229,213,.1) 1px,transparent 1px),
-    linear-gradient(90deg,rgba(0,229,213,.1) 1px,transparent 1px),
+    linear-gradient(rgba(0,229,213,.10) 1px,transparent 1px),
+    linear-gradient(90deg,rgba(0,229,213,.10) 1px,transparent 1px),
     #050a0b;
   background-size:40px 40px;
 }
@@ -250,7 +257,7 @@ nav a.active:after{
   inset:0;
   background:radial-gradient(
     circle at 75% 50%,
-    rgba(0,229,213,.2),
+    rgba(0,229,213,.22),
     transparent 38%
   );
   pointer-events:none;
@@ -271,9 +278,9 @@ nav a.active:after{
 }
 
 .hero-logo{
-  width:min(650px,90%);
-  max-height:220px;
-  margin:15px auto;
+  width:min(520px,80%);
+  max-height:210px;
+  margin:20px auto;
   display:block;
   object-fit:contain;
 }
@@ -284,7 +291,9 @@ nav a.active:after{
   line-height:1.6;
 }
 
-.hero-text strong{color:var(--yellow)}
+.hero-text strong{
+  color:var(--yellow);
+}
 
 .hero-buttons{
   margin-top:25px;
@@ -304,10 +313,12 @@ nav a.active:after{
 .trust-box{
   padding:18px;
   text-align:center;
-  border-right:1px solid #153d3d;
+  border-right:1px solid #153f40;
 }
 
-.trust-box:last-child{border-right:0}
+.trust-box:last-child{
+  border-right:0;
+}
 
 .trust-icon{
   color:var(--yellow);
@@ -352,7 +363,8 @@ nav a.active:after{
 
 /* SECTIONS */
 .content-section,
-.game-section{
+.game-section,
+.topup-page-section{
   scroll-margin-top:105px;
 }
 
@@ -360,7 +372,7 @@ nav a.active:after{
   display:flex;
   align-items:center;
   justify-content:space-between;
-  margin:28px 0 12px;
+  margin:25px 0 12px;
 }
 
 .section-heading h2{
@@ -374,35 +386,6 @@ nav a.active:after{
   height:3px;
   background:var(--yellow);
   margin-top:6px;
-}
-
-/* CHOICE CARDS */
-.choice-grid{
-  display:grid;
-  grid-template-columns:repeat(5,1fr);
-  gap:12px;
-  margin-top:20px;
-}
-
-.choice{
-  min-height:125px;
-  background:#071114;
-  color:#fff;
-  border:1px solid var(--teal);
-  padding:18px 8px;
-  text-align:center;
-  font-weight:bold;
-}
-
-.choice:hover{
-  border-color:var(--yellow);
-  color:var(--yellow);
-}
-
-.choice-icon{
-  display:block;
-  font-size:32px;
-  margin-bottom:12px;
 }
 
 /* PRODUCTS */
@@ -445,15 +428,14 @@ nav a.active:after{
   font-size:20px;
 }
 
-.account-photo,
-.topup-photo{
+.account-photo{
   width:100%;
   height:180px;
   object-fit:cover;
   display:block;
-  margin:7px 0 12px;
+  margin:8px 0 12px;
+  border:1px solid #153f40;
   background:#000;
-  border:1px solid #153d3d;
 }
 
 .game{
@@ -478,8 +460,7 @@ nav a.active:after{
 .description{
   color:#999;
   font-size:12px;
-  min-height:34px;
-  line-height:1.4;
+  min-height:32px;
 }
 
 .price{
@@ -492,7 +473,7 @@ nav a.active:after{
 .details-btn{
   width:100%;
   margin-top:12px;
-  padding:10px;
+  padding:9px;
   background:transparent;
   border:1px solid var(--yellow);
   color:var(--yellow);
@@ -501,6 +482,44 @@ nav a.active:after{
 
 .details-btn:disabled{
   opacity:.5;
+}
+
+/* TOP UP */
+.topup-page-section{
+  display:none;
+  margin-top:35px;
+  padding:20px;
+  border:1px solid var(--teal);
+  background:#05090a;
+}
+
+.topup-page-section.open{
+  display:block;
+}
+
+.topup-empty-card{
+  border:1px solid var(--teal2);
+  background:
+    linear-gradient(rgba(0,229,213,.05) 1px,transparent 1px),
+    linear-gradient(90deg,rgba(0,229,213,.05) 1px,transparent 1px),
+    #070b0d;
+  background-size:25px 25px;
+  padding:35px 20px;
+  text-align:center;
+}
+
+.topup-empty-card .choice-icon{
+  font-size:42px;
+}
+
+.topup-empty-card h3{
+  color:var(--yellow);
+  margin:12px 0;
+}
+
+.topup-empty-card p{
+  color:#999;
+  margin-bottom:18px;
 }
 
 /* FEATURES */
@@ -514,10 +533,12 @@ nav a.active:after{
 .feature{
   padding:18px;
   text-align:center;
-  border-right:1px solid #153d3d;
+  border-right:1px solid #153f40;
 }
 
-.feature:last-child{border-right:0}
+.feature:last-child{
+  border-right:0;
+}
 
 .feature-icon{
   color:var(--teal);
@@ -548,7 +569,7 @@ footer{
 
 .footer-logo{
   width:120px;
-  max-height:60px;
+  height:60px;
   object-fit:contain;
 }
 
@@ -560,9 +581,12 @@ footer{
 .socials a{
   color:#fff;
   text-decoration:none;
+  font-weight:bold;
 }
 
-.socials a:hover{color:var(--yellow)}
+.socials a:hover{
+  color:var(--yellow);
+}
 
 .slogan{
   color:var(--yellow);
@@ -574,130 +598,128 @@ footer{
   display:none;
   position:fixed;
   inset:0;
-  z-index:3000;
+  z-index:2000;
   background:rgba(0,0,0,.88);
   align-items:center;
   justify-content:center;
   padding:18px;
 }
 
-.modal.show{display:flex}
+.modal.show{
+  display:flex;
+}
 
 .modal-box{
   width:100%;
-  max-width:760px;
+  max-width:720px;
   max-height:90vh;
   overflow:auto;
-  background:#080d0f;
+  background:#061012;
   border:1px solid var(--teal);
-  padding:25px;
+  box-shadow:0 0 35px rgba(0,229,213,.18);
+  padding:24px;
 }
 
 .modal-box h2{
   color:var(--yellow);
-  margin-bottom:10px;
+  margin-bottom:8px;
 }
 
 .modal-box>p{
-  color:#999;
-  margin-bottom:20px;
+  color:#aaa;
+  margin-bottom:18px;
 }
 
-.close{
+.modal-close{
   float:right;
   background:transparent;
-  border:0;
   color:#fff;
-  font-size:30px;
+  border:1px solid #555;
+  width:34px;
+  height:34px;
+  border-radius:4px;
+  font-size:22px;
 }
 
-.close:hover{color:var(--yellow)}
-
-/* REVIEWS */
-.rating-grid{
+/* CHOICES */
+.choice-grid{
   display:grid;
   grid-template-columns:repeat(5,1fr);
   gap:10px;
 }
 
-.rating-card{
-  background:#071114;
-  border:1px solid var(--teal);
-  color:var(--yellow);
-  padding:18px 8px;
-  text-align:center;
-  font-weight:bold;
-}
-
-.rating-stars{
-  display:block;
-  font-size:21px;
-  margin-bottom:8px;
-}
-
-/* CONTACT */
-.contact-options{
-  display:grid;
-  grid-template-columns:repeat(2,1fr);
-  gap:12px;
-}
-
-.contact-option{
-  display:block;
-  padding:18px;
-  text-align:center;
-  text-decoration:none;
+.choice{
+  min-height:120px;
+  background:#071619;
   color:#fff;
   border:1px solid var(--teal);
-  background:#071114;
-  font-weight:bold;
+  padding:15px 8px;
+  display:flex;
+  flex-direction:column;
+  align-items:center;
+  justify-content:center;
+  gap:10px;
+  font-weight:900;
 }
 
-.contact-option:hover{
-  color:var(--yellow);
+.choice:hover{
   border-color:var(--yellow);
+  color:var(--yellow);
 }
 
-/* FORMS */
-.form-input{
-  width:100%;
-  padding:14px;
-  margin-bottom:12px;
-  background:#050708;
+.choice-icon{
+  font-size:28px;
+}
+
+/* REVIEWS */
+.stars-choice{
+  display:grid;
+  grid-template-columns:repeat(5,1fr);
+  gap:10px;
+}
+
+.star-choice{
+  padding:18px 10px;
+  background:#071619;
   border:1px solid var(--teal);
-  color:#fff;
-  outline:none;
-}
-
-.form-input:focus{border-color:var(--yellow)}
-
-.full-btn{
-  width:100%;
-  padding:14px;
+  color:var(--yellow);
+  font-size:20px;
+  font-weight:bold;
 }
 
 /* SEARCH */
-.search-result{
+.search-input{
+  width:100%;
   padding:14px;
-  border-bottom:1px solid #153d3d;
+  background:#020506;
+  border:1px solid var(--teal);
+  color:#fff;
+  outline:none;
+  margin:10px 0 18px;
+}
+
+.search-result{
+  padding:12px;
+  border-bottom:1px solid #173d3d;
+  cursor:pointer;
 }
 
 /* CART */
 .cart-item{
   display:flex;
-  align-items:center;
   justify-content:space-between;
-  gap:12px;
+  align-items:center;
+  gap:15px;
   padding:12px 0;
-  border-bottom:1px solid #153d3d;
+  border-bottom:1px solid #173d3d;
 }
 
-.cart-price,
-.cart-total{
+.cart-price{
   color:var(--yellow);
 }
 
 .cart-total{
+  color:var(--yellow);
   font-size:20px;
   font-weight:bold;
   margin-top:18px;
@@ -709,15 +731,23 @@ footer{
   padding:30px;
 }
 
-/* ADMIN */
-.admin-form{
-  display:grid;
-  grid-template-columns:1fr 1fr;
-  gap:12px;
+/* FORMS */
+.form-input,
+.admin-input,
+.admin-select,
+.admin-textarea{
+  width:100%;
+  padding:13px;
+  background:#020506;
+  border:1px solid var(--teal);
+  color:#fff;
+  outline:none;
+  margin-bottom:12px;
 }
 
-.admin-full{
-  grid-column:1/-1;
+.admin-textarea{
+  min-height:100px;
+  resize:vertical;
 }
 
 .admin-label{
@@ -728,42 +758,38 @@ footer{
   margin-bottom:6px;
 }
 
-.admin-input,
-.admin-select,
-.admin-textarea{
-  width:100%;
-  padding:12px;
-  background:#020506;
-  border:1px solid var(--teal);
-  color:#fff;
-  outline:none;
+.admin-form{
+  display:grid;
+  grid-template-columns:1fr 1fr;
+  gap:12px;
 }
 
-.admin-textarea{
-  min-height:100px;
-  resize:vertical;
+.admin-form .full{
+  grid-column:1/-1;
 }
 
 .photo-upload{
   border:1px dashed var(--teal);
-  padding:15px;
+  padding:16px;
+  text-align:center;
+  background:#05090a;
 }
 
 .photo-preview{
   width:100%;
-  max-width:320px;
-  height:200px;
+  max-width:300px;
+  height:190px;
   object-fit:cover;
   display:block;
-  margin:15px auto 0;
+  margin:12px auto;
   background:#000;
-  border:1px solid #153d3d;
+  border:1px solid #153f40;
 }
 
 .admin-actions{
   display:flex;
   gap:10px;
-  margin-top:15px;
+  margin-top:14px;
 }
 
 .admin-actions button{
@@ -771,36 +797,42 @@ footer{
 }
 
 .admin-message{
-  text-align:center;
   color:var(--yellow);
   margin-top:12px;
+  text-align:center;
 }
 
 /* MOBILE DRAWER */
-.drawer{
+.mobile-drawer{
   display:none;
   position:fixed;
   inset:0;
-  z-index:4000;
+  z-index:3000;
   background:rgba(0,0,0,.8);
 }
 
-.drawer.open{display:block}
+.mobile-drawer.open{
+  display:block;
+}
 
 .drawer-panel{
-  width:min(320px,88vw);
+  width:min(330px,86vw);
   height:100%;
   overflow:auto;
   background:#05090a;
   border-right:2px solid var(--yellow);
-  padding:15px;
+  padding:14px;
 }
 
 .drawer-head{
   display:flex;
-  align-items:center;
   justify-content:space-between;
-  margin-bottom:15px;
+  align-items:center;
+  margin-bottom:10px;
+}
+
+.drawer-head strong{
+  color:var(--yellow);
 }
 
 .drawer-close{
@@ -825,9 +857,21 @@ footer{
 
 @media(max-width:850px){
 
-  nav{display:none}
+  header{
+    padding:10px 14px;
+  }
 
-  .menu-btn{display:block}
+  nav{
+    display:none;
+  }
+
+  .menu-btn{
+    display:block;
+  }
+
+  .header-actions{
+    margin-left:auto;
+  }
 
   .layout{
     grid-template-columns:1fr;
@@ -850,26 +894,27 @@ footer{
 @media(max-width:600px){
 
   header{
-    padding:8px 10px;
     min-height:70px;
+    gap:7px;
   }
 
   .logo{
     width:120px;
-    max-height:55px;
-  }
-
-  .header-actions{
-    margin-left:auto;
-  }
-
-  .account-btn{
-    padding:9px;
-    font-size:10px;
   }
 
   .header-icon{
-    font-size:19px;
+    width:34px;
+    height:34px;
+    font-size:20px;
+  }
+
+  .account-btn{
+    padding:9px 10px;
+    font-size:10px;
+  }
+
+  .layout{
+    padding:8px;
   }
 
   .hero{
@@ -880,9 +925,17 @@ footer{
     padding:25px 10px;
   }
 
+  .welcome{
+    font-size:14px;
+  }
+
   .hero-logo{
-    width:95%;
-    max-height:190px;
+    width:92%;
+    max-height:180px;
+  }
+
+  .hero-text{
+    font-size:14px;
   }
 
   .hero-buttons{
@@ -895,7 +948,7 @@ footer{
 
   .trust-box{
     border-right:0;
-    border-bottom:1px solid #153d3d;
+    border-bottom:1px solid #153f40;
   }
 
   .products{
@@ -908,36 +961,36 @@ footer{
 
   .feature{
     border-right:0;
-    border-bottom:1px solid #153d3d;
+    border-bottom:1px solid #153f40;
+  }
+
+  footer{
+    flex-direction:column;
+    text-align:center;
   }
 
   .choice-grid{
     grid-template-columns:1fr 1fr;
   }
 
-  .rating-grid{
+  .stars-choice{
     grid-template-columns:1fr;
   }
 
-  .contact-options{
-    grid-template-columns:1fr;
+  .modal-box{
+    padding:18px;
   }
 
   .admin-form{
     grid-template-columns:1fr;
   }
 
-  .admin-full{
+  .admin-form .full{
     grid-column:auto;
   }
 
   .admin-actions{
     flex-direction:column;
-  }
-
-  footer{
-    flex-direction:column;
-    text-align:center;
   }
 }
 
@@ -946,10 +999,6 @@ footer{
   .account-btn{
     display:none;
   }
-
-  .choice-grid{
-    grid-template-columns:1fr;
-  }
 }
 </style>
 </head>
@@ -957,6 +1006,7 @@ footer{
 <body>
 
 <!-- HEADER -->
+
 <header>
 
 <button
@@ -974,19 +1024,17 @@ footer{
 
 <nav>
 
-<a href="#home" class="active">
-HOME
-</a>
+<a href="#home" class="active">HOME</a>
 
 <a
   href="#accounts"
-  onclick="openAccounts(event)"
+  onclick="openAccountChoices(event)"
 >
 ACCOUNTS
 </a>
 
 <a
-  href="#topup"
+  href="#topupChoice"
   onclick="openTopup(event)"
 >
 TOP UP
@@ -1007,7 +1055,7 @@ REVIEWS
   class="header-icon"
   onclick="openSearch()"
 >
-🔍
+⌕
 </button>
 
 <button
@@ -1030,19 +1078,18 @@ REVIEWS
 
 
 <!-- MOBILE DRAWER -->
+
 <div
-  class="drawer"
+  class="mobile-drawer"
   id="drawer"
-  onclick="closeDrawerOutside(event)"
+  onclick="drawerOutside(event)"
 >
 
 <div class="drawer-panel">
 
 <div class="drawer-head">
 
-<strong style="color:#ffd400">
-CRISPY SHOP
-</strong>
+<strong>CRISPY SHOP</strong>
 
 <button
   class="drawer-close"
@@ -1053,48 +1100,83 @@ CRISPY SHOP
 
 </div>
 
-<button
-  class="contact"
-  onclick="openAccounts();closeDrawer()"
+<div class="profile">
+
+<div class="profile-title">
+MY PROFILE 👑
+</div>
+
+<img
+  src="logo.png.jpeg"
+  class="profile-logo"
+  alt="CRISPY SHOP"
 >
-🎮 ACCOUNTS
-</button>
+
+<div class="profile-level">
+LEVEL 17 TRADER
+</div>
+
+<div class="progress">
+<span></span>
+</div>
+
+<div class="profile-section">
+
+<h3>ABOUT</h3>
+
+<p>♙ Trader</p>
+<p>♙ Gaming Account Seller</p>
+<p>▣ Member Since<br>2024</p>
+
+<p>☆ Shop Rating</p>
+
+<div class="stars">
+★★★★★ <span style="color:#fff">5.0</span>
+</div>
+
+<p>♧ Orders Completed<br>250+</p>
+
+</div>
+
+<div class="profile-section">
+
+<h3>SHOP STATS</h3>
+
+<p>▣ Total Accounts <b>120+</b></p>
+<p>♙ Total Sales <b>1.2K+</b></p>
+<p>♙ Happy Customers <b>980+</b></p>
+<p>✓ Success Rate <b>99%</b></p>
+
+</div>
 
 <button
   class="contact"
-  onclick="openTopup();closeDrawer()"
->
-💎 TOP UP
-</button>
-
-<button
-  class="contact"
-  onclick="openReviews();closeDrawer()"
->
-⭐ REVIEWS
-</button>
-
-<button
-  class="contact"
-  onclick="openCustomerAccount();closeDrawer()"
->
-♙ MY ACCOUNT
-</button>
-
-<button
-  class="contact"
-  onclick="openContact();closeDrawer()"
+  onclick="contactMe();closeDrawer()"
 >
 💬 CONTACT ME
 </button>
 
+<button
+  class="contact whatsapp"
+  onclick="messageMe();closeDrawer()"
+>
+☘ MESSAGE ME
+</button>
+
 </div>
+
+</div>
+
 </div>
 
 
-<div class="layout">
+<div
+  class="layout"
+  id="home"
+>
 
-<!-- PROFILE -->
+<!-- DESKTOP PROFILE -->
+
 <aside class="profile">
 
 <div class="profile-title">
@@ -1126,14 +1208,10 @@ LEVEL 17 TRADER
 <p>☆ Shop Rating</p>
 
 <div class="stars">
-★★★★★
-<span style="color:#fff">5.0</span>
+★★★★★ <span style="color:#fff">5.0</span>
 </div>
 
-<p>
-♧ Orders Completed<br>
-250+
-</p>
+<p>♧ Orders Completed<br>250+</p>
 
 </div>
 
@@ -1150,7 +1228,7 @@ LEVEL 17 TRADER
 
 <button
   class="contact"
-  onclick="openContact()"
+  onclick="contactMe()"
 >
 💬 CONTACT ME
 </button>
@@ -1165,10 +1243,14 @@ LEVEL 17 TRADER
 </aside>
 
 
-<main id="home">
+<main>
 
 <!-- HERO -->
-<section class="hero">
+
+<section
+  class="hero"
+  id="hero"
+>
 
 <div class="hero-content">
 
@@ -1184,14 +1266,14 @@ LEVEL 17 TRADER
 
 <p class="hero-text">
 Premium gaming accounts, top ups and more.
-<strong>100% safe, secure &amp; trusted.</strong>
+<strong>100% safe, secure & trusted.</strong>
 </p>
 
 <div class="hero-buttons">
 
 <button
   class="yellow-btn"
-  onclick="openAccounts()"
+  onclick="openAccountChoices()"
 >
 🛍 BROWSE ACCOUNTS
 </button>
@@ -1206,10 +1288,12 @@ Premium gaming accounts, top ups and more.
 </div>
 
 </div>
+
 </section>
 
 
 <!-- TRUST -->
+
 <section class="trust">
 
 <div class="trust-box">
@@ -1233,47 +1317,48 @@ Premium gaming accounts, top ups and more.
 </section>
 
 
-<!-- ACCOUNT FILTERS -->
+<!-- FILTERS -->
+
 <div class="filters">
 
 <button
   class="filter active"
-  onclick="filterAccounts('all',this)"
+  onclick="filterProducts('all',this)"
 >
 ALL
 </button>
 
 <button
   class="filter"
-  onclick="filterAccounts('freefire',this)"
+  onclick="filterProducts('freefire',this)"
 >
 FREE FIRE
 </button>
 
 <button
   class="filter"
-  onclick="filterAccounts('efootball',this)"
+  onclick="filterProducts('efootball',this)"
 >
 eFOOTBALL
 </button>
 
 <button
   class="filter"
-  onclick="filterAccounts('codm',this)"
+  onclick="filterProducts('codm',this)"
 >
 CODM
 </button>
 
 <button
   class="filter"
-  onclick="filterAccounts('dls',this)"
+  onclick="filterProducts('dls',this)"
 >
 DLS
 </button>
 
 <button
   class="filter"
-  onclick="filterAccounts('fcmobile',this)"
+  onclick="filterProducts('fcmobile',this)"
 >
 FC MOBILE
 </button>
@@ -1281,54 +1366,57 @@ FC MOBILE
 </div>
 
 
-<!-- ACCOUNTS MAIN -->
+<!-- ACCOUNTS -->
+
 <section
-  id="accounts"
   class="content-section"
+  id="accounts"
 >
 
 <div class="section-heading">
 
-<h2>
-FEATURED ACCOUNTS
-</h2>
+<h2>FEATURED ACCOUNTS</h2>
 
 <button
   class="outline-btn"
-  onclick="openAccounts()"
+  onclick="openAccountChoices()"
 >
-CHOOSE GAME →
+VIEW ALL →
 </button>
 
 </div>
 
+<p style="color:#999">
+Choose one of the five games to view its own account section.
+</p>
+
 </section>
 
 
-<!-- FREE FIRE ACCOUNTS -->
+<!-- FREE FIRE -->
+
 <section
+  class="game-section"
   id="freefire-section"
-  class="game-section account-game"
-  data-game="freefire"
+  data-game-section="freefire"
 >
 
 <div class="section-heading">
-<h2>FREE FIRE ACCOUNTS</h2>
+<h2>FREE FIRE</h2>
 </div>
 
 <div class="products">
 
 <div
   class="product"
-  id="freefire-account"
+  data-game="freefire"
+  data-account-id="freefire-1"
 >
 
 <span class="heart">♡</span>
 <span class="available">AVAILABLE</span>
 
-<div class="game">
-FREE F⚡RE
-</div>
+<div class="game">FREE F⚡RE</div>
 
 <h3>FREE FIRE ACCOUNT</h3>
 
@@ -1337,12 +1425,10 @@ Level — · REGION
 </div>
 
 <div class="description">
-No account posted yet. You can add one from your private admin page.
+No account posted yet. Add your first Free Fire account from the admin section.
 </div>
 
-<div class="price">
-₦0
-</div>
+<div class="price">₦0</div>
 
 <button
   class="details-btn"
@@ -1354,33 +1440,34 @@ ADD TO CART
 </div>
 
 </div>
+
 </section>
 
 
-<!-- EFOOTBALL ACCOUNTS -->
+<!-- EFOOTBALL -->
+
 <section
+  class="game-section"
   id="efootball-section"
-  class="game-section account-game"
-  data-game="efootball"
+  data-game-section="efootball"
 >
 
 <div class="section-heading">
-<h2>eFOOTBALL ACCOUNTS</h2>
+<h2>eFOOTBALL</h2>
 </div>
 
 <div class="products">
 
 <div
   class="product"
-  id="efootball-account"
+  data-game="efootball"
+  data-account-id="efootball-1"
 >
 
 <span class="heart">♡</span>
 <span class="available">AVAILABLE</span>
 
-<div class="game">
-eFOOTBALL
-</div>
+<div class="game">eFOOTBALL</div>
 
 <h3>eFOOTBALL ACCOUNT</h3>
 
@@ -1389,12 +1476,10 @@ Level — · REGION
 </div>
 
 <div class="description">
-No account posted yet. You can add one from your private admin page.
+No account posted yet. Add your first eFootball account from the admin section.
 </div>
 
-<div class="price">
-₦0
-</div>
+<div class="price">₦0</div>
 
 <button
   class="details-btn"
@@ -1406,33 +1491,34 @@ ADD TO CART
 </div>
 
 </div>
+
 </section>
 
 
-<!-- CODM ACCOUNTS -->
+<!-- CODM -->
+
 <section
+  class="game-section"
   id="codm-section"
-  class="game-section account-game"
-  data-game="codm"
+  data-game-section="codm"
 >
 
 <div class="section-heading">
-<h2>CODM ACCOUNTS</h2>
+<h2>CODM</h2>
 </div>
 
 <div class="products">
 
 <div
   class="product"
-  id="codm-account"
+  data-game="codm"
+  data-account-id="codm-1"
 >
 
 <span class="heart">♡</span>
 <span class="available">AVAILABLE</span>
 
-<div class="game">
-CODM
-</div>
+<div class="game">CODM</div>
 
 <h3>CODM ACCOUNT</h3>
 
@@ -1441,12 +1527,10 @@ Level — · REGION
 </div>
 
 <div class="description">
-No account posted yet. You can add one from your private admin page.
+No account posted yet. Add your first CODM account from the admin section.
 </div>
 
-<div class="price">
-₦0
-</div>
+<div class="price">₦0</div>
 
 <button
   class="details-btn"
@@ -1458,33 +1542,34 @@ ADD TO CART
 </div>
 
 </div>
+
 </section>
 
 
-<!-- DLS ACCOUNTS -->
+<!-- DLS -->
+
 <section
+  class="game-section"
   id="dls-section"
-  class="game-section account-game"
-  data-game="dls"
+  data-game-section="dls"
 >
 
 <div class="section-heading">
-<h2>DLS ACCOUNTS</h2>
+<h2>DLS</h2>
 </div>
 
 <div class="products">
 
 <div
   class="product"
-  id="dls-account"
+  data-game="dls"
+  data-account-id="dls-1"
 >
 
 <span class="heart">♡</span>
 <span class="available">AVAILABLE</span>
 
-<div class="game">
-DLS
-</div>
+<div class="game">DLS</div>
 
 <h3>DLS ACCOUNT</h3>
 
@@ -1493,12 +1578,10 @@ Level — · REGION
 </div>
 
 <div class="description">
-No account posted yet. You can add one from your private admin page.
+No account posted yet. Add your first DLS account from the admin section.
 </div>
 
-<div class="price">
-₦0
-</div>
+<div class="price">₦0</div>
 
 <button
   class="details-btn"
@@ -1510,33 +1593,34 @@ ADD TO CART
 </div>
 
 </div>
+
 </section>
 
 
-<!-- FC MOBILE ACCOUNTS -->
+<!-- FC MOBILE -->
+
 <section
+  class="game-section"
   id="fcmobile-section"
-  class="game-section account-game"
-  data-game="fcmobile"
+  data-game-section="fcmobile"
 >
 
 <div class="section-heading">
-<h2>FC MOBILE ACCOUNTS</h2>
+<h2>FC MOBILE</h2>
 </div>
 
 <div class="products">
 
 <div
   class="product"
-  id="fcmobile-account"
+  data-game="fcmobile"
+  data-account-id="fcmobile-1"
 >
 
 <span class="heart">♡</span>
 <span class="available">AVAILABLE</span>
 
-<div class="game">
-FC MOBILE
-</div>
+<div class="game">FC MOBILE</div>
 
 <h3>FC MOBILE ACCOUNT</h3>
 
@@ -1545,12 +1629,10 @@ Level — · REGION
 </div>
 
 <div class="description">
-No account posted yet. You can add one from your private admin page.
+No account posted yet. Add your first FC Mobile account from the admin section.
 </div>
 
-<div class="price">
-₦0
-</div>
+<div class="price">₦0</div>
 
 <button
   class="details-btn"
@@ -1562,302 +1644,169 @@ ADD TO CART
 </div>
 
 </div>
-</section>
-
-
-<!-- ================= TOP UP ================= -->
-
-<section
-  id="topup"
-  class="content-section"
->
-
-<div class="section-heading">
-<h2>TOP UP</h2>
-</div>
-
-<p style="color:#aaa">
-Choose the game you want to top up.
-</p>
-
-<div class="choice-grid">
-
-<button
-  class="choice"
-  onclick="openTopupGame('freefire')"
->
-<span class="choice-icon">💎</span>
-FREE FIRE DIAMONDS
-</button>
-
-<button
-  class="choice"
-  onclick="openTopupGame('efootball')"
->
-<span class="choice-icon">🪙</span>
-eFOOTBALL COINS
-</button>
-
-<button
-  class="choice"
-  onclick="openTopupGame('codm')"
->
-<span class="choice-icon">🎯</span>
-CODM CP
-</button>
-
-<button
-  class="choice"
-  onclick="openTopupGame('dls')"
->
-<span class="choice-icon">💎</span>
-DLS DIAMONDS
-</button>
-
-<button
-  class="choice"
-  onclick="openTopupGame('fcmobile')"
->
-<span class="choice-icon">⚽</span>
-FC MOBILE
-</button>
-
-</div>
 
 </section>
 
 
-<!-- FREE FIRE TOPUP -->
+<!-- TOP UP SECTIONS -->
+
 <section
+  class="topup-page-section"
   id="freefire-topup"
-  class="game-section topup-game"
-  data-topup-game="freefire"
 >
 
 <div class="section-heading">
 <h2>FREE FIRE DIAMONDS</h2>
 </div>
 
-<div class="products">
+<div class="topup-empty-card">
 
-<div class="product">
-
-<div class="game">
-FREE F⚡RE
-</div>
+<div class="choice-icon">💎</div>
 
 <h3>FREE FIRE DIAMONDS</h3>
 
-<div class="details">
-Diamond Package
-</div>
-
-<div class="description">
-No package posted yet. Add your packages from the admin area.
-</div>
-
-<div class="price">
-₦0
-</div>
+<p>
+No Free Fire Diamond package posted yet.
+</p>
 
 <button
   class="details-btn"
-  onclick="selectTopup('FREE FIRE DIAMONDS')"
+  onclick="openAdmin()"
 >
-SELECT PACKAGE
+ADMIN: ADD PACKAGE
 </button>
 
 </div>
 
-</div>
 </section>
 
 
-<!-- EFOOTBALL TOPUP -->
 <section
+  class="topup-page-section"
   id="efootball-topup"
-  class="game-section topup-game"
-  data-topup-game="efootball"
 >
 
 <div class="section-heading">
 <h2>eFOOTBALL COINS</h2>
 </div>
 
-<div class="products">
+<div class="topup-empty-card">
 
-<div class="product">
-
-<div class="game">
-eFOOTBALL
-</div>
+<div class="choice-icon">🪙</div>
 
 <h3>eFOOTBALL COINS</h3>
 
-<div class="details">
-Coin Package
-</div>
-
-<div class="description">
-No package posted yet. Add your packages from the admin area.
-</div>
-
-<div class="price">
-₦0
-</div>
+<p>
+No eFootball Coin package posted yet.
+</p>
 
 <button
   class="details-btn"
-  onclick="selectTopup('eFOOTBALL COINS')"
+  onclick="openAdmin()"
 >
-SELECT PACKAGE
+ADMIN: ADD PACKAGE
 </button>
 
 </div>
 
-</div>
 </section>
 
 
-<!-- CODM TOPUP -->
 <section
+  class="topup-page-section"
   id="codm-topup"
-  class="game-section topup-game"
-  data-topup-game="codm"
 >
 
 <div class="section-heading">
 <h2>CODM CP</h2>
 </div>
 
-<div class="products">
+<div class="topup-empty-card">
 
-<div class="product">
-
-<div class="game">
-CODM
-</div>
+<div class="choice-icon">🎯</div>
 
 <h3>CODM CP</h3>
 
-<div class="details">
-CP Package
-</div>
-
-<div class="description">
-No package posted yet. Add your packages from the admin area.
-</div>
-
-<div class="price">
-₦0
-</div>
+<p>
+No CODM CP package posted yet.
+</p>
 
 <button
   class="details-btn"
-  onclick="selectTopup('CODM CP')"
+  onclick="openAdmin()"
 >
-SELECT PACKAGE
+ADMIN: ADD PACKAGE
 </button>
 
 </div>
 
-</div>
 </section>
 
 
-<!-- DLS TOPUP -->
 <section
+  class="topup-page-section"
   id="dls-topup"
-  class="game-section topup-game"
-  data-topup-game="dls"
 >
 
 <div class="section-heading">
 <h2>DLS DIAMONDS</h2>
 </div>
 
-<div class="products">
+<div class="topup-empty-card">
 
-<div class="product">
-
-<div class="game">
-DLS
-</div>
+<div class="choice-icon">💎</div>
 
 <h3>DLS DIAMONDS</h3>
 
-<div class="details">
-Diamond Package
-</div>
-
-<div class="description">
-No package posted yet. Add your packages from the admin area.
-</div>
-
-<div class="price">
-₦0
-</div>
+<p>
+No DLS Diamond package posted yet.
+</p>
 
 <button
   class="details-btn"
-  onclick="selectTopup('DLS DIAMONDS')"
+  onclick="openAdmin()"
 >
-SELECT PACKAGE
+ADMIN: ADD PACKAGE
 </button>
 
 </div>
 
-</div>
 </section>
 
 
-<!-- FC MOBILE TOPUP -->
 <section
+  class="topup-page-section"
   id="fcmobile-topup"
-  class="game-section topup-game"
-  data-topup-game="fcmobile"
 >
 
 <div class="section-heading">
-<h2>FC MOBILE TOP UP</h2>
+<h2>FC MOBILE</h2>
 </div>
 
-<div class="products">
+<div class="topup-empty-card">
 
-<div class="product">
+<div class="choice-icon">⚽</div>
 
-<div class="game">
-FC MOBILE
-</div>
+<h3>FC MOBILE</h3>
 
-<h3>FC MOBILE TOP UP</h3>
-
-<div class="details">
-Top Up Package
-</div>
-
-<div class="description">
-No package posted yet. Add your packages from the admin area.
-</div>
-
-<div class="price">
-₦0
-</div>
+<p>
+No FC Mobile package posted yet.
+</p>
 
 <button
   class="details-btn"
-  onclick="selectTopup('FC MOBILE')"
+  onclick="openAdmin()"
 >
-SELECT PACKAGE
+ADMIN: ADD PACKAGE
 </button>
 
 </div>
 
-</div>
 </section>
 
 
 <!-- FEATURES -->
+
 <section class="features">
 
 <div class="feature">
@@ -1888,6 +1837,7 @@ SELECT PACKAGE
 
 
 <!-- FOOTER -->
+
 <footer>
 
 <img
@@ -1928,10 +1878,12 @@ LEVEL UP. PLAY MORE. 👑
 </footer>
 
 </main>
+
 </div>
 
 
 <!-- CUSTOMER ACCOUNT -->
+
 <div
   class="modal"
   id="customerAccountModal"
@@ -1940,7 +1892,7 @@ LEVEL UP. PLAY MORE. 👑
 <div class="modal-box">
 
 <button
-  class="close"
+  class="modal-close"
   onclick="closeModal('customerAccountModal')"
 >
 ×
@@ -1949,55 +1901,59 @@ LEVEL UP. PLAY MORE. 👑
 <h2>MY ACCOUNT</h2>
 
 <p>
-Create a customer account or log in.
+Create your Crispy Shop account or log in.
 </p>
 
-<div class="contact-options">
+<div class="choice-grid">
 
 <button
-  class="contact-option"
-  onclick="showSignup()"
+  class="choice"
+  onclick="showCustomerSignup()"
 >
-👤 CREATE ACCOUNT
+<span class="choice-icon">👤</span>
+CREATE ACCOUNT
 </button>
 
 <button
-  class="contact-option"
-  onclick="showLogin()"
+  class="choice"
+  onclick="showCustomerLogin()"
 >
-🔐 LOGIN
+<span class="choice-icon">🔐</span>
+LOGIN
 </button>
 
 </div>
 
+
 <div
-  id="signupBox"
+  id="customerSignup"
   style="display:none;margin-top:20px"
 >
 
 <input
-  id="signupName"
+  id="customerName"
   class="form-input"
   type="text"
   placeholder="Your name"
 >
 
 <input
-  id="signupEmail"
+  id="customerEmail"
   class="form-input"
   type="email"
   placeholder="Email address"
 >
 
 <input
-  id="signupPassword"
+  id="customerPassword"
   class="form-input"
   type="password"
   placeholder="Password"
 >
 
 <button
-  class="yellow-btn full-btn"
+  class="yellow-btn"
+  style="width:100%"
   onclick="createCustomerAccount()"
 >
 CREATE ACCOUNT
@@ -2007,7 +1963,7 @@ CREATE ACCOUNT
 
 
 <div
-  id="loginBox"
+  id="customerLogin"
   style="display:none;margin-top:20px"
 >
 
@@ -2026,7 +1982,8 @@ CREATE ACCOUNT
 >
 
 <button
-  class="yellow-btn full-btn"
+  class="yellow-btn"
+  style="width:100%"
   onclick="loginCustomer()"
 >
 LOGIN
@@ -2034,26 +1991,28 @@ LOGIN
 
 </div>
 
-<p
-  id="accountMessage"
-  style="color:#ffd400;margin-top:15px"
-></p>
+<div
+  id="customerMessage"
+  class="admin-message"
+></div>
 
 </div>
+
 </div>
 
 
 <!-- ACCOUNT GAME CHOICES -->
+
 <div
   class="modal"
-  id="accountChoicesModal"
+  id="accountModal"
 >
 
 <div class="modal-box">
 
 <button
-  class="close"
-  onclick="closeModal('accountChoicesModal')"
+  class="modal-close"
+  onclick="closeModal('accountModal')"
 >
 ×
 </button>
@@ -2061,14 +2020,14 @@ LOGIN
 <h2>CHOOSE YOUR GAME</h2>
 
 <p>
-Select the game account you want.
+Select the game account you want to browse.
 </p>
 
 <div class="choice-grid">
 
 <button
   class="choice"
-  onclick="chooseAccountGame('freefire')"
+  onclick="chooseGame('freefire')"
 >
 <span class="choice-icon">🔥</span>
 FREE FIRE
@@ -2076,7 +2035,7 @@ FREE FIRE
 
 <button
   class="choice"
-  onclick="chooseAccountGame('efootball')"
+  onclick="chooseGame('efootball')"
 >
 <span class="choice-icon">⚽</span>
 eFOOTBALL
@@ -2084,7 +2043,7 @@ eFOOTBALL
 
 <button
   class="choice"
-  onclick="chooseAccountGame('codm')"
+  onclick="chooseGame('codm')"
 >
 <span class="choice-icon">🎯</span>
 CODM
@@ -2092,7 +2051,7 @@ CODM
 
 <button
   class="choice"
-  onclick="chooseAccountGame('dls')"
+  onclick="chooseGame('dls')"
 >
 <span class="choice-icon">💎</span>
 DLS
@@ -2100,7 +2059,7 @@ DLS
 
 <button
   class="choice"
-  onclick="chooseAccountGame('fcmobile')"
+  onclick="chooseGame('fcmobile')"
 >
 <span class="choice-icon">⚽</span>
 FC MOBILE
@@ -2109,20 +2068,93 @@ FC MOBILE
 </div>
 
 </div>
+
 </div>
 
 
-<!-- REVIEWS -->
+<!-- TOP UP CHOICES -->
+
 <div
   class="modal"
-  id="reviewsModal"
+  id="topupChoiceModal"
 >
 
 <div class="modal-box">
 
 <button
-  class="close"
-  onclick="closeModal('reviewsModal')"
+  class="modal-close"
+  onclick="closeModal('topupChoiceModal')"
+>
+×
+</button>
+
+<h2>CHOOSE TOP UP</h2>
+
+<p>
+Select the game you want to top up.
+</p>
+
+<div class="choice-grid">
+
+<button
+  class="choice"
+  onclick="openTopupSection('freefire-topup')"
+>
+<span class="choice-icon">💎</span>
+FREE FIRE DIAMONDS
+</button>
+
+<button
+  class="choice"
+  onclick="openTopupSection('efootball-topup')"
+>
+<span class="choice-icon">🪙</span>
+eFOOTBALL COINS
+</button>
+
+<button
+  class="choice"
+  onclick="openTopupSection('codm-topup')"
+>
+<span class="choice-icon">🎯</span>
+CODM CP
+</button>
+
+<button
+  class="choice"
+  onclick="openTopupSection('dls-topup')"
+>
+<span class="choice-icon">💎</span>
+DLS DIAMONDS
+</button>
+
+<button
+  class="choice"
+  onclick="openTopupSection('fcmobile-topup')"
+>
+<span class="choice-icon">⚽</span>
+FC MOBILE
+</button>
+
+</div>
+
+</div>
+
+</div>
+
+
+<!-- REVIEWS -->
+
+<div
+  class="modal"
+  id="reviewModal"
+>
+
+<div class="modal-box">
+
+<button
+  class="modal-close"
+  onclick="closeModal('reviewModal')"
 >
 ×
 </button>
@@ -2133,55 +2165,62 @@ FC MOBILE
 Choose your rating.
 </p>
 
-<div class="rating-grid">
+<div class="stars-choice">
 
 <button
-  class="rating-card"
-  onclick="submitRating(5)"
+  class="star-choice"
+  onclick="sendReview(5)"
 >
-<span class="rating-stars">★★★★★</span>
+★★★★★
+<br>
 5 STAR
 </button>
 
 <button
-  class="rating-card"
-  onclick="submitRating(4)"
+  class="star-choice"
+  onclick="sendReview(4)"
 >
-<span class="rating-stars">★★★★</span>
+★★★★
+<br>
 4 STAR
 </button>
 
 <button
-  class="rating-card"
-  onclick="submitRating(3)"
+  class="star-choice"
+  onclick="sendReview(3)"
 >
-<span class="rating-stars">★★★</span>
+★★★
+<br>
 3 STAR
 </button>
 
 <button
-  class="rating-card"
-  onclick="submitRating(2)"
+  class="star-choice"
+  onclick="sendReview(2)"
 >
-<span class="rating-stars">★★</span>
+★★
+<br>
 2 STAR
 </button>
 
 <button
-  class="rating-card"
-  onclick="submitRating(1)"
+  class="star-choice"
+  onclick="sendReview(1)"
 >
-<span class="rating-stars">★</span>
+★
+<br>
 1 STAR
 </button>
 
 </div>
 
 </div>
+
 </div>
 
 
 <!-- CONTACT -->
+
 <div
   class="modal"
   id="contactModal"
@@ -2190,7 +2229,7 @@ Choose your rating.
 <div class="modal-box">
 
 <button
-  class="close"
+  class="modal-close"
   onclick="closeModal('contactModal')"
 >
 ×
@@ -2202,47 +2241,53 @@ Choose your rating.
 Choose how you want to contact me.
 </p>
 
-<div class="contact-options">
+<div class="choice-grid">
 
 <a
-  class="contact-option"
+  class="choice"
   href="https://wa.me/2347051885555"
   target="_blank"
 >
-💬 WHATSAPP
+<span class="choice-icon">💬</span>
+WHATSAPP
 </a>
 
 <a
-  class="contact-option"
+  class="choice"
   href="https://www.tiktok.com/@_itzcrispy"
   target="_blank"
 >
-🎵 TIKTOK
+<span class="choice-icon">🎵</span>
+TIKTOK
 </a>
 
 <a
-  class="contact-option"
+  class="choice"
   href="https://x.com/crispysoloss"
   target="_blank"
 >
-𝕏 X
+<span class="choice-icon">𝕏</span>
+X
 </a>
 
 <a
-  class="contact-option"
+  class="choice"
   href="https://t.me/crispyshop_1"
   target="_blank"
 >
-✈ TELEGRAM
+<span class="choice-icon">✈</span>
+TELEGRAM
 </a>
 
 </div>
 
 </div>
+
 </div>
 
 
 <!-- SEARCH -->
+
 <div
   class="modal"
   id="searchModal"
@@ -2251,7 +2296,7 @@ Choose how you want to contact me.
 <div class="modal-box">
 
 <button
-  class="close"
+  class="modal-close"
   onclick="closeModal('searchModal')"
 >
 ×
@@ -2261,23 +2306,27 @@ Choose how you want to contact me.
 
 <input
   id="searchInput"
-  class="form-input"
+  class="search-input"
   type="search"
-  placeholder="Search accounts, games or top ups..."
-  oninput="performSearch()"
+  placeholder="Search account, game or top up..."
+  oninput="runSearch()"
 >
 
 <div id="searchResults">
+
 <div class="search-result">
-Search for Free Fire, eFootball, CODM, DLS or FC Mobile.
-</div>
+Type something to search.
 </div>
 
 </div>
+
+</div>
+
 </div>
 
 
 <!-- CART -->
+
 <div
   class="modal"
   id="cartModal"
@@ -2286,7 +2335,7 @@ Search for Free Fire, eFootball, CODM, DLS or FC Mobile.
 <div class="modal-box">
 
 <button
-  class="close"
+  class="modal-close"
   onclick="closeModal('cartModal')"
 >
 ×
@@ -2294,10 +2343,11 @@ Search for Free Fire, eFootball, CODM, DLS or FC Mobile.
 
 <h2>YOUR CART 🛒</h2>
 
-<div id="cartList">
-<div class="empty">
+<div
+  id="cartList"
+  class="empty"
+>
 Your cart is empty.
-</div>
 </div>
 
 <div
@@ -2308,10 +2358,12 @@ Total: ₦0
 </div>
 
 </div>
+
 </div>
 
 
 <!-- ADMIN POSTING -->
+
 <div
   class="modal"
   id="adminModal"
@@ -2320,25 +2372,24 @@ Total: ₦0
 <div class="modal-box">
 
 <button
-  class="close"
+  class="modal-close"
   onclick="closeModal('adminModal')"
 >
 ×
 </button>
 
-<h2>ADMIN — POST GAMING ACCOUNT</h2>
+<h2>ADMIN — POST ACCOUNT</h2>
 
 <p>
-This section is for the shop owner only.
+Only use this section when you are posting an account.
 </p>
 
 <div class="admin-form">
 
-<div class="admin-full photo-upload">
+<div class="full photo-upload">
 
 <label
   class="admin-label"
-  for="accountPhoto"
 >
 ACCOUNT PHOTO
 </label>
@@ -2348,14 +2399,14 @@ ACCOUNT PHOTO
   class="admin-input"
   type="file"
   accept="image/*"
-  onchange="previewAccountPhoto(event)"
+  onchange="previewPhoto(event)"
 >
 
 <img
-  id="accountPhotoPreview"
+  id="photoPreview"
   class="photo-preview"
-  alt="Account photo preview"
   style="display:none"
+  alt="Preview"
 >
 
 </div>
@@ -2363,10 +2414,7 @@ ACCOUNT PHOTO
 
 <div>
 
-<label
-  class="admin-label"
-  for="adminGame"
->
+<label class="admin-label">
 GAME
 </label>
 
@@ -2402,18 +2450,14 @@ FC MOBILE
 
 <div>
 
-<label
-  class="admin-label"
-  for="adminTitle"
->
+<label class="admin-label">
 ACCOUNT TITLE
 </label>
 
 <input
-  id="adminTitle"
+  id="adminName"
   class="admin-input"
-  type="text"
-  placeholder="Account title"
+  placeholder="Account name"
 >
 
 </div>
@@ -2421,17 +2465,13 @@ ACCOUNT TITLE
 
 <div>
 
-<label
-  class="admin-label"
-  for="adminLevel"
->
+<label class="admin-label">
 LEVEL
 </label>
 
 <input
   id="adminLevel"
   class="admin-input"
-  type="text"
   placeholder="e.g. 86"
 >
 
@@ -2440,18 +2480,14 @@ LEVEL
 
 <div>
 
-<label
-  class="admin-label"
-  for="adminRegion"
->
+<label class="admin-label">
 REGION
 </label>
 
 <input
   id="adminRegion"
   class="admin-input"
-  type="text"
-  placeholder="e.g. SEA"
+  placeholder="e.g. JAPAN"
 >
 
 </div>
@@ -2459,18 +2495,14 @@ REGION
 
 <div>
 
-<label
-  class="admin-label"
-  for="adminPrice"
->
+<label class="admin-label">
 PRICE
 </label>
 
 <input
   id="adminPrice"
   class="admin-input"
-  type="text"
-  placeholder="e.g. ₦50,000"
+  placeholder="e.g. ₦20,000"
 >
 
 </div>
@@ -2478,10 +2510,7 @@ PRICE
 
 <div>
 
-<label
-  class="admin-label"
-  for="adminStatus"
->
+<label class="admin-label">
 STATUS
 </label>
 
@@ -2503,19 +2532,16 @@ SOLD OUT
 </div>
 
 
-<div class="admin-full">
+<div class="full">
 
-<label
-  class="admin-label"
-  for="adminDescription"
->
+<label class="admin-label">
 DESCRIPTION
 </label>
 
 <textarea
   id="adminDescription"
   class="admin-textarea"
-  placeholder="Account description"
+  placeholder="Account description..."
 ></textarea>
 
 </div>
@@ -2527,14 +2553,14 @@ DESCRIPTION
 
 <button
   class="yellow-btn"
-  onclick="saveAdminAccount()"
+  onclick="saveAccount()"
 >
-SAVE ACCOUNT
+POST ACCOUNT
 </button>
 
 <button
   class="outline-btn"
-  onclick="clearAdminForm()"
+  onclick="clearAdmin()"
 >
 CLEAR
 </button>
@@ -2544,179 +2570,34 @@ CLEAR
 <div
   id="adminMessage"
   class="admin-message"
->
-</div>
+></div>
 
 </div>
+
 </div>
-
-
-<script type="module">
-
-import {initializeApp}
-from "https://www.gstatic.com/firebasejs/10.12.2/firebase-app.js";
-
-import {
-  getAuth,
-  createUserWithEmailAndPassword,
-  signInWithEmailAndPassword,
-  updateProfile
-}
-from "https://www.gstatic.com/firebasejs/10.12.2/firebase-auth.js";
-
-
-const firebaseConfig={
-  apiKey:"AIzaSyC9FNL08mvrtbcjXXj_JBWPHvdUORioYr8",
-  authDomain:"crispy-shop-25644.firebaseapp.com",
-  projectId:"crispy-shop-25644",
-  storageBucket:"crispy-shop-25644.firebasestorage.app",
-  messagingSenderId:"311251480323",
-  appId:"1:311251480323:web:b0d9e14c947a0528ccc336"
-};
-
-const app=initializeApp(firebaseConfig);
-const auth=getAuth(app);
-
-
-/* CUSTOMER ACCOUNT */
-
-window.openCustomerAccount=function(){
-  openModal("customerAccountModal");
-};
-
-
-window.showSignup=function(){
-
-  document.getElementById("signupBox")
-    .style.display="block";
-
-  document.getElementById("loginBox")
-    .style.display="none";
-
-};
-
-
-window.showLogin=function(){
-
-  document.getElementById("loginBox")
-    .style.display="block";
-
-  document.getElementById("signupBox")
-    .style.display="none";
-
-};
-
-
-window.createCustomerAccount=async function(){
-
-  const name=
-    document.getElementById("signupName")
-    .value.trim();
-
-  const email=
-    document.getElementById("signupEmail")
-    .value.trim();
-
-  const password=
-    document.getElementById("signupPassword")
-    .value;
-
-  const message=
-    document.getElementById("accountMessage");
-
-  if(!name||!email||!password){
-
-    message.innerText=
-      "Please fill in everything.";
-
-    return;
-  }
-
-  try{
-
-    const result=
-      await createUserWithEmailAndPassword(
-        auth,
-        email,
-        password
-      );
-
-    await updateProfile(
-      result.user,
-      {
-        displayName:name
-      }
-    );
-
-    message.innerText=
-      "Account created successfully!";
-
-  }catch(error){
-
-    console.error(error);
-
-    message.innerText=
-      error.message;
-
-  }
-
-};
-
-
-window.loginCustomer=async function(){
-
-  const email=
-    document.getElementById("loginEmail")
-    .value.trim();
-
-  const password=
-    document.getElementById("loginPassword")
-    .value;
-
-  const message=
-    document.getElementById("accountMessage");
-
-  if(!email||!password){
-
-    message.innerText=
-      "Enter your email and password.";
-
-    return;
-  }
-
-  try{
-
-    const result=
-      await signInWithEmailAndPassword(
-        auth,
-        email,
-        password
-      );
-
-    message.innerText=
-      "Welcome back, "+
-      (
-        result.user.displayName ||
-        result.user.email
-      )+"!";
-
-  }catch(error){
-
-    console.error(error);
-
-    message.innerText=
-      "Login failed. Check your details.";
-
-  }
-
-};
-
-</script>
 
 
 <script>
 
-/* MODALS */
+/* =========================
+   BASIC SETTINGS
+========================= */
+
+const WHATSAPP="2347051885555";
+
+const TIKTOK=
+"https://www.tiktok.com/@_itzcrispy";
+
+const X_LINK=
+"https://x.com/crispysoloss";
+
+const TELEGRAM=
+"https://t.me/crispyshop_1";
+
+
+/* =========================
+   MODALS
+========================= */
 
 function openModal(id){
 
@@ -2742,129 +2623,327 @@ function closeModal(id){
 }
 
 
-/* ACCOUNTS */
+document
+.querySelectorAll(".modal")
+.forEach(function(modal){
 
-function openAccounts(e){
+  modal.addEventListener("click",function(e){
 
-  if(e)e.preventDefault();
+    if(e.target===modal){
+      modal.classList.remove("show");
+    }
 
-  openModal("accountChoicesModal");
+  });
+
+});
+
+
+/* =========================
+   CUSTOMER ACCOUNT
+========================= */
+
+function openCustomerAccount(){
+
+  openModal("customerAccountModal");
 
 }
 
 
-function chooseAccountGame(game){
+function showCustomerSignup(){
 
-  closeModal("accountChoicesModal");
+  document.getElementById(
+    "customerSignup"
+  ).style.display="block";
 
-  const ids={
-    freefire:"freefire-section",
-    efootball:"efootball-section",
-    codm:"codm-section",
-    dls:"dls-section",
-    fcmobile:"fcmobile-section"
-  };
+  document.getElementById(
+    "customerLogin"
+  ).style.display="none";
 
-  const target=
-    document.getElementById(ids[game]);
+}
 
-  if(target){
 
-    target.scrollIntoView({
-      behavior:"smooth",
-      block:"start"
-    });
+function showCustomerLogin(){
+
+  document.getElementById(
+    "customerSignup"
+  ).style.display="none";
+
+  document.getElementById(
+    "customerLogin"
+  ).style.display="block";
+
+}
+
+
+function createCustomerAccount(){
+
+  const name=
+    document.getElementById(
+      "customerName"
+    ).value.trim();
+
+  const email=
+    document.getElementById(
+      "customerEmail"
+    ).value.trim();
+
+  const password=
+    document.getElementById(
+      "customerPassword"
+    ).value;
+
+  const message=
+    document.getElementById(
+      "customerMessage"
+    );
+
+  if(!name||!email||!password){
+
+    message.textContent=
+      "Please fill in all fields.";
+
+    return;
 
   }
 
+  if(password.length<6){
+
+    message.textContent=
+      "Password must be at least 6 characters.";
+
+    return;
+
+  }
+
+  const users=
+    JSON.parse(
+      localStorage.getItem(
+        "crispyCustomers"
+      )||"[]"
+    );
+
+  if(
+    users.some(
+      u=>u.email===email
+    )
+  ){
+
+    message.textContent=
+      "This email already has an account.";
+
+    return;
+
+  }
+
+  users.push({
+    name:name,
+    email:email,
+    password:password
+  });
+
+  localStorage.setItem(
+    "crispyCustomers",
+    JSON.stringify(users)
+  );
+
+  message.textContent=
+    "Account created successfully!";
+
 }
 
 
-/* TOP UP */
+function loginCustomer(){
+
+  const email=
+    document.getElementById(
+      "loginEmail"
+    ).value.trim();
+
+  const password=
+    document.getElementById(
+      "loginPassword"
+    ).value;
+
+  const message=
+    document.getElementById(
+      "customerMessage"
+    );
+
+  const users=
+    JSON.parse(
+      localStorage.getItem(
+        "crispyCustomers"
+      )||"[]"
+    );
+
+  const user=
+    users.find(
+      u=>
+        u.email===email &&
+        u.password===password
+    );
+
+  if(!user){
+
+    message.textContent=
+      "Incorrect email or password.";
+
+    return;
+
+  }
+
+  message.textContent=
+    "Welcome back, "+user.name+"!";
+
+}
+
+
+/* =========================
+   ACCOUNT GAME SELECTION
+========================= */
+
+function openAccountChoices(e){
+
+  if(e){
+    e.preventDefault();
+  }
+
+  openModal("accountModal");
+
+}
+
+
+function chooseGame(game){
+
+  closeModal("accountModal");
+
+  document
+  .querySelectorAll(".game-section")
+  .forEach(function(section){
+
+    section.style.display="none";
+
+  });
+
+  const section=
+    document.getElementById(
+      game+"-section"
+    );
+
+  if(!section){
+    return;
+  }
+
+  section.style.display="block";
+
+  section.scrollIntoView({
+    behavior:"smooth",
+    block:"start"
+  });
+
+}
+
+
+/* =========================
+   TOP UP
+========================= */
 
 function openTopup(e){
 
-  if(e)e.preventDefault();
-
-  document
-    .getElementById("topup")
-    .scrollIntoView({
-      behavior:"smooth",
-      block:"start"
-    });
-
-}
-
-
-function openTopupGame(game){
-
-  const ids={
-    freefire:"freefire-topup",
-    efootball:"efootball-topup",
-    codm:"codm-topup",
-    dls:"dls-topup",
-    fcmobile:"fcmobile-topup"
-  };
-
-  const target=
-    document.getElementById(ids[game]);
-
-  if(target){
-
-    target.scrollIntoView({
-      behavior:"smooth",
-      block:"start"
-    });
-
+  if(e){
+    e.preventDefault();
   }
 
-}
-
-
-function selectTopup(name){
-
-  alert(
-    name+
-    " package is not available yet."
+  openModal(
+    "topupChoiceModal"
   );
 
 }
 
 
-/* REVIEWS */
+function openTopupSection(id){
 
-function openReviews(e){
+  closeModal(
+    "topupChoiceModal"
+  );
 
-  if(e)e.preventDefault();
+  document
+  .querySelectorAll(
+    ".topup-page-section"
+  )
+  .forEach(function(section){
 
-  openModal("reviewsModal");
+    section.classList.remove(
+      "open"
+    );
+
+  });
+
+  const section=
+    document.getElementById(id);
+
+  if(!section){
+    return;
+  }
+
+  section.classList.add("open");
+
+  setTimeout(function(){
+
+    section.scrollIntoView({
+      behavior:"smooth",
+      block:"start"
+    });
+
+  },100);
 
 }
 
 
-function submitRating(stars){
+/* =========================
+   REVIEWS
+========================= */
 
-  closeModal("reviewsModal");
+function openReviews(e){
+
+  if(e){
+    e.preventDefault();
+  }
+
+  openModal("reviewModal");
+
+}
+
+
+function sendReview(stars){
+
+  closeModal("reviewModal");
 
   const message=
-    "Hello Crispy Shop, I want to leave a "+
-    stars+
+    "Hello Crispy Shop, I want to leave a "
+    +stars+
     " star review.";
 
   window.open(
-    "https://wa.me/2347051885555?text="+
-    encodeURIComponent(message),
+    "https://wa.me/"
+    +WHATSAPP+
+    "?text="
+    +encodeURIComponent(message),
     "_blank"
   );
 
 }
 
 
-/* CONTACT */
+/* =========================
+   CONTACT
+========================= */
 
-function openContact(){
+function contactMe(){
 
-  openModal("contactModal");
+  openModal(
+    "contactModal"
+  );
 
 }
 
@@ -2875,159 +2954,198 @@ function messageMe(){
     "Hello Crispy Shop, I want to send a message.";
 
   window.open(
-    "https://wa.me/2347051885555?text="+
-    encodeURIComponent(message),
+    "https://wa.me/"
+    +WHATSAPP+
+    "?text="
+    +encodeURIComponent(message),
     "_blank"
   );
 
 }
 
 
-/* SEARCH */
+/* =========================
+   SEARCH
+========================= */
 
 function openSearch(){
 
-  openModal("searchModal");
-
-  setTimeout(
-    function(){
-
-      document
-        .getElementById("searchInput")
-        .focus();
-
-    },
-    100
+  openModal(
+    "searchModal"
   );
+
+  setTimeout(function(){
+
+    document
+    .getElementById(
+      "searchInput"
+    )
+    .focus();
+
+  },100);
 
 }
 
 
-function performSearch(){
+function runSearch(){
 
-  const query=
+  const q=
     document
-      .getElementById("searchInput")
-      .value
-      .toLowerCase()
-      .trim();
+    .getElementById(
+      "searchInput"
+    )
+    .value
+    .toLowerCase()
+    .trim();
 
   const results=
     document.getElementById(
       "searchResults"
     );
 
-  const items=[
-    "Free Fire Accounts",
-    "eFootball Accounts",
-    "CODM Accounts",
-    "DLS Accounts",
-    "FC Mobile Accounts",
-    "Free Fire Diamonds",
-    "eFootball Coins",
-    "CODM CP",
-    "DLS Diamonds",
-    "FC Mobile Top Up"
-  ];
-
-  if(!query){
+  if(!q){
 
     results.innerHTML=
-      `<div class="search-result">
-        Search for Free Fire, eFootball,
-        CODM, DLS or FC Mobile.
-      </div>`;
+      '<div class="search-result">'
+      +'Type something to search.'
+      +'</div>';
 
     return;
+
   }
+
+  const products=
+    [
+      ...document.querySelectorAll(
+        ".product"
+      )
+    ];
 
   const matches=
-    items.filter(
-      item=>
-        item.toLowerCase()
-        .includes(query)
-    );
+    products.filter(function(product){
 
-  if(!matches.length){
+      return product.innerText
+        .toLowerCase()
+        .includes(q);
 
-    results.innerHTML=
-      `<div class="search-result">
-        No results found.
-      </div>`;
+    });
 
-    return;
+  const topups=[
+    "FREE FIRE DIAMONDS",
+    "eFOOTBALL COINS",
+    "CODM CP",
+    "DLS DIAMONDS",
+    "FC MOBILE"
+  ];
+
+  const topupMatches=
+    topups.filter(function(item){
+
+      return item
+        .toLowerCase()
+        .includes(q);
+
+    });
+
+  let html="";
+
+  matches.forEach(function(product){
+
+    html+=`
+      <div
+        class="search-result"
+        onclick="goToProduct('${product.dataset.accountId}')"
+      >
+        ${product.querySelector("h3").innerText}
+        —
+        ${product.querySelector(".price").innerText}
+      </div>
+    `;
+
+  });
+
+  topupMatches.forEach(function(item){
+
+    const ids={
+      "FREE FIRE DIAMONDS":
+        "freefire-topup",
+
+      "eFOOTBALL COINS":
+        "efootball-topup",
+
+      "CODM CP":
+        "codm-topup",
+
+      "DLS DIAMONDS":
+        "dls-topup",
+
+      "FC MOBILE":
+        "fcmobile-topup"
+    };
+
+    html+=`
+      <div
+        class="search-result"
+        onclick="openTopupSection('${ids[item]}')"
+      >
+        ${item}
+      </div>
+    `;
+
+  });
+
+  if(!html){
+
+    html=
+      '<div class="search-result">'
+      +'No matching result found.'
+      +'</div>';
+
   }
 
-  results.innerHTML=
-    matches
-      .map(
-        item=>
-          `<div
-            class="search-result"
-            onclick="searchGo('${item}')"
-            style="cursor:pointer"
-          >
-            ${item}
-          </div>`
-      )
-      .join("");
+  results.innerHTML=html;
 
 }
 
 
-function searchGo(item){
+function goToProduct(id){
 
   closeModal("searchModal");
 
-  const text=
-    item.toLowerCase();
+  const product=
+    document.querySelector(
+      '[data-account-id="'+id+'"]'
+    );
 
-  if(text.includes("free fire")){
+  if(product){
 
-    document
-      .getElementById("freefire-section")
-      .scrollIntoView({
-        behavior:"smooth"
-      });
-
-  }else if(text.includes("efootball")){
+    const game=
+      product.dataset.game;
 
     document
-      .getElementById("efootball-section")
-      .scrollIntoView({
-        behavior:"smooth"
-      });
+    .querySelectorAll(".game-section")
+    .forEach(function(section){
 
-  }else if(text.includes("codm")){
+      section.style.display=
+        section.dataset.gameSection===game
+          ?"block"
+          :"none";
 
-    document
-      .getElementById("codm-section")
-      .scrollIntoView({
-        behavior:"smooth"
-      });
+    });
 
-  }else if(text.includes("dls")){
-
-    document
-      .getElementById("dls-section")
-      .scrollIntoView({
-        behavior:"smooth"
-      });
-
-  }else{
-
-    document
-      .getElementById("fcmobile-section")
-      .scrollIntoView({
-        behavior:"smooth"
-      });
+    product.scrollIntoView({
+      behavior:"smooth",
+      block:"center"
+    });
 
   }
 
 }
 
 
-/* CART */
+/* =========================
+   CART
+========================= */
 
 let cart=[];
 
@@ -3039,12 +3157,16 @@ function addToCart(name,price){
     price:price
   });
 
-  updateCart();
+  renderCart();
+
+  alert(
+    name+" added to cart."
+  );
 
 }
 
 
-function updateCart(){
+function renderCart(){
 
   const list=
     document.getElementById(
@@ -3059,29 +3181,30 @@ function updateCart(){
   if(!cart.length){
 
     list.innerHTML=
-      `<div class="empty">
-        Your cart is empty.
-      </div>`;
+      '<div class="empty">'
+      +'Your cart is empty.'
+      +'</div>';
 
-    total.innerText=
+    total.textContent=
       "Total: ₦0";
 
     return;
+
   }
 
   let sum=0;
 
   list.innerHTML=
     cart.map(
-      (item,index)=>{
+      function(item,index){
 
-        const number=
+        const numeric=
           Number(
-            item.price
-              .replace(/[₦,]/g,"")
+            String(item.price)
+            .replace(/[₦,]/g,"")
           )||0;
 
-        sum+=number;
+        sum+=numeric;
 
         return `
           <div class="cart-item">
@@ -3097,7 +3220,7 @@ function updateCart(){
             <button
               onclick="removeCart(${index})"
               style="
-                background:none;
+                background:transparent;
                 border:0;
                 color:#ff5555;
                 font-size:22px;
@@ -3110,120 +3233,107 @@ function updateCart(){
         `;
 
       }
-    ).join("");
+    ).join("")
+    +
+    `
+      <button
+        class="yellow-btn"
+        style="
+          width:100%;
+          margin-top:18px;
+        "
+        onclick="checkout()"
+      >
+        CHECKOUT ON WHATSAPP
+      </button>
+    `;
 
-
-  total.innerText=
-    "Total: ₦"+
-    sum.toLocaleString();
+  total.textContent=
+    "Total: ₦"
+    +sum.toLocaleString();
 
 }
 
 
 function removeCart(index){
 
-  cart.splice(index,1);
+  cart.splice(
+    index,
+    1
+  );
 
-  updateCart();
+  renderCart();
 
 }
 
 
 function openCart(){
 
-  updateCart();
+  renderCart();
 
-  openModal("cartModal");
-
-}
-
-
-/* ACCOUNT FILTERS */
-
-function filterAccounts(game,button){
-
-  document
-    .querySelectorAll(".filter")
-    .forEach(
-      x=>x.classList.remove("active")
-    );
-
-  button.classList.add("active");
-
-  document
-    .querySelectorAll(".account-game")
-    .forEach(
-      section=>{
-
-        if(
-          game==="all" ||
-          section.dataset.game===game
-        ){
-
-          section.style.display="block";
-
-        }else{
-
-          section.style.display="none";
-
-        }
-
-      }
-    );
+  openModal(
+    "cartModal"
+  );
 
 }
 
 
-/* MOBILE */
+function checkout(){
 
-function openDrawer(){
-
-  document
-    .getElementById("drawer")
-    .classList.add("open");
-
-}
-
-
-function closeDrawer(){
-
-  document
-    .getElementById("drawer")
-    .classList.remove("open");
-
-}
-
-
-function closeDrawerOutside(e){
-
-  if(e.target.id==="drawer"){
-    closeDrawer();
+  if(!cart.length){
+    return;
   }
 
+  const message=
+    "Hello Crispy Shop, I want to buy:%0A"
+    +
+    cart.map(function(item){
+
+      return "- "
+        +item.name
+        +" ("
+        +item.price
+        +")";
+
+    }).join("%0A");
+
+  window.open(
+    "https://wa.me/"
+    +WHATSAPP
+    +"?text="
+    +message,
+    "_blank"
+  );
+
 }
 
 
-/* ADMIN PHOTO */
+/* =========================
+   ADMIN PHOTO
+========================= */
 
-let adminPhoto="";
+let accountPhotoData="";
 
 
-function previewAccountPhoto(event){
+function previewPhoto(event){
 
   const file=
+    event.target.files &&
     event.target.files[0];
 
   const preview=
     document.getElementById(
-      "accountPhotoPreview"
+      "photoPreview"
     );
 
   if(!file){
 
-    adminPhoto="";
+    accountPhotoData="";
+    preview.src="";
     preview.style.display="none";
 
     return;
+
   }
 
   const reader=
@@ -3231,11 +3341,11 @@ function previewAccountPhoto(event){
 
   reader.onload=function(){
 
-    adminPhoto=
+    accountPhotoData=
       reader.result;
 
     preview.src=
-      adminPhoto;
+      accountPhotoData;
 
     preview.style.display=
       "block";
@@ -3247,41 +3357,54 @@ function previewAccountPhoto(event){
 }
 
 
-/* ADMIN */
+/* =========================
+   ADMIN
+========================= */
 
 function openAdmin(){
 
-  openModal("adminModal");
+  openModal(
+    "adminModal"
+  );
 
 }
 
 
-function saveAdminAccount(){
+function saveAccount(){
 
   const game=
     document.getElementById(
       "adminGame"
     ).value;
 
-  const title=
+  const name=
     document.getElementById(
-      "adminTitle"
-    ).value.trim();
+      "adminName"
+    ).value.trim()
+    ||
+    game.toUpperCase()
+    +" ACCOUNT";
 
   const level=
     document.getElementById(
       "adminLevel"
-    ).value.trim();
+    ).value.trim()
+    ||
+    "—";
 
   const region=
     document.getElementById(
       "adminRegion"
-    ).value.trim();
+    ).value.trim()
+    ||
+    "REGION";
 
   const price=
     document.getElementById(
       "adminPrice"
-    ).value.trim();
+    ).value.trim()
+    ||
+    "₦0";
 
   const status=
     document.getElementById(
@@ -3291,107 +3414,62 @@ function saveAdminAccount(){
   const description=
     document.getElementById(
       "adminDescription"
-    ).value.trim();
-
-  const data={
-    game:game,
-    title:title||game.toUpperCase()+" ACCOUNT",
-    level:level||"—",
-    region:region||"REGION",
-    price:price||"₦0",
-    status:status,
-    description:
-      description||
-      "Account details available soon.",
-    photo:adminPhoto
-  };
-
-  localStorage.setItem(
-    "crispy_"+game,
-    JSON.stringify(data)
-  );
-
-  displayAdminAccount(data);
-
-  document.getElementById(
-    "adminMessage"
-  ).innerText=
-    "Account saved successfully.";
-
-}
-
-
-function displayAdminAccount(data){
+    ).value.trim()
+    ||
+    "Account details available.";
 
   const section=
     document.getElementById(
-      data.game+"-section"
+      game+"-section"
     );
 
-  if(!section)return;
+  if(!section){
+    return;
+  }
 
   const product=
     section.querySelector(
       ".product"
     );
 
-  if(!product)return;
+  if(!product){
+    return;
+  }
+
+  product.querySelector(
+    ".game"
+  ).textContent=
+    game==="freefire"
+      ?"FREE F⚡RE"
+      :game.toUpperCase();
 
   product.querySelector(
     "h3"
-  ).innerText=
-    data.title;
+  ).textContent=
+    name;
 
   product.querySelector(
     ".details"
-  ).innerText=
-    "Level "+
-    data.level+
-    " · "+
-    data.region;
+  ).textContent=
+    "Level "
+    +level
+    +" · "
+    +region;
 
   product.querySelector(
     ".description"
-  ).innerText=
-    data.description;
+  ).textContent=
+    description;
 
   product.querySelector(
     ".price"
-  ).innerText=
-    data.price;
+  ).textContent=
+    price;
 
   product.querySelector(
     ".available"
-  ).innerText=
-    data.status;
-
-
-  let photo=
-    product.querySelector(
-      ".account-photo"
-    );
-
-  if(data.photo){
-
-    if(!photo){
-
-      photo=
-        document.createElement("img");
-
-      photo.className=
-        "account-photo";
-
-      product.insertBefore(
-        photo,
-        product.querySelector(".game")
-      );
-
-    }
-
-    photo.src=
-      data.photo;
-
-  }
+  ).textContent=
+    status;
 
   const button=
     product.querySelector(
@@ -3399,80 +3477,86 @@ function displayAdminAccount(data){
     );
 
   button.disabled=
-    data.status==="SOLD OUT";
+    status==="SOLD OUT";
 
-  button.innerText=
-    data.status==="SOLD OUT"
-      ? "SOLD OUT"
-      : "ADD TO CART";
+  button.textContent=
+    status==="SOLD OUT"
+      ?"SOLD OUT"
+      :"ADD TO CART";
 
   button.onclick=
-    function(){
-
-      if(data.status!=="SOLD OUT"){
+    status==="SOLD OUT"
+      ?null
+      :function(){
 
         addToCart(
-          data.title,
-          data.price
+          name,
+          price
         );
 
-      }
-
-    };
-
-}
+      };
 
 
-function loadAdminAccounts(){
+  if(accountPhotoData){
 
-  [
-    "freefire",
-    "efootball",
-    "codm",
-    "dls",
-    "fcmobile"
-  ].forEach(
-    game=>{
+    let photo=
+      product.querySelector(
+        ".account-photo"
+      );
 
-      const saved=
-        localStorage.getItem(
-          "crispy_"+game
+    if(!photo){
+
+      photo=
+        document.createElement(
+          "img"
         );
 
-      if(saved){
+      photo.className=
+        "account-photo";
 
-        try{
-
-          displayAdminAccount(
-            JSON.parse(saved)
-          );
-
-        }catch(error){
-
-          console.error(error);
-
-        }
-
-      }
+      product.insertBefore(
+        photo,
+        product.querySelector(
+          ".game"
+        )
+      );
 
     }
+
+    photo.src=
+      accountPhotoData;
+
+  }
+
+
+  localStorage.setItem(
+    "crispy_"+game,
+    JSON.stringify({
+
+      name:name,
+      level:level,
+      region:region,
+      price:price,
+      status:status,
+      description:description,
+      photo:accountPhotoData
+
+    })
   );
+
+
+  document.getElementById(
+    "adminMessage"
+  ).textContent=
+    "Account posted successfully.";
 
 }
 
 
-function clearAdminForm(){
+function clearAdmin(){
 
   document.getElementById(
-    "accountPhoto"
-  ).value="";
-
-  document.getElementById(
-    "accountPhotoPreview"
-  ).style.display="none";
-
-  document.getElementById(
-    "adminTitle"
+    "adminName"
   ).value="";
 
   document.getElementById(
@@ -3491,40 +3575,297 @@ function clearAdminForm(){
     "adminDescription"
   ).value="";
 
-  adminPhoto="";
+  document.getElementById(
+    "accountPhoto"
+  ).value="";
+
+  document.getElementById(
+    "photoPreview"
+  ).style.display="none";
+
+  accountPhotoData="";
+
+  document.getElementById(
+    "adminMessage"
+  ).textContent="";
 
 }
 
 
-/* CLICK OUTSIDE MODALS */
+/* =========================
+   LOAD SAVED ACCOUNTS
+========================= */
 
-document
-  .querySelectorAll(".modal")
-  .forEach(
-    modal=>{
+function loadAccounts(){
 
-      modal.addEventListener(
-        "click",
-        function(e){
+  const games=[
+    "freefire",
+    "efootball",
+    "codm",
+    "dls",
+    "fcmobile"
+  ];
 
-          if(e.target===modal){
+  games.forEach(function(game){
 
-            modal.classList.remove(
-              "show"
+    const saved=
+      localStorage.getItem(
+        "crispy_"+game
+      );
+
+    if(!saved){
+      return;
+    }
+
+    try{
+
+      const data=
+        JSON.parse(saved);
+
+      const section=
+        document.getElementById(
+          game+"-section"
+        );
+
+      if(!section){
+        return;
+      }
+
+      const product=
+        section.querySelector(
+          ".product"
+        );
+
+      product.querySelector(
+        ".game"
+      ).textContent=
+        game==="freefire"
+          ?"FREE F⚡RE"
+          :game.toUpperCase();
+
+      product.querySelector(
+        "h3"
+      ).textContent=
+        data.name;
+
+      product.querySelector(
+        ".details"
+      ).textContent=
+        "Level "
+        +(data.level||"—")
+        +" · "
+        +(data.region||"REGION");
+
+      product.querySelector(
+        ".description"
+      ).textContent=
+        data.description||"";
+
+      product.querySelector(
+        ".price"
+      ).textContent=
+        data.price||"₦0";
+
+      product.querySelector(
+        ".available"
+      ).textContent=
+        data.status||"AVAILABLE";
+
+      const button=
+        product.querySelector(
+          ".details-btn"
+        );
+
+      button.disabled=
+        data.status==="SOLD OUT";
+
+      button.textContent=
+        data.status==="SOLD OUT"
+          ?"SOLD OUT"
+          :"ADD TO CART";
+
+      button.onclick=
+        data.status==="SOLD OUT"
+          ?null
+          :function(){
+
+            addToCart(
+              data.name,
+              data.price
             );
 
-          }
+          };
 
-        }
+
+      if(data.photo){
+
+        const photo=
+          document.createElement(
+            "img"
+          );
+
+        photo.className=
+          "account-photo";
+
+        photo.src=
+          data.photo;
+
+        product.insertBefore(
+          photo,
+          product.querySelector(
+            ".game"
+          )
+        );
+
+      }
+
+    }catch(error){
+
+      console.log(
+        "Could not load account:",
+        error
+      );
+
+    }
+
+  });
+
+}
+
+
+/* =========================
+   FILTER
+========================= */
+
+function filterProducts(
+  game,
+  button
+){
+
+  document
+  .querySelectorAll(
+    ".filter"
+  )
+  .forEach(function(btn){
+
+    btn.classList.remove(
+      "active"
+    );
+
+  });
+
+  button.classList.add(
+    "active"
+  );
+
+  document
+  .querySelectorAll(
+    ".game-section"
+  )
+  .forEach(function(section){
+
+    if(
+      game==="all" ||
+      section.dataset.gameSection===game
+    ){
+
+      section.style.display=
+        "block";
+
+    }else{
+
+      section.style.display=
+        "none";
+
+    }
+
+  });
+
+}
+
+
+/* =========================
+   MOBILE DRAWER
+========================= */
+
+function openDrawer(){
+
+  document
+  .getElementById(
+    "drawer"
+  )
+  .classList.add(
+    "open"
+  );
+
+}
+
+
+function closeDrawer(){
+
+  document
+  .getElementById(
+    "drawer"
+  )
+  .classList.remove(
+    "open"
+  );
+
+}
+
+
+function drawerOutside(e){
+
+  if(
+    e.target.id==="drawer"
+  ){
+
+    closeDrawer();
+
+  }
+
+}
+
+
+/* =========================
+   NAV
+========================= */
+
+document
+.querySelectorAll("nav a")
+.forEach(function(link){
+
+  link.addEventListener(
+    "click",
+    function(){
+
+      document
+      .querySelectorAll(
+        "nav a"
+      )
+      .forEach(function(a){
+
+        a.classList.remove(
+          "active"
+        );
+
+      });
+
+      this.classList.add(
+        "active"
       );
 
     }
   );
 
+});
 
-/* LOAD SAVED ADMIN DATA */
 
-loadAdminAccounts();
+/* =========================
+   START
+========================= */
+
+loadAccounts();
 
 </script>
 
