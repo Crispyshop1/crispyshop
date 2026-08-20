@@ -1,939 +1,1050 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>CRISPY SHOP</title>
 
-  <link
-    href="https://fonts.googleapis.com/css2?family=Orbitron:wght@700;800;900&display=swap"
-    rel="stylesheet"
-  >
+<style>
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
 
-  <title>Gaming Account Sales | Crispy Shop</title>
+body {
+  background: #050708;
+  color: #fff;
+  font-family: Arial, Helvetica, sans-serif;
+}
 
-  <style>
-    * {
-      box-sizing: border-box;
-      margin: 0;
-      padding: 0;
-    }
+/* ================= HEADER ================= */
 
-    body {
-      font-family: Arial, Helvetica, sans-serif;
-      background: #0a0a0a;
-      color: #FFFFFF;
-    }
+header {
+  height: 80px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 10px 28px;
+  border-bottom: 1px solid #00d9d0;
+  background: #050708;
+}
 
-    header {
-      position: relative;
-      text-align: center;
-      padding: 25px 15px 20px;
-      background: #0a0a0a;
-      border-bottom: 1px solid #FFD400;
-    }
+.logo {
+  width: 155px;
+  height: auto;
+}
 
-    .logo {
-      width: 170px;
-      max-width: 65%;
-      height: auto;
-      object-fit: contain;
-      margin-bottom: 12px;
-    }
+nav {
+  display: flex;
+  gap: 32px;
+}
 
-    .title {
-      font-family: 'Orbitron', sans-serif;
-      font-size: 30px;
-      font-weight: 900;
-      letter-spacing: 2px;
-      color: #FFFFFF;
-      text-shadow: 0 0 8px rgba(255, 212, 0, 0.45);
-      margin-bottom: 22px;
-    }
+nav a {
+  color: #fff;
+  text-decoration: none;
+  font-weight: bold;
+  font-size: 14px;
+}
 
-    .tabs {
-      display: flex;
-      justify-content: center;
-      gap: 15px;
-      flex-wrap: wrap;
-    }
+nav a:hover,
+nav a.active {
+  color: #ffd400;
+}
 
-    .tab {
-      border: 1px solid transparent;
-      padding: 15px 30px;
-      min-width: 145px;
-      border-radius: 30px;
-      background: #2a2a2a;
-      color: #FFFFFF;
-      font-size: 16px;
-      font-weight: bold;
-      cursor: pointer;
-      transition: 0.25s;
-    }
+.header-actions {
+  display: flex;
+  align-items: center;
+  gap: 18px;
+}
 
-    .tab.active {
-      background: #FFD400;
-      color: #0a0a0a;
-      box-shadow: 0 0 25px rgba(255, 212, 0, 0.45);
-    }
+.search {
+  color: #00e5d5;
+  font-size: 24px;
+}
 
-    .tab:hover {
-      transform: translateY(-2px);
-      border-color: #FFD400;
-    }
+.cart {
+  color: #00e5d5;
+  font-size: 24px;
+}
 
-    /* ADMIN BUTTON */
+.account-btn {
+  border: 1px solid #ffd400;
+  background: transparent;
+  color: #ffd400;
+  padding: 12px 18px;
+  border-radius: 4px;
+  font-weight: bold;
+}
 
-    .admin-button {
-      position: absolute;
-      top: 25px;
-      right: 18px;
-      width: 45px;
-      height: 45px;
-      border-radius: 50%;
-      border: 1px solid #FFD400;
-      background: #2a2a2a;
-      color: #FFFFFF;
-      font-size: 22px;
-      cursor: pointer;
-      box-shadow: 0 0 20px rgba(255, 212, 0, 0.45);
-      z-index: 10;
-    }
+/* ================= LAYOUT ================= */
 
-    .admin-button:hover {
-      transform: scale(1.05);
-      background: #FFD400;
-      color: #0a0a0a;
-    }
+.layout {
+  display: grid;
+  grid-template-columns: 250px 1fr;
+  gap: 18px;
+  padding: 18px;
+}
 
-    main {
-      min-height: 500px;
-      padding: 45px 18px;
-      background: #0a0a0a;
-    }
+/* ================= PROFILE ================= */
 
-    .game-section {
-      display: none;
-    }
+.profile {
+  border: 1px solid #00d9d0;
+  background: #070b0d;
+  padding: 18px;
+  min-height: 820px;
+}
 
-    .game-section.active {
-      display: block;
-    }
+.profile-title {
+  color: #00e5d5;
+  font-size: 15px;
+  font-weight: bold;
+  margin-bottom: 18px;
+}
 
-    .empty-message {
-      max-width: 500px;
-      margin: 80px auto;
-      text-align: center;
-      color: #FFFFFF;
-      font-size: 20px;
-      line-height: 1.4;
-    }
+.profile-logo {
+  width: 175px;
+  height: 175px;
+  margin: auto;
+  display: block;
+  object-fit: contain;
+  border-radius: 50%;
+  border: 3px solid #ffd400;
+  background: #050708;
+  padding: 10px;
+}
 
-    .products {
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-      gap: 25px;
-      max-width: 1100px;
-      margin: auto;
-    }
+.profile-level {
+  color: #00e5d5;
+  font-weight: bold;
+  margin-top: 20px;
+}
 
-    .product {
-      background: #111111;
-      border: 1px solid #FFD400;
-      border-radius: 18px;
-      padding: 15px;
-      overflow: hidden;
-      box-shadow: 0 10px 35px rgba(0, 0, 0, 0.5);
-    }
+.progress {
+  height: 5px;
+  background: #20282b;
+  margin-top: 10px;
+}
 
-    .product img {
-      width: 100%;
-      height: 210px;
-      object-fit: cover;
-      border-radius: 12px;
-    }
+.progress span {
+  display: block;
+  width: 68%;
+  height: 100%;
+  background: #ffd400;
+}
 
-    .product h3 {
-      margin: 15px 0 8px;
-      font-size: 20px;
-      color: #FFFFFF;
-    }
+.profile-section {
+  border-top: 1px solid #123d3d;
+  margin-top: 20px;
+  padding-top: 18px;
+}
 
-    .price {
-      color: #FFD400;
-      font-size: 21px;
-      font-weight: bold;
-    }
+.profile-section h3 {
+  color: #00e5d5;
+  font-size: 14px;
+  margin-bottom: 12px;
+}
 
-    .available {
-      color: #FFD400;
-      margin: 10px 0 15px;
-      font-size: 14px;
-      font-weight: bold;
-    }
+.profile-section p {
+  color: #b7c0c3;
+  margin: 10px 0;
+  font-size: 14px;
+}
 
-    .whatsapp-btn {
-      width: 100%;
-      border: 1px solid #FFD400;
-      border-radius: 10px;
-      padding: 13px;
-      background: #FFD400;
-      color: #0a0a0a;
-      font-size: 16px;
-      font-weight: bold;
-      cursor: pointer;
-    }
+.stars {
+  color: #ffd400;
+  letter-spacing: 2px;
+}
 
-    .whatsapp-btn:hover {
-      box-shadow: 0 0 18px rgba(255, 212, 0, 0.45);
-    }
+.contact {
+  width: 100%;
+  padding: 12px;
+  margin-top: 12px;
+  background: transparent;
+  border: 1px solid #ffd400;
+  color: #ffd400;
+  font-weight: bold;
+}
 
-    footer {
-      text-align: center;
-      padding: 25px;
-      color: #FFFFFF;
-      background: #0a0a0a;
-      border-top: 1px solid #FFD400;
-      font-size: 13px;
-    }
+.whatsapp {
+  border-color: #21d86b;
+  color: #21d86b;
+}
 
-    /* ADMIN PANEL */
+/* ================= MAIN ================= */
 
-    .modal {
-      display: none;
-      position: fixed;
-      inset: 0;
-      background: rgba(0, 0, 0, 0.85);
-      z-index: 999;
-      align-items: center;
-      justify-content: center;
-      padding: 20px;
-    }
+main {
+  min-width: 0;
+}
 
-    .modal.show {
-      display: flex;
-    }
+/* ================= HERO ================= */
 
-    .admin-panel {
-      width: 100%;
-      max-width: 430px;
-      background: #0a0a0a;
-      border-radius: 18px;
-      padding: 25px;
-      border: 1px solid #FFD400;
-      box-shadow: 0 0 30px rgba(255, 212, 0, 0.45);
-    }
+.hero {
+  position: relative;
+  min-height: 390px;
+  border: 1px solid #00d9d0;
+  overflow: hidden;
 
-    .admin-panel h2 {
-      margin-bottom: 20px;
-      color: #FFD400;
-      text-align: center;
-    }
+  background:
+    linear-gradient(rgba(0, 217, 208, .10) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(0, 217, 208, .10) 1px, transparent 1px),
+    #050a0b;
 
-    .admin-panel input,
-    .admin-panel select {
-      width: 100%;
-      padding: 13px;
-      margin-bottom: 12px;
-      border-radius: 9px;
-      border: 1px solid #FFD400;
-      background: #0a0a0a;
-      color: #FFFFFF;
-      outline: none;
-    }
+  background-size: 40px 40px;
+}
 
-    .admin-panel input:focus,
-    .admin-panel select:focus {
-      box-shadow: 0 0 12px rgba(255, 212, 0, 0.45);
-    }
+.hero::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background:
+    radial-gradient(circle at 75% 50%,
+    rgba(0, 229, 213, .22),
+    transparent 35%);
+}
 
-    .admin-panel button {
-      width: 100%;
-      padding: 13px;
-      border: none;
-      border-radius: 9px;
-      margin-top: 5px;
-      cursor: pointer;
-      font-weight: bold;
-    }
+.hero-content {
+  position: relative;
+  z-index: 2;
+  padding: 32px;
+  text-align: center;
+}
 
-    .add-btn {
-      background: #FFD400;
-      color: #0a0a0a;
-    }
+.welcome {
+  color: #00e5d5;
+  font-size: 20px;
+  letter-spacing: 3px;
+  font-weight: bold;
+}
 
-    .close-btn {
-      background: #2a2a2a;
-      color: #FFFFFF;
-      border: 1px solid #FFD400 !important;
-    }
+.hero-logo {
+  width: min(520px, 80%);
+  margin: 20px auto;
+  display: block;
+}
 
-    /* MOBILE */
+.hero-text {
+  color: #ddd;
+  font-size: 16px;
+  line-height: 1.6;
+}
 
-    @media (max-width: 600px) {
+.hero-text strong {
+  color: #ffd400;
+}
 
-      .title {
-        font-size: 26px;
-      }
+.hero-buttons {
+  margin-top: 25px;
+  display: flex;
+  justify-content: center;
+  gap: 12px;
+}
 
-      .logo {
-        width: 150px;
-      }
+.yellow-btn {
+  background: #ffd400;
+  border: 1px solid #ffd400;
+  color: #050708;
+  padding: 14px 25px;
+  font-weight: bold;
+  cursor: pointer;
+}
 
-      .admin-button {
-        top: 15px;
-        right: 12px;display: none;
-      }
+.outline-btn {
+  background: transparent;
+  border: 1px solid #ffd400;
+  color: #ffd400;
+  padding: 14px 25px;
+  font-weight: bold;
+  cursor: pointer;
+}
 
-      main {
-        padding-top: 25px;
-      }
+/* ================= TRUST ================= */
 
-      .tabs {
-        display: flex;
-        gap: 10px;
-        overflow-x: auto;
-        padding: 8px 12px;
-        flex-wrap: nowrap;
-        scrollbar-width: none;
-      }
+.trust {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  border: 1px solid #00d9d0;
+  border-top: none;
+}
 
-      .tabs::-webkit-scrollbar {
-        display: none;
-      }
+.trust-box {
+  padding: 18px;
+  text-align: center;
+  border-right: 1px solid #123d3d;
+}
 
-      .tab {
-        flex: 0 0 auto;
-        min-width: 105px;
-        padding: 12px 16px;
-        font-size: 15px;
-      }
+.trust-box:last-child {
+  border-right: none;
+}
 
-      .products {
-        display: grid;
-        grid-template-columns: 1fr;
-        gap: 12px;
-        padding: 15px;
-      }
+.trust-icon {
+  color: #ffd400;
+  font-size: 25px;
+}
 
-      .product {
-        width: 100%;
-        min-width: 0;
-      }
+.trust-box h3 {
+  color: #00e5d5;
+  font-size: 14px;
+  margin-top: 5px;
+}
 
-      .product img {
-        width: 100%;
-        height: 130px;
-        object-fit: cover;
-      }
+.trust-box p {
+  color: #aaa;
+  font-size: 12px;
+  margin-top: 5px;
+}
 
-      .product h2,
-      .product h3 {
-        font-size: 16px;
-      }
+/* ================= FEATURED ================= */
 
-      .product p {
-        font-size: 13px;
-      }
+.section-heading {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin: 25px 0 12px;
+}
 
-      .price {
-        font-size: 17px;
-      }
+.section-heading h2 {
+  font-size: 22px;
+}
 
-      .whatsapp-btn {
-        width: calc(100% - 20px);
-        margin: 8px 10px 12px;
-        padding: 10px 5px;
-        font-size: 13px;
-      }
-    }
-  </style>
+.section-heading h2::after {
+  content: "";
+  display: block;
+  width: 40px;
+  height: 3px;
+  background: #ffd400;
+  margin-top: 6px;
+}
+
+.view-all {
+  border: 1px solid #ffd400;
+  color: #ffd400;
+  background: transparent;
+  padding: 10px 18px;
+  font-weight: bold;
+}
+
+/* ================= PRODUCTS ================= */
+
+.products {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 12px;
+}
+
+.product {
+  position: relative;
+  border: 1px solid #00aaa5;
+  background:
+    linear-gradient(rgba(0, 217, 208, .06) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(0, 217, 208, .06) 1px, transparent 1px),
+    #070b0d;
+  background-size: 25px 25px;
+  padding: 14px;
+}
+
+.available {
+  position: absolute;
+  top: 10px;
+  right: 10px;
+  background: #ffd400;
+  color: #050708;
+  padding: 6px 8px;
+  font-size: 10px;
+  font-weight: bold;
+}
+
+.heart {
+  font-size: 20px;
+  color: #fff;
+}
+
+.game {
+  color: #fff;
+  font-size: 23px;
+  font-weight: 900;
+  font-style: italic;
+  margin: 25px 0 15px;
+}
+
+.product h3 {
+  font-size: 16px;
+  margin-bottom: 8px;
+}
+
+.details {
+  color: #00e5d5;
+  font-size: 13px;
+  margin-bottom: 8px;
+}
+
+.description {
+  color: #999;
+  font-size: 12px;
+}
+
+.price {
+  color: #ffd400;
+  font-size: 20px;
+  font-weight: bold;
+  margin-top: 15px;
+}
+
+.details-btn {
+  width: 100%;
+  margin-top: 12px;
+  padding: 9px;
+  background: transparent;
+  border: 1px solid #ffd400;
+  color: #ffd400;
+  font-weight: bold;
+}
+
+/* ================= FOOTER FEATURES ================= */
+
+.features {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  margin-top: 18px;
+  border: 1px solid #00d9d0;
+}
+
+.feature {
+  padding: 18px;
+  text-align: center;
+  border-right: 1px solid #123d3d;
+}
+
+.feature:last-child {
+  border-right: none;
+}
+
+.feature-icon {
+  color: #00e5d5;
+  font-size: 27px;
+}
+
+.feature h3 {
+  margin-top: 8px;
+  font-size: 14px;
+}
+
+.feature p {
+  color: #999;
+  font-size: 12px;
+  margin-top: 5px;
+}
+
+/* ================= FOOTER ================= */
+
+footer {
+  border-top: 1px solid #00d9d0;
+  margin-top: 18px;
+  padding: 20px 5px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.footer-logo {
+  width: 120px;
+}
+
+.socials {
+  display: flex;
+  gap: 20px;
+  color: #fff;
+}
+
+.slogan {
+  color: #ffd400;
+  font-weight: bold;
+}
+
+/* ================= MOBILE ================= */
+
+@media (max-width: 900px) {
+
+  header {
+    height: auto;
+    flex-wrap: wrap;
+    gap: 15px;
+  }
+
+  nav {
+    order: 3;
+    width: 100%;
+    overflow-x: auto;
+    padding-bottom: 8px;
+  }
+
+  .layout {
+    grid-template-columns: 1fr;
+  }
+
+  .profile {
+    min-height: auto;
+  }
+
+  .profile-logo {
+    width: 140px;
+    height: 140px;
+  }
+
+  .products {
+    grid-template-columns: repeat(2, 1fr);
+  }
+
+  .features {
+    grid-template-columns: repeat(2, 1fr);
+  }
+
+  .feature {
+    border-bottom: 1px solid #123d3d;
+  }
+}
+
+@media (max-width: 550px) {
+
+  header {
+    padding: 12px;
+  }
+
+  .logo {
+    width: 120px;
+  }
+
+  .header-actions {
+    gap: 8px;
+  }
+
+  .account-btn {
+    padding: 9px;
+    font-size: 11px;
+  }
+
+  .layout {
+    padding: 10px;
+  }
+
+  .hero {
+    min-height: 330px;
+  }
+
+  .hero-content {
+    padding: 25px 12px;
+  }
+
+  .welcome {
+    font-size: 15px;
+  }
+
+  .hero-logo {
+    width: 90%;
+  }
+
+  .hero-buttons {
+    flex-direction: column;
+  }
+
+  .trust {
+    grid-template-columns: 1fr;
+  }
+
+  .trust-box {
+    border-right: none;
+    border-bottom: 1px solid #123d3d;
+  }
+
+  .products {
+    grid-template-columns: 1fr;
+  }
+
+  .features {
+    grid-template-columns: 1fr;
+  }
+
+  footer {
+    flex-direction: column;
+    gap: 15px;
+  }
+}
+</style>
 </head>
 
 <body>
 
+<!-- ================= HEADER ================= -->
+
 <header>
 
-  <img
-    src="logo.png"
-    alt="Crispy Shop"
-    class="logo"
-  >
+  <img src="logo.png" class="logo" alt="CRISPY SHOP">
 
-  <h1 class="title">GAMING ACCOUNT STORE</h1>
+  <nav>
+    <a href="#" class="active">HOME</a>
+    <a href="#">ACCOUNTS</a>
+    <a href="#">TOP UP</a>
+    <a href="#">GAMES</a>
+    <a href="#">REVIEWS</a>
+    <a href="#">FAQ</a>
+  </nav>
 
-  <!-- ADMIN BUTTON -->
-  <button
-    class="admin-button"
-    type="button"
-    onclick="openAdmin()"
-    aria-label="Open Admin Panel"
-  >
-    📲
-  </button>
-
-  <div class="tabs">
-
-    <button
-      class="tab active"
-      type="button"
-      onclick="showGame('freefire', this)"
-    >
-      Free Fire
-    </button>
-
-    <button
-      class="tab"
-      type="button"
-      onclick="showGame('efootball', this)"
-    >
-      eFootball
-    </button>
-
-    <button
-      class="tab"
-      type="button"
-      onclick="showGame('codmobile', this)"
-    >
-      COD Mobile
-    </button>
-
-    <button
-      class="tab"
-      type="button"
-      onclick="showGame('dls', this)"
-    >
-      DLS
-    </button>
-
-    <button
-      class="tab"
-      type="button"
-      onclick="showGame('fcmobile', this)"
-    >
-      FC Mobile
-    </button>
-
+  <div class="header-actions">
+    <span class="search">⌕</span>
+    <span class="cart">🛒</span>
+    <button class="account-btn">♙ MY ACCOUNT</button>
   </div>
 
 </header>
 
 
-<main>
+<div class="layout">
 
-  <section id="freefire" class="game-section active">
-    <div id="freefireProducts" class="products">
-      <div class="empty-message">
-        Please enjoy your shopping!<br>
-        Thank you for choosing Crispy Shop ❤️<br>
-      
-      </div>
+<!-- ================= PROFILE ================= -->
+
+<aside class="profile">
+
+  <div class="profile-title">
+    MY PROFILE
+  </div>
+
+  <!-- YOUR LOGO IS USED HERE TOO -->
+  <img
+    src="logo.png"
+    alt="CRISPY SHOP"
+    class="profile-logo"
+  >
+
+  <div class="profile-level">
+    LEVEL 17 TRADER
+  </div>
+
+  <div class="progress">
+    <span></span>
+  </div>
+
+  <div class="profile-section">
+
+    <h3>ABOUT</h3>
+
+    <p>♙ Trader</p>
+    <p>♙ Gaming Account Seller</p>
+    <p>▣ Member Since<br>2024</p>
+    <p>☆ Shop Rating</p>
+
+    <div class="stars">
+      ★★★★★ <span style="color:#fff">5.0</span>
     </div>
-  </section>
 
-
-  <section id="efootball" class="game-section">
-    <div id="efootballProducts" class="products">
-      <div class="empty-message">
-        No accounts published yet.<br>
-        
-      </div>
-    </div>
-  </section>
-
-
-  <section id="codmobile" class="game-section">
-    <div id="codmobileProducts" class="products">
-      <div class="empty-message">
-        No accounts published yet.<br>
-      </div>
-    </div>
-  </section>
-
-
-  <section id="dls" class="game-section">
-    <div id="dlsProducts" class="products">
-      <div class="empty-message">
-        No accounts published yet.<br>
-    
-      </div>
-    </div>
-  </section>
-
-
-  <section id="fcmobile" class="game-section">
-    <div id="fcmobileProducts" class="products">
-      <div class="empty-message">
-        No accounts published yet.<br>
-      </div>
-    </div>
-  </section>
-
-</main>
-
-
-<footer>
-  © 2024-2026 Crispy Shop
-</footer>
-
-
-<!-- ADMIN MODAL -->
-
-<div id="adminModal" class="modal">
-
-  <div class="admin-panel">
-
-    <h2>⚙️ Admin Panel</h2>
-
-    <input
-      type="password"
-      id="adminPassword"
-      placeholder="Admin password"
-    >
-
-    <select id="game">
-      <option value="freefire">Free Fire</option>
-      <option value="efootball">eFootball</option>
-      <option value="codmobile">COD Mobile</option>
-      <option value="dls">DLS</option>
-      <option value="fcmobile">FC Mobile</option>
-    </select>
-
-    <input
-      type="text"
-      id="accountName"
-      placeholder="Account name"
-    >
-
-    <input
-      type="number"
-      id="accountPrice"
-      placeholder="Price in Naira"
-    >
-
-    <input
-      type="file"
-      id="accountImage"
-      accept="image/*"
-    >
-
-    <button
-      class="add-btn"
-      type="button"
-      onclick="addAccount()"
-    >
-      Add Account
-    </button>
-
-    <button
-      class="close-btn"
-      type="button"
-      onclick="closeAdmin()"
-    >
-      Close
-    </button>
+    <p>♧ Orders Completed<br>250+</p>
 
   </div>
+
+  <div class="profile-section">
+
+    <h3>SHOP STATS</h3>
+
+    <p>▣ Total Accounts <b>120+</b></p>
+    <p>♙ Total Sales <b>1.2K+</b></p>
+    <p>♙ Happy Customers <b>980+</b></p>
+    <p>✓ Success Rate <b>99%</b></p>
+
+  </div>
+
+  <button class="contact">
+    💬 CONTACT ME
+  </button>
+
+  <button class="contact whatsapp">
+    ☘ CHAT ON WHATSAPP
+  </button>
+
+</aside>
+
+
+<!-- ================= MAIN ================= -->
+
+<main>
+
+<!-- HERO -->
+
+<section class="hero">
+
+  <div class="hero-content">
+
+    <div class="welcome">
+      ── WELCOME TO ──
+    </div>
+
+    <!-- YOUR LOGO OCCUPIES THE HERO -->
+    <img
+      src="logo.png"
+      class="hero-logo"
+      alt="CRISPY SHOP"
+    >
+
+    <p class="hero-text">
+      Premium gaming accounts, top ups and more.
+      <strong>100% safe, secure & trusted.</strong>
+    </p>
+
+    <div class="hero-buttons">
+
+      <button class="yellow-btn">
+        🛍 BROWSE ACCOUNTS
+      </button>
+
+      <button class="outline-btn">
+        ☆ TOP SELLING
+      </button>
+
+    </div>
+
+  </div>
+
+</section>
+
+
+<!-- TRUST -->
+
+<section class="trust">
+
+  <div class="trust-box">
+    <div class="trust-icon">♢</div>
+    <h3>100% SAFE</h3>
+    <p>Secure Transactions</p>
+  </div>
+
+  <div class="trust-box">
+    <div class="trust-icon">ϟ</div>
+    <h3>INSTANT DELIVERY</h3>
+    <p>Get it instantly</p>
+  </div>
+
+  <div class="trust-box">
+    <div class="trust-icon">♧</div>
+    <h3>24/7 SUPPORT</h3>
+    <p>We're here to help</p>
+  </div>
+
+</section>
+
+
+<!-- FEATURED -->
+
+<div class="section-heading">
+
+  <h2>FEATURED ACCOUNTS</h2>
+
+  <button class="view-all">
+    VIEW ALL →
+  </button>
 
 </div>
 
 
-<script>
+<section class="products">
 
-  const ADMIN_PASSWORD = "1234";
 
+<!-- PRODUCT 1 -->
 
-  function showGame(game, button) {
+<div class="product">
 
-    document.querySelectorAll(".game-section").forEach(section => {
-      section.classList.remove("active");
-    });
+  <span class="heart">♡</span>
+  <span class="available">AVAILABLE</span>
 
-    const selectedGame =
-      document.getElementById(game);
+  <div class="game">FREE F⚡RE</div>
 
-    if (selectedGame) {
-      selectedGame.classList.add("active");
-    }
+  <h3>Royal Vault 09</h3>
 
-    document.querySelectorAll(".tab").forEach(tab => {
-      tab.classList.remove("active");
-    });
+  <div class="details">
+    Level 86 · SEA
+  </div>
 
-    button.classList.add("active");
-  }
+  <div class="description">
+    12 Evo Weapons, Booyah Pass
+  </div>
 
-function openAdmin() {
-  const user = window.auth?.currentUser;
+  <div class="price">
+    ₦425,000
+  </div>
 
-  if (!user) {
-    alert("Please sign in.");
-    return;
-  }
+  <button class="details-btn">
+    VIEW DETAILS
+  </button>
 
-  if (user.email !== "YOUR_ADMIN_EMAIL") {
-    return;
-  }
+</div>
 
-  const modal =
-    document.getElementById("adminModal");
 
-  if (modal) {
-    modal.classList.add("show");
-  }
-}
+<!-- PRODUCT 2 -->
 
-  function closeAdmin() {
+<div class="product">
 
-    const modal =
-      document.getElementById("adminModal");
+  <span class="heart">♡</span>
+  <span class="available">AVAILABLE</span>
 
-    if (modal) {
-      modal.classList.remove("show");
-    }
+  <div class="game">FREE F⚡RE</div>
 
-  }
+  <h3>Sakura Legend</h3>
 
+  <div class="details">
+    Level 78 · INDIA
+  </div>
 
-  async function addAccount() {
+  <div class="description">
+    10 Evo Weapons, Rare Bundle
+  </div>
 
-    const password =
-      document.getElementById("adminPassword").value;
+  <div class="price">
+    ₦350,000
+  </div>
 
-    const game =
-      document.getElementById("game").value;
+  <button class="details-btn">
+    VIEW DETAILS
+  </button>
 
-    const name =
-      document.getElementById("accountName").value.trim();
+</div>
 
-    const price =
-      document.getElementById("accountPrice").value;
 
-    const imageFile =
-      document.getElementById("accountImage").files[0];
+<!-- PRODUCT 3 -->
 
+<div class="product">
 
-    if (password !== ADMIN_PASSWORD) {
-      alert("Wrong admin password.");
-      return;
-    }
+  <span class="heart">♡</span>
+  <span class="available">AVAILABLE</span>
 
+  <div class="game">FREE F⚡RE</div>
 
-    if (!name || !price || !imageFile) {
-      alert("Please fill in all account details.");
-      return;
-    }
+  <h3>Galaxy Prime</h3>
 
+  <div class="details">
+    Level 71 · BRAZIL
+  </div>
 
-    const reader = new FileReader();
+  <div class="description">
+    9 Evo Weapons, Exclusive Items
+  </div>
 
+  <div class="price">
+    ₦300,000
+  </div>
 
-    reader.onload = async function (e) {
+  <button class="details-btn">
+    VIEW DETAILS
+  </button>
 
-      const image = e.target.result;
+</div>
 
 
-      const whatsappMessage =
-        "Hello Crispy, I would like to purchase your " +
-        name +
-        " account.";
+<!-- PRODUCT 4 -->
 
+<div class="product">
 
-      const whatsappLink =
-        "https://wa.me/2347051885555?text=" +
-        encodeURIComponent(whatsappMessage);
+  <span class="heart">♡</span>
+  <span class="available">AVAILABLE</span>
 
+  <div class="game">FREE F⚡RE</div>
 
-      const product =
-        document.createElement("div");
+  <h3>Predator X</h3>
 
-      product.className = "product";
+  <div class="details">
+    Level 88 · SEA
+  </div>
 
+  <div class="description">
+    12 Evo Weapons, Booyah Pass
+  </div>
 
-      product.innerHTML = `
+  <div class="price">
+    ₦500,000
+  </div>
 
-        <img
-          src="${image}"
-          alt="${name}"
-        >
+  <button class="details-btn">
+    VIEW DETAILS
+  </button>
 
-        <h3>${name}</h3>
+</div>
 
-        <p class="price">
-          ₦${Number(price).toLocaleString()}
-        </p>
 
-        <p class="available">
-          ● AVAILABLE
-        </p>
+<!-- PRODUCT 5 -->
 
-        <a
-          href="${whatsappLink}"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <button
-            class="whatsapp-btn"
-            type="button"
-          >
-            💬 Buy on WhatsApp
-          </button>
-        </a>
+<div class="product">
 
-      `;
+  <span class="heart">♡</span>
+  <span class="available">AVAILABLE</span>
 
+  <div class="game">FREE F⚡RE</div>
 
-      const container =
-        document.getElementById(game + "Products");
+  <h3>Shadow Ultra</h3>
 
+  <div class="details">
+    Level 65 · INDONESIA
+  </div>
 
-      const emptyMessage =
-        container.querySelector(".empty-message");
+  <div class="description">
+    8 Evo Weapons, Rare Items
+  </div>
 
+  <div class="price">
+    ₦250,000
+  </div>
 
-      if (emptyMessage) {
-        emptyMessage.remove();
-      }
+  <button class="details-btn">
+    VIEW DETAILS
+  </button>
 
+</div>
 
-      container.appendChild(product);
 
+<!-- PRODUCT 6 -->
 
-      /*
-        SAVE TO FIREBASE
-      */
+<div class="product">
 
-      try {
+  <span class="heart">♡</span>
+  <span class="available">AVAILABLE</span>
 
-        await window.firebaseAddDoc(
-          window.firebaseCollection(
-            window.db,
-            "accounts"
-          ),
-          {
-            game: game,
-            name: name,
-            price: Number(price),
-            image: image
-          }
-        );
+  <div class="game">FREE F⚡RE</div>
 
-        alert("Account added successfully!");
+  <h3>Titan Force</h3>
 
-      } catch (error) {
+  <div class="details">
+    Level 80 · MENA
+  </div>
 
-        console.error(
-          "Firebase save error:",
-          error
-        );
+  <div class="description">
+    10 Evo Weapons, Elite Pass
+  </div>
 
-        alert("Firebase error: " + error.message);
-      }
+  <div class="price">
+    ₦380,000
+  </div>
 
+  <button class="details-btn">
+    VIEW DETAILS
+  </button>
 
-      document.getElementById("accountName").value = "";
-      document.getElementById("accountPrice").value = "";
-      document.getElementById("accountImage").value = "";
-      document.getElementById("adminPassword").value = "";
+</div>
 
-    };
 
+<!-- PRODUCT 7 -->
 
-    reader.readAsDataURL(imageFile);
+<div class="product">
 
-  }
+  <span class="heart">♡</span>
+  <span class="available">AVAILABLE</span>
 
-</script>
+  <div class="game">FREE F⚡RE</div>
 
+  <h3>Phoenix Rise</h3>
 
-<!-- FIREBASE -->
+  <div class="details">
+    Level 76 · BANGLADESH
+  </div>
 
-<script type="module">
+  <div class="description">
+    9 Evo Weapons, Rare Bundle
+  </div>
 
-  import {
-    initializeApp
-  } from "https://www.gstatic.com/firebasejs/12.8.0/firebase-app.js";
+  <div class="price">
+    ₦320,000
+  </div>
 
+  <button class="details-btn">
+    VIEW DETAILS
+  </button>
 
-  import {
-    getFirestore,
-    collection,
-    addDoc,
-    getDocs,
-    serverTimestamp
-  } from "https://www.gstatic.com/firebasejs/12.8.0/firebase-firestore.js";
-import {
-  getStorage,
-  ref,
-  uploadBytes,
-  getDownloadURL
-} from "https://www.gstatic.com/firebasejs/12.../firebase-storage.js";
-import {
-  getAuth,
-  signInWithEmailAndPassword,
-  onAuthStateChanged
-} from "https://www.gstatic.com/firebasejs/12.0.0/firebase-auth.js";
-  const firebaseConfig = {
+</div>
 
-    apiKey:
-      "AIzaSyC9FNL08mvrtbcjXXj_JBWPHUdOvrioYr8",
 
-    authDomain:
-      "crispy-shop-25644.firebaseapp.com",
+<!-- PRODUCT 8 -->
 
-    projectId:
-      "crispy-shop-25644",
+<div class="product">
 
-    storageBucket:
-      "crispy-shop-25644.firebasestorage.app",
+  <span class="heart">♡</span>
+  <span class="available">AVAILABLE</span>
 
-    messagingSenderId:
-      "311251480323",
+  <div class="game">FREE F⚡RE</div>
 
-    appId:
-      "1:311251480323:web:b0d9e14c947a0528ccc336"
+  <h3>Venom Strike</h3>
 
-  };
+  <div class="details">
+    Level 69 · THAILAND
+  </div>
 
+  <div class="description">
+    7 Evo Weapons, Booyah Pass
+  </div>
 
-  const app =
-    initializeApp(firebaseConfig);
-  const auth = getAuth(app);
-  const db =
-    getFirestore(app);
-const storage = getStorage(app);
-  window.firebaseStorage = storage;
-window.firebaseStorageRef = ref;
-window.firebaseUploadBytes = uploadBytes;
-window.firebaseGetDownloadURL = getDownloadURL;
+  <div class="price">
+    ₦270,000
+  </div>
 
-  window.db = db;
-  window.firebaseCollection = collection;
-  window.firebaseAddDoc = addDoc;
-  window.firebaseGetDocs = getDocs;
+  <button class="details-btn">
+    VIEW DETAILS
+  </button>
 
+</div>
 
-  /*
-    LOAD SAVED ACCOUNTS
-  */
+</section>
 
-  async function loadAccounts() {
 
-    try {
+<!-- FEATURES -->
 
-      const snapshot =
-        await window.firebaseGetDocs(
-          window.firebaseCollection(
-            window.db,
-            "accounts"
-          )
-        );
+<section class="features">
 
+  <div class="feature">
+    <div class="feature-icon">♢</div>
+    <h3>100% SECURE</h3>
+    <p>All accounts are checked and verified.</p>
+  </div>
 
-      snapshot.forEach((doc) => {
+  <div class="feature">
+    <div class="feature-icon">ϟ</div>
+    <h3>INSTANT DELIVERY</h3>
+    <p>Get your account details instantly.</p>
+  </div>
 
-        const account =
-          doc.data();
+  <div class="feature">
+    <div class="feature-icon">♧</div>
+    <h3>BEST PRICES</h3>
+    <p>Affordable prices you can trust.</p>
+  </div>
 
+  <div class="feature">
+    <div class="feature-icon">♧</div>
+    <h3>24/7 SUPPORT</h3>
+    <p>We're always here to help you.</p>
+  </div>
 
-        const container =
-          document.getElementById(
-            account.game + "Products"
-          );
+</section>
 
 
-        if (!container) {
-          return;
-        }
+<!-- FOOTER -->
 
+<footer>
 
-        const emptyMessage =
-          container.querySelector(
-            ".empty-message"
-          );
+  <img
+    src="logo.png"
+    class="footer-logo"
+    alt="CRISPY SHOP"
+  >
 
+  <div class="socials">
+    TikTok
+    Instagram
+    YouTube
+    X
+  </div>
 
-        if (emptyMessage) {
-          emptyMessage.remove();
-        }
+  <div class="slogan">
+    LEVEL UP. PLAY MORE. 👑
+  </div>
 
+</footer>
 
-        const product =
-          document.createElement("div");
+</main>
 
-
-        product.className =
-          "product";
-
-
-        const whatsappMessage =
-          "Hello Crispy, I would like to purchase your " +
-          account.name +
-          " account.";
-
-
-        const whatsappLink =
-          "https://wa.me/2347051885555?text=" +
-          encodeURIComponent(
-            whatsappMessage
-          );
-
-
-        product.innerHTML = `
-
-          <img
-            src="${account.image}"
-            alt="${account.name}"
-          >
-
-          <h3>
-            ${account.name}
-          </h3>
-
-          <p class="price">
-            ₦${Number(account.price).toLocaleString()}
-          </p>
-
-          <p class="available">
-            ● AVAILABLE
-          </p>
-
-          <a
-            href="${whatsappLink}"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            <button
-              class="whatsapp-btn"
-              type="button"
-            >
-              💬 Buy on WhatsApp
-            </button>
-          </a>
-
-        `;
-
-
-        container.appendChild(product);
-
-      });
-
-
-    } catch (error) {
-
-      console.error(
-        "Could not load accounts:",
-        error
-      );
-
-    }
-
-  }
-
-
-  loadAccounts();
-
-</script>
-
+</div>
 
 </body>
 </html>
