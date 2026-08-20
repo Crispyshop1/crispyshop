@@ -6,13 +6,23 @@
 <title>CRISPY SHOP</title>
 
 <style>
-*{box-sizing:border-box;margin:0;padding:0}
+*{
+  box-sizing:border-box;
+  margin:0;
+  padding:0;
+}
+
+html{
+  scroll-behavior:smooth;
+}
 
 body{
   background:#050708;
   color:#fff;
   font-family:Arial,Helvetica,sans-serif;
 }
+
+/* ================= HEADER ================= */
 
 header{
   min-height:80px;
@@ -82,6 +92,8 @@ nav a.active{
   cursor:pointer;
 }
 
+/* ================= LAYOUT ================= */
+
 .layout{
   display:grid;
   grid-template-columns:250px 1fr;
@@ -89,7 +101,7 @@ nav a.active{
   padding:18px;
 }
 
-/* PROFILE */
+/* ================= PROFILE ================= */
 
 .profile{
   border:1px solid #00d9d0;
@@ -154,6 +166,11 @@ nav a.active{
   line-height:1.5;
 }
 
+.profile-section b{
+  float:right;
+  color:#fff;
+}
+
 .stars{
   color:#ffd400;
   letter-spacing:2px;
@@ -175,7 +192,7 @@ nav a.active{
   color:#21d86b;
 }
 
-/* HERO */
+/* ================= HERO ================= */
 
 .hero{
   position:relative;
@@ -202,11 +219,13 @@ nav a.active{
   content:"";
   position:absolute;
   inset:0;
+
   background:radial-gradient(
     circle at 75% 50%,
     rgba(0,229,213,.20),
     transparent 38%
   );
+
   pointer-events:none;
 }
 
@@ -218,7 +237,7 @@ nav a.active{
 }
 
 .welcome{
-  color:#00e5d5;
+  color:#ffd400;
   font-size:20px;
   letter-spacing:3px;
   font-weight:bold;
@@ -249,7 +268,7 @@ nav a.active{
   gap:12px;
 }
 
-/* TRUST */
+/* ================= TRUST ================= */
 
 .trust{
   display:grid;
@@ -285,13 +304,18 @@ nav a.active{
   margin-top:5px;
 }
 
-/* FILTERS */
+/* ================= FILTERS ================= */
 
 .filters{
   display:flex;
   gap:10px;
   overflow-x:auto;
   padding:20px 0 5px;
+  scrollbar-width:none;
+}
+
+.filters::-webkit-scrollbar{
+  display:none;
 }
 
 .filter{
@@ -302,6 +326,7 @@ nav a.active{
   padding:11px 17px;
   border-radius:4px;
   font-weight:bold;
+  cursor:pointer;
 }
 
 .filter.active{
@@ -310,7 +335,7 @@ nav a.active{
   color:#050708;
 }
 
-/* FEATURED */
+/* ================= SECTION ================= */
 
 .section-heading{
   display:flex;
@@ -338,9 +363,10 @@ nav a.active{
   background:transparent;
   padding:10px 18px;
   font-weight:bold;
+  cursor:pointer;
 }
 
-/* PRODUCTS */
+/* ================= PRODUCTS ================= */
 
 .products{
   display:grid;
@@ -433,7 +459,7 @@ nav a.active{
   cursor:pointer;
 }
 
-/* FEATURES */
+/* ================= FEATURES ================= */
 
 .features{
   display:grid;
@@ -468,7 +494,7 @@ nav a.active{
   margin-top:5px;
 }
 
-/* FOOTER */
+/* ================= FOOTER ================= */
 
 footer{
   border-top:1px solid #00d9d0;
@@ -495,13 +521,251 @@ footer{
   font-weight:bold;
 }
 
-/* ADMIN MESSAGE */
+/* ==================================================
+   THREE-LINE PROFILE MENU
+   ================================================== */
+
+.menu-button{
+  position:fixed;
+  left:15px;
+  top:95px;
+
+  width:48px;
+  height:48px;
+
+  background:#050708;
+  color:#ffd400;
+
+  border:1px solid #00d9d0;
+  border-radius:4px;
+
+  font-size:25px;
+
+  z-index:2000;
+  cursor:pointer;
+
+  box-shadow:0 0 15px rgba(0,217,208,.25);
+}
+
+.profile-overlay{
+  position:fixed;
+  inset:0;
+
+  background:rgba(0,0,0,.75);
+
+  opacity:0;
+  visibility:hidden;
+
+  transition:.3s;
+
+  z-index:1998;
+}
+
+.profile-overlay.open{
+  opacity:1;
+  visibility:visible;
+}
+
+.profile-menu{
+  position:fixed;
+
+  left:-390px;
+  top:0;
+
+  width:370px;
+  height:100vh;
+
+  overflow-y:auto;
+
+  background:#030607;
+
+  border-right:1px solid #00d9d0;
+
+  padding:25px 20px;
+
+  z-index:1999;
+
+  transition:left .35s ease;
+
+  box-shadow:10px 0 35px rgba(0,0,0,.7);
+}
+
+.profile-menu.open{
+  left:0;
+}
+
+.profile-close{
+  position:absolute;
+
+  top:15px;
+  right:15px;
+
+  width:40px;
+  height:40px;
+
+  background:#050708;
+
+  color:#ffd400;
+
+  border:1px solid #ffd400;
+
+  font-size:25px;
+
+  cursor:pointer;
+}
+
+.profile-menu-logo{
+  display:block;
+
+  width:150px;
+  max-height:90px;
+
+  object-fit:contain;
+
+  margin:5px auto 20px;
+}
+
+.profile-card{
+  border:1px solid #006e70;
+
+  background:#05090a;
+
+  padding:15px;
+
+  min-height:900px;
+}
+
+.profile-card h2{
+  color:#ffd400;
+  font-size:17px;
+  margin-bottom:4px;
+}
+
+.profile-card h2 span{
+  margin-left:8px;
+  font-size:22px;
+}
+
+.yellow-line{
+  width:40px;
+  height:2px;
+  background:#ffd400;
+  margin-bottom:15px;
+}
+
+.profile-photo{
+  width:155px;
+  height:155px;
+
+  border-radius:50%;
+  overflow:hidden;
+
+  border:3px solid #ffd400;
+
+  margin:0 auto 20px;
+
+  background:#111;
+}
+
+.profile-photo img{
+  width:100%;
+  height:100%;
+  object-fit:cover;
+}
+
+.menu-level{
+  color:#fff;
+  font-size:14px;
+  margin-top:8px;
+}
+
+.menu-level span{
+  color:#00d9d0;
+  font-weight:bold;
+}
+
+.menu-progress{
+  width:100%;
+  height:5px;
+  background:#273235;
+  margin-top:12px;
+}
+
+.menu-progress-fill{
+  width:68%;
+  height:100%;
+  background:#ffd400;
+}
+
+.menu-progress-percent{
+  text-align:right;
+  color:#ddd;
+  font-size:11px;
+  margin-top:5px;
+}
+
+.menu-profile-section{
+  border-top:1px solid #164548;
+  margin-top:15px;
+  padding-top:15px;
+}
+
+.menu-profile-section h3{
+  color:#00d9d0;
+  font-size:14px;
+  margin-bottom:13px;
+}
+
+.menu-profile-section p{
+  color:#fff;
+  font-size:13px;
+  line-height:1.5;
+  margin:10px 0;
+}
+
+.menu-rating{
+  color:#ffd400;
+  font-size:16px;
+  margin:-3px 0 12px 25px;
+}
+
+.menu-rating span{
+  color:#fff;
+  margin-left:5px;
+}
+
+.menu-stat{
+  float:right;
+  color:#fff;
+}
+
+.menu-contact,
+.menu-whatsapp{
+  width:100%;
+  padding:14px;
+  margin-top:15px;
+  background:transparent;
+  font-weight:bold;
+  cursor:pointer;
+}
+
+.menu-contact{
+  color:#ffd400;
+  border:1px solid #ffd400;
+}
+
+.menu-whatsapp{
+  color:#39d353;
+  border:1px solid #39d353;
+}
+
+/* ================= ADMIN ================= */
 
 #adminMessage{
   display:none;
   position:fixed;
   inset:0;
-  z-index:999;
+  z-index:9999;
   background:rgba(0,0,0,.85);
   align-items:center;
   justify-content:center;
@@ -528,15 +792,26 @@ footer{
   font-size:13px;
 }
 
-.admin-close{
+.admin-login-btn{
+  display:block;
   margin-top:18px;
+  padding:12px 20px;
+  background:#ffd400;
+  color:#050708;
+  text-decoration:none;
+  font-weight:bold;
+}
+
+.admin-close{
+  margin-top:12px;
   padding:11px 20px;
   border:1px solid #ffd400;
   color:#ffd400;
   background:transparent;
+  cursor:pointer;
 }
 
-/* MOBILE */
+/* ================= MOBILE ================= */
 
 @media(max-width:1000px){
 
@@ -548,6 +823,10 @@ footer{
     grid-template-columns:1fr;
   }
 
+  .profile{
+    display:none;
+  }
+
   .products{
     grid-template-columns:repeat(2,1fr);
   }
@@ -555,12 +834,14 @@ footer{
   .features{
     grid-template-columns:repeat(2,1fr);
   }
+
 }
 
 @media(max-width:600px){
 
   header{
     padding:10px 12px;
+    min-height:70px;
   }
 
   .logo{
@@ -578,10 +859,6 @@ footer{
 
   .layout{
     padding:10px;
-  }
-
-  .profile{
-    min-height:auto;
   }
 
   .hero{
@@ -630,15 +907,64 @@ footer{
     flex-direction:column;
     text-align:center;
   }
+
+  .profile-menu{
+    width:88vw;
+    max-width:350px;
+    left:-90vw;
+    padding:20px 15px;
+  }
+
+  .profile-menu.open{
+    left:0;
+  }
+
+  .menu-button{
+    left:10px;
+    top:80px;
+    width:44px;
+    height:44px;
+  }
+
+}
+
+/* 9:16 PHONE FRIENDLY */
+
+@media(
+  max-width:500px
+){
+
+  body{
+    width:100%;
+    overflow-x:hidden;
+  }
+
+  header{
+    gap:8px;
+  }
+
+  .layout{
+    width:100%;
+  }
+
+  main{
+    width:100%;
+  }
+
+  .hero{
+    width:100%;
+  }
+
 }
 </style>
 </head>
 
 <body>
 
+<!-- ================= HEADER ================= -->
+
 <header>
 
-  <!-- LOGO -->
   <img
     src="logo.png.jpeg"
     class="logo"
@@ -649,12 +975,13 @@ footer{
     <a href="#" class="active">HOME</a>
     <a href="#accounts">ACCOUNTS</a>
     <a href="#">TOP UP</a>
-    <a href="#">GAMES</a>
+    <a href="#games">GAMES</a>
     <a href="#">REVIEWS</a>
     <a href="#">FAQ</a>
   </nav>
 
   <div class="header-actions">
+
     <span class="header-icon">⌕</span>
     <span class="header-icon">🛒</span>
 
@@ -664,14 +991,162 @@ footer{
     >
       ♙ MY ACCOUNT
     </button>
+
   </div>
 
 </header>
 
 
+<!-- ================= THREE LINE BUTTON ================= -->
+
+<button
+  class="menu-button"
+  onclick="toggleProfileMenu()"
+  aria-label="Open profile menu"
+>
+  ☰
+</button>
+
+
+<div
+  id="profileOverlay"
+  class="profile-overlay"
+  onclick="toggleProfileMenu()"
+></div>
+
+
+<!-- ================= PROFILE SLIDE MENU ================= -->
+
+<aside
+  id="profileMenu"
+  class="profile-menu"
+>
+
+  <button
+    class="profile-close"
+    onclick="toggleProfileMenu()"
+  >
+    ×
+  </button>
+
+  <img
+    src="logo.png.jpeg"
+    class="profile-menu-logo"
+    alt="CRISPY SHOP"
+  >
+
+  <div class="profile-card">
+
+    <h2>
+      MY PROFILE
+      <span>♕</span>
+    </h2>
+
+    <div class="yellow-line"></div>
+
+    <!--
+      CHANGE profile.jpg TO YOUR
+      ACTUAL PROFILE IMAGE FILE.
+    -->
+
+    <div class="profile-photo">
+
+      <img
+        src="profile.jpg"
+        alt="My Profile"
+      >
+
+    </div>
+
+    <div class="menu-level">
+      ⚙
+      <span>LEVEL 17</span>
+      TRADER
+    </div>
+
+    <div class="menu-progress">
+      <div class="menu-progress-fill"></div>
+    </div>
+
+    <div class="menu-progress-percent">
+      68%
+    </div>
+
+
+    <div class="menu-profile-section">
+
+      <h3>ABOUT</h3>
+
+      <p>♧ &nbsp; Trader</p>
+
+      <p>♧ &nbsp; Gaming Account Seller</p>
+
+      <p>
+        ▣ &nbsp; Member Since<br>
+        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;2024
+      </p>
+
+      <p>☆ &nbsp; Shop Rating</p>
+
+      <div class="menu-rating">
+        ★★★★★
+        <span>5.0</span>
+      </div>
+
+      <p>
+        ▣ &nbsp; Orders Completed<br>
+        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;250+
+      </p>
+
+    </div>
+
+
+    <div class="menu-profile-section">
+
+      <h3>SHOP STATS</h3>
+
+      <p>
+        ▣ &nbsp; Total Accounts
+        <span class="menu-stat">120+</span>
+      </p>
+
+      <p>
+        ♙ &nbsp; Total Sales
+        <span class="menu-stat">1.2K+</span>
+      </p>
+
+      <p>
+        ♧ &nbsp; Happy Customers
+        <span class="menu-stat">980+</span>
+      </p>
+
+      <p>
+        ♡ &nbsp; Success Rate
+        <span class="menu-stat">99%</span>
+      </p>
+
+    </div>
+
+
+    <button class="menu-contact">
+      💬 &nbsp; CONTACT ME
+    </button>
+
+    <button class="menu-whatsapp">
+      🟢 &nbsp; CHAT ON WHATSAPP
+    </button>
+
+  </div>
+
+</aside>
+
+
+<!-- ================= MAIN LAYOUT ================= -->
+
 <div class="layout">
 
-<!-- PROFILE -->
+
+<!-- DESKTOP PROFILE -->
 
 <aside class="profile">
 
@@ -679,7 +1154,6 @@ footer{
     MY PROFILE
   </div>
 
-  <!-- SAME LOGO -->
   <img
     src="logo.png.jpeg"
     alt="CRISPY SHOP"
@@ -699,8 +1173,14 @@ footer{
     <h3>ABOUT</h3>
 
     <p>♙ Trader</p>
+
     <p>♙ Gaming Account Seller</p>
-    <p>▣ Member Since<br>2024</p>
+
+    <p>
+      ▣ Member Since<br>
+      2024
+    </p>
+
     <p>☆ Shop Rating</p>
 
     <div class="stars">
@@ -715,16 +1195,33 @@ footer{
 
   </div>
 
+
   <div class="profile-section">
 
     <h3>SHOP STATS</h3>
 
-    <p>▣ Total Accounts <b>120+</b></p>
-    <p>♙ Total Sales <b>1.2K+</b></p>
-    <p>♙ Happy Customers <b>980+</b></p>
-    <p>✓ Success Rate <b>99%</b></p>
+    <p>
+      ▣ Total Accounts
+      <b>120+</b>
+    </p>
+
+    <p>
+      ♙ Total Sales
+      <b>1.2K+</b>
+    </p>
+
+    <p>
+      ♙ Happy Customers
+      <b>980+</b>
+    </p>
+
+    <p>
+      ✓ Success Rate
+      <b>99%</b>
+    </p>
 
   </div>
+
 
   <button class="contact">
     💬 CONTACT ME
@@ -737,9 +1234,10 @@ footer{
 </aside>
 
 
-<!-- MAIN -->
+<!-- ================= MAIN ================= -->
 
 <main>
+
 
 <!-- HERO -->
 
@@ -751,7 +1249,6 @@ footer{
       ── WELCOME TO ──
     </div>
 
-    <!-- SAME LOGO -->
     <img
       src="logo.png.jpeg"
       class="hero-logo"
@@ -760,12 +1257,17 @@ footer{
 
     <p class="hero-text">
       Premium gaming accounts, top ups and more.
-      <strong>100% safe, secure &amp; trusted.</strong>
+      <strong>
+        100% safe, secure &amp; trusted.
+      </strong>
     </p>
 
     <div class="hero-buttons">
 
-      <button class="yellow-btn">
+      <button
+        class="yellow-btn"
+        onclick="document.getElementById('accounts').scrollIntoView({behavior:'smooth'})"
+      >
         🛍 BROWSE ACCOUNTS
       </button>
 
@@ -780,34 +1282,63 @@ footer{
 </section>
 
 
-<!-- TRUST -->
+<!-- ================= TRUST ================= -->
 
 <section class="trust">
 
   <div class="trust-box">
+
     <div class="trust-icon">♢</div>
-    <h3>100% SAFE</h3>
-    <p>Secure Transactions</p>
+
+    <h3>
+      100% SAFE
+    </h3>
+
+    <p>
+      Secure Transactions
+    </p>
+
   </div>
 
+
   <div class="trust-box">
+
     <div class="trust-icon">ϟ</div>
-    <h3>INSTANT DELIVERY</h3>
-    <p>Get it instantly</p>
+
+    <h3>
+      INSTANT DELIVERY
+    </h3>
+
+    <p>
+      Get it instantly
+    </p>
+
   </div>
 
+
   <div class="trust-box">
+
     <div class="trust-icon">♧</div>
-    <h3>24/7 SUPPORT</h3>
-    <p>We're here to help</p>
+
+    <h3>
+      24/7 SUPPORT
+    </h3>
+
+    <p>
+      We're here to help
+    </p>
+
   </div>
 
 </section>
 
 
-<!-- FILTERS -->
+<!-- ================= GAME FILTERS ================= -->
 
-<div class="filters">
+<div
+  class="filters"
+  id="games"
+>
 
   <button class="filter active">
     ALL
@@ -818,25 +1349,25 @@ footer{
   </button>
 
   <button class="filter">
-    PUBG
+    eFOOTBALL
   </button>
 
   <button class="filter">
-    ROBLOX
+    CODM
   </button>
 
   <button class="filter">
-    FORTNITE
+    FC MOBILE
   </button>
 
   <button class="filter">
-    OTHER
+    DLS
   </button>
 
 </div>
 
 
-<!-- FEATURED -->
+<!-- ================= FEATURED ================= -->
 
 <div
   class="section-heading"
@@ -857,7 +1388,7 @@ footer{
 <section class="products">
 
 
-<!-- 1 -->
+<!-- ACCOUNT 1 -->
 
 <div class="product">
 
@@ -894,7 +1425,7 @@ footer{
 </div>
 
 
-<!-- 2 -->
+<!-- ACCOUNT 2 -->
 
 <div class="product">
 
@@ -931,7 +1462,7 @@ footer{
 </div>
 
 
-<!-- 3 -->
+<!-- ACCOUNT 3 -->
 
 <div class="product">
 
@@ -968,7 +1499,7 @@ footer{
 </div>
 
 
-<!-- 4 -->
+<!-- ACCOUNT 4 -->
 
 <div class="product">
 
@@ -1005,7 +1536,7 @@ footer{
 </div>
 
 
-<!-- 5 -->
+<!-- ACCOUNT 5 -->
 
 <div class="product">
 
@@ -1042,7 +1573,7 @@ footer{
 </div>
 
 
-<!-- 6 -->
+<!-- ACCOUNT 6 -->
 
 <div class="product">
 
@@ -1079,7 +1610,7 @@ footer{
 </div>
 
 
-<!-- 7 -->
+<!-- ACCOUNT 7 -->
 
 <div class="product">
 
@@ -1116,7 +1647,7 @@ footer{
 </div>
 
 
-<!-- 8 -->
+<!-- ACCOUNT 8 -->
 
 <div class="product">
 
@@ -1155,50 +1686,85 @@ footer{
 </section>
 
 
-<!-- FEATURES -->
+<!-- ================= FEATURES ================= -->
 
 <section class="features">
 
   <div class="feature">
-    <div class="feature-icon">♢</div>
-    <h3>100% SECURE</h3>
+
+    <div class="feature-icon">
+      ♢
+    </div>
+
+    <h3>
+      100% SECURE
+    </h3>
+
     <p>
       All accounts are checked
       and verified.
     </p>
+
   </div>
 
+
   <div class="feature">
-    <div class="feature-icon">ϟ</div>
-    <h3>INSTANT DELIVERY</h3>
+
+    <div class="feature-icon">
+      ϟ
+    </div>
+
+    <h3>
+      INSTANT DELIVERY
+    </h3>
+
     <p>
       Get your account details
       instantly.
     </p>
+
   </div>
 
+
   <div class="feature">
-    <div class="feature-icon">♧</div>
-    <h3>BEST PRICES</h3>
+
+    <div class="feature-icon">
+      ♧
+    </div>
+
+    <h3>
+      BEST PRICES
+    </h3>
+
     <p>
       Affordable prices you
       can trust.
     </p>
+
   </div>
 
+
   <div class="feature">
-    <div class="feature-icon">♧</div>
-    <h3>24/7 SUPPORT</h3>
+
+    <div class="feature-icon">
+      ♧
+    </div>
+
+    <h3>
+      24/7 SUPPORT
+    </h3>
+
     <p>
       We're always here
       to help you.
     </p>
+
   </div>
 
 </section>
 
 
-<!-- FOOTER -->
+<!-- ================= FOOTER ================= -->
 
 <footer>
 
@@ -1222,10 +1788,11 @@ footer{
 </footer>
 
 </main>
+
 </div>
 
 
-<!-- ADMIN MESSAGE -->
+<!-- ================= ADMIN MESSAGE ================= -->
 
 <div id="adminMessage">
 
@@ -1240,6 +1807,13 @@ footer{
       Firebase Authentication.
     </p>
 
+    <a
+      href="admin.html"
+      class="admin-login-btn"
+    >
+      OPEN ADMIN LOGIN
+    </a>
+
     <button
       class="admin-close"
       onclick="closeAdmin()"
@@ -1252,6 +1826,8 @@ footer{
 </div>
 
 
+<!-- ================= JAVASCRIPT ================= -->
+
 <script>
 
 function openAdmin(){
@@ -1262,6 +1838,7 @@ function openAdmin(){
 
 }
 
+
 function closeAdmin(){
 
   document
@@ -1269,6 +1846,69 @@ function closeAdmin(){
     .style.display = "none";
 
 }
+
+
+function toggleProfileMenu(){
+
+  const menu =
+    document.getElementById("profileMenu");
+
+  const overlay =
+    document.getElementById("profileOverlay");
+
+  menu.classList.toggle("open");
+
+  overlay.classList.toggle("open");
+
+}
+
+
+/* Close profile menu with ESC */
+
+document.addEventListener(
+  "keydown",
+  function(event){
+
+    if(event.key === "Escape"){
+
+      const menu =
+        document.getElementById("profileMenu");
+
+      const overlay =
+        document.getElementById("profileOverlay");
+
+      menu.classList.remove("open");
+
+      overlay.classList.remove("open");
+
+    }
+
+  }
+);
+
+
+/* Game filter visual selection */
+
+document
+  .querySelectorAll(".filter")
+  .forEach(function(button){
+
+    button.addEventListener(
+      "click",
+      function(){
+
+        document
+          .querySelectorAll(".filter")
+          .forEach(function(btn){
+            btn.classList.remove("active");
+          });
+
+        this.classList.add("active");
+
+      }
+    );
+
+  });
 
 </script>
 
