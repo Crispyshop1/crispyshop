@@ -2,43 +2,36 @@
 <html lang="en">
 <head>
 <meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="viewport" content="width=device-width,initial-scale=1.0">
 <title>CRISPY SHOP</title>
 
 <style>
-*{box-sizing:border-box;margin:0;padding:0}
-
-:root{
-  --bg:#030506;
-  --panel:#071012;
-  --yellow:#ffd400;
-  --teal:#00e5d5;
-  --teal2:#00aaa5;
-  --text:#fff;
-  --muted:#9da8ab;
+*{
+  box-sizing:border-box;
+  margin:0;
+  padding:0;
 }
 
-html{scroll-behavior:smooth}
+html{
+  scroll-behavior:smooth;
+}
 
 body{
-  background:var(--bg);
-  color:var(--text);
+  background:#050708;
+  color:#fff;
   font-family:Arial,Helvetica,sans-serif;
-  overflow-x:hidden;
 }
 
-button,a{font:inherit}
-button{cursor:pointer}
+/* ================= HEADER ================= */
 
-/* HEADER */
 header{
-  min-height:82px;
+  min-height:80px;
   display:flex;
   align-items:center;
   gap:20px;
   padding:10px 28px;
-  background:#030506;
-  border-bottom:2px solid var(--yellow);
+  border-bottom:1px solid #00d9d0;
+  background:#050708;
   position:sticky;
   top:0;
   z-index:100;
@@ -46,9 +39,9 @@ header{
 
 .logo{
   width:155px;
-  height:auto;
-  display:block;
+  height:60px;
   object-fit:contain;
+  mix-blend-mode:screen;
 }
 
 nav{
@@ -63,106 +56,93 @@ nav a{
   color:#fff;
   text-decoration:none;
   font-size:13px;
-  font-weight:900;
-  padding:20px 0;
+  font-weight:bold;
+  padding:12px 0;
 }
 
 nav a:hover,
 nav a.active{
-  color:var(--yellow);
+  color:#ffd400;
 }
 
+/* YELLOW ACTIVE LINE */
 nav a.active:after{
   content:"";
   position:absolute;
   left:0;
   right:0;
-  bottom:8px;
+  bottom:0;
   height:3px;
-  background:var(--yellow);
-  box-shadow:0 0 12px rgba(255,212,0,.7);
+  background:#ffd400;
+  box-shadow:0 0 8px #ffd400;
 }
 
 .header-actions{
   display:flex;
   align-items:center;
-  gap:12px;
+  gap:15px;
 }
 
 .header-icon{
-  width:38px;
-  height:38px;
-  display:grid;
-  place-items:center;
-  color:var(--teal);
-  border:1px solid transparent;
-  border-radius:6px;
-  font-size:23px;
-  background:transparent;
+  color:#00e5d5;
+  font-size:25px;
+  cursor:pointer;
 }
 
 .header-icon:hover{
-  border-color:var(--teal);
-  background:#071516;
+  color:#ffd400;
 }
 
 .account-btn,
 .yellow-btn{
-  background:var(--yellow);
+  background:#ffd400;
   color:#050708;
-  border:1px solid var(--yellow);
+  border:1px solid #ffd400;
   padding:12px 18px;
   border-radius:4px;
-  font-weight:900;
+  font-weight:bold;
+  cursor:pointer;
 }
 
 .outline-btn{
   background:transparent;
-  color:var(--yellow);
-  border:1px solid var(--yellow);
+  color:#ffd400;
+  border:1px solid #ffd400;
   padding:12px 18px;
   border-radius:4px;
-  font-weight:900;
+  font-weight:bold;
+  cursor:pointer;
 }
 
-.outline-btn:hover{
-  background:var(--yellow);
-  color:#050708;
-}
-
-.menu-btn{
+.menu-button{
   display:none;
-  background:transparent;
-  color:var(--yellow);
-  border:1px solid var(--yellow);
-  width:42px;
-  height:42px;
-  border-radius:5px;
-  font-size:24px;
+  background:none;
+  border:0;
+  color:#ffd400;
+  font-size:30px;
+  cursor:pointer;
 }
 
-/* LAYOUT */
+/* ================= LAYOUT ================= */
 
 .layout{
   display:grid;
   grid-template-columns:250px 1fr;
   gap:18px;
   padding:18px;
-  max-width:1500px;
-  margin:auto;
 }
 
-/* PROFILE */
+/* ================= PROFILE ================= */
 
 .profile{
-  border:1px solid var(--teal);
-  background:#05090a;
+  border:1px solid #00d9d0;
+  background:#070b0d;
   padding:18px;
-  height:max-content;
+  min-height:100%;
 }
 
 .profile-title{
-  color:var(--teal);
+  color:#ffd400;
   font-size:14px;
   font-weight:bold;
   margin-bottom:18px;
@@ -174,14 +154,14 @@ nav a.active:after{
   margin:auto;
   display:block;
   object-fit:contain;
-  border-radius:50%;
-  border:3px solid var(--yellow);
-  background:#000;
-  padding:10px;
+  border:0;
+  background:transparent;
+  padding:0;
+  mix-blend-mode:screen;
 }
 
 .profile-level{
-  color:var(--teal);
+  color:#00e5d5;
   font-weight:bold;
   margin-top:20px;
 }
@@ -196,35 +176,30 @@ nav a.active:after{
   display:block;
   width:68%;
   height:100%;
-  background:var(--yellow);
+  background:#ffd400;
 }
 
 .profile-section{
-  border-top:1px solid #153f40;
+  border-top:1px solid #123d3d;
   margin-top:20px;
   padding-top:18px;
 }
 
 .profile-section h3{
-  color:var(--teal);
+  color:#00e5d5;
   font-size:14px;
   margin-bottom:12px;
 }
 
 .profile-section p{
-  color:#c0c7c9;
+  color:#b7c0c3;
   margin:10px 0;
   font-size:13px;
   line-height:1.5;
 }
 
-.profile-section b{
-  float:right;
-  color:#fff;
-}
-
 .stars{
-  color:var(--yellow);
+  color:#ffd400;
   letter-spacing:2px;
 }
 
@@ -233,9 +208,10 @@ nav a.active:after{
   padding:12px;
   margin-top:12px;
   background:transparent;
-  border:1px solid var(--yellow);
-  color:var(--yellow);
+  border:1px solid #ffd400;
+  color:#ffd400;
   font-weight:bold;
+  cursor:pointer;
 }
 
 .whatsapp{
@@ -243,22 +219,22 @@ nav a.active:after{
   color:#21d86b;
 }
 
-/* HERO */
+/* ================= HERO ================= */
 
 .hero{
   position:relative;
   min-height:430px;
-  border:1px solid var(--teal);
+  border:1px solid #00d9d0;
   overflow:hidden;
 
   background:
     linear-gradient(
-      rgba(0,229,213,.10) 1px,
+      rgba(0,217,208,.10) 1px,
       transparent 1px
     ),
     linear-gradient(
       90deg,
-      rgba(0,229,213,.10) 1px,
+      rgba(0,217,208,.10) 1px,
       transparent 1px
     ),
     #050a0b;
@@ -272,7 +248,7 @@ nav a.active:after{
   inset:0;
   background:radial-gradient(
     circle at 75% 50%,
-    rgba(0,229,213,.22),
+    rgba(0,229,213,.20),
     transparent 38%
   );
   pointer-events:none;
@@ -286,19 +262,20 @@ nav a.active:after{
 }
 
 .welcome{
-  color:var(--yellow);
+  color:#ffd400;
   font-size:20px;
   letter-spacing:3px;
   font-weight:bold;
 }
 
 .hero-logo{
-  width:min(520px,80%);
-  max-height:210px;
-  margin:20px auto;
+  width:min(650px,95%);
+  height:240px;
+  margin:10px auto;
   display:block;
   object-fit:contain;
-  background:transparent;
+  mix-blend-mode:screen;
+  filter:drop-shadow(0 0 10px rgba(255,255,255,.15));
 }
 
 .hero-text{
@@ -308,7 +285,7 @@ nav a.active:after{
 }
 
 .hero-text strong{
-  color:var(--yellow);
+  color:#ffd400;
 }
 
 .hero-buttons{
@@ -318,19 +295,19 @@ nav a.active:after{
   gap:12px;
 }
 
-/* TRUST */
+/* ================= TRUST ================= */
 
 .trust{
   display:grid;
   grid-template-columns:repeat(3,1fr);
-  border:1px solid var(--teal);
+  border:1px solid #00d9d0;
   border-top:0;
 }
 
 .trust-box{
   padding:18px;
   text-align:center;
-  border-right:1px solid #153f40;
+  border-right:1px solid #123d3d;
 }
 
 .trust-box:last-child{
@@ -338,12 +315,12 @@ nav a.active:after{
 }
 
 .trust-icon{
-  color:var(--yellow);
+  color:#ffd400;
   font-size:25px;
 }
 
 .trust-box h3{
-  color:var(--teal);
+  color:#00e5d5;
   font-size:14px;
   margin-top:5px;
 }
@@ -354,7 +331,7 @@ nav a.active:after{
   margin-top:5px;
 }
 
-/* FILTERS */
+/* ================= FILTERS ================= */
 
 .filters{
   display:flex;
@@ -366,20 +343,25 @@ nav a.active:after{
 .filter{
   white-space:nowrap;
   background:#071114;
-  color:var(--teal);
-  border:1px solid var(--teal);
+  color:#00e5d5;
+  border:1px solid #00d9d0;
   padding:11px 17px;
   border-radius:4px;
   font-weight:bold;
+  cursor:pointer;
 }
 
 .filter.active{
-  background:var(--yellow);
-  border-color:var(--yellow);
+  background:#ffd400;
+  border-color:#ffd400;
   color:#050708;
 }
 
-/* SECTION */
+/* ================= SECTIONS ================= */
+
+.content-section{
+  scroll-margin-top:100px;
+}
 
 .section-heading{
   display:flex;
@@ -397,19 +379,11 @@ nav a.active:after{
   display:block;
   width:40px;
   height:3px;
-  background:var(--yellow);
+  background:#ffd400;
   margin-top:6px;
 }
 
-.view-all{
-  border:1px solid var(--yellow);
-  color:var(--yellow);
-  background:transparent;
-  padding:10px 18px;
-  font-weight:bold;
-}
-
-/* PRODUCTS */
+/* ================= PRODUCTS ================= */
 
 .products{
   display:grid;
@@ -419,16 +393,16 @@ nav a.active:after{
 
 .product{
   position:relative;
-  border:1px solid var(--teal2);
+  border:1px solid #00aaa5;
 
   background:
     linear-gradient(
-      rgba(0,229,213,.06) 1px,
+      rgba(0,217,208,.06) 1px,
       transparent 1px
     ),
     linear-gradient(
       90deg,
-      rgba(0,229,213,.06) 1px,
+      rgba(0,217,208,.06) 1px,
       transparent 1px
     ),
     #070b0d;
@@ -439,7 +413,7 @@ nav a.active:after{
 }
 
 .product:hover{
-  border-color:var(--yellow);
+  border-color:#ffd400;
   transform:translateY(-3px);
 }
 
@@ -447,7 +421,7 @@ nav a.active:after{
   position:absolute;
   top:10px;
   right:10px;
-  background:var(--yellow);
+  background:#ffd400;
   color:#050708;
   padding:6px 8px;
   font-size:10px;
@@ -457,8 +431,7 @@ nav a.active:after{
 .heart{
   color:#fff;
   font-size:20px;
-  background:none;
-  border:0;
+  cursor:pointer;
 }
 
 .game{
@@ -475,7 +448,7 @@ nav a.active:after{
 }
 
 .details{
-  color:var(--teal);
+  color:#00e5d5;
   font-size:13px;
   margin-bottom:8px;
 }
@@ -487,7 +460,7 @@ nav a.active:after{
 }
 
 .price{
-  color:var(--yellow);
+  color:#ffd400;
   font-size:20px;
   font-weight:bold;
   margin-top:15px;
@@ -498,24 +471,70 @@ nav a.active:after{
   margin-top:12px;
   padding:9px;
   background:transparent;
-  border:1px solid var(--yellow);
-  color:var(--yellow);
+  border:1px solid #ffd400;
+  color:#ffd400;
   font-weight:bold;
+  cursor:pointer;
 }
 
-/* FEATURES */
+/* ================= TOP UP ================= */
+
+.topup-section{
+  margin-top:40px;
+  padding:25px;
+  border:1px solid #00d9d0;
+  background:#070b0d;
+  scroll-margin-top:100px;
+}
+
+.topup-grid,
+.game-grid{
+  display:grid;
+  grid-template-columns:repeat(5,1fr);
+  gap:12px;
+  margin-top:20px;
+}
+
+.game-choice,
+.topup-choice{
+  min-height:150px;
+  padding:25px 12px;
+  background:#071114;
+  border:1px solid #00d9d0;
+  color:#fff;
+  font-size:15px;
+  font-weight:bold;
+  cursor:pointer;
+  text-align:center;
+  transition:.2s;
+}
+
+.game-choice:hover,
+.topup-choice:hover{
+  border-color:#ffd400;
+  color:#ffd400;
+  transform:translateY(-3px);
+}
+
+.choice-icon{
+  display:block;
+  font-size:35px;
+  margin-bottom:15px;
+}
+
+/* ================= FEATURES ================= */
 
 .features{
   display:grid;
   grid-template-columns:repeat(4,1fr);
   margin-top:18px;
-  border:1px solid var(--teal);
+  border:1px solid #00d9d0;
 }
 
 .feature{
   padding:18px;
   text-align:center;
-  border-right:1px solid #153f40;
+  border-right:1px solid #123d3d;
 }
 
 .feature:last-child{
@@ -523,7 +542,7 @@ nav a.active:after{
 }
 
 .feature-icon{
-  color:var(--teal);
+  color:#00e5d5;
   font-size:27px;
 }
 
@@ -538,10 +557,10 @@ nav a.active:after{
   margin-top:5px;
 }
 
-/* FOOTER */
+/* ================= FOOTER ================= */
 
 footer{
-  border-top:2px solid var(--yellow);
+  border-top:1px solid #00d9d0;
   margin-top:18px;
   padding:20px 5px;
   display:flex;
@@ -552,243 +571,311 @@ footer{
 
 .footer-logo{
   width:120px;
+  height:60px;
+  object-fit:contain;
+  mix-blend-mode:screen;
 }
 
 .socials{
   display:flex;
-  gap:18px;
-  align-items:center;
+  gap:20px;
 }
 
 .socials a{
   color:#fff;
   text-decoration:none;
-  font-weight:bold;
 }
 
 .socials a:hover{
-  color:var(--yellow);
+  color:#ffd400;
 }
 
 .slogan{
-  color:var(--yellow);
+  color:#ffd400;
   font-weight:bold;
 }
 
-/* MODALS */
+/* ================= POPUPS ================= */
 
 .modal{
   display:none;
   position:fixed;
   inset:0;
-  z-index:500;
-  background:rgba(0,0,0,.82);
+  z-index:1000;
+  background:rgba(0,0,0,.85);
   align-items:center;
   justify-content:center;
-  padding:18px;
-}
-
-.modal.show{
-  display:flex;
+  padding:20px;
 }
 
 .modal-box{
   width:100%;
-  max-width:720px;
+  max-width:700px;
   max-height:90vh;
   overflow:auto;
-  background:#061012;
-  border:1px solid var(--teal);
-  box-shadow:0 0 35px rgba(0,229,213,.18);
-  padding:24px;
+  background:
+    linear-gradient(
+      rgba(0,217,208,.06) 1px,
+      transparent 1px
+    ),
+    linear-gradient(
+      90deg,
+      rgba(0,217,208,.06) 1px,
+      transparent 1px
+    ),
+    #080d0f;
+  background-size:30px 30px;
+  border:1px solid #00d9d0;
+  padding:25px;
+  position:relative;
 }
 
 .modal-box h2{
-  color:var(--yellow);
-  margin-bottom:8px;
+  color:#ffd400;
+  text-align:center;
+  margin-bottom:10px;
 }
 
-.modal-box p{
+.modal-box > p{
   color:#aaa;
-  margin-bottom:18px;
+  text-align:center;
+  margin-bottom:20px;
 }
 
-.modal-close{
-  float:right;
-  background:transparent;
+.close{
+  position:absolute;
+  right:15px;
+  top:10px;
+  border:0;
+  background:none;
   color:#fff;
-  border:1px solid #555;
-  width:34px;
-  height:34px;
-  border-radius:4px;
-}
-
-.choice-grid{
-  display:grid;
-  grid-template-columns:repeat(5,1fr);
-  gap:10px;
-}
-
-.choice{
-  min-height:120px;
-  background:#071619;
-  color:#fff;
-  border:1px solid var(--teal);
-  padding:15px 8px;
-  display:flex;
-  flex-direction:column;
-  align-items:center;
-  justify-content:center;
-  gap:10px;
-  font-weight:900;
-}
-
-.choice:hover{
-  border-color:var(--yellow);
-  color:var(--yellow);
-}
-
-.choice-icon{
   font-size:28px;
+  cursor:pointer;
 }
 
-.stars-choice{
+.close:hover{
+  color:#ffd400;
+}
+
+/* GAME POPUP */
+
+.selection-grid{
+  display:grid;
+  grid-template-columns:repeat(5,1fr);
+  gap:12px;
+}
+
+.selection-card{
+  min-height:150px;
+  background:#071114;
+  border:1px solid #00d9d0;
+  padding:20px 8px;
+  color:#fff;
+  text-align:center;
+  font-weight:bold;
+  cursor:pointer;
+}
+
+.selection-card:hover{
+  border-color:#ffd400;
+  color:#ffd400;
+}
+
+/* REVIEWS */
+
+.rating-grid{
   display:grid;
   grid-template-columns:repeat(5,1fr);
   gap:10px;
 }
 
-.star-choice{
-  padding:18px 10px;
-  background:#071619;
-  border:1px solid var(--teal);
-  color:var(--yellow);
+.rating-card{
+  border:1px solid #00d9d0;
+  background:#071114;
+  padding:25px 10px;
+  text-align:center;
+  cursor:pointer;
+}
+
+.rating-card:hover{
+  border-color:#ffd400;
+}
+
+.rating-stars{
+  display:block;
+  color:#ffd400;
+  font-size:22px;
+  margin-bottom:10px;
+}
+
+/* CONTACT */
+
+.contact-options{
+  display:grid;
+  grid-template-columns:repeat(2,1fr);
+  gap:12px;
+}
+
+.contact-option{
+  display:block;
+  padding:18px;
+  text-align:center;
+  text-decoration:none;
+  color:#fff;
+  border:1px solid #00d9d0;
+  background:#071114;
+  font-weight:bold;
+}
+
+.contact-option:hover{
+  color:#ffd400;
+  border-color:#ffd400;
+}
+
+/* SEARCH */
+
+.search-input{
+  width:100%;
+  padding:15px;
+  margin:10px 0 15px;
+  background:#050708;
+  border:1px solid #00d9d0;
+  color:#fff;
+  outline:none;
+}
+
+.search-input:focus{
+  border-color:#ffd400;
+}
+
+.search-result{
+  padding:14px;
+  border-bottom:1px solid #123d3d;
+  color:#fff;
+}
+
+/* CART */
+
+.cart-list{
+  color:#aaa;
+  line-height:1.8;
+}
+
+.cart-total{
+  margin-top:15px;
+  color:#ffd400;
   font-size:20px;
   font-weight:bold;
 }
 
-.star-choice:hover{
-  border-color:var(--yellow);
-  background:#101719;
-}
+/* ================= MOBILE SIDE MENU ================= */
 
-.search-input{
-  width:100%;
-  padding:14px;
-  background:#020506;
-  border:1px solid var(--teal);
-  color:#fff;
-  outline:none;
-  margin:10px 0 18px;
-}
-
-.cart-item{
-  display:flex;
-  justify-content:space-between;
-  gap:15px;
-  padding:12px 0;
-  border-bottom:1px solid #173d3d;
-}
-
-.empty{
-  color:#999;
-  text-align:center;
-  padding:30px;
-}
-
-.admin-box{
-  max-width:420px;
-}
-
-/* MOBILE DRAWER */
-
-.mobile-drawer{
-  display:none;
+.side-menu{
   position:fixed;
-  inset:0;
-  z-index:700;
-  background:rgba(0,0,0,.8);
-}
-
-.mobile-drawer.open{
-  display:block;
-}
-
-.drawer-panel{
-  width:min(330px,86vw);
-  height:100%;
+  left:-310px;
+  top:0;
+  bottom:0;
+  width:290px;
+  z-index:2000;
+  background:#050708;
+  border-right:1px solid #00d9d0;
+  padding:25px 20px;
+  transition:.3s;
   overflow:auto;
-  background:#05090a;
-  border-right:2px solid var(--yellow);
-  padding:14px;
 }
 
-.drawer-head{
+.side-menu.open{
+  left:0;
+}
+
+.side-menu-header{
   display:flex;
-  justify-content:space-between;
   align-items:center;
-  margin-bottom:10px;
+  justify-content:space-between;
+  margin-bottom:20px;
 }
 
-.drawer-head strong{
-  color:var(--yellow);
+.side-menu-header img{
+  width:120px;
+  mix-blend-mode:screen;
 }
 
-.drawer-close{
-  background:transparent;
-  border:1px solid var(--yellow);
-  color:var(--yellow);
-  width:38px;
-  height:38px;
-}
-
-.drawer-panel .profile{
+.side-close{
   border:0;
-  padding:0;
+  background:none;
+  color:#ffd400;
+  font-size:28px;
 }
 
-/* RESPONSIVE */
-
-@media(max-width:1100px){
-
-  nav{
-    gap:18px;
-  }
-
-  .products{
-    grid-template-columns:repeat(3,1fr);
-  }
-
-  .choice-grid{
-    grid-template-columns:repeat(3,1fr);
-  }
+.side-profile{
+  border:1px solid #00d9d0;
+  padding:18px;
 }
 
-@media(max-width:850px){
+.side-profile img{
+  width:150px;
+  height:150px;
+  display:block;
+  margin:auto;
+  object-fit:contain;
+  mix-blend-mode:screen;
+}
 
-  header{
-    padding:10px 14px;
-  }
+.side-profile h3{
+  color:#ffd400;
+  margin:15px 0;
+}
+
+.side-profile p{
+  color:#aaa;
+  font-size:13px;
+  margin:10px 0;
+}
+
+.side-link{
+  width:100%;
+  margin-top:12px;
+  padding:12px;
+  background:transparent;
+  color:#ffd400;
+  border:1px solid #ffd400;
+  cursor:pointer;
+  font-weight:bold;
+}
+
+/* ================= TOAST ================= */
+
+#toast{
+  position:fixed;
+  bottom:25px;
+  left:50%;
+  transform:translateX(-50%);
+  background:#ffd400;
+  color:#050708;
+  padding:13px 20px;
+  border-radius:4px;
+  font-weight:bold;
+  display:none;
+  z-index:5000;
+}
+
+/* ================= RESPONSIVE ================= */
+
+@media(max-width:1000px){
 
   nav{
     display:none;
   }
 
-  .menu-btn{
+  .menu-button{
     display:block;
-    order:3;
-  }
-
-  .header-actions{
-    margin-left:auto;
   }
 
   .layout{
     grid-template-columns:1fr;
-    padding:10px;
   }
 
-  .layout>.profile{
+  .layout > .profile{
     display:none;
   }
 
@@ -799,36 +886,45 @@ footer{
   .features{
     grid-template-columns:repeat(2,1fr);
   }
+
+  .game-grid,
+  .topup-grid{
+    grid-template-columns:repeat(3,1fr);
+  }
+
+  .selection-grid{
+    grid-template-columns:repeat(2,1fr);
+  }
 }
 
 @media(max-width:600px){
 
   header{
-    min-height:70px;
-    gap:7px;
+    padding:8px 12px;
+    gap:8px;
   }
 
   .logo{
-    width:120px;
+    width:115px;
+    height:55px;
   }
 
   .header-actions{
-    gap:3px;
+    margin-left:auto;
+    gap:8px;
   }
 
   .header-icon{
-    width:34px;
-    height:34px;
     font-size:20px;
   }
 
   .account-btn{
-    padding:9px 10px;
+    padding:9px;
     font-size:10px;
   }
 
   .layout{
-    padding:8px;
+    padding:10px;
   }
 
   .hero{
@@ -840,16 +936,12 @@ footer{
   }
 
   .welcome{
-    font-size:14px;
+    font-size:15px;
   }
 
   .hero-logo{
-    width:92%;
-    max-height:180px;
-  }
-
-  .hero-text{
-    font-size:14px;
+    width:100%;
+    height:210px;
   }
 
   .hero-buttons{
@@ -862,7 +954,7 @@ footer{
 
   .trust-box{
     border-right:0;
-    border-bottom:1px solid #153f40;
+    border-bottom:1px solid #123d3d;
   }
 
   .products{
@@ -875,51 +967,24 @@ footer{
 
   .feature{
     border-right:0;
-    border-bottom:1px solid #153f40;
+    border-bottom:1px solid #123d3d;
+  }
+
+  .game-grid,
+  .topup-grid,
+  .selection-grid,
+  .rating-grid,
+  .contact-options{
+    grid-template-columns:1fr;
+  }
+
+  .topup-section{
+    padding:15px;
   }
 
   footer{
     flex-direction:column;
     text-align:center;
-  }
-
-  .choice-grid{
-    grid-template-columns:1fr 1fr;
-  }
-
-  .stars-choice{
-    grid-template-columns:1fr;
-  }
-
-  .modal-box{
-    padding:18px;
-  }
-
-  .section-heading h2{
-    font-size:18px;
-  }
-}
-
-@media(max-width:430px){
-
-  .header-actions{
-    gap:3px;
-  }
-
-  .account-btn{
-    display:none;
-  }
-
-  .header-icon{
-    font-size:19px;
-  }
-
-  .hero{
-    min-height:360px;
-  }
-
-  .choice{
-    min-height:90px;
   }
 }
 </style>
@@ -927,11 +992,13 @@ footer{
 
 <body>
 
+<!-- ================= HEADER ================= -->
+
 <header>
 
   <button
-    class="menu-btn"
-    onclick="openDrawer()"
+    class="menu-button"
+    onclick="openSideMenu()"
     aria-label="Open menu"
   >
     ☰
@@ -949,15 +1016,15 @@ footer{
       HOME
     </a>
 
-    <a href="#accounts">
+    <a href="#accounts" onclick="openAccounts(event)">
       ACCOUNTS
     </a>
 
-    <a href="#topup">
+    <a href="#topup" onclick="openTopup(event)">
       TOP UP
     </a>
 
-    <a href="#reviews">
+    <a href="#reviews" onclick="openReviews(event)">
       REVIEWS
     </a>
 
@@ -965,22 +1032,25 @@ footer{
 
   <div class="header-actions">
 
-    <button
+    <!-- SEARCH -->
+    <span
       class="header-icon"
       onclick="openSearch()"
-      aria-label="Search"
+      title="Search"
     >
-      ⌕
-    </button>
+      🔍
+    </span>
 
-    <button
+    <!-- CART -->
+    <span
       class="header-icon"
       onclick="openCart()"
-      aria-label="Cart"
+      title="Cart"
     >
       🛒
-    </button>
+    </span>
 
+    <!-- MY ACCOUNT -->
     <button
       class="account-btn"
       onclick="openAdmin()"
@@ -993,9 +1063,103 @@ footer{
 </header>
 
 
-<div class="layout" id="home">
+<!-- ================= MOBILE SIDE MENU ================= -->
 
-<!-- PROFILE -->
+<div
+  id="sideMenu"
+  class="side-menu"
+>
+
+  <div class="side-menu-header">
+
+    <img
+      src="logo.png.jpeg"
+      alt="CRISPY SHOP"
+    >
+
+    <button
+      class="side-close"
+      onclick="closeSideMenu()"
+    >
+      ×
+    </button>
+
+  </div>
+
+  <div class="side-profile">
+
+    <img
+      src="logo.png.jpeg"
+      alt="CRISPY SHOP"
+    >
+
+    <h3>
+      MY PROFILE 👑
+    </h3>
+
+    <p>
+      🏆 LEVEL 17 TRADER
+    </p>
+
+    <p>
+      👤 Trader
+    </p>
+
+    <p>
+      🎮 Gaming Account Seller
+    </p>
+
+    <p>
+      📅 Member Since 2024
+    </p>
+
+    <p>
+      ⭐ Shop Rating
+      <b>5.0</b>
+    </p>
+
+    <p>
+      🛍 Orders Completed
+      <b>250+</b>
+    </p>
+
+    <p>
+      📊 Total Accounts
+      <b>120+</b>
+    </p>
+
+    <p>
+      💰 Total Sales
+      <b>1.2K+</b>
+    </p>
+
+    <p>
+      😊 Happy Customers
+      <b>980+</b>
+    </p>
+
+    <p>
+      ✓ Success Rate
+      <b>99%</b>
+    </p>
+
+    <button
+      class="side-link"
+      onclick="openContact();closeSideMenu()"
+    >
+      💬 CONTACT ME
+    </button>
+
+  </div>
+
+</div>
+
+
+<!-- ================= MAIN ================= -->
+
+<div class="layout">
+
+<!-- DESKTOP PROFILE -->
 
 <aside class="profile">
 
@@ -1022,15 +1186,8 @@ footer{
     <h3>ABOUT</h3>
 
     <p>♙ Trader</p>
-
-    <p>
-      ♙ Gaming Account Seller
-    </p>
-
-    <p>
-      ▣ Member Since<br>
-      2024
-    </p>
+    <p>♙ Gaming Account Seller</p>
+    <p>▣ Member Since<br>2024</p>
 
     <p>
       ☆ Shop Rating
@@ -1038,9 +1195,7 @@ footer{
 
     <div class="stars">
       ★★★★★
-      <span style="color:#fff">
-        5.0
-      </span>
+      <span style="color:#fff">5.0</span>
     </div>
 
     <p>
@@ -1052,42 +1207,25 @@ footer{
 
   <div class="profile-section">
 
-    <h3>
-      SHOP STATS
-    </h3>
+    <h3>SHOP STATS</h3>
 
-    <p>
-      ▣ Total Accounts
-      <b>120+</b>
-    </p>
-
-    <p>
-      ♙ Total Sales
-      <b>1.2K+</b>
-    </p>
-
-    <p>
-      ♙ Happy Customers
-      <b>980+</b>
-    </p>
-
-    <p>
-      ✓ Success Rate
-      <b>99%</b>
-    </p>
+    <p>▣ Total Accounts <b>120+</b></p>
+    <p>♙ Total Sales <b>1.2K+</b></p>
+    <p>♙ Happy Customers <b>980+</b></p>
+    <p>✓ Success Rate <b>99%</b></p>
 
   </div>
 
   <button
     class="contact"
-    onclick="contactMe()"
+    onclick="openContact()"
   >
     💬 CONTACT ME
   </button>
 
   <button
     class="contact whatsapp"
-    onclick="messageMe()"
+    onclick="openWhatsApp()"
   >
     ☘ MESSAGE ME
   </button>
@@ -1095,7 +1233,9 @@ footer{
 </aside>
 
 
-<main>
+<!-- ================= MAIN CONTENT ================= -->
+
+<main id="home">
 
 <!-- HERO -->
 
@@ -1107,6 +1247,7 @@ footer{
       ── WELCOME TO ──
     </div>
 
+    <!-- FULL LOGO -->
     <img
       src="logo.png.jpeg"
       class="hero-logo"
@@ -1114,30 +1255,24 @@ footer{
     >
 
     <p class="hero-text">
-
-      Premium gaming accounts,
-      top ups and more.
-
-      <strong>
-        100% safe, secure &amp; trusted.
-      </strong>
-
+      Premium gaming accounts, top ups and more.
+      <strong>100% safe, secure &amp; trusted.</strong>
     </p>
 
     <div class="hero-buttons">
 
       <button
         class="yellow-btn"
-        onclick="openAccountChoices()"
+        onclick="openAccounts(event)"
       >
         🛍 BROWSE ACCOUNTS
       </button>
 
       <button
         class="outline-btn"
-        onclick="openAccountChoices()"
+        onclick="openTopup(event)"
       >
-        ☆ TOP SELLING
+        ☆ TOP UP
       </button>
 
     </div>
@@ -1152,51 +1287,21 @@ footer{
 <section class="trust">
 
   <div class="trust-box">
-
-    <div class="trust-icon">
-      ♢
-    </div>
-
-    <h3>
-      100% SAFE
-    </h3>
-
-    <p>
-      Secure Transactions
-    </p>
-
+    <div class="trust-icon">♢</div>
+    <h3>100% SAFE</h3>
+    <p>Secure Transactions</p>
   </div>
 
   <div class="trust-box">
-
-    <div class="trust-icon">
-      ϟ
-    </div>
-
-    <h3>
-      INSTANT DELIVERY
-    </h3>
-
-    <p>
-      Get it instantly
-    </p>
-
+    <div class="trust-icon">ϟ</div>
+    <h3>INSTANT DELIVERY</h3>
+    <p>Get it instantly</p>
   </div>
 
   <div class="trust-box">
-
-    <div class="trust-icon">
-      ♧
-    </div>
-
-    <h3>
-      24/7 SUPPORT
-    </h3>
-
-    <p>
-      We're here to help
-    </p>
-
+    <div class="trust-icon">♧</div>
+    <h3>24/7 SUPPORT</h3>
+    <p>We're here to help</p>
   </div>
 
 </section>
@@ -1206,513 +1311,297 @@ footer{
 
 <div class="filters">
 
-  <button
-    class="filter active"
-    onclick="filterProducts('all',this)"
-  >
+  <button class="filter active">
     ALL
   </button>
 
-  <button
-    class="filter"
-    onclick="filterProducts('freefire',this)"
-  >
+  <button class="filter">
     FREE FIRE
   </button>
 
-  <button
-    class="filter"
-    onclick="filterProducts('efootball',this)"
-  >
+  <button class="filter">
     eFOOTBALL
   </button>
 
-  <button
-    class="filter"
-    onclick="filterProducts('codm',this)"
-  >
+  <button class="filter">
     CODM
   </button>
 
-  <button
-    class="filter"
-    onclick="filterProducts('dls',this)"
-  >
+  <button class="filter">
     DLS
   </button>
 
-  <button
-    class="filter"
-    onclick="filterProducts('fcmobile',this)"
-  >
+  <button class="filter">
     FC MOBILE
   </button>
 
 </div>
 
 
-<!-- FEATURED -->
+<!-- ================= ACCOUNTS ================= -->
 
-<div
-  class="section-heading"
+<section
+  class="content-section"
   id="accounts"
 >
 
-  <h2>
-    FEATURED ACCOUNTS
-  </h2>
+  <div class="section-heading">
 
-  <button
-    class="view-all"
-    onclick="openAccountChoices()"
-  >
-    VIEW ALL →
-  </button>
+    <h2>
+      FEATURED ACCOUNTS
+    </h2>
 
-</div>
+    <button
+      class="outline-btn"
+      onclick="openAccounts(event)"
+    >
+      VIEW ALL →
+    </button>
 
-
-<section class="products">
-
-
-<!-- 1 -->
-
-<div
-  class="product"
-  data-game="freefire"
->
-
-  <span class="heart">
-    ♡
-  </span>
-
-  <span class="available">
-    AVAILABLE
-  </span>
-
-  <div class="game">
-    FREE F⚡RE
   </div>
 
-  <h3>
-    Royal Vault 09
-  </h3>
-
-  <div class="details">
-    Level 86 · SEA
-  </div>
-
-  <div class="description">
-    12 Evo Weapons, Booyah Pass
-  </div>
-
-  <div class="price">
-    ₦425,000
-  </div>
-
-  <button
-    class="details-btn"
-    onclick="addToCart('Royal Vault 09','₦425,000')"
-  >
-    ADD TO CART
-  </button>
-
-</div>
-
-
-<!-- 2 -->
-
-<div
-  class="product"
-  data-game="freefire"
->
-
-  <span class="heart">
-    ♡
-  </span>
-
-  <span class="available">
-    AVAILABLE
-  </span>
-
-  <div class="game">
-    FREE F⚡RE
-  </div>
-
-  <h3>
-    Sakura Legend
-  </h3>
-
-  <div class="details">
-    Level 78 · INDIA
-  </div>
-
-  <div class="description">
-    10 Evo Weapons, Rare Bundle
-  </div>
-
-  <div class="price">
-    ₦350,000
-  </div>
-
-  <button
-    class="details-btn"
-    onclick="addToCart('Sakura Legend','₦350,000')"
-  >
-    ADD TO CART
-  </button>
-
-</div>
-
-
-<!-- 3 -->
-
-<div
-  class="product"
-  data-game="efootball"
->
-
-  <span class="heart">
-    ♡
-  </span>
-
-  <span class="available">
-    AVAILABLE
-  </span>
-
-  <div class="game">
-    eFOOTBALL
-  </div>
-
-  <h3>
-    Galaxy Prime
-  </h3>
-
-  <div class="details">
-    Level 71 · BRAZIL
-  </div>
-
-  <div class="description">
-    Elite squad, premium players
-  </div>
-
-  <div class="price">
-    ₦300,000
-  </div>
-
-  <button
-    class="details-btn"
-    onclick="addToCart('Galaxy Prime','₦300,000')"
-  >
-    ADD TO CART
-  </button>
-
-</div>
-
-
-<!-- 4 -->
-
-<div
-  class="product"
-  data-game="codm"
->
-
-  <span class="heart">
-    ♡
-  </span>
-
-  <span class="available">
-    AVAILABLE
-  </span>
-
-  <div class="game">
-    CODM
-  </div>
-
-  <h3>
-    Predator X
-  </h3>
-
-  <div class="details">
-    Level 88 · SEA
-  </div>
-
-  <div class="description">
-    Legendary items, rare skins
-  </div>
-
-  <div class="price">
-    ₦500,000
-  </div>
-
-  <button
-    class="details-btn"
-    onclick="addToCart('Predator X','₦500,000')"
-  >
-    ADD TO CART
-  </button>
-
-</div>
-
-
-<!-- 5 -->
-
-<div
-  class="product"
-  data-game="freefire"
->
-
-  <span class="heart">
-    ♡
-  </span>
-
-  <span class="available">
-    AVAILABLE
-  </span>
-
-  <div class="game">
-    FREE F⚡RE
-  </div>
-
-  <h3>
-    Shadow Ultra
-  </h3>
-
-  <div class="details">
-    Level 65 · INDONESIA
-  </div>
-
-  <div class="description">
-    8 Evo Weapons, Rare Items
-  </div>
-
-  <div class="price">
-    ₦250,000
-  </div>
-
-  <button
-    class="details-btn"
-    onclick="addToCart('Shadow Ultra','₦250,000')"
-  >
-    ADD TO CART
-  </button>
-
-</div>
-
-
-<!-- 6 -->
-
-<div
-  class="product"
-  data-game="efootball"
->
-
-  <span class="heart">
-    ♡
-  </span>
-
-  <span class="available">
-    AVAILABLE
-  </span>
-
-  <div class="game">
-    eFOOTBALL
-  </div>
-
-  <h3>
-    Titan Force
-  </h3>
-
-  <div class="details">
-    Level 80 · MENA
-  </div>
-
-  <div class="description">
-    10 premium players, Elite squad
-  </div>
-
-  <div class="price">
-    ₦380,000
-  </div>
-
-  <button
-    class="details-btn"
-    onclick="addToCart('Titan Force','₦380,000')"
-  >
-    ADD TO CART
-  </button>
-
-</div>
-
-
-<!-- 7 -->
-
-<div
-  class="product"
-  data-game="dls"
->
-
-  <span class="heart">
-    ♡
-  </span>
-
-  <span class="available">
-    AVAILABLE
-  </span>
-
-  <div class="game">
-    DLS
-  </div>
-
-  <h3>
-    Phoenix Rise
-  </h3>
-
-  <div class="details">
-    Level 76 · BANGLADESH
-  </div>
-
-  <div class="description">
-    Premium team, rare players
-  </div>
-
-  <div class="price">
-    ₦320,000
-  </div>
-
-  <button
-    class="details-btn"
-    onclick="addToCart('Phoenix Rise','₦320,000')"
-  >
-    ADD TO CART
-  </button>
-
-</div>
-
-
-<!-- 8 -->
-
-<div
-  class="product"
-  data-game="fcmobile"
->
-
-  <span class="heart">
-    ♡
-  </span>
-
-  <span class="available">
-    AVAILABLE
-  </span>
-
-  <div class="game">
-    FC MOBILE
-  </div>
-
-  <h3>
-    Venom Strike
-  </h3>
-
-  <div class="details">
-    Level 69 · THAILAND
-  </div>
-
-  <div class="description">
-    7 premium players, rare squad
-  </div>
-
-  <div class="price">
-    ₦270,000
-  </div>
-
-  <button
-    class="details-btn"
-    onclick="addToCart('Venom Strike','₦270,000')"
-  >
-    ADD TO CART
-  </button>
-
-</div>
+  <section class="products">
+
+    <div class="product">
+      <span class="heart">♡</span>
+      <span class="available">AVAILABLE</span>
+      <div class="game">FREE F⚡RE</div>
+      <h3>Royal Vault 09</h3>
+      <div class="details">Level 86 · SEA</div>
+      <div class="description">
+        12 Evo Weapons, Booyah Pass
+      </div>
+      <div class="price">₦425,000</div>
+      <button class="details-btn"
+        onclick="addCart('Royal Vault 09',425000)">
+        ADD TO CART
+      </button>
+    </div>
+
+    <div class="product">
+      <span class="heart">♡</span>
+      <span class="available">AVAILABLE</span>
+      <div class="game">FREE F⚡RE</div>
+      <h3>Sakura Legend</h3>
+      <div class="details">Level 78 · INDIA</div>
+      <div class="description">
+        10 Evo Weapons, Rare Bundle
+      </div>
+      <div class="price">₦350,000</div>
+      <button class="details-btn"
+        onclick="addCart('Sakura Legend',350000)">
+        ADD TO CART
+      </button>
+    </div>
+
+    <div class="product">
+      <span class="heart">♡</span>
+      <span class="available">AVAILABLE</span>
+      <div class="game">FREE F⚡RE</div>
+      <h3>Galaxy Prime</h3>
+      <div class="details">Level 71 · BRAZIL</div>
+      <div class="description">
+        9 Evo Weapons, Exclusive Items
+      </div>
+      <div class="price">₦300,000</div>
+      <button class="details-btn"
+        onclick="addCart('Galaxy Prime',300000)">
+        ADD TO CART
+      </button>
+    </div>
+
+    <div class="product">
+      <span class="heart">♡</span>
+      <span class="available">AVAILABLE</span>
+      <div class="game">FREE F⚡RE</div>
+      <h3>Predator X</h3>
+      <div class="details">Level 88 · SEA</div>
+      <div class="description">
+        12 Evo Weapons, Booyah Pass
+      </div>
+      <div class="price">₦500,000</div>
+      <button class="details-btn"
+        onclick="addCart('Predator X',500000)">
+        ADD TO CART
+      </button>
+    </div>
+
+    <div class="product">
+      <span class="heart">♡</span>
+      <span class="available">AVAILABLE</span>
+      <div class="game">FREE F⚡RE</div>
+      <h3>Shadow Ultra</h3>
+      <div class="details">Level 65 · INDONESIA</div>
+      <div class="description">
+        8 Evo Weapons, Rare Items
+      </div>
+      <div class="price">₦250,000</div>
+      <button class="details-btn"
+        onclick="addCart('Shadow Ultra',250000)">
+        ADD TO CART
+      </button>
+    </div>
+
+    <div class="product">
+      <span class="heart">♡</span>
+      <span class="available">AVAILABLE</span>
+      <div class="game">FREE F⚡RE</div>
+      <h3>Titan Force</h3>
+      <div class="details">Level 80 · MENA</div>
+      <div class="description">
+        10 Evo Weapons, Elite Pass
+      </div>
+      <div class="price">₦380,000</div>
+      <button class="details-btn"
+        onclick="addCart('Titan Force',380000)">
+        ADD TO CART
+      </button>
+    </div>
+
+    <div class="product">
+      <span class="heart">♡</span>
+      <span class="available">AVAILABLE</span>
+      <div class="game">FREE F⚡RE</div>
+      <h3>Phoenix Rise</h3>
+      <div class="details">Level 76 · BANGLADESH</div>
+      <div class="description">
+        9 Evo Weapons, Rare Bundle
+      </div>
+      <div class="price">₦320,000</div>
+      <button class="details-btn"
+        onclick="addCart('Phoenix Rise',320000)">
+        ADD TO CART
+      </button>
+    </div>
+
+    <div class="product">
+      <span class="heart">♡</span>
+      <span class="available">AVAILABLE</span>
+      <div class="game">FREE F⚡RE</div>
+      <h3>Venom Strike</h3>
+      <div class="details">Level 69 · THAILAND</div>
+      <div class="description">
+        7 Evo Weapons, Booyah Pass
+      </div>
+      <div class="price">₦270,000</div>
+      <button class="details-btn"
+        onclick="addCart('Venom Strike',270000)">
+        ADD TO CART
+      </button>
+    </div>
+
+  </section>
 
 </section>
 
 
-<!-- FEATURES -->
+<!-- ================= TOP UP SECTION ================= -->
+
+<section
+  class="topup-section"
+  id="topup"
+>
+
+  <div class="section-heading">
+    <h2>TOP UP</h2>
+  </div>
+
+  <p style="color:#aaa;">
+    Choose the game you want to top up.
+    You can add your top-up products and prices here later.
+  </p>
+
+  <div class="topup-grid">
+
+    <button
+      class="topup-choice"
+      onclick="selectTopup('FREE FIRE DIAMONDS')"
+    >
+      <span class="choice-icon">💎</span>
+      FREE FIRE DIAMONDS
+    </button>
+
+    <button
+      class="topup-choice"
+      onclick="selectTopup('eFOOTBALL COINS')"
+    >
+      <span class="choice-icon">⚽</span>
+      eFOOTBALL COINS
+    </button>
+
+    <button
+      class="topup-choice"
+      onclick="selectTopup('CODM CP')"
+    >
+      <span class="choice-icon">🎯</span>
+      CODM CP
+    </button>
+
+    <button
+      class="topup-choice"
+      onclick="selectTopup('DLS DIAMONDS')"
+    >
+      <span class="choice-icon">🔷</span>
+      DLS DIAMONDS
+    </button>
+
+    <button
+      class="topup-choice"
+      onclick="selectTopup('FC MOBILE')"
+    >
+      <span class="choice-icon">⚽</span>
+      FC MOBILE
+    </button>
+
+  </div>
+
+</section>
+
+
+<!-- ================= FEATURES ================= -->
 
 <section class="features">
 
   <div class="feature">
-
-    <div class="feature-icon">
-      ♢
-    </div>
-
-    <h3>
-      100% SECURE
-    </h3>
-
+    <div class="feature-icon">♢</div>
+    <h3>100% SECURE</h3>
     <p>
       All accounts are checked
       and verified.
     </p>
-
   </div>
 
   <div class="feature">
-
-    <div class="feature-icon">
-      ϟ
-    </div>
-
-    <h3>
-      INSTANT DELIVERY
-    </h3>
-
+    <div class="feature-icon">ϟ</div>
+    <h3>INSTANT DELIVERY</h3>
     <p>
       Get your account details
       instantly.
     </p>
-
   </div>
 
   <div class="feature">
-
-    <div class="feature-icon">
-      ♧
-    </div>
-
-    <h3>
-      BEST PRICES
-    </h3>
-
+    <div class="feature-icon">♧</div>
+    <h3>BEST PRICES</h3>
     <p>
       Affordable prices you
       can trust.
     </p>
-
   </div>
 
   <div class="feature">
-
-    <div class="feature-icon">
-      ♧
-    </div>
-
-    <h3>
-      24/7 SUPPORT
-    </h3>
-
+    <div class="feature-icon">♧</div>
+    <h3>24/7 SUPPORT</h3>
     <p>
       We're always here
       to help you.
     </p>
-
   </div>
 
 </section>
 
 
-<!-- FOOTER -->
+<!-- ================= FOOTER ================= -->
 
 <footer>
 
@@ -1725,9 +1614,8 @@ footer{
   <div class="socials">
 
     <a
-      href="https://www.tiktok.com/@_itzcrispy"
+      href="https://www.tiktok.com/@itzcrispy"
       target="_blank"
-      rel="noopener"
     >
       TikTok
     </a>
@@ -1735,7 +1623,6 @@ footer{
     <a
       href="https://x.com/crispysoloss"
       target="_blank"
-      rel="noopener"
     >
       X
     </a>
@@ -1743,7 +1630,6 @@ footer{
     <a
       href="https://t.me/crispyshop_1"
       target="_blank"
-      rel="noopener"
     >
       Telegram
     </a>
@@ -1760,18 +1646,18 @@ footer{
 </div>
 
 
-<!-- ACCOUNT CHOICES -->
+<!-- ================= ACCOUNTS POPUP ================= -->
 
 <div
+  id="accountsModal"
   class="modal"
-  id="accountModal"
 >
 
   <div class="modal-box">
 
     <button
-      class="modal-close"
-      onclick="closeModal('accountModal')"
+      class="close"
+      onclick="closeModal('accountsModal')"
     >
       ×
     </button>
@@ -1784,45 +1670,45 @@ footer{
       Choose the game account you want to browse.
     </p>
 
-    <div class="choice-grid">
+    <div class="selection-grid">
 
       <button
-        class="choice"
+        class="selection-card"
         onclick="chooseGame('FREE FIRE')"
       >
-        <span class="choice-icon">🔥</span>
+        🔥<br><br>
         FREE FIRE
       </button>
 
       <button
-        class="choice"
+        class="selection-card"
         onclick="chooseGame('eFOOTBALL')"
       >
-        <span class="choice-icon">⚽</span>
+        ⚽<br><br>
         eFOOTBALL
       </button>
 
       <button
-        class="choice"
+        class="selection-card"
         onclick="chooseGame('CODM')"
       >
-        <span class="choice-icon">🎯</span>
+        🎯<br><br>
         CODM
       </button>
 
       <button
-        class="choice"
+        class="selection-card"
         onclick="chooseGame('DLS')"
       >
-        <span class="choice-icon">💎</span>
+        🔷<br><br>
         DLS
       </button>
 
       <button
-        class="choice"
+        class="selection-card"
         onclick="chooseGame('FC MOBILE')"
       >
-        <span class="choice-icon">⚽</span>
+        ⚽<br><br>
         FC MOBILE
       </button>
 
@@ -1833,91 +1719,18 @@ footer{
 </div>
 
 
-<!-- TOP UP -->
+<!-- ================= REVIEWS POPUP ================= -->
 
 <div
+  id="reviewsModal"
   class="modal"
-  id="topup"
 >
 
   <div class="modal-box">
 
     <button
-      class="modal-close"
-      onclick="closeModal('topup')"
-    >
-      ×
-    </button>
-
-    <h2>
-      SELECT WHAT YOU WANT TO TOP UP
-    </h2>
-
-    <p>
-      Choose your game currency.
-    </p>
-
-    <div class="choice-grid">
-
-      <button
-        class="choice"
-        onclick="topupChoice('FREE FIRE DIAMONDS')"
-      >
-        <span class="choice-icon">💎</span>
-        FREE FIRE DIAMONDS
-      </button>
-
-      <button
-        class="choice"
-        onclick="topupChoice('eFOOTBALL COINS')"
-      >
-        <span class="choice-icon">🪙</span>
-        eFOOTBALL COINS
-      </button>
-
-      <button
-        class="choice"
-        onclick="topupChoice('CODM CP')"
-      >
-        <span class="choice-icon">🎯</span>
-        CODM CP
-      </button>
-
-      <button
-        class="choice"
-        onclick="topupChoice('DLS DIAMONDS')"
-      >
-        <span class="choice-icon">💎</span>
-        DLS DIAMONDS
-      </button>
-
-      <button
-        class="choice"
-        onclick="topupChoice('FC MOBILE')"
-      >
-        <span class="choice-icon">⚽</span>
-        FC MOBILE
-      </button>
-
-    </div>
-
-  </div>
-
-</div>
-
-
-<!-- REVIEWS -->
-
-<div
-  class="modal"
-  id="reviewModal"
->
-
-  <div class="modal-box">
-
-    <button
-      class="modal-close"
-      onclick="closeModal('reviewModal')"
+      class="close"
+      onclick="closeModal('reviewsModal')"
     >
       ×
     </button>
@@ -1930,50 +1743,45 @@ footer{
       How would you rate your experience?
     </p>
 
-    <div class="stars-choice">
+    <div class="rating-grid">
 
       <button
-        class="star-choice"
-        onclick="sendReview(5)"
+        class="rating-card"
+        onclick="submitRating(5)"
       >
-        ★★★★★
-        <br>
+        <span class="rating-stars">★★★★★</span>
         5 STAR
       </button>
 
       <button
-        class="star-choice"
-        onclick="sendReview(4)"
+        class="rating-card"
+        onclick="submitRating(4)"
       >
-        ★★★★
-        <br>
+        <span class="rating-stars">★★★★</span>
         4 STAR
       </button>
 
       <button
-        class="star-choice"
-        onclick="sendReview(3)"
+        class="rating-card"
+        onclick="submitRating(3)"
       >
-        ★★★
-        <br>
+        <span class="rating-stars">★★★</span>
         3 STAR
       </button>
 
       <button
-        class="star-choice"
-        onclick="sendReview(2)"
+        class="rating-card"
+        onclick="submitRating(2)"
       >
-        ★★
-        <br>
+        <span class="rating-stars">★★</span>
         2 STAR
       </button>
 
       <button
-        class="star-choice"
-        onclick="sendReview(1)"
+        class="rating-card"
+        onclick="submitRating(1)"
       >
-        ★
-        <br>
+        <span class="rating-stars">★</span>
         1 STAR
       </button>
 
@@ -1984,17 +1792,82 @@ footer{
 </div>
 
 
-<!-- SEARCH -->
+<!-- ================= CONTACT POPUP ================= -->
 
 <div
+  id="contactModal"
   class="modal"
-  id="searchModal"
 >
 
   <div class="modal-box">
 
     <button
-      class="modal-close"
+      class="close"
+      onclick="closeModal('contactModal')"
+    >
+      ×
+    </button>
+
+    <h2>
+      CONTACT CRISPY SHOP
+    </h2>
+
+    <p>
+      Choose how you want to contact me.
+    </p>
+
+    <div class="contact-options">
+
+      <a
+        class="contact-option"
+        href="https://wa.me/2347051885555"
+        target="_blank"
+      >
+        💬 WHATSAPP
+      </a>
+
+      <a
+        class="contact-option"
+        href="https://www.tiktok.com/@itzcrispy"
+        target="_blank"
+      >
+        🎵 TIKTOK
+      </a>
+
+      <a
+        class="contact-option"
+        href="https://x.com/crispysoloss"
+        target="_blank"
+      >
+        𝕏 X
+      </a>
+
+      <a
+        class="contact-option"
+        href="https://t.me/crispyshop_1"
+        target="_blank"
+      >
+        ✈ TELEGRAM
+      </a>
+
+    </div>
+
+  </div>
+
+</div>
+
+
+<!-- ================= SEARCH POPUP ================= -->
+
+<div
+  id="searchModal"
+  class="modal"
+>
+
+  <div class="modal-box">
+
+    <button
+      class="close"
       onclick="closeModal('searchModal')"
     >
       ×
@@ -2007,48 +1880,18 @@ footer{
     <input
       id="searchInput"
       class="search-input"
-      type="search"
-      placeholder="Search account, game or item..."
-      oninput="runSearch()"
+      type="text"
+      placeholder="Search accounts, games or top ups..."
+      oninput="performSearch()"
     >
 
-    <p
-      id="searchResult"
-      class="empty"
-    >
-      Type something to search.
-    </p>
+    <div id="searchResults">
 
-  </div>
+      <div class="search-result">
+        Try searching for Free Fire, CODM,
+        eFootball, DLS or FC Mobile.
+      </div>
 
-</div>
-
-
-<!-- CART -->
-
-<div
-  class="modal"
-  id="cartModal"
->
-
-  <div class="modal-box">
-
-    <button
-      class="modal-close"
-      onclick="closeModal('cartModal')"
-    >
-      ×
-    </button>
-
-    <h2>
-      YOUR CART
-    </h2>
-
-    <div
-      id="cartList"
-      class="empty"
-    >
-      Your cart is empty.
     </div>
 
   </div>
@@ -2056,18 +1899,57 @@ footer{
 </div>
 
 
-<!-- ADMIN -->
+<!-- ================= CART POPUP ================= -->
 
 <div
+  id="cartModal"
   class="modal"
-  id="adminModal"
 >
 
-  <div class="modal-box admin-box">
+  <div class="modal-box">
 
     <button
-      class="modal-close"
-      onclick="closeModal('adminModal')"
+      class="close"
+      onclick="closeModal('cartModal')"
+    >
+      ×
+    </button>
+
+    <h2>
+      YOUR CART 🛒
+    </h2>
+
+    <div
+      id="cartList"
+      class="cart-list"
+    >
+      Your cart is empty.
+    </div>
+
+    <div
+      id="cartTotal"
+      class="cart-total"
+    >
+      Total: ₦0
+    </div>
+
+  </div>
+
+</div>
+
+
+<!-- ================= ADMIN ================= -->
+
+<div
+  id="adminMessage"
+  class="modal"
+>
+
+  <div class="modal-box">
+
+    <button
+      class="close"
+      onclick="closeModal('adminMessage')"
     >
       ×
     </button>
@@ -2077,15 +1959,14 @@ footer{
     </h2>
 
     <p>
-      Admin access is protected by
-      Firebase Authentication.
+      Admin access is protected by Firebase Authentication.
     </p>
 
     <button
-      class="outline-btn"
-      onclick="closeModal('adminModal')"
+      class="yellow-btn"
+      onclick="showToast('Firebase admin login can be connected here.')"
     >
-      CLOSE
+      ADMIN LOGIN
     </button>
 
   </div>
@@ -2093,233 +1974,134 @@ footer{
 </div>
 
 
-<!-- MOBILE DRAWER -->
+<div id="toast"></div>
 
-<div
-  class="mobile-drawer"
-  id="drawer"
-  onclick="drawerOutside(event)"
->
 
-  <div class="drawer-panel">
-
-    <div class="drawer-head">
-
-      <strong>
-        CRISPY SHOP
-      </strong>
-
-      <button
-        class="drawer-close"
-        onclick="closeDrawer()"
-      >
-        ×
-      </button>
-
-    </div>
-
-    <div class="profile">
-
-      <div class="profile-title">
-        MY PROFILE 👑
-      </div>
-
-      <img
-        src="logo.png.jpeg"
-        alt="CRISPY SHOP"
-        class="profile-logo"
-      >
-
-      <div class="profile-level">
-        LEVEL 17 TRADER
-      </div>
-
-      <div class="progress">
-        <span></span>
-      </div>
-
-      <div class="profile-section">
-
-        <h3>
-          ABOUT
-        </h3>
-
-        <p>
-          ♙ Trader
-        </p>
-
-        <p>
-          ♙ Gaming Account Seller
-        </p>
-
-        <p>
-          ▣ Member Since<br>
-          2024
-        </p>
-
-        <p>
-          ☆ Shop Rating
-        </p>
-
-        <div class="stars">
-          ★★★★★
-          <span style="color:#fff">
-            5.0
-          </span>
-        </div>
-
-        <p>
-          ♧ Orders Completed<br>
-          250+
-        </p>
-
-      </div>
-
-      <div class="profile-section">
-
-        <h3>
-          SHOP STATS
-        </h3>
-
-        <p>
-          ▣ Total Accounts
-          <b>120+</b>
-        </p>
-
-        <p>
-          ♙ Total Sales
-          <b>1.2K+</b>
-        </p>
-
-        <p>
-          ♙ Happy Customers
-          <b>980+</b>
-        </p>
-
-        <p>
-          ✓ Success Rate
-          <b>99%</b>
-        </p>
-
-      </div>
-
-      <button
-        class="contact"
-        onclick="contactMe()"
-      >
-        💬 CONTACT ME
-      </button>
-
-      <button
-        class="contact whatsapp"
-        onclick="messageMe()"
-      >
-        ☘ MESSAGE ME
-      </button>
-
-    </div>
-
-  </div>
-
-</div>
-
+<!-- ================= JAVASCRIPT ================= -->
 
 <script>
 
-const WHATSAPP = "2347051885555";
-
-const TIKTOK =
-"https://www.tiktok.com/@_itzcrispy";
-
-const X_LINK =
-"https://x.com/crispysoloss";
-
-const TELEGRAM =
-"https://t.me/crispyshop_1";
-
-let cart = [];
-
+/* ================= MODAL HELPERS ================= */
 
 function openModal(id){
-
-  document
-    .getElementById(id)
-    .classList.add("show");
-
+  document.getElementById(id).style.display = "flex";
 }
-
 
 function closeModal(id){
-
-  document
-    .getElementById(id)
-    .classList.remove("show");
-
+  document.getElementById(id).style.display = "none";
 }
 
+window.addEventListener("click",function(e){
 
-/* ACCOUNT */
+  if(e.target.classList.contains("modal")){
+    e.target.style.display = "none";
+  }
 
-function openAccountChoices(){
+});
 
-  openModal("accountModal");
 
+/* ================= ACCOUNTS ================= */
+
+function openAccounts(e){
+
+  if(e){
+    e.preventDefault();
+  }
+
+  openModal("accountsModal");
 }
-
 
 function chooseGame(game){
 
-  closeModal("accountModal");
+  closeModal("accountsModal");
+
+  showToast(game + " accounts selected");
 
   document
     .getElementById("accounts")
     .scrollIntoView({
       behavior:"smooth"
     });
-
-  setTimeout(function(){
-
-    alert(
-      "You selected " +
-      game +
-      ". The account section is ready for browsing."
-    );
-
-  },300);
-
 }
 
 
-/* TOP UP */
+/* ================= TOP UP ================= */
 
-function topupChoice(item){
+function openTopup(e){
 
-  closeModal("topup");
+  if(e){
+    e.preventDefault();
+  }
+
+  document
+    .getElementById("topup")
+    .scrollIntoView({
+      behavior:"smooth"
+    });
+}
+
+function selectTopup(game){
+
+  showToast(game + " selected");
+
+  /*
+    ADD YOUR TOP-UP PRODUCTS HERE LATER.
+    Example:
+
+    Free Fire:
+    100 Diamonds - ₦xxx
+    310 Diamonds - ₦xxx
+
+    eFootball:
+    130 Coins - ₦xxx
+
+    etc.
+  */
+}
+
+
+/* ================= REVIEWS ================= */
+
+function openReviews(e){
+
+  if(e){
+    e.preventDefault();
+  }
+
+  openModal("reviewsModal");
+}
+
+function submitRating(stars){
+
+  closeModal("reviewsModal");
+
+  showToast(
+    "Thank you for rating us " +
+    stars +
+    " star" +
+    (stars > 1 ? "s" : "") +
+    "!"
+  );
+}
+
+
+/* ================= CONTACT ================= */
+
+function openContact(){
+
+  openModal("contactModal");
+}
+
+function openWhatsApp(){
 
   window.open(
-    "https://wa.me/" +
-    WHATSAPP +
-    "?text=" +
-    encodeURIComponent(
-      "Hello Crispy Shop, I want to top up: " +
-      item
-    ),
+    "https://wa.me/2347051885555",
     "_blank"
   );
-
 }
 
 
-/* ADMIN */
-
-function openAdmin(){
-
-  openModal("adminModal");
-
-}
-
-
-/* SEARCH */
+/* ================= SEARCH ================= */
 
 function openSearch(){
 
@@ -2332,423 +2114,229 @@ function openSearch(){
       .focus();
 
   },100);
-
 }
 
+function performSearch(){
 
-function runSearch(){
-
-  const q =
+  const query =
     document
       .getElementById("searchInput")
       .value
       .toLowerCase()
       .trim();
 
-  const result =
-    document.getElementById(
-      "searchResult"
-    );
+  const results =
+    document.getElementById("searchResults");
 
-  if(!q){
+  if(!query){
 
-    result.textContent =
-      "Type something to search.";
+    results.innerHTML = `
+      <div class="search-result">
+        Try searching for Free Fire, CODM,
+        eFootball, DLS or FC Mobile.
+      </div>
+    `;
 
     return;
-
   }
 
+  const items = [
+
+    "Free Fire accounts",
+    "eFootball accounts",
+    "CODM accounts",
+    "DLS accounts",
+    "FC Mobile accounts",
+
+    "Free Fire Diamonds",
+    "eFootball Coins",
+    "CODM CP",
+    "DLS Diamonds",
+    "FC Mobile Top Up"
+
+  ];
+
   const matches =
-    [
-      ...document.querySelectorAll(
-        ".product"
-      )
-    ].filter(function(p){
+    items.filter(item =>
+      item.toLowerCase().includes(query)
+    );
 
-      return p.innerText
-        .toLowerCase()
-        .includes(q);
+  if(matches.length === 0){
 
-    });
+    results.innerHTML = `
+      <div class="search-result">
+        No results found for "${query}".
+      </div>
+    `;
 
+    return;
+  }
 
-  result.innerHTML =
-    matches.length
-
-    ?
-
-    matches.map(function(p){
-
-      return `
-        <div
-          style="
-            padding:10px;
-            border-bottom:1px solid #173d3d;
-            color:#fff
-          "
-        >
-          ${p.querySelector("h3").innerText}
-          —
-          ${p.querySelector(".price").innerText}
-        </div>
-      `;
-
-    }).join("")
-
-    :
-
-    "No matching account found.";
+  results.innerHTML =
+    matches.map(item => `
+      <div
+        class="search-result"
+        onclick="showToast('${item} selected')"
+        style="cursor:pointer"
+      >
+        ${item}
+      </div>
+    `).join("");
 
 }
 
 
-/* CART */
+/* ================= CART ================= */
 
-function openCart(){
+let cart = [];
 
-  renderCart();
-
-  openModal("cartModal");
-
-}
-
-
-function addToCart(name,price){
+function addCart(name,price){
 
   cart.push({
     name:name,
     price:price
   });
 
-  alert(
-    name +
-    " added to cart."
-  );
+  updateCart();
 
-  renderCart();
-
+  showToast(name + " added to cart");
 }
 
+function updateCart(){
 
-function renderCart(){
+  const list =
+    document.getElementById("cartList");
 
-  const box =
-    document.getElementById(
-      "cartList"
-    );
+  const total =
+    document.getElementById("cartTotal");
 
+  if(cart.length === 0){
 
-  if(!cart.length){
+    list.innerHTML =
+      "Your cart is empty.";
 
-    box.innerHTML =
-      '<div class="empty">Your cart is empty.</div>';
+    total.innerHTML =
+      "Total: ₦0";
 
     return;
-
   }
 
+  let sum = 0;
 
-  box.innerHTML =
+  list.innerHTML =
+    cart.map((item,index) => {
 
-    cart.map(function(item,i){
+      sum += item.price;
 
       return `
+        <div style="
+          display:flex;
+          justify-content:space-between;
+          border-bottom:1px solid #123d3d;
+          padding:10px 0;
+        ">
+          <span>${item.name}</span>
 
-        <div class="cart-item">
-
-          <span>
-            ${item.name}
+          <span style="color:#ffd400">
+            ₦${item.price.toLocaleString()}
           </span>
 
-          <strong
-            style="color:#ffd400"
-          >
-            ${item.price}
-          </strong>
-
           <button
-            onclick="removeCart(${i})"
+            onclick="removeCart(${index})"
             style="
-              background:transparent;
-              color:#fff;
-              border:0
+              background:none;
+              border:0;
+              color:#ff5555;
+              cursor:pointer;
             "
           >
             ×
           </button>
-
         </div>
-
       `;
 
-    }).join("")
+    }).join("");
 
-    +
+  total.innerHTML =
+    "Total: ₦" + sum.toLocaleString();
+}
 
-    `
+function removeCart(index){
 
-      <button
-        class="yellow-btn"
-        style="
-          margin-top:18px;
-          width:100%
-        "
-        onclick="checkout()"
-      >
-        CHECKOUT ON WHATSAPP
-      </button>
+  cart.splice(index,1);
 
-    `;
+  updateCart();
+}
 
+function openCart(){
+
+  updateCart();
+
+  openModal("cartModal");
 }
 
 
-function removeCart(i){
+/* ================= ADMIN ================= */
 
-  cart.splice(i,1);
+function openAdmin(){
 
-  renderCart();
-
+  openModal("adminMessage");
 }
 
 
-function checkout(){
+/* ================= SIDE MENU ================= */
 
-  const text =
-    "Hello Crispy Shop, I want to buy:%0A" +
-
-    cart
-      .map(function(x){
-
-        return (
-          "- " +
-          x.name +
-          " (" +
-          x.price +
-          ")"
-        );
-
-      })
-      .join("%0A");
-
-
-  window.open(
-    "https://wa.me/" +
-    WHATSAPP +
-    "?text=" +
-    text,
-    "_blank"
-  );
-
-}
-
-
-/* FILTER */
-
-function filterProducts(game,btn){
+function openSideMenu(){
 
   document
-    .querySelectorAll(".filter")
-    .forEach(function(x){
-
-      x.classList.remove(
-        "active"
-      );
-
-    });
-
-
-  btn.classList.add(
-    "active"
-  );
-
-
-  document
-    .querySelectorAll(".product")
-    .forEach(function(p){
-
-      p.style.display =
-        (
-          game === "all" ||
-          p.dataset.game === game
-        )
-
-        ?
-
-        "block"
-
-        :
-
-        "none";
-
-    });
-
-}
-
-
-/* REVIEWS */
-
-function sendReview(stars){
-
-  closeModal(
-    "reviewModal"
-  );
-
-  const msg =
-    "Hello Crispy Shop, I want to leave a " +
-    stars +
-    " star review.";
-
-
-  window.open(
-    "https://wa.me/" +
-    WHATSAPP +
-    "?text=" +
-    encodeURIComponent(msg),
-    "_blank"
-  );
-
-}
-
-
-/* CONTACT */
-
-function contactMe(){
-
-  window.open(
-    "https://wa.me/" +
-    WHATSAPP +
-    "?text=" +
-    encodeURIComponent(
-      "Hello Crispy Shop, I want to contact you."
-    ),
-    "_blank"
-  );
-
-}
-
-
-function messageMe(){
-
-  window.open(
-    "https://wa.me/" +
-    WHATSAPP +
-    "?text=" +
-    encodeURIComponent(
-      "Hello Crispy Shop, I want to send a message."
-    ),
-    "_blank"
-  );
-
-}
-
-
-/* MOBILE MENU */
-
-function openDrawer(){
-
-  document
-    .getElementById("drawer")
+    .getElementById("sideMenu")
     .classList.add("open");
-
 }
 
-
-function closeDrawer(){
+function closeSideMenu(){
 
   document
-    .getElementById("drawer")
+    .getElementById("sideMenu")
     .classList.remove("open");
-
 }
 
 
-function drawerOutside(e){
+/* ================= TOAST ================= */
 
-  if(
-    e.target.id ===
-    "drawer"
-  ){
+function showToast(message){
 
-    closeDrawer();
+  const toast =
+    document.getElementById("toast");
 
-  }
+  toast.innerText = message;
 
+  toast.style.display = "block";
+
+  setTimeout(function(){
+
+    toast.style.display = "none";
+
+  },2500);
 }
 
 
-/* NAVIGATION */
+/* ================= ACTIVE NAV ================= */
 
 document
   .querySelectorAll("nav a")
-  .forEach(function(a){
+  .forEach(link => {
 
-    a.addEventListener(
-      "click",
-      function(e){
+    link.addEventListener("click",function(){
 
-        const href =
-          a.getAttribute(
-            "href"
-          );
+      document
+        .querySelectorAll("nav a")
+        .forEach(a =>
+          a.classList.remove("active")
+        );
 
+      this.classList.add("active");
 
-        if(
-          href ===
-          "#reviews"
-        ){
-
-          e.preventDefault();
-
-          openModal(
-            "reviewModal"
-          );
-
-        }
-
-
-        else if(
-          href ===
-          "#topup"
-        ){
-
-          e.preventDefault();
-
-          openModal(
-            "topup"
-          );
-
-        }
-
-      }
-    );
-
-  });
-
-
-/* CLOSE MODALS WHEN CLICKING OUTSIDE */
-
-document
-  .querySelectorAll(".modal")
-  .forEach(function(m){
-
-    m.addEventListener(
-      "click",
-      function(e){
-
-        if(
-          e.target === m
-        ){
-
-          m.classList.remove(
-            "show"
-          );
-
-        }
-
-      }
-    );
+    });
 
   });
 
