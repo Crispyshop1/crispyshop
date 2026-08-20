@@ -471,15 +471,13 @@ reader.onload = function (e) {
         <button class="whatsapp-btn">
           💬 Buy on WhatsApp
         </button>
-
+        
       </a>
-
-    `;
-
-
+      
+    };
+reader.readAsDataURL(imageFile);
     const container =
       document.getElementById(game + "Products");
-
 
     const emptyMessage =
       container.querySelector(".empty-message");
