@@ -791,6 +791,10 @@ import {
   const db =
     getFirestore(app);
 const storage = getStorage(app);
+  window.firebaseStorage = storage;
+window.firebaseStorageRef = ref;
+window.firebaseUploadBytes = uploadBytes;
+window.firebaseGetDownloadURL = getDownloadURL;
 
   window.db = db;
   window.firebaseCollection = collection;
