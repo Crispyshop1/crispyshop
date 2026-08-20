@@ -20,6 +20,7 @@ body{
   background:#050708;
   color:#fff;
   font-family:Arial,Helvetica,sans-serif;
+  overflow-x:hidden;
 }
 
 /* ================= HEADER ================= */
@@ -39,6 +40,8 @@ header{
   width:155px;
   height:auto;
   object-fit:contain;
+  mix-blend-mode:screen;
+  filter:drop-shadow(0 0 8px rgba(255,255,255,.18));
 }
 
 nav{
@@ -101,7 +104,7 @@ nav a.active{
   padding:18px;
 }
 
-/* ================= PROFILE ================= */
+/* ================= DESKTOP PROFILE ================= */
 
 .profile{
   border:1px solid #00d9d0;
@@ -110,7 +113,7 @@ nav a.active{
 }
 
 .profile-title{
-  color:#00e5d5;
+  color:#ffd400;
   font-size:14px;
   font-weight:bold;
   margin-bottom:18px;
@@ -126,6 +129,7 @@ nav a.active{
   border:3px solid #ffd400;
   background:#050708;
   padding:10px;
+  mix-blend-mode:screen;
 }
 
 .profile-level{
@@ -196,7 +200,7 @@ nav a.active{
 
 .hero{
   position:relative;
-  min-height:390px;
+  min-height:470px;
   border:1px solid #00d9d0;
   overflow:hidden;
 
@@ -244,11 +248,18 @@ nav a.active{
 }
 
 .hero-logo{
-  width:min(520px,80%);
-  max-height:190px;
+  width:min(650px,90%);
+  max-height:240px;
   margin:20px auto;
   display:block;
   object-fit:contain;
+
+  /*
+    Removes the visible black square
+    around the logo image.
+  */
+  mix-blend-mode:screen;
+  filter:drop-shadow(0 0 12px rgba(255,255,255,.18));
 }
 
 .hero-text{
@@ -304,7 +315,7 @@ nav a.active{
   margin-top:5px;
 }
 
-/* ================= FILTERS ================= */
+/* ================= GAME FILTERS ================= */
 
 .filters{
   display:flex;
@@ -508,6 +519,7 @@ footer{
 
 .footer-logo{
   width:120px;
+  mix-blend-mode:screen;
 }
 
 .socials{
@@ -551,7 +563,7 @@ footer{
   position:fixed;
   inset:0;
 
-  background:rgba(0,0,0,.75);
+  background:rgba(0,0,0,.78);
 
   opacity:0;
   visibility:hidden;
@@ -617,21 +629,20 @@ footer{
 .profile-menu-logo{
   display:block;
 
-  width:150px;
-  max-height:90px;
+  width:190px;
+  max-height:120px;
 
   object-fit:contain;
 
   margin:5px auto 20px;
+
+  mix-blend-mode:screen;
 }
 
 .profile-card{
   border:1px solid #006e70;
-
   background:#05090a;
-
   padding:15px;
-
   min-height:900px;
 }
 
@@ -653,24 +664,8 @@ footer{
   margin-bottom:15px;
 }
 
-.profile-photo{
-  width:155px;
-  height:155px;
-
-  border-radius:50%;
-  overflow:hidden;
-
-  border:3px solid #ffd400;
-
-  margin:0 auto 20px;
-
-  background:#111;
-}
-
-.profile-photo img{
+.profile-menu-logo-small{
   width:100%;
-  height:100%;
-  object-fit:cover;
 }
 
 .menu-level{
@@ -759,13 +754,173 @@ footer{
   border:1px solid #39d353;
 }
 
+/* ==================================================
+   POPUP MENUS
+   ================================================== */
+
+.popup-overlay{
+  position:fixed;
+  inset:0;
+
+  display:none;
+
+  align-items:center;
+  justify-content:center;
+
+  padding:20px;
+
+  background:rgba(0,0,0,.84);
+
+  z-index:10000;
+}
+
+.popup-overlay.show{
+  display:flex;
+}
+
+.popup-box{
+  position:relative;
+
+  width:100%;
+  max-width:400px;
+
+  padding:28px 22px;
+
+  background:
+    linear-gradient(
+      rgba(0,217,208,.07) 1px,
+      transparent 1px
+    ),
+    linear-gradient(
+      90deg,
+      rgba(0,217,208,.07) 1px,
+      transparent 1px
+    ),
+    #070b0d;
+
+  background-size:25px 25px;
+
+  border:1px solid #00d9d0;
+
+  box-shadow:0 0 35px rgba(0,217,208,.2);
+}
+
+.popup-box h2{
+  color:#ffd400;
+  text-align:center;
+  font-size:22px;
+  margin-bottom:8px;
+}
+
+.popup-box p{
+  color:#aaa;
+  text-align:center;
+  font-size:13px;
+  margin-bottom:20px;
+}
+
+.popup-close{
+  position:absolute;
+
+  top:10px;
+  right:10px;
+
+  width:36px;
+  height:36px;
+
+  background:transparent;
+
+  color:#ffd400;
+
+  border:1px solid #ffd400;
+
+  font-size:24px;
+
+  cursor:pointer;
+}
+
+.game-choice{
+  display:block;
+
+  width:100%;
+
+  margin:10px 0;
+
+  padding:15px;
+
+  background:#071114;
+
+  color:#fff;
+
+  border:1px solid #00aaa5;
+
+  font-weight:bold;
+
+  cursor:pointer;
+
+  text-align:left;
+
+  transition:.2s;
+}
+
+.game-choice:hover{
+  background:#ffd400;
+  color:#050708;
+  border-color:#ffd400;
+}
+
+.rating-choice{
+  display:flex;
+
+  width:100%;
+
+  align-items:center;
+  justify-content:space-between;
+
+  margin:9px 0;
+
+  padding:13px 16px;
+
+  background:#071114;
+
+  border:1px solid #00aaa5;
+
+  color:#ffd400;
+
+  font-size:20px;
+
+  cursor:pointer;
+}
+
+.rating-choice span{
+  color:#fff;
+  font-size:12px;
+  font-weight:bold;
+}
+
+.rating-choice:hover{
+  background:#ffd400;
+  color:#050708;
+}
+
+.rating-choice:hover span{
+  color:#050708;
+}
+
+#ratingMessage{
+  text-align:center;
+  color:#00e5d5;
+  font-weight:bold;
+  margin-top:15px;
+}
+
 /* ================= ADMIN ================= */
 
 #adminMessage{
   display:none;
   position:fixed;
   inset:0;
-  z-index:9999;
+  z-index:11000;
   background:rgba(0,0,0,.85);
   align-items:center;
   justify-content:center;
@@ -862,7 +1017,7 @@ footer{
   }
 
   .hero{
-    min-height:350px;
+    min-height:400px;
   }
 
   .hero-content{
@@ -874,7 +1029,9 @@ footer{
   }
 
   .hero-logo{
-    width:90%;
+    width:100%;
+    max-height:220px;
+    margin:20px auto;
   }
 
   .hero-buttons{
@@ -926,21 +1083,18 @@ footer{
     height:44px;
   }
 
+  .popup-box{
+    max-width:350px;
+    padding:25px 18px;
+  }
+
 }
 
-/* 9:16 PHONE FRIENDLY */
-
-@media(
-  max-width:500px
-){
+@media(max-width:500px){
 
   body{
     width:100%;
     overflow-x:hidden;
-  }
-
-  header{
-    gap:8px;
   }
 
   .layout{
@@ -961,7 +1115,9 @@ footer{
 
 <body>
 
-<!-- ================= HEADER ================= -->
+<!-- ==================================================
+     HEADER
+     ================================================== -->
 
 <header>
 
@@ -972,18 +1128,43 @@ footer{
   >
 
   <nav>
-    <a href="#" class="active">HOME</a>
-    <a href="#accounts">ACCOUNTS</a>
-    <a href="#">TOP UP</a>
-    <a href="#games">GAMES</a>
-    <a href="#">REVIEWS</a>
-    <a href="#">FAQ</a>
+
+    <a href="#" class="active">
+      HOME
+    </a>
+
+    <a
+      href="#"
+      onclick="openAccountMenu();return false;"
+    >
+      ACCOUNTS
+    </a>
+
+    <a
+      href="#"
+      onclick="openTopupMenu();return false;"
+    >
+      TOP UP
+    </a>
+
+    <a
+      href="#"
+      onclick="openReviewMenu();return false;"
+    >
+      REVIEWS
+    </a>
+
   </nav>
 
   <div class="header-actions">
 
-    <span class="header-icon">⌕</span>
-    <span class="header-icon">🛒</span>
+    <span class="header-icon">
+      ⌕
+    </span>
+
+    <span class="header-icon">
+      🛒
+    </span>
 
     <button
       class="account-btn"
@@ -997,7 +1178,9 @@ footer{
 </header>
 
 
-<!-- ================= THREE LINE BUTTON ================= -->
+<!-- ==================================================
+     THREE-LINE PROFILE BUTTON
+     ================================================== -->
 
 <button
   class="menu-button"
@@ -1007,7 +1190,6 @@ footer{
   ☰
 </button>
 
-
 <div
   id="profileOverlay"
   class="profile-overlay"
@@ -1015,7 +1197,9 @@ footer{
 ></div>
 
 
-<!-- ================= PROFILE SLIDE MENU ================= -->
+<!-- ==================================================
+     PROFILE SLIDE-OUT
+     ================================================== -->
 
 <aside
   id="profileMenu"
@@ -1044,18 +1228,19 @@ footer{
 
     <div class="yellow-line"></div>
 
-    <!--
-      CHANGE profile.jpg TO YOUR
-      ACTUAL PROFILE IMAGE FILE.
-    -->
+    <!-- YOUR LOGO IS YOUR PROFILE -->
 
     <div class="profile-photo">
-
       <img
-        src="profile.jpg"
-        alt="My Profile"
+        src="logo.png.jpeg"
+        alt="CRISPY SHOP"
+        style="
+          width:100%;
+          height:100%;
+          object-fit:contain;
+          mix-blend-mode:screen;
+        "
       >
-
     </div>
 
     <div class="menu-level">
@@ -1072,21 +1257,28 @@ footer{
       68%
     </div>
 
-
     <div class="menu-profile-section">
 
-      <h3>ABOUT</h3>
+      <h3>
+        ABOUT
+      </h3>
 
-      <p>♧ &nbsp; Trader</p>
+      <p>
+        ♧ &nbsp; Trader
+      </p>
 
-      <p>♧ &nbsp; Gaming Account Seller</p>
+      <p>
+        ♧ &nbsp; Gaming Account Seller
+      </p>
 
       <p>
         ▣ &nbsp; Member Since<br>
         &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;2024
       </p>
 
-      <p>☆ &nbsp; Shop Rating</p>
+      <p>
+        ☆ &nbsp; Shop Rating
+      </p>
 
       <div class="menu-rating">
         ★★★★★
@@ -1100,33 +1292,41 @@ footer{
 
     </div>
 
-
     <div class="menu-profile-section">
 
-      <h3>SHOP STATS</h3>
+      <h3>
+        SHOP STATS
+      </h3>
 
       <p>
         ▣ &nbsp; Total Accounts
-        <span class="menu-stat">120+</span>
+        <span class="menu-stat">
+          120+
+        </span>
       </p>
 
       <p>
         ♙ &nbsp; Total Sales
-        <span class="menu-stat">1.2K+</span>
+        <span class="menu-stat">
+          1.2K+
+        </span>
       </p>
 
       <p>
         ♧ &nbsp; Happy Customers
-        <span class="menu-stat">980+</span>
+        <span class="menu-stat">
+          980+
+        </span>
       </p>
 
       <p>
         ♡ &nbsp; Success Rate
-        <span class="menu-stat">99%</span>
+        <span class="menu-stat">
+          99%
+        </span>
       </p>
 
     </div>
-
 
     <button class="menu-contact">
       💬 &nbsp; CONTACT ME
@@ -1141,12 +1341,16 @@ footer{
 </aside>
 
 
-<!-- ================= MAIN LAYOUT ================= -->
+<!-- ==================================================
+     MAIN LAYOUT
+     ================================================== -->
 
 <div class="layout">
 
 
-<!-- DESKTOP PROFILE -->
+<!-- ==================================================
+     DESKTOP PROFILE
+     ================================================== -->
 
 <aside class="profile">
 
@@ -1170,22 +1374,32 @@ footer{
 
   <div class="profile-section">
 
-    <h3>ABOUT</h3>
+    <h3>
+      ABOUT
+    </h3>
 
-    <p>♙ Trader</p>
+    <p>
+      ♙ Trader
+    </p>
 
-    <p>♙ Gaming Account Seller</p>
+    <p>
+      ♙ Gaming Account Seller
+    </p>
 
     <p>
       ▣ Member Since<br>
       2024
     </p>
 
-    <p>☆ Shop Rating</p>
+    <p>
+      ☆ Shop Rating
+    </p>
 
     <div class="stars">
       ★★★★★
-      <span style="color:#fff">5.0</span>
+      <span style="color:#fff">
+        5.0
+      </span>
     </div>
 
     <p>
@@ -1195,10 +1409,11 @@ footer{
 
   </div>
 
-
   <div class="profile-section">
 
-    <h3>SHOP STATS</h3>
+    <h3>
+      SHOP STATS
+    </h3>
 
     <p>
       ▣ Total Accounts
@@ -1222,7 +1437,6 @@ footer{
 
   </div>
 
-
   <button class="contact">
     💬 CONTACT ME
   </button>
@@ -1234,7 +1448,9 @@ footer{
 </aside>
 
 
-<!-- ================= MAIN ================= -->
+<!-- ==================================================
+     MAIN
+     ================================================== -->
 
 <main>
 
@@ -1282,13 +1498,17 @@ footer{
 </section>
 
 
-<!-- ================= TRUST ================= -->
+<!-- ==================================================
+     TRUST
+     ================================================== -->
 
 <section class="trust">
 
   <div class="trust-box">
 
-    <div class="trust-icon">♢</div>
+    <div class="trust-icon">
+      ♢
+    </div>
 
     <h3>
       100% SAFE
@@ -1300,10 +1520,11 @@ footer{
 
   </div>
 
-
   <div class="trust-box">
 
-    <div class="trust-icon">ϟ</div>
+    <div class="trust-icon">
+      ϟ
+    </div>
 
     <h3>
       INSTANT DELIVERY
@@ -1315,10 +1536,11 @@ footer{
 
   </div>
 
-
   <div class="trust-box">
 
-    <div class="trust-icon">♧</div>
+    <div class="trust-icon">
+      ♧
+    </div>
 
     <h3>
       24/7 SUPPORT
@@ -1333,7 +1555,9 @@ footer{
 </section>
 
 
-<!-- ================= GAME FILTERS ================= -->
+<!-- ==================================================
+     GAME FILTERS
+     ================================================== -->
 
 <div
   class="filters"
@@ -1367,7 +1591,9 @@ footer{
 </div>
 
 
-<!-- ================= FEATURED ================= -->
+<!-- ==================================================
+     FEATURED ACCOUNTS
+     ================================================== -->
 
 <div
   class="section-heading"
@@ -1388,11 +1614,13 @@ footer{
 <section class="products">
 
 
-<!-- ACCOUNT 1 -->
+<!-- 1 -->
 
 <div class="product">
 
-  <span class="heart">♡</span>
+  <span class="heart">
+    ♡
+  </span>
 
   <span class="available">
     AVAILABLE
@@ -1425,11 +1653,13 @@ footer{
 </div>
 
 
-<!-- ACCOUNT 2 -->
+<!-- 2 -->
 
 <div class="product">
 
-  <span class="heart">♡</span>
+  <span class="heart">
+    ♡
+  </span>
 
   <span class="available">
     AVAILABLE
@@ -1462,11 +1692,13 @@ footer{
 </div>
 
 
-<!-- ACCOUNT 3 -->
+<!-- 3 -->
 
 <div class="product">
 
-  <span class="heart">♡</span>
+  <span class="heart">
+    ♡
+  </span>
 
   <span class="available">
     AVAILABLE
@@ -1499,11 +1731,13 @@ footer{
 </div>
 
 
-<!-- ACCOUNT 4 -->
+<!-- 4 -->
 
 <div class="product">
 
-  <span class="heart">♡</span>
+  <span class="heart">
+    ♡
+  </span>
 
   <span class="available">
     AVAILABLE
@@ -1536,11 +1770,13 @@ footer{
 </div>
 
 
-<!-- ACCOUNT 5 -->
+<!-- 5 -->
 
 <div class="product">
 
-  <span class="heart">♡</span>
+  <span class="heart">
+    ♡
+  </span>
 
   <span class="available">
     AVAILABLE
@@ -1573,11 +1809,13 @@ footer{
 </div>
 
 
-<!-- ACCOUNT 6 -->
+<!-- 6 -->
 
 <div class="product">
 
-  <span class="heart">♡</span>
+  <span class="heart">
+    ♡
+  </span>
 
   <span class="available">
     AVAILABLE
@@ -1610,11 +1848,13 @@ footer{
 </div>
 
 
-<!-- ACCOUNT 7 -->
+<!-- 7 -->
 
 <div class="product">
 
-  <span class="heart">♡</span>
+  <span class="heart">
+    ♡
+  </span>
 
   <span class="available">
     AVAILABLE
@@ -1647,11 +1887,13 @@ footer{
 </div>
 
 
-<!-- ACCOUNT 8 -->
+<!-- 8 -->
 
 <div class="product">
 
-  <span class="heart">♡</span>
+  <span class="heart">
+    ♡
+  </span>
 
   <span class="available">
     AVAILABLE
@@ -1686,7 +1928,9 @@ footer{
 </section>
 
 
-<!-- ================= FEATURES ================= -->
+<!-- ==================================================
+     FEATURES
+     ================================================== -->
 
 <section class="features">
 
@@ -1707,7 +1951,6 @@ footer{
 
   </div>
 
-
   <div class="feature">
 
     <div class="feature-icon">
@@ -1725,7 +1968,6 @@ footer{
 
   </div>
 
-
   <div class="feature">
 
     <div class="feature-icon">
@@ -1742,7 +1984,6 @@ footer{
     </p>
 
   </div>
-
 
   <div class="feature">
 
@@ -1764,7 +2005,9 @@ footer{
 </section>
 
 
-<!-- ================= FOOTER ================= -->
+<!-- ==================================================
+     FOOTER
+     ================================================== -->
 
 <footer>
 
@@ -1788,11 +2031,224 @@ footer{
 </footer>
 
 </main>
+</div>
+
+
+<!-- ==================================================
+     ACCOUNT GAME POPUP
+     ================================================== -->
+
+<div
+  id="accountMenu"
+  class="popup-overlay"
+  onclick="closePopupFromOverlay(event,'accountMenu')"
+>
+
+  <div
+    class="popup-box"
+    onclick="event.stopPropagation()"
+  >
+
+    <button
+      class="popup-close"
+      onclick="closeAllPopups()"
+    >
+      ×
+    </button>
+
+    <h2>
+      SELECT GAME
+    </h2>
+
+    <p>
+      Choose the game account you want to browse.
+    </p>
+
+    <button class="game-choice">
+      🔥 FREE FIRE
+    </button>
+
+    <button class="game-choice">
+      ⚽ eFOOTBALL
+    </button>
+
+    <button class="game-choice">
+      🎯 CODM
+    </button>
+
+    <button class="game-choice">
+      ⚽ FC MOBILE
+    </button>
+
+    <button class="game-choice">
+      💎 DLS
+    </button>
+
+  </div>
 
 </div>
 
 
-<!-- ================= ADMIN MESSAGE ================= -->
+<!-- ==================================================
+     TOP UP POPUP
+     ================================================== -->
+
+<div
+  id="topupMenu"
+  class="popup-overlay"
+  onclick="closePopupFromOverlay(event,'topupMenu')"
+>
+
+  <div
+    class="popup-box"
+    onclick="event.stopPropagation()"
+  >
+
+    <button
+      class="popup-close"
+      onclick="closeAllPopups()"
+    >
+      ×
+    </button>
+
+    <h2>
+      TOP UP
+    </h2>
+
+    <p>
+      Select what you want to top up.
+    </p>
+
+    <button class="game-choice">
+      💎 FREE FIRE DIAMONDS
+    </button>
+
+    <button class="game-choice">
+      🪙 eFOOTBALL COINS
+    </button>
+
+    <button class="game-choice">
+      🎯 CODM CP
+    </button>
+
+    <button class="game-choice">
+      💎 DLS DIAMONDS
+    </button>
+
+    <button class="game-choice">
+      ⚽ FC MOBILE
+    </button>
+
+  </div>
+
+</div>
+
+
+<!-- ==================================================
+     REVIEW POPUP
+     ================================================== -->
+
+<div
+  id="reviewMenu"
+  class="popup-overlay"
+  onclick="closePopupFromOverlay(event,'reviewMenu')"
+>
+
+  <div
+    class="popup-box"
+    onclick="event.stopPropagation()"
+  >
+
+    <button
+      class="popup-close"
+      onclick="closeAllPopups()"
+    >
+      ×
+    </button>
+
+    <h2>
+      RATE CRISPY SHOP
+    </h2>
+
+    <p>
+      How would you rate your experience?
+    </p>
+
+    <button
+      class="rating-choice"
+      onclick="selectRating(5)"
+    >
+      <span style="color:#ffd400">
+        ★★★★★
+      </span>
+
+      <span>
+        5 STAR
+      </span>
+    </button>
+
+    <button
+      class="rating-choice"
+      onclick="selectRating(4)"
+    >
+      <span style="color:#ffd400">
+        ★★★★☆
+      </span>
+
+      <span>
+        4 STAR
+      </span>
+    </button>
+
+    <button
+      class="rating-choice"
+      onclick="selectRating(3)"
+    >
+      <span style="color:#ffd400">
+        ★★★☆☆
+      </span>
+
+      <span>
+        3 STAR
+      </span>
+    </button>
+
+    <button
+      class="rating-choice"
+      onclick="selectRating(2)"
+    >
+      <span style="color:#ffd400">
+        ★★☆☆☆
+      </span>
+
+      <span>
+        2 STAR
+      </span>
+    </button>
+
+    <button
+      class="rating-choice"
+      onclick="selectRating(1)"
+    >
+      <span style="color:#ffd400">
+        ★☆☆☆☆
+      </span>
+
+      <span>
+        1 STAR
+      </span>
+    </button>
+
+    <div id="ratingMessage"></div>
+
+  </div>
+
+</div>
+
+
+<!-- ==================================================
+     ADMIN
+     ================================================== -->
 
 <div id="adminMessage">
 
@@ -1826,9 +2282,13 @@ footer{
 </div>
 
 
-<!-- ================= JAVASCRIPT ================= -->
+<!-- ==================================================
+     JAVASCRIPT
+     ================================================== -->
 
 <script>
+
+/* ================= ADMIN ================= */
 
 function openAdmin(){
 
@@ -1838,7 +2298,6 @@ function openAdmin(){
 
 }
 
-
 function closeAdmin(){
 
   document
@@ -1847,6 +2306,8 @@ function closeAdmin(){
 
 }
 
+
+/* ================= PROFILE MENU ================= */
 
 function toggleProfileMenu(){
 
@@ -1863,13 +2324,112 @@ function toggleProfileMenu(){
 }
 
 
-/* Close profile menu with ESC */
+/* ================= POPUPS ================= */
+
+function openAccountMenu(){
+
+  closeAllPopups();
+
+  document
+    .getElementById("accountMenu")
+    .classList.add("show");
+
+}
+
+function openTopupMenu(){
+
+  closeAllPopups();
+
+  document
+    .getElementById("topupMenu")
+    .classList.add("show");
+
+}
+
+function openReviewMenu(){
+
+  closeAllPopups();
+
+  document
+    .getElementById("reviewMenu")
+    .classList.add("show");
+
+}
+
+function closeAllPopups(){
+
+  document
+    .querySelectorAll(".popup-overlay")
+    .forEach(function(popup){
+
+      popup.classList.remove("show");
+
+    });
+
+}
+
+function closePopupFromOverlay(event,id){
+
+  if(event.target.id === id){
+
+    document
+      .getElementById(id)
+      .classList.remove("show");
+
+  }
+
+}
+
+
+/* ================= RATING ================= */
+
+function selectRating(stars){
+
+  document
+    .getElementById("ratingMessage")
+    .textContent =
+      "Thank you for your " +
+      stars +
+      "-star rating! ⭐";
+
+}
+
+
+/* ================= GAME FILTER ================= */
+
+document
+  .querySelectorAll(".filter")
+  .forEach(function(button){
+
+    button.addEventListener(
+      "click",
+      function(){
+
+        document
+          .querySelectorAll(".filter")
+          .forEach(function(btn){
+
+            btn.classList.remove("active");
+
+          });
+
+        this.classList.add("active");
+
+      }
+    );
+
+  });
+
+
+/* ================= ESC KEY ================= */
 
 document.addEventListener(
   "keydown",
   function(event){
 
     if(event.key === "Escape"){
+
+      closeAllPopups();
 
       const menu =
         document.getElementById("profileMenu");
@@ -1885,30 +2445,6 @@ document.addEventListener(
 
   }
 );
-
-
-/* Game filter visual selection */
-
-document
-  .querySelectorAll(".filter")
-  .forEach(function(button){
-
-    button.addEventListener(
-      "click",
-      function(){
-
-        document
-          .querySelectorAll(".filter")
-          .forEach(function(btn){
-            btn.classList.remove("active");
-          });
-
-        this.classList.add("active");
-
-      }
-    );
-
-  });
 
 </script>
 
