@@ -762,7 +762,11 @@ import {
   uploadBytes,
   getDownloadURL
 } from "https://www.gstatic.com/firebasejs/12.../firebase-storage.js";
-
+import {
+  getAuth,
+  signInWithEmailAndPassword,
+  onAuthStateChanged
+} from "https://www.gstatic.com/firebasejs/12.0.0/firebase-auth.js";
   const firebaseConfig = {
 
     apiKey:
