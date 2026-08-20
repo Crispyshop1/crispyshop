@@ -860,6 +860,74 @@ serverTimestampserverTimestamp
   window.firebaseCollection = collection;
 window.firebaseAddDoc = addDoc;
 
+async function loadAccounts() {
+  try {
+    const snapshot = await window.firebaseGetDocs(
+      window.firebaseCollection(window.db, "accounts")
+    );
+
+    snapshot.forEach((doc) => {
+      const account = doc.data();
+
+      const container =
+        document.getElementById(account.game + "Products");
+
+      if (!container) return;
+
+      const emptyMessage =
+        container.querySelector(".empty-message");
+
+      if (emptyMessage) {
+        emptyMessage.remove();
+      }
+
+      const product =
+        document.createElement("div");
+
+      product.className = "product";
+
+      const whatsappMessage =
+        "Hello Crispy, I would like to purchase your " +
+        account.name +
+        " account.";
+
+      const whatsappLink =
+        "https://wa.me/2347051885555?text=" +
+        encodeURIComponent(whatsappMessage);
+
+      product.innerHTML = `
+        <img src="${account.image}" alt="${account.name}">
+
+        <h3>${account.name}</h3>
+
+        <p class="price">
+          ₦${Number(account.price).toLocaleString()}
+        </p>
+
+        <p class="available">
+          ● AVAILABLE
+        </p>
+
+        <a
+          href="${whatsappLink}"
+          target="_blank"
+          rel="noopener noreferrer"
+        >
+          <button class="whatsapp-btn" type="button">
+            💬 Buy on WhatsApp
+          </button>
+        </a>
+      `;
+
+      container.appendChild(product);
+    });
+
+  } catch (error) {
+    console.error("Could not load accounts:", error);
+  }
+}
+
+loadAccounts();
 </script>
 
 
