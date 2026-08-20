@@ -2,571 +2,633 @@
 <html lang="en">
 <head>
 <meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="viewport" content="width=device-width,initial-scale=1.0">
 <title>CRISPY SHOP</title>
 
 <style>
-* {
-  box-sizing: border-box;
-  margin: 0;
-  padding: 0;
+*{box-sizing:border-box;margin:0;padding:0}
+
+body{
+  background:#050708;
+  color:#fff;
+  font-family:Arial,Helvetica,sans-serif;
 }
 
-body {
-  background: #050708;
-  color: #fff;
-  font-family: Arial, Helvetica, sans-serif;
+header{
+  min-height:80px;
+  display:flex;
+  align-items:center;
+  justify-content:space-between;
+  gap:20px;
+  padding:10px 28px;
+  border-bottom:1px solid #00d9d0;
+  background:#050708;
 }
 
-/* ================= HEADER ================= */
-
-header {
-  height: 80px;
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  padding: 10px 28px;
-  border-bottom: 1px solid #00d9d0;
-  background: #050708;
+.logo{
+  width:155px;
+  height:auto;
+  object-fit:contain;
 }
 
-.logo {
-  width: 155px;
-  height: auto;
+nav{
+  display:flex;
+  gap:28px;
+  flex:1;
+  justify-content:center;
 }
 
-nav {
-  display: flex;
-  gap: 32px;
-}
-
-nav a {
-  color: #fff;
-  text-decoration: none;
-  font-weight: bold;
-  font-size: 14px;
+nav a{
+  color:#fff;
+  text-decoration:none;
+  font-size:13px;
+  font-weight:bold;
 }
 
 nav a:hover,
-nav a.active {
-  color: #ffd400;
+nav a.active{
+  color:#ffd400;
 }
 
-.header-actions {
-  display: flex;
-  align-items: center;
-  gap: 18px;
+.header-actions{
+  display:flex;
+  align-items:center;
+  gap:12px;
 }
 
-.search {
-  color: #00e5d5;
-  font-size: 24px;
+.header-icon{
+  color:#00e5d5;
+  font-size:22px;
 }
 
-.cart {
-  color: #00e5d5;
-  font-size: 24px;
+.account-btn,
+.yellow-btn{
+  background:#ffd400;
+  color:#050708;
+  border:1px solid #ffd400;
+  padding:12px 18px;
+  border-radius:4px;
+  font-weight:bold;
+  cursor:pointer;
 }
 
-.account-btn {
-  border: 1px solid #ffd400;
-  background: transparent;
-  color: #ffd400;
-  padding: 12px 18px;
-  border-radius: 4px;
-  font-weight: bold;
+.outline-btn{
+  background:transparent;
+  color:#ffd400;
+  border:1px solid #ffd400;
+  padding:12px 18px;
+  border-radius:4px;
+  font-weight:bold;
+  cursor:pointer;
 }
 
-/* ================= LAYOUT ================= */
-
-.layout {
-  display: grid;
-  grid-template-columns: 250px 1fr;
-  gap: 18px;
-  padding: 18px;
+.layout{
+  display:grid;
+  grid-template-columns:250px 1fr;
+  gap:18px;
+  padding:18px;
 }
 
-/* ================= PROFILE ================= */
+/* PROFILE */
 
-.profile {
-  border: 1px solid #00d9d0;
-  background: #070b0d;
-  padding: 18px;
-  min-height: 820px;
+.profile{
+  border:1px solid #00d9d0;
+  background:#070b0d;
+  padding:18px;
 }
 
-.profile-title {
-  color: #00e5d5;
-  font-size: 15px;
-  font-weight: bold;
-  margin-bottom: 18px;
+.profile-title{
+  color:#00e5d5;
+  font-size:14px;
+  font-weight:bold;
+  margin-bottom:18px;
 }
 
-.profile-logo {
-  width: 175px;
-  height: 175px;
-  margin: auto;
-  display: block;
-  object-fit: contain;
-  border-radius: 50%;
-  border: 3px solid #ffd400;
-  background: #050708;
-  padding: 10px;
+.profile-logo{
+  width:175px;
+  height:175px;
+  margin:auto;
+  display:block;
+  object-fit:contain;
+  border-radius:50%;
+  border:3px solid #ffd400;
+  background:#050708;
+  padding:10px;
 }
 
-.profile-level {
-  color: #00e5d5;
-  font-weight: bold;
-  margin-top: 20px;
+.profile-level{
+  color:#00e5d5;
+  font-weight:bold;
+  margin-top:20px;
 }
 
-.progress {
-  height: 5px;
-  background: #20282b;
-  margin-top: 10px;
+.progress{
+  height:5px;
+  background:#20282b;
+  margin-top:10px;
 }
 
-.progress span {
-  display: block;
-  width: 68%;
-  height: 100%;
-  background: #ffd400;
+.progress span{
+  display:block;
+  width:68%;
+  height:100%;
+  background:#ffd400;
 }
 
-.profile-section {
-  border-top: 1px solid #123d3d;
-  margin-top: 20px;
-  padding-top: 18px;
+.profile-section{
+  border-top:1px solid #123d3d;
+  margin-top:20px;
+  padding-top:18px;
 }
 
-.profile-section h3 {
-  color: #00e5d5;
-  font-size: 14px;
-  margin-bottom: 12px;
+.profile-section h3{
+  color:#00e5d5;
+  font-size:14px;
+  margin-bottom:12px;
 }
 
-.profile-section p {
-  color: #b7c0c3;
-  margin: 10px 0;
-  font-size: 14px;
+.profile-section p{
+  color:#b7c0c3;
+  margin:10px 0;
+  font-size:13px;
+  line-height:1.5;
 }
 
-.stars {
-  color: #ffd400;
-  letter-spacing: 2px;
+.stars{
+  color:#ffd400;
+  letter-spacing:2px;
 }
 
-.contact {
-  width: 100%;
-  padding: 12px;
-  margin-top: 12px;
-  background: transparent;
-  border: 1px solid #ffd400;
-  color: #ffd400;
-  font-weight: bold;
+.contact{
+  width:100%;
+  padding:12px;
+  margin-top:12px;
+  background:transparent;
+  border:1px solid #ffd400;
+  color:#ffd400;
+  font-weight:bold;
+  cursor:pointer;
 }
 
-.whatsapp {
-  border-color: #21d86b;
-  color: #21d86b;
+.whatsapp{
+  border-color:#21d86b;
+  color:#21d86b;
 }
 
-/* ================= MAIN ================= */
+/* HERO */
 
-main {
-  min-width: 0;
-}
-
-/* ================= HERO ================= */
-
-.hero {
-  position: relative;
-  min-height: 390px;
-  border: 1px solid #00d9d0;
-  overflow: hidden;
+.hero{
+  position:relative;
+  min-height:390px;
+  border:1px solid #00d9d0;
+  overflow:hidden;
 
   background:
-    linear-gradient(rgba(0, 217, 208, .10) 1px, transparent 1px),
-    linear-gradient(90deg, rgba(0, 217, 208, .10) 1px, transparent 1px),
+    linear-gradient(
+      rgba(0,217,208,.10) 1px,
+      transparent 1px
+    ),
+    linear-gradient(
+      90deg,
+      rgba(0,217,208,.10) 1px,
+      transparent 1px
+    ),
     #050a0b;
 
-  background-size: 40px 40px;
+  background-size:40px 40px;
 }
 
-.hero::before {
-  content: "";
-  position: absolute;
-  inset: 0;
+.hero:after{
+  content:"";
+  position:absolute;
+  inset:0;
+  background:radial-gradient(
+    circle at 75% 50%,
+    rgba(0,229,213,.20),
+    transparent 38%
+  );
+  pointer-events:none;
+}
+
+.hero-content{
+  position:relative;
+  z-index:2;
+  padding:35px;
+  text-align:center;
+}
+
+.welcome{
+  color:#00e5d5;
+  font-size:20px;
+  letter-spacing:3px;
+  font-weight:bold;
+}
+
+.hero-logo{
+  width:min(520px,80%);
+  max-height:190px;
+  margin:20px auto;
+  display:block;
+  object-fit:contain;
+}
+
+.hero-text{
+  color:#ddd;
+  font-size:16px;
+  line-height:1.6;
+}
+
+.hero-text strong{
+  color:#ffd400;
+}
+
+.hero-buttons{
+  margin-top:25px;
+  display:flex;
+  justify-content:center;
+  gap:12px;
+}
+
+/* TRUST */
+
+.trust{
+  display:grid;
+  grid-template-columns:repeat(3,1fr);
+  border:1px solid #00d9d0;
+  border-top:0;
+}
+
+.trust-box{
+  padding:18px;
+  text-align:center;
+  border-right:1px solid #123d3d;
+}
+
+.trust-box:last-child{
+  border-right:0;
+}
+
+.trust-icon{
+  color:#ffd400;
+  font-size:25px;
+}
+
+.trust-box h3{
+  color:#00e5d5;
+  font-size:14px;
+  margin-top:5px;
+}
+
+.trust-box p{
+  color:#999;
+  font-size:12px;
+  margin-top:5px;
+}
+
+/* FILTERS */
+
+.filters{
+  display:flex;
+  gap:10px;
+  overflow-x:auto;
+  padding:20px 0 5px;
+}
+
+.filter{
+  white-space:nowrap;
+  background:#071114;
+  color:#00e5d5;
+  border:1px solid #00d9d0;
+  padding:11px 17px;
+  border-radius:4px;
+  font-weight:bold;
+}
+
+.filter.active{
+  background:#ffd400;
+  border-color:#ffd400;
+  color:#050708;
+}
+
+/* FEATURED */
+
+.section-heading{
+  display:flex;
+  align-items:center;
+  justify-content:space-between;
+  margin:25px 0 12px;
+}
+
+.section-heading h2{
+  font-size:22px;
+}
+
+.section-heading h2:after{
+  content:"";
+  display:block;
+  width:40px;
+  height:3px;
+  background:#ffd400;
+  margin-top:6px;
+}
+
+.view-all{
+  border:1px solid #ffd400;
+  color:#ffd400;
+  background:transparent;
+  padding:10px 18px;
+  font-weight:bold;
+}
+
+/* PRODUCTS */
+
+.products{
+  display:grid;
+  grid-template-columns:repeat(4,1fr);
+  gap:12px;
+}
+
+.product{
+  position:relative;
+  border:1px solid #00aaa5;
+
   background:
-    radial-gradient(circle at 75% 50%,
-    rgba(0, 229, 213, .22),
-    transparent 35%);
-}
-
-.hero-content {
-  position: relative;
-  z-index: 2;
-  padding: 32px;
-  text-align: center;
-}
-
-.welcome {
-  color: #00e5d5;
-  font-size: 20px;
-  letter-spacing: 3px;
-  font-weight: bold;
-}
-
-.hero-logo {
-  width: min(520px, 80%);
-  margin: 20px auto;
-  display: block;
-}
-
-.hero-text {
-  color: #ddd;
-  font-size: 16px;
-  line-height: 1.6;
-}
-
-.hero-text strong {
-  color: #ffd400;
-}
-
-.hero-buttons {
-  margin-top: 25px;
-  display: flex;
-  justify-content: center;
-  gap: 12px;
-}
-
-.yellow-btn {
-  background: #ffd400;
-  border: 1px solid #ffd400;
-  color: #050708;
-  padding: 14px 25px;
-  font-weight: bold;
-  cursor: pointer;
-}
-
-.outline-btn {
-  background: transparent;
-  border: 1px solid #ffd400;
-  color: #ffd400;
-  padding: 14px 25px;
-  font-weight: bold;
-  cursor: pointer;
-}
-
-/* ================= TRUST ================= */
-
-.trust {
-  display: grid;
-  grid-template-columns: repeat(3, 1fr);
-  border: 1px solid #00d9d0;
-  border-top: none;
-}
-
-.trust-box {
-  padding: 18px;
-  text-align: center;
-  border-right: 1px solid #123d3d;
-}
-
-.trust-box:last-child {
-  border-right: none;
-}
-
-.trust-icon {
-  color: #ffd400;
-  font-size: 25px;
-}
-
-.trust-box h3 {
-  color: #00e5d5;
-  font-size: 14px;
-  margin-top: 5px;
-}
-
-.trust-box p {
-  color: #aaa;
-  font-size: 12px;
-  margin-top: 5px;
-}
-
-/* ================= FEATURED ================= */
-
-.section-heading {
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  margin: 25px 0 12px;
-}
-
-.section-heading h2 {
-  font-size: 22px;
-}
-
-.section-heading h2::after {
-  content: "";
-  display: block;
-  width: 40px;
-  height: 3px;
-  background: #ffd400;
-  margin-top: 6px;
-}
-
-.view-all {
-  border: 1px solid #ffd400;
-  color: #ffd400;
-  background: transparent;
-  padding: 10px 18px;
-  font-weight: bold;
-}
-
-/* ================= PRODUCTS ================= */
-
-.products {
-  display: grid;
-  grid-template-columns: repeat(4, 1fr);
-  gap: 12px;
-}
-
-.product {
-  position: relative;
-  border: 1px solid #00aaa5;
-  background:
-    linear-gradient(rgba(0, 217, 208, .06) 1px, transparent 1px),
-    linear-gradient(90deg, rgba(0, 217, 208, .06) 1px, transparent 1px),
+    linear-gradient(
+      rgba(0,217,208,.06) 1px,
+      transparent 1px
+    ),
+    linear-gradient(
+      90deg,
+      rgba(0,217,208,.06) 1px,
+      transparent 1px
+    ),
     #070b0d;
-  background-size: 25px 25px;
-  padding: 14px;
+
+  background-size:25px 25px;
+  padding:14px;
+  transition:.2s;
 }
 
-.available {
-  position: absolute;
-  top: 10px;
-  right: 10px;
-  background: #ffd400;
-  color: #050708;
-  padding: 6px 8px;
-  font-size: 10px;
-  font-weight: bold;
+.product:hover{
+  border-color:#ffd400;
+  transform:translateY(-3px);
 }
 
-.heart {
-  font-size: 20px;
-  color: #fff;
+.available{
+  position:absolute;
+  top:10px;
+  right:10px;
+  background:#ffd400;
+  color:#050708;
+  padding:6px 8px;
+  font-size:10px;
+  font-weight:bold;
 }
 
-.game {
-  color: #fff;
-  font-size: 23px;
-  font-weight: 900;
-  font-style: italic;
-  margin: 25px 0 15px;
+.heart{
+  color:#fff;
+  font-size:20px;
 }
 
-.product h3 {
-  font-size: 16px;
-  margin-bottom: 8px;
+.game{
+  color:#fff;
+  font-size:23px;
+  font-weight:900;
+  font-style:italic;
+  margin:25px 0 15px;
 }
 
-.details {
-  color: #00e5d5;
-  font-size: 13px;
-  margin-bottom: 8px;
+.product h3{
+  font-size:16px;
+  margin-bottom:8px;
 }
 
-.description {
-  color: #999;
-  font-size: 12px;
+.details{
+  color:#00e5d5;
+  font-size:13px;
+  margin-bottom:8px;
 }
 
-.price {
-  color: #ffd400;
-  font-size: 20px;
-  font-weight: bold;
-  margin-top: 15px;
+.description{
+  color:#999;
+  font-size:12px;
+  min-height:32px;
 }
 
-.details-btn {
-  width: 100%;
-  margin-top: 12px;
-  padding: 9px;
-  background: transparent;
-  border: 1px solid #ffd400;
-  color: #ffd400;
-  font-weight: bold;
+.price{
+  color:#ffd400;
+  font-size:20px;
+  font-weight:bold;
+  margin-top:15px;
 }
 
-/* ================= FOOTER FEATURES ================= */
-
-.features {
-  display: grid;
-  grid-template-columns: repeat(4, 1fr);
-  margin-top: 18px;
-  border: 1px solid #00d9d0;
+.details-btn{
+  width:100%;
+  margin-top:12px;
+  padding:9px;
+  background:transparent;
+  border:1px solid #ffd400;
+  color:#ffd400;
+  font-weight:bold;
+  cursor:pointer;
 }
 
-.feature {
-  padding: 18px;
-  text-align: center;
-  border-right: 1px solid #123d3d;
+/* FEATURES */
+
+.features{
+  display:grid;
+  grid-template-columns:repeat(4,1fr);
+  margin-top:18px;
+  border:1px solid #00d9d0;
 }
 
-.feature:last-child {
-  border-right: none;
+.feature{
+  padding:18px;
+  text-align:center;
+  border-right:1px solid #123d3d;
 }
 
-.feature-icon {
-  color: #00e5d5;
-  font-size: 27px;
+.feature:last-child{
+  border-right:0;
 }
 
-.feature h3 {
-  margin-top: 8px;
-  font-size: 14px;
+.feature-icon{
+  color:#00e5d5;
+  font-size:27px;
 }
 
-.feature p {
-  color: #999;
-  font-size: 12px;
-  margin-top: 5px;
+.feature h3{
+  margin-top:8px;
+  font-size:14px;
 }
 
-/* ================= FOOTER ================= */
-
-footer {
-  border-top: 1px solid #00d9d0;
-  margin-top: 18px;
-  padding: 20px 5px;
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
+.feature p{
+  color:#999;
+  font-size:12px;
+  margin-top:5px;
 }
 
-.footer-logo {
-  width: 120px;
+/* FOOTER */
+
+footer{
+  border-top:1px solid #00d9d0;
+  margin-top:18px;
+  padding:20px 5px;
+  display:flex;
+  align-items:center;
+  justify-content:space-between;
+  gap:15px;
 }
 
-.socials {
-  display: flex;
-  gap: 20px;
-  color: #fff;
+.footer-logo{
+  width:120px;
 }
 
-.slogan {
-  color: #ffd400;
-  font-weight: bold;
+.socials{
+  display:flex;
+  gap:20px;
+  color:#fff;
 }
 
-/* ================= MOBILE ================= */
+.slogan{
+  color:#ffd400;
+  font-weight:bold;
+}
 
-@media (max-width: 900px) {
+/* ADMIN MESSAGE */
 
-  header {
-    height: auto;
-    flex-wrap: wrap;
-    gap: 15px;
+#adminMessage{
+  display:none;
+  position:fixed;
+  inset:0;
+  z-index:999;
+  background:rgba(0,0,0,.85);
+  align-items:center;
+  justify-content:center;
+  padding:20px;
+}
+
+.admin-box{
+  width:100%;
+  max-width:420px;
+  background:#080d0f;
+  border:1px solid #ffd400;
+  padding:25px;
+  text-align:center;
+}
+
+.admin-box h2{
+  color:#ffd400;
+  margin-bottom:15px;
+}
+
+.admin-box p{
+  color:#aaa;
+  line-height:1.5;
+  font-size:13px;
+}
+
+.admin-close{
+  margin-top:18px;
+  padding:11px 20px;
+  border:1px solid #ffd400;
+  color:#ffd400;
+  background:transparent;
+}
+
+/* MOBILE */
+
+@media(max-width:1000px){
+
+  nav{
+    display:none;
   }
 
-  nav {
-    order: 3;
-    width: 100%;
-    overflow-x: auto;
-    padding-bottom: 8px;
+  .layout{
+    grid-template-columns:1fr;
   }
 
-  .layout {
-    grid-template-columns: 1fr;
+  .products{
+    grid-template-columns:repeat(2,1fr);
   }
 
-  .profile {
-    min-height: auto;
-  }
-
-  .profile-logo {
-    width: 140px;
-    height: 140px;
-  }
-
-  .products {
-    grid-template-columns: repeat(2, 1fr);
-  }
-
-  .features {
-    grid-template-columns: repeat(2, 1fr);
-  }
-
-  .feature {
-    border-bottom: 1px solid #123d3d;
+  .features{
+    grid-template-columns:repeat(2,1fr);
   }
 }
 
-@media (max-width: 550px) {
+@media(max-width:600px){
 
-  header {
-    padding: 12px;
+  header{
+    padding:10px 12px;
   }
 
-  .logo {
-    width: 120px;
+  .logo{
+    width:120px;
   }
 
-  .header-actions {
-    gap: 8px;
+  .header-icon{
+    display:none;
   }
 
-  .account-btn {
-    padding: 9px;
-    font-size: 11px;
+  .account-btn{
+    padding:9px;
+    font-size:11px;
   }
 
-  .layout {
-    padding: 10px;
+  .layout{
+    padding:10px;
   }
 
-  .hero {
-    min-height: 330px;
+  .profile{
+    min-height:auto;
   }
 
-  .hero-content {
-    padding: 25px 12px;
+  .hero{
+    min-height:350px;
   }
 
-  .welcome {
-    font-size: 15px;
+  .hero-content{
+    padding:25px 12px;
   }
 
-  .hero-logo {
-    width: 90%;
+  .welcome{
+    font-size:15px;
   }
 
-  .hero-buttons {
-    flex-direction: column;
+  .hero-logo{
+    width:90%;
   }
 
-  .trust {
-    grid-template-columns: 1fr;
+  .hero-buttons{
+    flex-direction:column;
   }
 
-  .trust-box {
-    border-right: none;
-    border-bottom: 1px solid #123d3d;
+  .trust{
+    grid-template-columns:1fr;
   }
 
-  .products {
-    grid-template-columns: 1fr;
+  .trust-box{
+    border-right:0;
+    border-bottom:1px solid #123d3d;
   }
 
-  .features {
-    grid-template-columns: 1fr;
+  .products{
+    grid-template-columns:1fr;
   }
 
-  footer {
-    flex-direction: column;
-    gap: 15px;
+  .features{
+    grid-template-columns:1fr;
+  }
+
+  .feature{
+    border-right:0;
+    border-bottom:1px solid #123d3d;
+  }
+
+  footer{
+    flex-direction:column;
+    text-align:center;
   }
 }
 </style>
@@ -574,15 +636,18 @@ footer {
 
 <body>
 
-<!-- ================= HEADER ================= -->
-
 <header>
 
-  <img src="logo.png" class="logo" alt="CRISPY SHOP">
+  <!-- LOGO -->
+  <img
+    src="logo.png"
+    class="logo"
+    alt="CRISPY SHOP"
+  >
 
   <nav>
     <a href="#" class="active">HOME</a>
-    <a href="#">ACCOUNTS</a>
+    <a href="#accounts">ACCOUNTS</a>
     <a href="#">TOP UP</a>
     <a href="#">GAMES</a>
     <a href="#">REVIEWS</a>
@@ -590,9 +655,15 @@ footer {
   </nav>
 
   <div class="header-actions">
-    <span class="search">⌕</span>
-    <span class="cart">🛒</span>
-    <button class="account-btn">♙ MY ACCOUNT</button>
+    <span class="header-icon">⌕</span>
+    <span class="header-icon">🛒</span>
+
+    <button
+      class="account-btn"
+      onclick="openAdmin()"
+    >
+      ♙ MY ACCOUNT
+    </button>
   </div>
 
 </header>
@@ -600,7 +671,7 @@ footer {
 
 <div class="layout">
 
-<!-- ================= PROFILE ================= -->
+<!-- PROFILE -->
 
 <aside class="profile">
 
@@ -608,7 +679,7 @@ footer {
     MY PROFILE
   </div>
 
-  <!-- YOUR LOGO IS USED HERE TOO -->
+  <!-- SAME LOGO -->
   <img
     src="logo.png"
     alt="CRISPY SHOP"
@@ -633,10 +704,14 @@ footer {
     <p>☆ Shop Rating</p>
 
     <div class="stars">
-      ★★★★★ <span style="color:#fff">5.0</span>
+      ★★★★★
+      <span style="color:#fff">5.0</span>
     </div>
 
-    <p>♧ Orders Completed<br>250+</p>
+    <p>
+      ♧ Orders Completed<br>
+      250+
+    </p>
 
   </div>
 
@@ -662,7 +737,7 @@ footer {
 </aside>
 
 
-<!-- ================= MAIN ================= -->
+<!-- MAIN -->
 
 <main>
 
@@ -676,7 +751,7 @@ footer {
       ── WELCOME TO ──
     </div>
 
-    <!-- YOUR LOGO OCCUPIES THE HERO -->
+    <!-- SAME LOGO -->
     <img
       src="logo.png"
       class="hero-logo"
@@ -685,7 +760,7 @@ footer {
 
     <p class="hero-text">
       Premium gaming accounts, top ups and more.
-      <strong>100% safe, secure & trusted.</strong>
+      <strong>100% safe, secure &amp; trusted.</strong>
     </p>
 
     <div class="hero-buttons">
@@ -730,11 +805,47 @@ footer {
 </section>
 
 
+<!-- FILTERS -->
+
+<div class="filters">
+
+  <button class="filter active">
+    ALL
+  </button>
+
+  <button class="filter">
+    FREE FIRE
+  </button>
+
+  <button class="filter">
+    PUBG
+  </button>
+
+  <button class="filter">
+    ROBLOX
+  </button>
+
+  <button class="filter">
+    FORTNITE
+  </button>
+
+  <button class="filter">
+    OTHER
+  </button>
+
+</div>
+
+
 <!-- FEATURED -->
 
-<div class="section-heading">
+<div
+  class="section-heading"
+  id="accounts"
+>
 
-  <h2>FEATURED ACCOUNTS</h2>
+  <h2>
+    FEATURED ACCOUNTS
+  </h2>
 
   <button class="view-all">
     VIEW ALL →
@@ -746,16 +857,23 @@ footer {
 <section class="products">
 
 
-<!-- PRODUCT 1 -->
+<!-- 1 -->
 
 <div class="product">
 
   <span class="heart">♡</span>
-  <span class="available">AVAILABLE</span>
 
-  <div class="game">FREE F⚡RE</div>
+  <span class="available">
+    AVAILABLE
+  </span>
 
-  <h3>Royal Vault 09</h3>
+  <div class="game">
+    FREE F⚡RE
+  </div>
+
+  <h3>
+    Royal Vault 09
+  </h3>
 
   <div class="details">
     Level 86 · SEA
@@ -776,16 +894,23 @@ footer {
 </div>
 
 
-<!-- PRODUCT 2 -->
+<!-- 2 -->
 
 <div class="product">
 
   <span class="heart">♡</span>
-  <span class="available">AVAILABLE</span>
 
-  <div class="game">FREE F⚡RE</div>
+  <span class="available">
+    AVAILABLE
+  </span>
 
-  <h3>Sakura Legend</h3>
+  <div class="game">
+    FREE F⚡RE
+  </div>
+
+  <h3>
+    Sakura Legend
+  </h3>
 
   <div class="details">
     Level 78 · INDIA
@@ -806,16 +931,23 @@ footer {
 </div>
 
 
-<!-- PRODUCT 3 -->
+<!-- 3 -->
 
 <div class="product">
 
   <span class="heart">♡</span>
-  <span class="available">AVAILABLE</span>
 
-  <div class="game">FREE F⚡RE</div>
+  <span class="available">
+    AVAILABLE
+  </span>
 
-  <h3>Galaxy Prime</h3>
+  <div class="game">
+    FREE F⚡RE
+  </div>
+
+  <h3>
+    Galaxy Prime
+  </h3>
 
   <div class="details">
     Level 71 · BRAZIL
@@ -836,16 +968,23 @@ footer {
 </div>
 
 
-<!-- PRODUCT 4 -->
+<!-- 4 -->
 
 <div class="product">
 
   <span class="heart">♡</span>
-  <span class="available">AVAILABLE</span>
 
-  <div class="game">FREE F⚡RE</div>
+  <span class="available">
+    AVAILABLE
+  </span>
 
-  <h3>Predator X</h3>
+  <div class="game">
+    FREE F⚡RE
+  </div>
+
+  <h3>
+    Predator X
+  </h3>
 
   <div class="details">
     Level 88 · SEA
@@ -866,16 +1005,23 @@ footer {
 </div>
 
 
-<!-- PRODUCT 5 -->
+<!-- 5 -->
 
 <div class="product">
 
   <span class="heart">♡</span>
-  <span class="available">AVAILABLE</span>
 
-  <div class="game">FREE F⚡RE</div>
+  <span class="available">
+    AVAILABLE
+  </span>
 
-  <h3>Shadow Ultra</h3>
+  <div class="game">
+    FREE F⚡RE
+  </div>
+
+  <h3>
+    Shadow Ultra
+  </h3>
 
   <div class="details">
     Level 65 · INDONESIA
@@ -896,16 +1042,23 @@ footer {
 </div>
 
 
-<!-- PRODUCT 6 -->
+<!-- 6 -->
 
 <div class="product">
 
   <span class="heart">♡</span>
-  <span class="available">AVAILABLE</span>
 
-  <div class="game">FREE F⚡RE</div>
+  <span class="available">
+    AVAILABLE
+  </span>
 
-  <h3>Titan Force</h3>
+  <div class="game">
+    FREE F⚡RE
+  </div>
+
+  <h3>
+    Titan Force
+  </h3>
 
   <div class="details">
     Level 80 · MENA
@@ -926,16 +1079,23 @@ footer {
 </div>
 
 
-<!-- PRODUCT 7 -->
+<!-- 7 -->
 
 <div class="product">
 
   <span class="heart">♡</span>
-  <span class="available">AVAILABLE</span>
 
-  <div class="game">FREE F⚡RE</div>
+  <span class="available">
+    AVAILABLE
+  </span>
 
-  <h3>Phoenix Rise</h3>
+  <div class="game">
+    FREE F⚡RE
+  </div>
+
+  <h3>
+    Phoenix Rise
+  </h3>
 
   <div class="details">
     Level 76 · BANGLADESH
@@ -956,16 +1116,23 @@ footer {
 </div>
 
 
-<!-- PRODUCT 8 -->
+<!-- 8 -->
 
 <div class="product">
 
   <span class="heart">♡</span>
-  <span class="available">AVAILABLE</span>
 
-  <div class="game">FREE F⚡RE</div>
+  <span class="available">
+    AVAILABLE
+  </span>
 
-  <h3>Venom Strike</h3>
+  <div class="game">
+    FREE F⚡RE
+  </div>
+
+  <h3>
+    Venom Strike
+  </h3>
 
   <div class="details">
     Level 69 · THAILAND
@@ -995,25 +1162,37 @@ footer {
   <div class="feature">
     <div class="feature-icon">♢</div>
     <h3>100% SECURE</h3>
-    <p>All accounts are checked and verified.</p>
+    <p>
+      All accounts are checked
+      and verified.
+    </p>
   </div>
 
   <div class="feature">
     <div class="feature-icon">ϟ</div>
     <h3>INSTANT DELIVERY</h3>
-    <p>Get your account details instantly.</p>
+    <p>
+      Get your account details
+      instantly.
+    </p>
   </div>
 
   <div class="feature">
     <div class="feature-icon">♧</div>
     <h3>BEST PRICES</h3>
-    <p>Affordable prices you can trust.</p>
+    <p>
+      Affordable prices you
+      can trust.
+    </p>
   </div>
 
   <div class="feature">
     <div class="feature-icon">♧</div>
     <h3>24/7 SUPPORT</h3>
-    <p>We're always here to help you.</p>
+    <p>
+      We're always here
+      to help you.
+    </p>
   </div>
 
 </section>
@@ -1031,9 +1210,9 @@ footer {
 
   <div class="socials">
     TikTok
-    Instagram
-    YouTube
-    X
+    &nbsp; Instagram
+    &nbsp; YouTube
+    &nbsp; X
   </div>
 
   <div class="slogan">
@@ -1043,8 +1222,55 @@ footer {
 </footer>
 
 </main>
+</div>
+
+
+<!-- ADMIN MESSAGE -->
+
+<div id="adminMessage">
+
+  <div class="admin-box">
+
+    <h2>
+      CRISPY SHOP ADMIN
+    </h2>
+
+    <p>
+      Admin access is protected by
+      Firebase Authentication.
+    </p>
+
+    <button
+      class="admin-close"
+      onclick="closeAdmin()"
+    >
+      CLOSE
+    </button>
+
+  </div>
 
 </div>
+
+
+<script>
+
+function openAdmin(){
+
+  document
+    .getElementById("adminMessage")
+    .style.display = "flex";
+
+}
+
+function closeAdmin(){
+
+  document
+    .getElementById("adminMessage")
+    .style.display = "none";
+
+}
+
+</script>
 
 </body>
 </html>
