@@ -425,20 +425,19 @@ Thank you for choosing Crispy Shop ❤️
       return;
     }
 
-    const game =
-      document.getElementById("game").value;
+    const imageFile = document.getElementById("accountImage").files[0];
+if (!imageFile) {
+    alert("Please select an account picture.");
+    return;
+}
 
-    const name =
-      document.getElementById("accountName").value.trim();
+const reader = new FileReader();
 
-    const price =
-      document.getElementById("accountPrice").value.trim();
+reader.onload = function (e) {
+    const image = e.target.result;
+  
 
-    const image =
-      document.getElementById("accountImage").value.trim();
-
-
- if (!name  || !price  || !image) {
+ if (!name  || !price  || !imageFile) {
       alert("Please fill in all account details.");
       return;
     }
