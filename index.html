@@ -29,12 +29,11 @@ button{cursor:pointer}
   --muted:#9da8ab;
 }
 
-/* HEADER */
 header{
   min-height:82px;
   display:flex;
   align-items:center;
-  gap:20px;
+  gap:18px;
   padding:10px 28px;
   background:#030506;
   border-bottom:2px solid var(--yellow);
@@ -47,29 +46,27 @@ header{
   width:155px;
   height:60px;
   object-fit:contain;
-  display:block;
 }
 
 nav{
   display:flex;
+  align-items:center;
+  justify-content:center;
   gap:28px;
   flex:1;
-  justify-content:center;
 }
 
 nav a{
   color:#fff;
   text-decoration:none;
   font-size:13px;
-  font-weight:900;
+  font-weight:bold;
   padding:20px 0;
   position:relative;
 }
 
 nav a:hover,
-nav a.active{
-  color:var(--yellow);
-}
+nav a.active{color:var(--yellow)}
 
 nav a.active:after{
   content:"";
@@ -84,19 +81,17 @@ nav a.active:after{
 .header-actions{
   display:flex;
   align-items:center;
-  gap:10px;
+  gap:8px;
 }
 
 .header-icon{
-  width:38px;
-  height:38px;
-  display:grid;
-  place-items:center;
-  color:var(--teal);
-  background:transparent;
+  width:40px;
+  height:40px;
+  background:none;
   border:1px solid transparent;
-  border-radius:5px;
+  color:var(--teal);
   font-size:22px;
+  border-radius:4px;
 }
 
 .header-icon:hover{
@@ -109,18 +104,18 @@ nav a.active:after{
   background:var(--yellow);
   color:#050708;
   border:1px solid var(--yellow);
-  padding:12px 18px;
+  padding:12px 17px;
   border-radius:4px;
-  font-weight:900;
+  font-weight:bold;
 }
 
 .outline-btn{
   background:transparent;
   color:var(--yellow);
   border:1px solid var(--yellow);
-  padding:12px 18px;
+  padding:12px 17px;
   border-radius:4px;
-  font-weight:900;
+  font-weight:bold;
 }
 
 .outline-btn:hover{
@@ -130,15 +125,14 @@ nav a.active:after{
 
 .menu-btn{
   display:none;
-  background:transparent;
-  color:var(--yellow);
+  background:none;
   border:1px solid var(--yellow);
-  width:42px;
-  height:42px;
-  font-size:24px;
+  color:var(--yellow);
+  width:40px;
+  height:40px;
+  font-size:23px;
 }
 
-/* LAYOUT */
 .layout{
   display:grid;
   grid-template-columns:250px 1fr;
@@ -148,7 +142,6 @@ nav a.active:after{
   margin:auto;
 }
 
-/* PROFILE */
 .profile{
   border:1px solid var(--teal);
   background:#05090a;
@@ -157,7 +150,7 @@ nav a.active:after{
 }
 
 .profile-title{
-  color:var(--teal);
+  color:var(--yellow);
   font-size:14px;
   font-weight:bold;
   margin-bottom:18px;
@@ -208,7 +201,7 @@ nav a.active:after{
 
 .profile-section p{
   color:#c0c7c9;
-  margin:10px 0;
+  margin:9px 0;
   font-size:13px;
   line-height:1.5;
 }
@@ -218,10 +211,7 @@ nav a.active:after{
   color:#fff;
 }
 
-.stars{
-  color:var(--yellow);
-  letter-spacing:2px;
-}
+.stars{color:var(--yellow)}
 
 .contact{
   width:100%;
@@ -233,20 +223,19 @@ nav a.active:after{
   font-weight:bold;
 }
 
-.whatsapp{
+.message-btn{
   border-color:#21d86b;
   color:#21d86b;
 }
 
-/* HERO */
 .hero{
   position:relative;
   min-height:430px;
   border:1px solid var(--teal);
   overflow:hidden;
   background:
-    linear-gradient(rgba(0,229,213,.10) 1px,transparent 1px),
-    linear-gradient(90deg,rgba(0,229,213,.10) 1px,transparent 1px),
+    linear-gradient(rgba(0,229,213,.1) 1px,transparent 1px),
+    linear-gradient(90deg,rgba(0,229,213,.1) 1px,transparent 1px),
     #050a0b;
   background-size:40px 40px;
 }
@@ -255,11 +244,7 @@ nav a.active:after{
   content:"";
   position:absolute;
   inset:0;
-  background:radial-gradient(
-    circle at 75% 50%,
-    rgba(0,229,213,.22),
-    transparent 38%
-  );
+  background:radial-gradient(circle at 75% 50%,rgba(0,229,213,.2),transparent 38%);
   pointer-events:none;
 }
 
@@ -278,7 +263,7 @@ nav a.active:after{
 }
 
 .hero-logo{
-  width:min(520px,80%);
+  width:min(520px,90%);
   max-height:210px;
   margin:20px auto;
   display:block;
@@ -291,9 +276,7 @@ nav a.active:after{
   line-height:1.6;
 }
 
-.hero-text strong{
-  color:var(--yellow);
-}
+.hero-text strong{color:var(--yellow)}
 
 .hero-buttons{
   margin-top:25px;
@@ -302,7 +285,6 @@ nav a.active:after{
   gap:12px;
 }
 
-/* TRUST */
 .trust{
   display:grid;
   grid-template-columns:repeat(3,1fr);
@@ -316,9 +298,7 @@ nav a.active:after{
   border-right:1px solid #153f40;
 }
 
-.trust-box:last-child{
-  border-right:0;
-}
+.trust-box:last-child{border-right:0}
 
 .trust-icon{
   color:var(--yellow);
@@ -337,7 +317,6 @@ nav a.active:after{
   margin-top:5px;
 }
 
-/* FILTERS */
 .filters{
   display:flex;
   gap:10px;
@@ -361,18 +340,16 @@ nav a.active:after{
   color:#050708;
 }
 
-/* SECTIONS */
-.content-section,
-.game-section,
-.topup-page-section{
+.game-section{
   scroll-margin-top:105px;
+  margin-top:25px;
 }
 
 .section-heading{
   display:flex;
   align-items:center;
   justify-content:space-between;
-  margin:25px 0 12px;
+  margin-bottom:12px;
 }
 
 .section-heading h2{
@@ -388,7 +365,6 @@ nav a.active:after{
   margin-top:6px;
 }
 
-/* PRODUCTS */
 .products{
   display:grid;
   grid-template-columns:repeat(4,1fr);
@@ -398,11 +374,7 @@ nav a.active:after{
 .product{
   position:relative;
   border:1px solid var(--teal2);
-  background:
-    linear-gradient(rgba(0,229,213,.06) 1px,transparent 1px),
-    linear-gradient(90deg,rgba(0,229,213,.06) 1px,transparent 1px),
-    #070b0d;
-  background-size:25px 25px;
+  background:#070b0d;
   padding:14px;
   transition:.2s;
 }
@@ -433,17 +405,17 @@ nav a.active:after{
   height:180px;
   object-fit:cover;
   display:block;
-  margin:8px 0 12px;
+  margin:10px 0 12px;
   border:1px solid #153f40;
   background:#000;
 }
 
 .game{
   color:#fff;
-  font-size:23px;
+  font-size:22px;
   font-weight:900;
   font-style:italic;
-  margin:25px 0 15px;
+  margin:22px 0 12px;
 }
 
 .product h3{
@@ -460,7 +432,7 @@ nav a.active:after{
 .description{
   color:#999;
   font-size:12px;
-  min-height:32px;
+  min-height:34px;
 }
 
 .price{
@@ -473,7 +445,7 @@ nav a.active:after{
 .details-btn{
   width:100%;
   margin-top:12px;
-  padding:9px;
+  padding:10px;
   background:transparent;
   border:1px solid var(--yellow);
   color:var(--yellow);
@@ -482,47 +454,9 @@ nav a.active:after{
 
 .details-btn:disabled{
   opacity:.5;
+  cursor:not-allowed;
 }
 
-/* TOP UP */
-.topup-page-section{
-  display:none;
-  margin-top:35px;
-  padding:20px;
-  border:1px solid var(--teal);
-  background:#05090a;
-}
-
-.topup-page-section.open{
-  display:block;
-}
-
-.topup-empty-card{
-  border:1px solid var(--teal2);
-  background:
-    linear-gradient(rgba(0,229,213,.05) 1px,transparent 1px),
-    linear-gradient(90deg,rgba(0,229,213,.05) 1px,transparent 1px),
-    #070b0d;
-  background-size:25px 25px;
-  padding:35px 20px;
-  text-align:center;
-}
-
-.topup-empty-card .choice-icon{
-  font-size:42px;
-}
-
-.topup-empty-card h3{
-  color:var(--yellow);
-  margin:12px 0;
-}
-
-.topup-empty-card p{
-  color:#999;
-  margin-bottom:18px;
-}
-
-/* FEATURES */
 .features{
   display:grid;
   grid-template-columns:repeat(4,1fr);
@@ -536,9 +470,7 @@ nav a.active:after{
   border-right:1px solid #153f40;
 }
 
-.feature:last-child{
-  border-right:0;
-}
+.feature:last-child{border-right:0}
 
 .feature-icon{
   color:var(--teal);
@@ -556,7 +488,6 @@ nav a.active:after{
   margin-top:5px;
 }
 
-/* FOOTER */
 footer{
   border-top:2px solid var(--yellow);
   margin-top:18px;
@@ -569,8 +500,6 @@ footer{
 
 .footer-logo{
   width:120px;
-  height:60px;
-  object-fit:contain;
 }
 
 .socials{
@@ -584,9 +513,7 @@ footer{
   font-weight:bold;
 }
 
-.socials a:hover{
-  color:var(--yellow);
-}
+.socials a:hover{color:var(--yellow)}
 
 .slogan{
   color:var(--yellow);
@@ -594,6 +521,7 @@ footer{
 }
 
 /* MODALS */
+
 .modal{
   display:none;
   position:fixed;
@@ -605,9 +533,7 @@ footer{
   padding:18px;
 }
 
-.modal.show{
-  display:flex;
-}
+.modal.show{display:flex}
 
 .modal-box{
   width:100%;
@@ -616,7 +542,6 @@ footer{
   overflow:auto;
   background:#061012;
   border:1px solid var(--teal);
-  box-shadow:0 0 35px rgba(0,229,213,.18);
   padding:24px;
 }
 
@@ -637,11 +562,9 @@ footer{
   border:1px solid #555;
   width:34px;
   height:34px;
-  border-radius:4px;
   font-size:22px;
 }
 
-/* CHOICES */
 .choice-grid{
   display:grid;
   grid-template-columns:repeat(5,1fr);
@@ -671,55 +594,70 @@ footer{
   font-size:28px;
 }
 
-/* REVIEWS */
-.stars-choice{
+.contact-options{
   display:grid;
-  grid-template-columns:repeat(5,1fr);
-  gap:10px;
+  grid-template-columns:repeat(2,1fr);
+  gap:12px;
 }
 
-.star-choice{
-  padding:18px 10px;
-  background:#071619;
+.contact-option{
+  display:block;
+  padding:18px;
+  text-align:center;
+  text-decoration:none;
+  color:#fff;
   border:1px solid var(--teal);
-  color:var(--yellow);
-  font-size:20px;
+  background:#071619;
   font-weight:bold;
 }
 
-/* SEARCH */
-.search-input{
+.contact-option:hover{
+  border-color:var(--yellow);
+  color:var(--yellow);
+}
+
+.form-input{
   width:100%;
-  padding:14px;
+  padding:13px;
+  margin-bottom:12px;
   background:#020506;
   border:1px solid var(--teal);
   color:#fff;
   outline:none;
-  margin:10px 0 18px;
+}
+
+.form-input:focus{border-color:var(--yellow)}
+
+.full-btn{
+  width:100%;
+  margin-top:4px;
 }
 
 .search-result{
-  padding:12px;
+  padding:13px;
   border-bottom:1px solid #173d3d;
   cursor:pointer;
 }
 
-/* CART */
+.search-result:hover{
+  color:var(--yellow);
+}
+
 .cart-item{
   display:flex;
-  justify-content:space-between;
   align-items:center;
-  gap:15px;
+  justify-content:space-between;
+  gap:12px;
   padding:12px 0;
   border-bottom:1px solid #173d3d;
 }
 
-.cart-price{
+.cart-price,
+.cart-total{
   color:var(--yellow);
 }
 
 .cart-total{
-  color:var(--yellow);
   font-size:20px;
   font-weight:bold;
   margin-top:18px;
@@ -731,23 +669,137 @@ footer{
   padding:30px;
 }
 
-/* FORMS */
-.form-input,
-.admin-input,
-.admin-select,
-.admin-textarea{
-  width:100%;
-  padding:13px;
-  background:#020506;
+/* CUSTOMER */
+
+.customer-profile{
+  display:flex;
+  align-items:center;
+  gap:20px;
+  padding:20px;
+  margin:15px 0 20px;
   border:1px solid var(--teal);
-  color:#fff;
-  outline:none;
-  margin-bottom:12px;
+  background:#05090a;
 }
 
-.admin-textarea{
-  min-height:100px;
-  resize:vertical;
+.customer-photo-area{
+  width:145px;
+  text-align:center;
+  flex-shrink:0;
+}
+
+.customer-photo-circle{
+  width:120px;
+  height:120px;
+  margin:auto;
+  border-radius:50%;
+  overflow:hidden;
+  display:grid;
+  place-items:center;
+  background:#071619;
+  border:3px solid var(--yellow);
+  color:var(--yellow);
+  font-size:45px;
+}
+
+.customer-photo-circle img{
+  width:100%;
+  height:100%;
+  object-fit:cover;
+}
+
+.upload-photo-label{
+  display:inline-block;
+  margin-top:12px;
+  padding:9px 10px;
+  font-size:11px;
+  cursor:pointer;
+}
+
+.customer-details h3{
+  color:var(--yellow);
+  margin-bottom:8px;
+  font-size:20px;
+}
+
+.customer-details p{
+  color:#aaa;
+  font-size:13px;
+}
+
+.customer-badge{
+  display:inline-block;
+  margin-top:10px;
+  padding:6px 9px;
+  color:#21d86b;
+  border:1px solid #21d86b;
+  font-size:10px;
+  font-weight:bold;
+}
+
+.customer-options{
+  display:grid;
+  grid-template-columns:repeat(2,1fr);
+  gap:10px;
+}
+
+.customer-option{
+  min-height:80px;
+  background:#071619;
+  border:1px solid var(--teal);
+  color:#fff;
+  font-weight:bold;
+  font-size:13px;
+}
+
+.customer-option:hover{
+  border-color:var(--yellow);
+  color:var(--yellow);
+}
+
+.logout-option{
+  color:#ff5555;
+  border-color:#ff5555;
+}
+
+.customer-info{
+  margin-top:20px;
+  padding-top:18px;
+  border-top:1px solid #153f40;
+}
+
+.info-card{
+  margin-top:15px;
+  padding:18px;
+  background:#05090a;
+  border:1px solid var(--teal);
+}
+
+.info-card h3{
+  color:var(--yellow);
+  margin-bottom:10px;
+}
+
+.info-card p{
+  color:#aaa;
+  margin:8px 0;
+}
+
+/* ADMIN */
+
+.admin-warning{
+  color:#ff7777;
+  font-size:12px;
+  margin-bottom:15px;
+}
+
+.admin-form{
+  display:grid;
+  grid-template-columns:1fr 1fr;
+  gap:12px;
+}
+
+.full{
+  grid-column:1/-1;
 }
 
 .admin-label{
@@ -758,14 +810,20 @@ footer{
   margin-bottom:6px;
 }
 
-.admin-form{
-  display:grid;
-  grid-template-columns:1fr 1fr;
-  gap:12px;
+.admin-input,
+.admin-select,
+.admin-textarea{
+  width:100%;
+  padding:12px;
+  background:#020506;
+  border:1px solid var(--teal);
+  color:#fff;
+  outline:none;
 }
 
-.admin-form .full{
-  grid-column:1/-1;
+.admin-textarea{
+  min-height:100px;
+  resize:vertical;
 }
 
 .photo-upload{
@@ -775,14 +833,13 @@ footer{
   background:#05090a;
 }
 
-.photo-preview{
+.admin-photo-preview{
   width:100%;
   max-width:300px;
   height:190px;
   object-fit:cover;
-  display:block;
+  display:none;
   margin:12px auto;
-  background:#000;
   border:1px solid #153f40;
 }
 
@@ -802,7 +859,12 @@ footer{
   text-align:center;
 }
 
+.admin-only{
+  display:none;
+}
+
 /* MOBILE DRAWER */
+
 .mobile-drawer{
   display:none;
   position:fixed;
@@ -811,9 +873,7 @@ footer{
   background:rgba(0,0,0,.8);
 }
 
-.mobile-drawer.open{
-  display:block;
-}
+.mobile-drawer.open{display:block}
 
 .drawer-panel{
   width:min(330px,86vw);
@@ -826,17 +886,15 @@ footer{
 
 .drawer-head{
   display:flex;
-  justify-content:space-between;
   align-items:center;
-  margin-bottom:10px;
+  justify-content:space-between;
+  margin-bottom:15px;
 }
 
-.drawer-head strong{
-  color:var(--yellow);
-}
+.drawer-head strong{color:var(--yellow)}
 
 .drawer-close{
-  background:transparent;
+  background:none;
   border:1px solid var(--yellow);
   color:var(--yellow);
   width:38px;
@@ -844,6 +902,7 @@ footer{
 }
 
 /* RESPONSIVE */
+
 @media(max-width:1100px){
 
   .products{
@@ -853,6 +912,7 @@ footer{
   .choice-grid{
     grid-template-columns:repeat(3,1fr);
   }
+
 }
 
 @media(max-width:850px){
@@ -861,17 +921,11 @@ footer{
     padding:10px 14px;
   }
 
-  nav{
-    display:none;
-  }
+  nav{display:none}
 
-  .menu-btn{
-    display:block;
-  }
+  .menu-btn{display:block}
 
-  .header-actions{
-    margin-left:auto;
-  }
+  .header-actions{margin-left:auto}
 
   .layout{
     grid-template-columns:1fr;
@@ -889,6 +943,7 @@ footer{
   .features{
     grid-template-columns:repeat(2,1fr);
   }
+
 }
 
 @media(max-width:600px){
@@ -902,19 +957,8 @@ footer{
     width:120px;
   }
 
-  .header-icon{
-    width:34px;
-    height:34px;
-    font-size:20px;
-  }
-
   .account-btn{
-    padding:9px 10px;
-    font-size:10px;
-  }
-
-  .layout{
-    padding:8px;
+    display:none;
   }
 
   .hero{
@@ -923,19 +967,6 @@ footer{
 
   .hero-content{
     padding:25px 10px;
-  }
-
-  .welcome{
-    font-size:14px;
-  }
-
-  .hero-logo{
-    width:92%;
-    max-height:180px;
-  }
-
-  .hero-text{
-    font-size:14px;
   }
 
   .hero-buttons{
@@ -951,10 +982,7 @@ footer{
     border-bottom:1px solid #153f40;
   }
 
-  .products{
-    grid-template-columns:1fr;
-  }
-
+  .products,
   .features{
     grid-template-columns:1fr;
   }
@@ -964,41 +992,37 @@ footer{
     border-bottom:1px solid #153f40;
   }
 
-  footer{
-    flex-direction:column;
-    text-align:center;
-  }
-
   .choice-grid{
     grid-template-columns:1fr 1fr;
   }
 
-  .stars-choice{
+  .contact-options,
+  .customer-options{
     grid-template-columns:1fr;
   }
 
-  .modal-box{
-    padding:18px;
+  .customer-profile{
+    flex-direction:column;
+    text-align:center;
   }
 
   .admin-form{
     grid-template-columns:1fr;
   }
 
-  .admin-form .full{
+  .full{
     grid-column:auto;
   }
 
   .admin-actions{
     flex-direction:column;
   }
-}
 
-@media(max-width:430px){
-
-  .account-btn{
-    display:none;
+  footer{
+    flex-direction:column;
+    text-align:center;
   }
+
 }
 </style>
 </head>
@@ -1007,7 +1031,7 @@ footer{
 
 <!-- HEADER -->
 
-<header>
+<header id="header">
 
 <button
   class="menu-btn"
@@ -1028,21 +1052,21 @@ footer{
 
 <a
   href="#accounts"
-  onclick="openAccountChoices(event)"
+  onclick="openAccountChoices();return false;"
 >
 ACCOUNTS
 </a>
 
 <a
-  href="#topupChoice"
-  onclick="openTopup(event)"
+  href="#topup"
+  onclick="openTopup();return false;"
 >
 TOP UP
 </a>
 
 <a
   href="#reviews"
-  onclick="openReviews(event)"
+  onclick="openReviews();return false;"
 >
 REVIEWS
 </a>
@@ -1054,6 +1078,7 @@ REVIEWS
 <button
   class="header-icon"
   onclick="openSearch()"
+  aria-label="Search"
 >
 ⌕
 </button>
@@ -1061,6 +1086,7 @@ REVIEWS
 <button
   class="header-icon"
   onclick="openCart()"
+  aria-label="Cart"
 >
 🛒
 </button>
@@ -1100,54 +1126,33 @@ REVIEWS
 
 </div>
 
-<div class="profile">
-
-<div class="profile-title">
-MY PROFILE 👑
-</div>
-
-<img
-  src="logo.png.jpeg"
-  class="profile-logo"
-  alt="CRISPY SHOP"
+<button
+  class="contact"
+  onclick="openCustomerAccount();closeDrawer()"
 >
+♙ MY ACCOUNT
+</button>
 
-<div class="profile-level">
-LEVEL 17 TRADER
-</div>
+<button
+  class="contact"
+  onclick="openAccountChoices();closeDrawer()"
+>
+🎮 ACCOUNTS
+</button>
 
-<div class="progress">
-<span></span>
-</div>
+<button
+  class="contact"
+  onclick="openTopup();closeDrawer()"
+>
+💎 TOP UP
+</button>
 
-<div class="profile-section">
-
-<h3>ABOUT</h3>
-
-<p>♙ Trader</p>
-<p>♙ Gaming Account Seller</p>
-<p>▣ Member Since<br>2024</p>
-
-<p>☆ Shop Rating</p>
-
-<div class="stars">
-★★★★★ <span style="color:#fff">5.0</span>
-</div>
-
-<p>♧ Orders Completed<br>250+</p>
-
-</div>
-
-<div class="profile-section">
-
-<h3>SHOP STATS</h3>
-
-<p>▣ Total Accounts <b>120+</b></p>
-<p>♙ Total Sales <b>1.2K+</b></p>
-<p>♙ Happy Customers <b>980+</b></p>
-<p>✓ Success Rate <b>99%</b></p>
-
-</div>
+<button
+  class="contact"
+  onclick="openReviews();closeDrawer()"
+>
+⭐ REVIEWS
+</button>
 
 <button
   class="contact"
@@ -1156,17 +1161,7 @@ LEVEL 17 TRADER
 💬 CONTACT ME
 </button>
 
-<button
-  class="contact whatsapp"
-  onclick="messageMe();closeDrawer()"
->
-☘ MESSAGE ME
-</button>
-
 </div>
-
-</div>
-
 </div>
 
 
@@ -1175,7 +1170,7 @@ LEVEL 17 TRADER
   id="home"
 >
 
-<!-- DESKTOP PROFILE -->
+<!-- PROFILE -->
 
 <aside class="profile">
 
@@ -1203,15 +1198,19 @@ LEVEL 17 TRADER
 
 <p>♙ Trader</p>
 <p>♙ Gaming Account Seller</p>
-<p>▣ Member Since<br>2024</p>
+<p>▣ Member Since 2024</p>
 
 <p>☆ Shop Rating</p>
 
 <div class="stars">
-★★★★★ <span style="color:#fff">5.0</span>
+★★★★★
+<span style="color:#fff">5.0</span>
 </div>
 
-<p>♧ Orders Completed<br>250+</p>
+<p>
+♧ Orders Completed
+<b>250+</b>
+</p>
 
 </div>
 
@@ -1228,14 +1227,14 @@ LEVEL 17 TRADER
 
 <button
   class="contact"
-  onclick="contactMe()"
+  onclick="openContactOptions()"
 >
 💬 CONTACT ME
 </button>
 
 <button
-  class="contact whatsapp"
-  onclick="messageMe()"
+  class="contact message-btn"
+  onclick="openContactOptions()"
 >
 ☘ MESSAGE ME
 </button>
@@ -1247,10 +1246,7 @@ LEVEL 17 TRADER
 
 <!-- HERO -->
 
-<section
-  class="hero"
-  id="hero"
->
+<section class="hero">
 
 <div class="hero-content">
 
@@ -1266,7 +1262,7 @@ LEVEL 17 TRADER
 
 <p class="hero-text">
 Premium gaming accounts, top ups and more.
-<strong>100% safe, secure & trusted.</strong>
+<strong>100% safe, secure &amp; trusted.</strong>
 </p>
 
 <div class="hero-buttons">
@@ -1282,7 +1278,7 @@ Premium gaming accounts, top ups and more.
   class="outline-btn"
   onclick="openTopup()"
 >
-☆ TOP UP
+💎 TOP UP
 </button>
 
 </div>
@@ -1368,10 +1364,7 @@ FC MOBILE
 
 <!-- ACCOUNTS -->
 
-<section
-  class="content-section"
-  id="accounts"
->
+<section id="accounts">
 
 <div class="section-heading">
 
@@ -1386,10 +1379,6 @@ VIEW ALL →
 
 </div>
 
-<p style="color:#999">
-Choose one of the five games to view its own account section.
-</p>
-
 </section>
 
 
@@ -1398,19 +1387,22 @@ Choose one of the five games to view its own account section.
 <section
   class="game-section"
   id="freefire-section"
-  data-game-section="freefire"
+  data-game="freefire"
 >
 
 <div class="section-heading">
 <h2>FREE FIRE</h2>
 </div>
 
-<div class="products">
+<div
+  class="products"
+  id="freefire-products"
+>
 
 <div
   class="product"
-  data-game="freefire"
   data-account-id="freefire-1"
+  data-game="freefire"
 >
 
 <span class="heart">♡</span>
@@ -1425,7 +1417,7 @@ Level — · REGION
 </div>
 
 <div class="description">
-No account posted yet. Add your first Free Fire account from the admin section.
+No account posted yet. Add one from your owner/admin panel.
 </div>
 
 <div class="price">₦0</div>
@@ -1449,19 +1441,22 @@ ADD TO CART
 <section
   class="game-section"
   id="efootball-section"
-  data-game-section="efootball"
+  data-game="efootball"
 >
 
 <div class="section-heading">
 <h2>eFOOTBALL</h2>
 </div>
 
-<div class="products">
+<div
+  class="products"
+  id="efootball-products"
+>
 
 <div
   class="product"
-  data-game="efootball"
   data-account-id="efootball-1"
+  data-game="efootball"
 >
 
 <span class="heart">♡</span>
@@ -1476,7 +1471,7 @@ Level — · REGION
 </div>
 
 <div class="description">
-No account posted yet. Add your first eFootball account from the admin section.
+No account posted yet. Add one from your owner/admin panel.
 </div>
 
 <div class="price">₦0</div>
@@ -1500,19 +1495,22 @@ ADD TO CART
 <section
   class="game-section"
   id="codm-section"
-  data-game-section="codm"
+  data-game="codm"
 >
 
 <div class="section-heading">
 <h2>CODM</h2>
 </div>
 
-<div class="products">
+<div
+  class="products"
+  id="codm-products"
+>
 
 <div
   class="product"
-  data-game="codm"
   data-account-id="codm-1"
+  data-game="codm"
 >
 
 <span class="heart">♡</span>
@@ -1527,7 +1525,7 @@ Level — · REGION
 </div>
 
 <div class="description">
-No account posted yet. Add your first CODM account from the admin section.
+No account posted yet. Add one from your owner/admin panel.
 </div>
 
 <div class="price">₦0</div>
@@ -1551,19 +1549,22 @@ ADD TO CART
 <section
   class="game-section"
   id="dls-section"
-  data-game-section="dls"
+  data-game="dls"
 >
 
 <div class="section-heading">
 <h2>DLS</h2>
 </div>
 
-<div class="products">
+<div
+  class="products"
+  id="dls-products"
+>
 
 <div
   class="product"
-  data-game="dls"
   data-account-id="dls-1"
+  data-game="dls"
 >
 
 <span class="heart">♡</span>
@@ -1578,7 +1579,7 @@ Level — · REGION
 </div>
 
 <div class="description">
-No account posted yet. Add your first DLS account from the admin section.
+No account posted yet. Add one from your owner/admin panel.
 </div>
 
 <div class="price">₦0</div>
@@ -1602,19 +1603,22 @@ ADD TO CART
 <section
   class="game-section"
   id="fcmobile-section"
-  data-game-section="fcmobile"
+  data-game="fcmobile"
 >
 
 <div class="section-heading">
 <h2>FC MOBILE</h2>
 </div>
 
-<div class="products">
+<div
+  class="products"
+  id="fcmobile-products"
+>
 
 <div
   class="product"
-  data-game="fcmobile"
   data-account-id="fcmobile-1"
+  data-game="fcmobile"
 >
 
 <span class="heart">♡</span>
@@ -1629,7 +1633,7 @@ Level — · REGION
 </div>
 
 <div class="description">
-No account posted yet. Add your first FC Mobile account from the admin section.
+No account posted yet. Add one from your owner/admin panel.
 </div>
 
 <div class="price">₦0</div>
@@ -1651,30 +1655,30 @@ ADD TO CART
 <!-- TOP UP SECTIONS -->
 
 <section
-  class="topup-page-section"
-  id="freefire-topup"
+  class="game-section"
+  id="topup-freefire"
+  data-topup-section="freefire"
 >
 
 <div class="section-heading">
-<h2>FREE FIRE DIAMONDS</h2>
+<h2>FREE FIRE TOP UP</h2>
 </div>
 
-<div class="topup-empty-card">
+<div class="products">
 
-<div class="choice-icon">💎</div>
-
+<div class="product">
+<div class="game">💎 DIAMONDS</div>
 <h3>FREE FIRE DIAMONDS</h3>
-
-<p>
-No Free Fire Diamond package posted yet.
-</p>
-
+<div class="description">
+Top-up packages will be posted here.
+</div>
 <button
   class="details-btn"
-  onclick="openAdmin()"
+  onclick="showToast('Free Fire top-up selected')"
 >
-ADMIN: ADD PACKAGE
+SELECT
 </button>
+</div>
 
 </div>
 
@@ -1682,30 +1686,30 @@ ADMIN: ADD PACKAGE
 
 
 <section
-  class="topup-page-section"
-  id="efootball-topup"
+  class="game-section"
+  id="topup-efootball"
+  data-topup-section="efootball"
 >
 
 <div class="section-heading">
-<h2>eFOOTBALL COINS</h2>
+<h2>eFOOTBALL TOP UP</h2>
 </div>
 
-<div class="topup-empty-card">
+<div class="products">
 
-<div class="choice-icon">🪙</div>
-
+<div class="product">
+<div class="game">🪙 COINS</div>
 <h3>eFOOTBALL COINS</h3>
-
-<p>
-No eFootball Coin package posted yet.
-</p>
-
+<div class="description">
+Top-up packages will be posted here.
+</div>
 <button
   class="details-btn"
-  onclick="openAdmin()"
+  onclick="showToast('eFootball top-up selected')"
 >
-ADMIN: ADD PACKAGE
+SELECT
 </button>
+</div>
 
 </div>
 
@@ -1713,30 +1717,30 @@ ADMIN: ADD PACKAGE
 
 
 <section
-  class="topup-page-section"
-  id="codm-topup"
+  class="game-section"
+  id="topup-codm"
+  data-topup-section="codm"
 >
 
 <div class="section-heading">
-<h2>CODM CP</h2>
+<h2>CODM TOP UP</h2>
 </div>
 
-<div class="topup-empty-card">
+<div class="products">
 
-<div class="choice-icon">🎯</div>
-
+<div class="product">
+<div class="game">🎯 CP</div>
 <h3>CODM CP</h3>
-
-<p>
-No CODM CP package posted yet.
-</p>
-
+<div class="description">
+Top-up packages will be posted here.
+</div>
 <button
   class="details-btn"
-  onclick="openAdmin()"
+  onclick="showToast('CODM top-up selected')"
 >
-ADMIN: ADD PACKAGE
+SELECT
 </button>
+</div>
 
 </div>
 
@@ -1744,30 +1748,30 @@ ADMIN: ADD PACKAGE
 
 
 <section
-  class="topup-page-section"
-  id="dls-topup"
+  class="game-section"
+  id="topup-dls"
+  data-topup-section="dls"
 >
 
 <div class="section-heading">
-<h2>DLS DIAMONDS</h2>
+<h2>DLS TOP UP</h2>
 </div>
 
-<div class="topup-empty-card">
+<div class="products">
 
-<div class="choice-icon">💎</div>
-
+<div class="product">
+<div class="game">💎 DIAMONDS</div>
 <h3>DLS DIAMONDS</h3>
-
-<p>
-No DLS Diamond package posted yet.
-</p>
-
+<div class="description">
+Top-up packages will be posted here.
+</div>
 <button
   class="details-btn"
-  onclick="openAdmin()"
+  onclick="showToast('DLS top-up selected')"
 >
-ADMIN: ADD PACKAGE
+SELECT
 </button>
+</div>
 
 </div>
 
@@ -1775,30 +1779,30 @@ ADMIN: ADD PACKAGE
 
 
 <section
-  class="topup-page-section"
-  id="fcmobile-topup"
+  class="game-section"
+  id="topup-fcmobile"
+  data-topup-section="fcmobile"
 >
 
 <div class="section-heading">
-<h2>FC MOBILE</h2>
+<h2>FC MOBILE TOP UP</h2>
 </div>
 
-<div class="topup-empty-card">
+<div class="products">
 
-<div class="choice-icon">⚽</div>
-
-<h3>FC MOBILE</h3>
-
-<p>
-No FC Mobile package posted yet.
-</p>
-
+<div class="product">
+<div class="game">⚽ FC MOBILE</div>
+<h3>FC MOBILE TOP UP</h3>
+<div class="description">
+Top-up packages will be posted here.
+</div>
 <button
   class="details-btn"
-  onclick="openAdmin()"
+  onclick="showToast('FC Mobile top-up selected')"
 >
-ADMIN: ADD PACKAGE
+SELECT
 </button>
+</div>
 
 </div>
 
@@ -1830,13 +1834,11 @@ ADMIN: ADD PACKAGE
 <div class="feature">
 <div class="feature-icon">♧</div>
 <h3>24/7 SUPPORT</h3>
-<p>We're always here to help you.</p>
+<p>We're always here to help.</p>
 </div>
 
 </section>
 
-
-<!-- FOOTER -->
 
 <footer>
 
@@ -1878,7 +1880,6 @@ LEVEL UP. PLAY MORE. 👑
 </footer>
 
 </main>
-
 </div>
 
 
@@ -1900,60 +1901,62 @@ LEVEL UP. PLAY MORE. 👑
 
 <h2>MY ACCOUNT</h2>
 
-<p>
-Create your Crispy Shop account or log in.
+<p id="customerWelcome">
+Create an account or login to Crispy Shop.
 </p>
 
-<div class="choice-grid">
+
+<!-- LOGIN / SIGNUP -->
+
+<div id="authChoices">
+
+<div class="contact-options">
 
 <button
-  class="choice"
-  onclick="showCustomerSignup()"
+  class="contact-option"
+  onclick="showSignup()"
 >
-<span class="choice-icon">👤</span>
-CREATE ACCOUNT
+👤 CREATE ACCOUNT
 </button>
 
 <button
-  class="choice"
-  onclick="showCustomerLogin()"
+  class="contact-option"
+  onclick="showLogin()"
 >
-<span class="choice-icon">🔐</span>
-LOGIN
+🔐 LOGIN
 </button>
 
 </div>
 
 
 <div
-  id="customerSignup"
+  id="signupBox"
   style="display:none;margin-top:20px"
 >
 
 <input
-  id="customerName"
+  id="signupName"
   class="form-input"
   type="text"
   placeholder="Your name"
 >
 
 <input
-  id="customerEmail"
+  id="signupEmail"
   class="form-input"
   type="email"
   placeholder="Email address"
 >
 
 <input
-  id="customerPassword"
+  id="signupPassword"
   class="form-input"
   type="password"
   placeholder="Password"
 >
 
 <button
-  class="yellow-btn"
-  style="width:100%"
+  class="yellow-btn full-btn"
   onclick="createCustomerAccount()"
 >
 CREATE ACCOUNT
@@ -1963,7 +1966,7 @@ CREATE ACCOUNT
 
 
 <div
-  id="customerLogin"
+  id="loginBox"
   style="display:none;margin-top:20px"
 >
 
@@ -1982,8 +1985,7 @@ CREATE ACCOUNT
 >
 
 <button
-  class="yellow-btn"
-  style="width:100%"
+  class="yellow-btn full-btn"
   onclick="loginCustomer()"
 >
 LOGIN
@@ -1991,17 +1993,161 @@ LOGIN
 
 </div>
 
+</div>
+
+
+<!-- LOGGED-IN CUSTOMER -->
+
 <div
-  id="customerMessage"
+  id="customerDashboard"
+  style="display:none"
+>
+
+<div class="customer-profile">
+
+<div class="customer-photo-area">
+
+<div class="customer-photo-circle">
+
+<img
+  id="customerPhotoPreview"
+  src=""
+  alt="Profile photo"
+  style="display:none"
+>
+
+<span id="customerPhotoPlaceholder">
+👤
+</span>
+
+</div>
+
+<label
+  for="customerPhoto"
+  class="yellow-btn upload-photo-label"
+>
+📸 UPLOAD / CHANGE PHOTO
+</label>
+
+<input
+  id="customerPhoto"
+  type="file"
+  accept="image/*"
+  style="display:none"
+  onchange="uploadCustomerPhoto(event)"
+>
+
+</div>
+
+
+<div class="customer-details">
+
+<h3 id="customerName">
+Customer
+</h3>
+
+<p id="customerEmail">
+Email
+</p>
+
+<span class="customer-badge">
+VERIFIED CUSTOMER
+</span>
+
+</div>
+
+</div>
+
+
+<div
+  id="customerOptions"
+  class="customer-options"
+>
+
+<button
+  class="customer-option"
+  onclick="customerInfo('PROFILE')"
+>
+👤 MY PROFILE
+</button>
+
+<button
+  class="customer-option"
+  onclick="customerInfo('ORDERS')"
+>
+🛒 MY ORDERS
+</button>
+
+<button
+  class="customer-option"
+  onclick="customerInfo('PURCHASED')"
+>
+🎮 MY PURCHASED ACCOUNTS
+</button>
+
+<button
+  class="customer-option"
+  onclick="customerInfo('TOPUPS')"
+>
+💎 MY TOP-UPS
+</button>
+
+<button
+  class="customer-option"
+  onclick="customerInfo('REVIEWS')"
+>
+⭐ MY REVIEWS
+</button>
+
+<button
+  class="customer-option"
+  onclick="customerInfo('PASSWORD')"
+>
+🔐 CHANGE PASSWORD
+</button>
+
+<button
+  class="customer-option logout-option"
+  onclick="customerLogout()"
+>
+🚪 LOGOUT
+</button>
+
+</div>
+
+
+<div
+  id="customerInfo"
+  class="customer-info"
+  style="display:none"
+>
+
+<button
+  class="outline-btn"
+  onclick="backCustomerOptions()"
+>
+← BACK
+</button>
+
+<div id="customerInfoContent"></div>
+
+</div>
+
+</div>
+
+
+<div
+  id="accountMessage"
   class="admin-message"
-></div>
-
+>
 </div>
 
 </div>
 
+</div>
 
-<!-- ACCOUNT GAME CHOICES -->
+
+<!-- ACCOUNT CHOICES -->
 
 <div
   class="modal"
@@ -2020,7 +2166,7 @@ LOGIN
 <h2>CHOOSE YOUR GAME</h2>
 
 <p>
-Select the game account you want to browse.
+Choose the game account you want.
 </p>
 
 <div class="choice-grid">
@@ -2076,14 +2222,14 @@ FC MOBILE
 
 <div
   class="modal"
-  id="topupChoiceModal"
+  id="topupModal"
 >
 
 <div class="modal-box">
 
 <button
   class="modal-close"
-  onclick="closeModal('topupChoiceModal')"
+  onclick="closeModal('topupModal')"
 >
 ×
 </button>
@@ -2091,48 +2237,48 @@ FC MOBILE
 <h2>CHOOSE TOP UP</h2>
 
 <p>
-Select the game you want to top up.
+Each game has its own top-up section.
 </p>
 
 <div class="choice-grid">
 
 <button
   class="choice"
-  onclick="openTopupSection('freefire-topup')"
+  onclick="chooseTopup('topup-freefire')"
 >
-<span class="choice-icon">💎</span>
-FREE FIRE DIAMONDS
+💎
+FREE FIRE
 </button>
 
 <button
   class="choice"
-  onclick="openTopupSection('efootball-topup')"
+  onclick="chooseTopup('topup-efootball')"
 >
-<span class="choice-icon">🪙</span>
-eFOOTBALL COINS
+🪙
+eFOOTBALL
 </button>
 
 <button
   class="choice"
-  onclick="openTopupSection('codm-topup')"
+  onclick="chooseTopup('topup-codm')"
 >
-<span class="choice-icon">🎯</span>
-CODM CP
+🎯
+CODM
 </button>
 
 <button
   class="choice"
-  onclick="openTopupSection('dls-topup')"
+  onclick="chooseTopup('topup-dls')"
 >
-<span class="choice-icon">💎</span>
-DLS DIAMONDS
+💎
+DLS
 </button>
 
 <button
   class="choice"
-  onclick="openTopupSection('fcmobile-topup')"
+  onclick="chooseTopup('topup-fcmobile')"
 >
-<span class="choice-icon">⚽</span>
+⚽
 FC MOBILE
 </button>
 
@@ -2161,14 +2307,12 @@ FC MOBILE
 
 <h2>RATE CRISPY SHOP</h2>
 
-<p>
-Choose your rating.
-</p>
+<p>How would you rate your experience?</p>
 
-<div class="stars-choice">
+<div class="choice-grid">
 
 <button
-  class="star-choice"
+  class="choice"
   onclick="sendReview(5)"
 >
 ★★★★★
@@ -2177,7 +2321,7 @@ Choose your rating.
 </button>
 
 <button
-  class="star-choice"
+  class="choice"
   onclick="sendReview(4)"
 >
 ★★★★
@@ -2186,7 +2330,7 @@ Choose your rating.
 </button>
 
 <button
-  class="star-choice"
+  class="choice"
   onclick="sendReview(3)"
 >
 ★★★
@@ -2195,7 +2339,7 @@ Choose your rating.
 </button>
 
 <button
-  class="star-choice"
+  class="choice"
   onclick="sendReview(2)"
 >
 ★★
@@ -2204,7 +2348,7 @@ Choose your rating.
 </button>
 
 <button
-  class="star-choice"
+  class="choice"
   onclick="sendReview(1)"
 >
 ★
@@ -2219,7 +2363,7 @@ Choose your rating.
 </div>
 
 
-<!-- CONTACT -->
+<!-- CONTACT OPTIONS -->
 
 <div
   class="modal"
@@ -2241,42 +2385,38 @@ Choose your rating.
 Choose how you want to contact me.
 </p>
 
-<div class="choice-grid">
+<div class="contact-options">
 
 <a
-  class="choice"
+  class="contact-option"
   href="https://wa.me/2347051885555"
   target="_blank"
 >
-<span class="choice-icon">💬</span>
-WHATSAPP
+💬 WHATSAPP
 </a>
 
 <a
-  class="choice"
+  class="contact-option"
   href="https://www.tiktok.com/@_itzcrispy"
   target="_blank"
 >
-<span class="choice-icon">🎵</span>
-TIKTOK
+🎵 TIKTOK
 </a>
 
 <a
-  class="choice"
+  class="contact-option"
   href="https://x.com/crispysoloss"
   target="_blank"
 >
-<span class="choice-icon">𝕏</span>
-X
+𝕏 X
 </a>
 
 <a
-  class="choice"
+  class="contact-option"
   href="https://t.me/crispyshop_1"
   target="_blank"
 >
-<span class="choice-icon">✈</span>
-TELEGRAM
+✈ TELEGRAM
 </a>
 
 </div>
@@ -2306,18 +2446,16 @@ TELEGRAM
 
 <input
   id="searchInput"
-  class="search-input"
+  class="form-input"
   type="search"
-  placeholder="Search account, game or top up..."
+  placeholder="Search accounts, games or top ups..."
   oninput="runSearch()"
 >
 
 <div id="searchResults">
-
 <div class="search-result">
 Type something to search.
 </div>
-
 </div>
 
 </div>
@@ -2362,7 +2500,61 @@ Total: ₦0
 </div>
 
 
-<!-- ADMIN POSTING -->
+<!-- ADMIN LOGIN -->
+
+<div
+  class="modal"
+  id="adminLoginModal"
+>
+
+<div class="modal-box">
+
+<button
+  class="modal-close"
+  onclick="closeModal('adminLoginModal')"
+>
+×
+</button>
+
+<h2>OWNER / ADMIN</h2>
+
+<p>
+This area is only for the Crispy Shop owner.
+</p>
+
+<input
+  id="adminEmail"
+  class="form-input"
+  type="email"
+  placeholder="Admin email"
+>
+
+<input
+  id="adminPassword"
+  class="form-input"
+  type="password"
+  placeholder="Admin password"
+>
+
+<button
+  class="yellow-btn full-btn"
+  onclick="adminLogin()"
+>
+ADMIN LOGIN
+</button>
+
+<div
+  id="adminLoginMessage"
+  class="admin-message"
+>
+</div>
+
+</div>
+
+</div>
+
+
+<!-- ADMIN EDITOR -->
 
 <div
   class="modal"
@@ -2378,20 +2570,22 @@ Total: ₦0
 ×
 </button>
 
-<h2>ADMIN — POST ACCOUNT</h2>
+<h2>OWNER DASHBOARD 👑</h2>
 
 <p>
-Only use this section when you are posting an account.
+Post or edit gaming accounts here. Customers cannot access these controls.
 </p>
 
-<div class="admin-form">
 
-<div class="full photo-upload">
+<!-- ADMIN ACCOUNT PHOTO -->
+
+<div class="photo-upload">
 
 <label
   class="admin-label"
+  for="accountPhoto"
 >
-ACCOUNT PHOTO
+📸 GAMING ACCOUNT PHOTO
 </label>
 
 <input
@@ -2399,18 +2593,20 @@ ACCOUNT PHOTO
   class="admin-input"
   type="file"
   accept="image/*"
-  onchange="previewPhoto(event)"
+  onchange="previewAdminPhoto(event)"
 >
 
 <img
-  id="photoPreview"
-  class="photo-preview"
-  style="display:none"
-  alt="Preview"
+  id="adminPhotoPreview"
+  class="admin-photo-preview"
+  src=""
+  alt="Gaming account photo"
 >
 
 </div>
 
+
+<div class="admin-form" style="margin-top:15px">
 
 <div>
 
@@ -2423,25 +2619,11 @@ GAME
   class="admin-select"
 >
 
-<option value="freefire">
-FREE FIRE
-</option>
-
-<option value="efootball">
-eFOOTBALL
-</option>
-
-<option value="codm">
-CODM
-</option>
-
-<option value="dls">
-DLS
-</option>
-
-<option value="fcmobile">
-FC MOBILE
-</option>
+<option value="freefire">FREE FIRE</option>
+<option value="efootball">eFOOTBALL</option>
+<option value="codm">CODM</option>
+<option value="dls">DLS</option>
+<option value="fcmobile">FC MOBILE</option>
 
 </select>
 
@@ -2455,7 +2637,7 @@ ACCOUNT TITLE
 </label>
 
 <input
-  id="adminName"
+  id="adminAccountName"
   class="admin-input"
   placeholder="Account name"
 >
@@ -2472,7 +2654,7 @@ LEVEL
 <input
   id="adminLevel"
   class="admin-input"
-  placeholder="e.g. 86"
+  placeholder="e.g. 3231"
 >
 
 </div>
@@ -2519,13 +2701,8 @@ STATUS
   class="admin-select"
 >
 
-<option value="AVAILABLE">
-AVAILABLE
-</option>
-
-<option value="SOLD OUT">
-SOLD OUT
-</option>
+<option value="AVAILABLE">AVAILABLE</option>
+<option value="SOLD OUT">SOLD OUT</option>
 
 </select>
 
@@ -2541,7 +2718,7 @@ DESCRIPTION
 <textarea
   id="adminDescription"
   class="admin-textarea"
-  placeholder="Account description..."
+  placeholder="Account details..."
 ></textarea>
 
 </div>
@@ -2553,206 +2730,285 @@ DESCRIPTION
 
 <button
   class="yellow-btn"
-  onclick="saveAccount()"
+  onclick="saveAdminAccount()"
 >
-POST ACCOUNT
+SAVE ACCOUNT
 </button>
 
 <button
   class="outline-btn"
-  onclick="clearAdmin()"
+  onclick="clearAdminForm()"
 >
 CLEAR
 </button>
 
 </div>
 
+<button
+  class="outline-btn"
+  style="width:100%;margin-top:10px"
+  onclick="adminLogout()"
+>
+LOG OUT ADMIN
+</button>
+
 <div
   id="adminMessage"
   class="admin-message"
-></div>
-
+>
 </div>
 
 </div>
 
-
-<script>
-
-/* =========================
-   BASIC SETTINGS
-========================= */
-
-const WHATSAPP="2347051885555";
-
-const TIKTOK=
-"https://www.tiktok.com/@_itzcrispy";
-
-const X_LINK=
-"https://x.com/crispysoloss";
-
-const TELEGRAM=
-"https://t.me/crispyshop_1";
+</div>
 
 
-/* =========================
-   MODALS
-========================= */
+<script type="module">
 
-function openModal(id){
-
-  const modal=
-    document.getElementById(id);
-
-  if(modal){
-    modal.classList.add("show");
-  }
-
+import {
+  initializeApp
 }
+from "https://www.gstatic.com/firebasejs/10.12.2/firebase-app.js";
 
-
-function closeModal(id){
-
-  const modal=
-    document.getElementById(id);
-
-  if(modal){
-    modal.classList.remove("show");
-  }
-
+import {
+  getAuth,
+  createUserWithEmailAndPassword,
+  signInWithEmailAndPassword,
+  updateProfile,
+  onAuthStateChanged,
+  signOut,
+  updatePassword
 }
+from "https://www.gstatic.com/firebasejs/10.12.2/firebase-auth.js";
 
 
-document
-.querySelectorAll(".modal")
-.forEach(function(modal){
+const firebaseConfig={
 
-  modal.addEventListener("click",function(e){
+  apiKey:
+  "AIzaSyC9FNL08mvrtbcjXXj_JBWPHvdUORioYr8",
 
-    if(e.target===modal){
-      modal.classList.remove("show");
-    }
+  authDomain:
+  "crispy-shop-25644.firebaseapp.com",
 
-  });
+  projectId:
+  "crispy-shop-25644",
 
-});
+  storageBucket:
+  "crispy-shop-25644.firebasestorage.app",
+
+  messagingSenderId:
+  "311251480323",
+
+  appId:
+  "1:311251480323:web:b0d9e14c947a0528ccc336"
+
+};
 
 
-/* =========================
-   CUSTOMER ACCOUNT
-========================= */
+const app=
+initializeApp(firebaseConfig);
 
-function openCustomerAccount(){
+const auth=
+getAuth(app);
+
+
+/* YOUR ADMIN EMAIL */
+
+const ADMIN_EMAIL=
+"crispyshop11@gmail.com";
+
+
+/* CUSTOMER ACCOUNT */
+
+window.openCustomerAccount=function(){
 
   openModal("customerAccountModal");
 
-}
+  if(auth.currentUser){
+
+    showCustomerDashboard();
+
+  }else{
+
+    showAuthChoices();
+
+  }
+
+};
 
 
-function showCustomerSignup(){
+/* SIGNUP */
+
+window.showSignup=function(){
 
   document.getElementById(
-    "customerSignup"
+    "signupBox"
   ).style.display="block";
 
   document.getElementById(
-    "customerLogin"
+    "loginBox"
+  ).style.display="none";
+
+};
+
+
+/* LOGIN FORM */
+
+window.showLogin=function(){
+
+  document.getElementById(
+    "signupBox"
+  ).style.display="none";
+
+  document.getElementById(
+    "loginBox"
+  ).style.display="block";
+
+};
+
+
+/* AUTH CHOICES */
+
+function showAuthChoices(){
+
+  document.getElementById(
+    "authChoices"
+  ).style.display="block";
+
+  document.getElementById(
+    "customerDashboard"
   ).style.display="none";
 
 }
 
 
-function showCustomerLogin(){
+/* CUSTOMER DASHBOARD */
+
+function showCustomerDashboard(){
+
+  const user=auth.currentUser;
+
+  if(!user)return;
 
   document.getElementById(
-    "customerSignup"
+    "authChoices"
   ).style.display="none";
 
   document.getElementById(
-    "customerLogin"
+    "customerDashboard"
   ).style.display="block";
+
+
+  const name=
+    user.displayName ||
+    user.email ||
+    "Customer";
+
+
+  document.getElementById(
+    "customerWelcome"
+  ).textContent=
+    "Welcome back, "
+    + name
+    + " 👋";
+
+
+  document.getElementById(
+    "customerName"
+  ).textContent=
+    name;
+
+
+  document.getElementById(
+    "customerEmail"
+  ).textContent=
+    user.email;
+
+
+  loadCustomerPhoto();
 
 }
 
 
-function createCustomerAccount(){
+/* CREATE ACCOUNT */
+
+window.createCustomerAccount=
+async function(){
 
   const name=
     document.getElementById(
-      "customerName"
+      "signupName"
     ).value.trim();
 
   const email=
     document.getElementById(
-      "customerEmail"
+      "signupEmail"
     ).value.trim();
 
   const password=
     document.getElementById(
-      "customerPassword"
+      "signupPassword"
     ).value;
+
 
   const message=
     document.getElementById(
-      "customerMessage"
+      "accountMessage"
     );
+
 
   if(!name||!email||!password){
 
     message.textContent=
-      "Please fill in all fields.";
+      "Please fill in everything.";
 
     return;
 
   }
 
-  if(password.length<6){
 
-    message.textContent=
-      "Password must be at least 6 characters.";
+  try{
 
-    return;
+    const result=
+      await createUserWithEmailAndPassword(
+        auth,
+        email,
+        password
+      );
 
-  }
 
-  const users=
-    JSON.parse(
-      localStorage.getItem(
-        "crispyCustomers"
-      )||"[]"
+    await updateProfile(
+      result.user,
+      {
+        displayName:name
+      }
     );
 
-  if(
-    users.some(
-      u=>u.email===email
-    )
-  ){
 
     message.textContent=
-      "This email already has an account.";
+      "Account created successfully!";
 
-    return;
+
+    showCustomerDashboard();
 
   }
 
-  users.push({
-    name:name,
-    email:email,
-    password:password
-  });
+  catch(error){
 
-  localStorage.setItem(
-    "crispyCustomers",
-    JSON.stringify(users)
-  );
+    console.error(error);
 
-  message.textContent=
-    "Account created successfully!";
+    message.textContent=
+      error.message;
 
-}
+  }
+
+};
 
 
-function loginCustomer(){
+/* CUSTOMER LOGIN */
+
+window.loginCustomer=
+async function(){
 
   const email=
     document.getElementById(
@@ -2764,613 +3020,547 @@ function loginCustomer(){
       "loginPassword"
     ).value;
 
+
   const message=
     document.getElementById(
-      "customerMessage"
+      "accountMessage"
     );
 
-  const users=
-    JSON.parse(
-      localStorage.getItem(
-        "crispyCustomers"
-      )||"[]"
-    );
 
-  const user=
-    users.find(
-      u=>
-        u.email===email &&
-        u.password===password
-    );
+  if(!email||!password){
+
+    message.textContent=
+      "Enter your email and password.";
+
+    return;
+
+  }
+
+
+  message.textContent=
+    "Logging in...";
+
+
+  try{
+
+    const result=
+      await signInWithEmailAndPassword(
+        auth,
+        email,
+        password
+      );
+
+
+    if(
+      result.user.email.toLowerCase()
+      ===
+      ADMIN_EMAIL.toLowerCase()
+    ){
+
+      message.textContent=
+        "Owner account detected. Use the admin link.";
+
+      await signOut(auth);
+
+      return;
+
+    }
+
+
+    showCustomerDashboard();
+
+    message.textContent=
+      "Login successful!";
+
+  }
+
+  catch(error){
+
+    console.error(error);
+
+    message.textContent=
+      "Login failed. Check your email and password.";
+
+  }
+
+};
+
+
+/* CUSTOMER PHOTO */
+
+window.uploadCustomerPhoto=
+function(event){
+
+  const user=auth.currentUser;
 
   if(!user){
 
-    message.textContent=
-      "Incorrect email or password.";
-
-    return;
-
-  }
-
-  message.textContent=
-    "Welcome back, "+user.name+"!";
-
-}
-
-
-/* =========================
-   ACCOUNT GAME SELECTION
-========================= */
-
-function openAccountChoices(e){
-
-  if(e){
-    e.preventDefault();
-  }
-
-  openModal("accountModal");
-
-}
-
-
-function chooseGame(game){
-
-  closeModal("accountModal");
-
-  document
-  .querySelectorAll(".game-section")
-  .forEach(function(section){
-
-    section.style.display="none";
-
-  });
-
-  const section=
     document.getElementById(
-      game+"-section"
-    );
-
-  if(!section){
-    return;
-  }
-
-  section.style.display="block";
-
-  section.scrollIntoView({
-    behavior:"smooth",
-    block:"start"
-  });
-
-}
-
-
-/* =========================
-   TOP UP
-========================= */
-
-function openTopup(e){
-
-  if(e){
-    e.preventDefault();
-  }
-
-  openModal(
-    "topupChoiceModal"
-  );
-
-}
-
-
-function openTopupSection(id){
-
-  closeModal(
-    "topupChoiceModal"
-  );
-
-  document
-  .querySelectorAll(
-    ".topup-page-section"
-  )
-  .forEach(function(section){
-
-    section.classList.remove(
-      "open"
-    );
-
-  });
-
-  const section=
-    document.getElementById(id);
-
-  if(!section){
-    return;
-  }
-
-  section.classList.add("open");
-
-  setTimeout(function(){
-
-    section.scrollIntoView({
-      behavior:"smooth",
-      block:"start"
-    });
-
-  },100);
-
-}
-
-
-/* =========================
-   REVIEWS
-========================= */
-
-function openReviews(e){
-
-  if(e){
-    e.preventDefault();
-  }
-
-  openModal("reviewModal");
-
-}
-
-
-function sendReview(stars){
-
-  closeModal("reviewModal");
-
-  const message=
-    "Hello Crispy Shop, I want to leave a "
-    +stars+
-    " star review.";
-
-  window.open(
-    "https://wa.me/"
-    +WHATSAPP+
-    "?text="
-    +encodeURIComponent(message),
-    "_blank"
-  );
-
-}
-
-
-/* =========================
-   CONTACT
-========================= */
-
-function contactMe(){
-
-  openModal(
-    "contactModal"
-  );
-
-}
-
-
-function messageMe(){
-
-  const message=
-    "Hello Crispy Shop, I want to send a message.";
-
-  window.open(
-    "https://wa.me/"
-    +WHATSAPP+
-    "?text="
-    +encodeURIComponent(message),
-    "_blank"
-  );
-
-}
-
-
-/* =========================
-   SEARCH
-========================= */
-
-function openSearch(){
-
-  openModal(
-    "searchModal"
-  );
-
-  setTimeout(function(){
-
-    document
-    .getElementById(
-      "searchInput"
-    )
-    .focus();
-
-  },100);
-
-}
-
-
-function runSearch(){
-
-  const q=
-    document
-    .getElementById(
-      "searchInput"
-    )
-    .value
-    .toLowerCase()
-    .trim();
-
-  const results=
-    document.getElementById(
-      "searchResults"
-    );
-
-  if(!q){
-
-    results.innerHTML=
-      '<div class="search-result">'
-      +'Type something to search.'
-      +'</div>';
+      "accountMessage"
+    ).textContent=
+      "Please log in first.";
 
     return;
 
   }
 
-  const products=
-    [
-      ...document.querySelectorAll(
-        ".product"
-      )
-    ];
-
-  const matches=
-    products.filter(function(product){
-
-      return product.innerText
-        .toLowerCase()
-        .includes(q);
-
-    });
-
-  const topups=[
-    "FREE FIRE DIAMONDS",
-    "eFOOTBALL COINS",
-    "CODM CP",
-    "DLS DIAMONDS",
-    "FC MOBILE"
-  ];
-
-  const topupMatches=
-    topups.filter(function(item){
-
-      return item
-        .toLowerCase()
-        .includes(q);
-
-    });
-
-  let html="";
-
-  matches.forEach(function(product){
-
-    html+=`
-      <div
-        class="search-result"
-        onclick="goToProduct('${product.dataset.accountId}')"
-      >
-        ${product.querySelector("h3").innerText}
-        —
-        ${product.querySelector(".price").innerText}
-      </div>
-    `;
-
-  });
-
-  topupMatches.forEach(function(item){
-
-    const ids={
-      "FREE FIRE DIAMONDS":
-        "freefire-topup",
-
-      "eFOOTBALL COINS":
-        "efootball-topup",
-
-      "CODM CP":
-        "codm-topup",
-
-      "DLS DIAMONDS":
-        "dls-topup",
-
-      "FC MOBILE":
-        "fcmobile-topup"
-    };
-
-    html+=`
-      <div
-        class="search-result"
-        onclick="openTopupSection('${ids[item]}')"
-      >
-        ${item}
-      </div>
-    `;
-
-  });
-
-  if(!html){
-
-    html=
-      '<div class="search-result">'
-      +'No matching result found.'
-      +'</div>';
-
-  }
-
-  results.innerHTML=html;
-
-}
-
-
-function goToProduct(id){
-
-  closeModal("searchModal");
-
-  const product=
-    document.querySelector(
-      '[data-account-id="'+id+'"]'
-    );
-
-  if(product){
-
-    const game=
-      product.dataset.game;
-
-    document
-    .querySelectorAll(".game-section")
-    .forEach(function(section){
-
-      section.style.display=
-        section.dataset.gameSection===game
-          ?"block"
-          :"none";
-
-    });
-
-    product.scrollIntoView({
-      behavior:"smooth",
-      block:"center"
-    });
-
-  }
-
-}
-
-
-/* =========================
-   CART
-========================= */
-
-let cart=[];
-
-
-function addToCart(name,price){
-
-  cart.push({
-    name:name,
-    price:price
-  });
-
-  renderCart();
-
-  alert(
-    name+" added to cart."
-  );
-
-}
-
-
-function renderCart(){
-
-  const list=
-    document.getElementById(
-      "cartList"
-    );
-
-  const total=
-    document.getElementById(
-      "cartTotal"
-    );
-
-  if(!cart.length){
-
-    list.innerHTML=
-      '<div class="empty">'
-      +'Your cart is empty.'
-      +'</div>';
-
-    total.textContent=
-      "Total: ₦0";
-
-    return;
-
-  }
-
-  let sum=0;
-
-  list.innerHTML=
-    cart.map(
-      function(item,index){
-
-        const numeric=
-          Number(
-            String(item.price)
-            .replace(/[₦,]/g,"")
-          )||0;
-
-        sum+=numeric;
-
-        return `
-          <div class="cart-item">
-
-            <span>
-              ${item.name}
-            </span>
-
-            <strong class="cart-price">
-              ${item.price}
-            </strong>
-
-            <button
-              onclick="removeCart(${index})"
-              style="
-                background:transparent;
-                border:0;
-                color:#ff5555;
-                font-size:22px;
-              "
-            >
-              ×
-            </button>
-
-          </div>
-        `;
-
-      }
-    ).join("")
-    +
-    `
-      <button
-        class="yellow-btn"
-        style="
-          width:100%;
-          margin-top:18px;
-        "
-        onclick="checkout()"
-      >
-        CHECKOUT ON WHATSAPP
-      </button>
-    `;
-
-  total.textContent=
-    "Total: ₦"
-    +sum.toLocaleString();
-
-}
-
-
-function removeCart(index){
-
-  cart.splice(
-    index,
-    1
-  );
-
-  renderCart();
-
-}
-
-
-function openCart(){
-
-  renderCart();
-
-  openModal(
-    "cartModal"
-  );
-
-}
-
-
-function checkout(){
-
-  if(!cart.length){
-    return;
-  }
-
-  const message=
-    "Hello Crispy Shop, I want to buy:%0A"
-    +
-    cart.map(function(item){
-
-      return "- "
-        +item.name
-        +" ("
-        +item.price
-        +")";
-
-    }).join("%0A");
-
-  window.open(
-    "https://wa.me/"
-    +WHATSAPP
-    +"?text="
-    +message,
-    "_blank"
-  );
-
-}
-
-
-/* =========================
-   ADMIN PHOTO
-========================= */
-
-let accountPhotoData="";
-
-
-function previewPhoto(event){
 
   const file=
     event.target.files &&
     event.target.files[0];
 
+
+  if(!file)return;
+
+
+  if(!file.type.startsWith("image/")){
+
+    alert("Please select an image.");
+
+    return;
+
+  }
+
+
+  const reader=
+    new FileReader();
+
+
+  reader.onload=function(){
+
+    localStorage.setItem(
+      "crispyCustomerPhoto_"
+      + user.uid,
+      reader.result
+    );
+
+
+    loadCustomerPhoto();
+
+
+    document.getElementById(
+      "accountMessage"
+    ).textContent=
+      "Profile photo updated successfully.";
+
+  };
+
+
+  reader.readAsDataURL(file);
+
+};
+
+
+function loadCustomerPhoto(){
+
+  const user=auth.currentUser;
+
+  if(!user)return;
+
+
+  const photo=
+    localStorage.getItem(
+      "crispyCustomerPhoto_"
+      + user.uid
+    );
+
+
+  const img=
+    document.getElementById(
+      "customerPhotoPreview"
+    );
+
+  const placeholder=
+    document.getElementById(
+      "customerPhotoPlaceholder"
+    );
+
+
+  if(photo){
+
+    img.src=photo;
+
+    img.style.display="block";
+
+    placeholder.style.display="none";
+
+  }else{
+
+    img.src="";
+
+    img.style.display="none";
+
+    placeholder.style.display="block";
+
+  }
+
+}
+
+
+/* CUSTOMER INFO */
+
+window.customerInfo=function(type){
+
+  const content=
+    document.getElementById(
+      "customerInfoContent"
+    );
+
+
+  document.getElementById(
+    "customerOptions"
+  ).style.display="none";
+
+  document.getElementById(
+    "customerInfo"
+  ).style.display="block";
+
+
+  if(type==="PROFILE"){
+
+    content.innerHTML=`
+
+      <div class="info-card">
+
+        <h3>MY PROFILE</h3>
+
+        <p>👤 Name: ${auth.currentUser.displayName||"Customer"}</p>
+
+        <p>📧 Email: ${auth.currentUser.email}</p>
+
+        <p>✅ Account: Active</p>
+
+      </div>
+
+    `;
+
+  }
+
+
+  if(type==="ORDERS"){
+
+    content.innerHTML=`
+
+      <div class="info-card">
+
+        <h3>MY ORDERS</h3>
+
+        <p>Your orders will appear here.</p>
+
+      </div>
+
+    `;
+
+  }
+
+
+  if(type==="PURCHASED"){
+
+    content.innerHTML=`
+
+      <div class="info-card">
+
+        <h3>MY PURCHASED ACCOUNTS</h3>
+
+        <p>Your purchased gaming accounts will appear here.</p>
+
+      </div>
+
+    `;
+
+  }
+
+
+  if(type==="TOPUPS"){
+
+    content.innerHTML=`
+
+      <div class="info-card">
+
+        <h3>MY TOP-UPS</h3>
+
+        <p>Your top-up history will appear here.</p>
+
+      </div>
+
+    `;
+
+  }
+
+
+  if(type==="REVIEWS"){
+
+    content.innerHTML=`
+
+      <div class="info-card">
+
+        <h3>MY REVIEWS</h3>
+
+        <p>Your reviews will appear here.</p>
+
+      </div>
+
+    `;
+
+  }
+
+
+  if(type==="PASSWORD"){
+
+    content.innerHTML=`
+
+      <div class="info-card">
+
+        <h3>CHANGE PASSWORD</h3>
+
+        <input
+          id="newCustomerPassword"
+          class="form-input"
+          type="password"
+          placeholder="New password"
+        >
+
+        <button
+          class="yellow-btn full-btn"
+          onclick="changeCustomerPassword()"
+        >
+          CHANGE PASSWORD
+        </button>
+
+      </div>
+
+    `;
+
+  }
+
+};
+
+
+window.backCustomerOptions=function(){
+
+  document.getElementById(
+    "customerOptions"
+  ).style.display="grid";
+
+  document.getElementById(
+    "customerInfo"
+  ).style.display="none";
+
+};
+
+
+window.changeCustomerPassword=
+async function(){
+
+  const password=
+    document.getElementById(
+      "newCustomerPassword"
+    ).value;
+
+
+  if(password.length<6){
+
+    alert(
+      "Password must be at least 6 characters."
+    );
+
+    return;
+
+  }
+
+
+  try{
+
+    await updatePassword(
+      auth.currentUser,
+      password
+    );
+
+    alert(
+      "Password changed successfully."
+    );
+
+  }
+
+  catch(error){
+
+    alert(
+      "Please log in again before changing your password."
+    );
+
+  }
+
+};
+
+
+/* CUSTOMER LOGOUT */
+
+window.customerLogout=
+async function(){
+
+  await signOut(auth);
+
+  closeModal(
+    "customerAccountModal"
+  );
+
+};
+
+
+/* ADMIN LOGIN */
+
+window.adminLogin=
+async function(){
+
+  const email=
+    document.getElementById(
+      "adminEmail"
+    ).value.trim();
+
+  const password=
+    document.getElementById(
+      "adminPassword"
+    ).value;
+
+
+  const message=
+    document.getElementById(
+      "adminLoginMessage"
+    );
+
+
+  if(
+    email.toLowerCase()
+    !==
+    ADMIN_EMAIL.toLowerCase()
+  ){
+
+    message.textContent=
+      "Access denied.";
+
+    return;
+
+  }
+
+
+  try{
+
+    const result=
+      await signInWithEmailAndPassword(
+        auth,
+        email,
+        password
+      );
+
+
+    if(
+      result.user.email.toLowerCase()
+      !==
+      ADMIN_EMAIL.toLowerCase()
+    ){
+
+      await signOut(auth);
+
+      message.textContent=
+        "Access denied.";
+
+      return;
+
+    }
+
+
+    closeModal(
+      "adminLoginModal"
+    );
+
+    openModal(
+      "adminModal"
+    );
+
+
+  }
+
+  catch(error){
+
+    message.textContent=
+      "Admin login failed.";
+
+  }
+
+};
+
+
+/* ADMIN LOGOUT */
+
+window.adminLogout=
+async function(){
+
+  await signOut(auth);
+
+  closeModal(
+    "adminModal"
+  );
+
+};
+
+
+/* ADMIN PHOTO */
+
+let adminPhotoData="";
+
+
+window.previewAdminPhoto=
+function(event){
+
+  const file=
+    event.target.files &&
+    event.target.files[0];
+
+
   const preview=
     document.getElementById(
-      "photoPreview"
+      "adminPhotoPreview"
     );
+
 
   if(!file){
 
-    accountPhotoData="";
-    preview.src="";
+    adminPhotoData="";
+
     preview.style.display="none";
 
     return;
 
   }
 
+
   const reader=
     new FileReader();
 
+
   reader.onload=function(){
 
-    accountPhotoData=
+    adminPhotoData=
       reader.result;
 
     preview.src=
-      accountPhotoData;
+      adminPhotoData;
 
     preview.style.display=
       "block";
 
   };
 
+
   reader.readAsDataURL(file);
 
-}
+};
 
 
-/* =========================
-   ADMIN
-========================= */
+/* SAVE ADMIN ACCOUNT */
 
-function openAdmin(){
-
-  openModal(
-    "adminModal"
-  );
-
-}
-
-
-function saveAccount(){
+window.saveAdminAccount=
+function(){
 
   const game=
     document.getElementById(
@@ -3379,7 +3569,7 @@ function saveAccount(){
 
   const name=
     document.getElementById(
-      "adminName"
+      "adminAccountName"
     ).value.trim()
     ||
     game.toUpperCase()
@@ -3416,25 +3606,20 @@ function saveAccount(){
       "adminDescription"
     ).value.trim()
     ||
-    "Account details available.";
+    "Account details will appear here.";
+
 
   const section=
     document.getElementById(
       game+"-section"
     );
 
-  if(!section){
-    return;
-  }
 
   const product=
     section.querySelector(
       ".product"
     );
 
-  if(!product){
-    return;
-  }
 
   product.querySelector(
     ".game"
@@ -3443,10 +3628,11 @@ function saveAccount(){
       ?"FREE F⚡RE"
       :game.toUpperCase();
 
+
   product.querySelector(
     "h3"
-  ).textContent=
-    name;
+  ).textContent=name;
+
 
   product.querySelector(
     ".details"
@@ -3456,33 +3642,38 @@ function saveAccount(){
     +" · "
     +region;
 
+
   product.querySelector(
     ".description"
   ).textContent=
     description;
 
+
   product.querySelector(
     ".price"
-  ).textContent=
-    price;
+  ).textContent=price;
+
 
   product.querySelector(
     ".available"
-  ).textContent=
-    status;
+  ).textContent=status;
+
 
   const button=
     product.querySelector(
       ".details-btn"
     );
 
+
   button.disabled=
     status==="SOLD OUT";
+
 
   button.textContent=
     status==="SOLD OUT"
       ?"SOLD OUT"
       :"ADD TO CART";
+
 
   button.onclick=
     status==="SOLD OUT"
@@ -3497,40 +3688,40 @@ function saveAccount(){
       };
 
 
-  if(accountPhotoData){
+  /* ADMIN ACCOUNT PHOTO */
 
-    let photo=
-      product.querySelector(
-        ".account-photo"
-      );
+  let photo=
+    product.querySelector(
+      ".account-photo"
+    );
+
+
+  if(adminPhotoData){
 
     if(!photo){
 
       photo=
-        document.createElement(
-          "img"
-        );
+        document.createElement("img");
 
       photo.className=
         "account-photo";
 
       product.insertBefore(
         photo,
-        product.querySelector(
-          ".game"
-        )
+        product.querySelector(".game")
       );
 
     }
 
     photo.src=
-      accountPhotoData;
+      adminPhotoData;
 
   }
 
 
   localStorage.setItem(
-    "crispy_"+game,
+    "crispyAccount_"
+    +game,
     JSON.stringify({
 
       name:name,
@@ -3539,7 +3730,7 @@ function saveAccount(){
       price:price,
       status:status,
       description:description,
-      photo:accountPhotoData
+      photo:adminPhotoData
 
     })
   );
@@ -3548,15 +3739,17 @@ function saveAccount(){
   document.getElementById(
     "adminMessage"
   ).textContent=
-    "Account posted successfully.";
+    "Gaming account posted successfully.";
 
-}
+};
 
 
-function clearAdmin(){
+/* CLEAR ADMIN FORM */
+
+window.clearAdminForm=function(){
 
   document.getElementById(
-    "adminName"
+    "adminAccountName"
   ).value="";
 
   document.getElementById(
@@ -3579,163 +3772,643 @@ function clearAdmin(){
     "accountPhoto"
   ).value="";
 
+  adminPhotoData="";
+
   document.getElementById(
-    "photoPreview"
+    "adminPhotoPreview"
   ).style.display="none";
 
-  accountPhotoData="";
-
-  document.getElementById(
-    "adminMessage"
-  ).textContent="";
-
-}
+};
 
 
-/* =========================
-   LOAD SAVED ACCOUNTS
-========================= */
+/* LOAD ADMIN ACCOUNTS */
 
-function loadAccounts(){
+function loadAdminAccounts(){
 
-  const games=[
+  [
     "freefire",
     "efootball",
     "codm",
     "dls",
     "fcmobile"
-  ];
-
-  games.forEach(function(game){
+  ].forEach(function(game){
 
     const saved=
       localStorage.getItem(
-        "crispy_"+game
+        "crispyAccount_"+game
       );
 
-    if(!saved){
-      return;
-    }
+    if(!saved)return;
 
-    try{
+    const data=
+      JSON.parse(saved);
 
-      const data=
-        JSON.parse(saved);
-
-      const section=
-        document.getElementById(
-          game+"-section"
-        );
-
-      if(!section){
-        return;
-      }
-
-      const product=
-        section.querySelector(
-          ".product"
-        );
-
-      product.querySelector(
-        ".game"
-      ).textContent=
-        game==="freefire"
-          ?"FREE F⚡RE"
-          :game.toUpperCase();
-
-      product.querySelector(
-        "h3"
-      ).textContent=
-        data.name;
-
-      product.querySelector(
-        ".details"
-      ).textContent=
-        "Level "
-        +(data.level||"—")
-        +" · "
-        +(data.region||"REGION");
-
-      product.querySelector(
-        ".description"
-      ).textContent=
-        data.description||"";
-
-      product.querySelector(
-        ".price"
-      ).textContent=
-        data.price||"₦0";
-
-      product.querySelector(
-        ".available"
-      ).textContent=
-        data.status||"AVAILABLE";
-
-      const button=
-        product.querySelector(
-          ".details-btn"
-        );
-
-      button.disabled=
-        data.status==="SOLD OUT";
-
-      button.textContent=
-        data.status==="SOLD OUT"
-          ?"SOLD OUT"
-          :"ADD TO CART";
-
-      button.onclick=
-        data.status==="SOLD OUT"
-          ?null
-          :function(){
-
-            addToCart(
-              data.name,
-              data.price
-            );
-
-          };
-
-
-      if(data.photo){
-
-        const photo=
-          document.createElement(
-            "img"
-          );
-
-        photo.className=
-          "account-photo";
-
-        photo.src=
-          data.photo;
-
-        product.insertBefore(
-          photo,
-          product.querySelector(
-            ".game"
-          )
-        );
-
-      }
-
-    }catch(error){
-
-      console.log(
-        "Could not load account:",
-        error
-      );
-
-    }
+    applyAdminAccount(
+      game,
+      data
+    );
 
   });
 
 }
 
 
-/* =========================
-   FILTER
-========================= */
+function applyAdminAccount(
+  game,
+  data
+){
+
+  const section=
+    document.getElementById(
+      game+"-section"
+    );
+
+  if(!section)return;
+
+  const product=
+    section.querySelector(
+      ".product"
+    );
+
+  product.querySelector(
+    ".game"
+  ).textContent=
+    game==="freefire"
+      ?"FREE F⚡RE"
+      :game.toUpperCase();
+
+  product.querySelector(
+    "h3"
+  ).textContent=
+    data.name;
+
+  product.querySelector(
+    ".details"
+  ).textContent=
+    "Level "
+    +(data.level||"—")
+    +" · "
+    +(data.region||"REGION");
+
+  product.querySelector(
+    ".description"
+  ).textContent=
+    data.description;
+
+  product.querySelector(
+    ".price"
+  ).textContent=
+    data.price;
+
+  product.querySelector(
+    ".available"
+  ).textContent=
+    data.status;
+
+  const button=
+    product.querySelector(
+      ".details-btn"
+    );
+
+  button.disabled=
+    data.status==="SOLD OUT";
+
+  button.textContent=
+    data.status==="SOLD OUT"
+      ?"SOLD OUT"
+      :"ADD TO CART";
+
+  button.onclick=
+    data.status==="SOLD OUT"
+      ?null
+      :function(){
+
+        addToCart(
+          data.name,
+          data.price
+        );
+
+      };
+
+
+  if(data.photo){
+
+    const photo=
+      document.createElement("img");
+
+    photo.className=
+      "account-photo";
+
+    photo.src=
+      data.photo;
+
+    product.insertBefore(
+      photo,
+      product.querySelector(".game")
+    );
+
+  }
+
+}
+
+
+/* ADMIN LINK */
+
+function checkAdminLink(){
+
+  if(
+    location.hash
+    ===
+    "#crispy-admin"
+  ){
+
+    openModal(
+      "adminLoginModal"
+    );
+
+  }
+
+}
+
+
+/* AUTH STATE */
+
+onAuthStateChanged(
+  auth,
+  function(user){
+
+    if(
+      user &&
+      user.email.toLowerCase()
+      ===
+      ADMIN_EMAIL.toLowerCase()
+    ){
+
+      /* Admin stays protected.
+         Customer never gets admin controls. */
+
+    }
+
+  }
+);
+
+
+/* LOAD SAVED ACCOUNTS */
+
+loadAdminAccounts();
+
+checkAdminLink();
+
+</script>
+
+
+<script>
+
+/* CONSTANTS */
+
+const WHATSAPP=
+"2347051885555";
+
+const TIKTOK=
+"https://www.tiktok.com/@_itzcrispy";
+
+const X_LINK=
+"https://x.com/crispysoloss";
+
+const TELEGRAM=
+"https://t.me/crispyshop_1";
+
+
+/* MODALS */
+
+function openModal(id){
+
+  const modal=
+    document.getElementById(id);
+
+  if(modal)
+    modal.classList.add("show");
+
+}
+
+
+function closeModal(id){
+
+  const modal=
+    document.getElementById(id);
+
+  if(modal)
+    modal.classList.remove("show");
+
+}
+
+
+document
+.querySelectorAll(".modal")
+.forEach(function(modal){
+
+  modal.addEventListener(
+    "click",
+    function(e){
+
+      if(e.target===modal)
+        modal.classList.remove("show");
+
+    }
+  );
+
+});
+
+
+/* ACCOUNT CHOICES */
+
+function openAccountChoices(){
+
+  openModal("accountModal");
+
+}
+
+
+function chooseGame(game){
+
+  closeModal("accountModal");
+
+  const target=
+    document.getElementById(
+      game+"-section"
+    );
+
+  if(target){
+
+    target.scrollIntoView({
+      behavior:"smooth",
+      block:"start"
+    });
+
+  }
+
+}
+
+
+/* TOP UP */
+
+function openTopup(){
+
+  openModal("topupModal");
+
+}
+
+
+function chooseTopup(id){
+
+  closeModal("topupModal");
+
+  const target=
+    document.getElementById(id);
+
+  if(target){
+
+    target.scrollIntoView({
+      behavior:"smooth",
+      block:"start"
+    });
+
+  }
+
+}
+
+
+/* REVIEWS */
+
+function openReviews(){
+
+  openModal("reviewModal");
+
+}
+
+
+function sendReview(stars){
+
+  closeModal("reviewModal");
+
+  window.open(
+    "https://wa.me/"
+    +WHATSAPP
+    +"?text="
+    +encodeURIComponent(
+      "Hello Crispy Shop, I want to leave a "
+      +stars
+      +" star review."
+    ),
+    "_blank"
+  );
+
+}
+
+
+/* CONTACT */
+
+function openContactOptions(){
+
+  openModal("contactModal");
+
+}
+
+
+function contactMe(){
+
+  openContactOptions();
+
+}
+
+
+/* SEARCH */
+
+function openSearch(){
+
+  openModal("searchModal");
+
+  setTimeout(function(){
+
+    document
+      .getElementById("searchInput")
+      .focus();
+
+  },100);
+
+}
+
+
+function runSearch(){
+
+  const q=
+    document.getElementById(
+      "searchInput"
+    ).value
+    .toLowerCase()
+    .trim();
+
+
+  const results=
+    document.getElementById(
+      "searchResults"
+    );
+
+
+  if(!q){
+
+    results.innerHTML=
+      '<div class="search-result">'
+      +'Type something to search.'
+      +'</div>';
+
+    return;
+
+  }
+
+
+  const products=
+    Array.from(
+      document.querySelectorAll(
+        ".product[data-account-id]"
+      )
+    );
+
+
+  const matches=
+    products.filter(function(product){
+
+      return product
+        .innerText
+        .toLowerCase()
+        .includes(q);
+
+    });
+
+
+  if(!matches.length){
+
+    results.innerHTML=
+      '<div class="search-result">'
+      +'No matching account found.'
+      +'</div>';
+
+    return;
+
+  }
+
+
+  results.innerHTML=
+    matches.map(function(product){
+
+      return `
+        <div
+          class="search-result"
+          onclick="goToProduct('${product.dataset.accountId}')"
+        >
+          ${product.querySelector("h3").innerText}
+          —
+          ${product.querySelector(".price").innerText}
+        </div>
+      `;
+
+    }).join("");
+
+}
+
+
+function goToProduct(id){
+
+  closeModal("searchModal");
+
+  const product=
+    document.querySelector(
+      '[data-account-id="'+id+'"]'
+    );
+
+  if(product){
+
+    product.scrollIntoView({
+      behavior:"smooth",
+      block:"center"
+    });
+
+  }
+
+}
+
+
+/* CART */
+
+let cart=[];
+
+
+function addToCart(name,price){
+
+  if(price==="₦0"){
+
+    showToast(
+      "This account has not been posted yet."
+    );
+
+    return;
+
+  }
+
+
+  cart.push({
+    name:name,
+    price:price
+  });
+
+
+  renderCart();
+
+  showToast(
+    name+" added to cart."
+  );
+
+}
+
+
+function renderCart(){
+
+  const list=
+    document.getElementById(
+      "cartList"
+    );
+
+  const total=
+    document.getElementById(
+      "cartTotal"
+    );
+
+
+  if(!cart.length){
+
+    list.innerHTML=
+      '<div class="empty">'
+      +'Your cart is empty.'
+      +'</div>';
+
+    total.textContent=
+      "Total: ₦0";
+
+    return;
+
+  }
+
+
+  let sum=0;
+
+
+  list.innerHTML=
+    cart.map(function(item,index){
+
+      const value=
+        Number(
+          String(item.price)
+          .replace(/[₦,]/g,"")
+        )||0;
+
+      sum+=value;
+
+
+      return `
+        <div class="cart-item">
+
+          <span>
+            ${item.name}
+          </span>
+
+          <strong class="cart-price">
+            ${item.price}
+          </strong>
+
+          <button
+            onclick="removeCart(${index})"
+            style="
+              background:none;
+              border:0;
+              color:#ff5555;
+              font-size:22px;
+            "
+          >
+            ×
+          </button>
+
+        </div>
+      `;
+
+    }).join("")
+    +
+    `
+      <button
+        class="yellow-btn"
+        style="width:100%;margin-top:18px"
+        onclick="checkout()"
+      >
+        CHECKOUT ON WHATSAPP
+      </button>
+    `;
+
+
+  total.textContent=
+    "Total: ₦"
+    +sum.toLocaleString();
+
+}
+
+
+function removeCart(index){
+
+  cart.splice(index,1);
+
+  renderCart();
+
+}
+
+
+function openCart(){
+
+  renderCart();
+
+  openModal("cartModal");
+
+}
+
+
+function checkout(){
+
+  if(!cart.length)return;
+
+
+  const text=
+    "Hello Crispy Shop, I want to buy:%0A"
+    +
+    cart.map(function(item){
+
+      return "- "
+        +item.name
+        +" ("
+        +item.price
+        +")";
+
+    }).join("%0A");
+
+
+  window.open(
+    "https://wa.me/"
+    +WHATSAPP
+    +"?text="
+    +text,
+    "_blank"
+  );
+
+}
+
+
+/* FILTER */
 
 function filterProducts(
   game,
@@ -3743,60 +4416,47 @@ function filterProducts(
 ){
 
   document
-  .querySelectorAll(
-    ".filter"
-  )
-  .forEach(function(btn){
+    .querySelectorAll(".filter")
+    .forEach(function(x){
 
-    btn.classList.remove(
-      "active"
-    );
+      x.classList.remove("active");
 
-  });
+    });
 
-  button.classList.add(
-    "active"
-  );
+
+  button.classList.add("active");
+
 
   document
-  .querySelectorAll(
-    ".game-section"
-  )
-  .forEach(function(section){
+    .querySelectorAll(".game-section[data-game]")
+    .forEach(function(section){
 
-    if(
-      game==="all" ||
-      section.dataset.gameSection===game
-    ){
+      if(
+        game==="all"
+        ||
+        section.dataset.game===game
+      ){
 
-      section.style.display=
-        "block";
+        section.style.display="block";
 
-    }else{
+      }else{
 
-      section.style.display=
-        "none";
+        section.style.display="none";
 
-    }
+      }
 
-  });
+    });
 
 }
 
 
-/* =========================
-   MOBILE DRAWER
-========================= */
+/* DRAWER */
 
 function openDrawer(){
 
   document
-  .getElementById(
-    "drawer"
-  )
-  .classList.add(
-    "open"
-  );
+    .getElementById("drawer")
+    .classList.add("open");
 
 }
 
@@ -3804,32 +4464,71 @@ function openDrawer(){
 function closeDrawer(){
 
   document
-  .getElementById(
-    "drawer"
-  )
-  .classList.remove(
-    "open"
-  );
+    .getElementById("drawer")
+    .classList.remove("open");
 
 }
 
 
 function drawerOutside(e){
 
-  if(
-    e.target.id==="drawer"
-  ){
-
+  if(e.target.id==="drawer")
     closeDrawer();
-
-  }
 
 }
 
 
-/* =========================
-   NAV
-========================= */
+/* TOAST */
+
+function showToast(message){
+
+  let toast=
+    document.getElementById(
+      "crispyToast"
+    );
+
+
+  if(!toast){
+
+    toast=
+      document.createElement("div");
+
+    toast.id="crispyToast";
+
+    toast.style.cssText=
+      `
+      position:fixed;
+      z-index:5000;
+      left:50%;
+      bottom:25px;
+      transform:translateX(-50%);
+      padding:13px 20px;
+      background:#ffd400;
+      color:#050708;
+      font-weight:bold;
+      border-radius:4px;
+      `;
+
+    document.body.appendChild(toast);
+
+  }
+
+
+  toast.textContent=message;
+
+  toast.style.display="block";
+
+
+  setTimeout(function(){
+
+    toast.style.display="none";
+
+  },2500);
+
+}
+
+
+/* NAV */
 
 document
 .querySelectorAll("nav a")
@@ -3840,32 +4539,19 @@ document
     function(){
 
       document
-      .querySelectorAll(
-        "nav a"
-      )
-      .forEach(function(a){
+        .querySelectorAll("nav a")
+        .forEach(function(a){
 
-        a.classList.remove(
-          "active"
-        );
+          a.classList.remove("active");
 
-      });
+        });
 
-      this.classList.add(
-        "active"
-      );
+      this.classList.add("active");
 
     }
   );
 
 });
-
-
-/* =========================
-   START
-========================= */
-
-loadAccounts();
 
 </script>
 
