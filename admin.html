@@ -1880,6 +1880,87 @@ loginBtn.addEventListener(
     }
 
   }
+);/* FORGOT PASSWORD */
+
+forgotPasswordBtn.addEventListener(
+  "click",
+  async function(){
+
+    const email =
+      document
+        .getElementById("email")
+        .value
+        .trim();
+
+    if(!email){
+
+      showMessage(
+        loginMessage,
+        "Enter your admin email first.",
+        "error"
+      );
+
+      document
+        .getElementById("email")
+        .focus();
+
+      return;
+
+    }
+
+    if(
+      email.toLowerCase() !==
+      ADMIN_EMAIL.toLowerCase()
+    ){
+
+      showMessage(
+        loginMessage,
+        "Please enter the authorized admin email.",
+        "error"
+      );
+
+      return;
+
+    }
+
+    forgotPasswordBtn.disabled =
+      true;
+
+    forgotPasswordBtn.textContent =
+      "SENDING...";
+
+    try{
+
+      await sendPasswordResetEmail(
+        auth,
+        email
+      );
+
+      showMessage(
+        loginMessage,
+        "Password reset email sent. Check your inbox.",
+        "success"
+      );
+
+    }catch(error){
+
+      console.error(error);
+
+      showMessage(
+        loginMessage,
+        "Could not send password reset email.",
+        "error"
+      );
+
+    }
+
+    forgotPasswordBtn.disabled =
+      false;
+
+    forgotPasswordBtn.textContent =
+      "FORGOT PASSWORD?";
+
+  }
 );
 
 
