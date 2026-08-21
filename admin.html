@@ -51,6 +51,11 @@ button{
   font-weight:bold;
 }
 
+button:disabled{
+  opacity:.6;
+  cursor:not-allowed;
+}
+
 .logout{
   background:transparent;
   border:1px solid #ffd400;
@@ -218,6 +223,62 @@ textarea{
   margin-bottom:10px;
 }
 
+/* PHOTO UPLOAD */
+
+.photo-box{
+  border:1px dashed #00e5d5;
+  background:#05090a;
+  padding:18px;
+  text-align:center;
+  margin-bottom:5px;
+}
+
+.photo-box:hover{
+  border-color:#ffd400;
+}
+
+.photo-label{
+  display:block;
+  color:#ffd400;
+  font-size:15px;
+  font-weight:bold;
+  margin:0 0 12px;
+}
+
+.photo-input{
+  width:100%;
+  padding:12px;
+  background:#020405;
+  border:1px solid #00d9d0;
+  color:#fff;
+}
+
+.photo-help{
+  color:#888;
+  font-size:12px;
+  margin-top:9px;
+}
+
+.photo-preview{
+  display:none;
+  width:100%;
+  max-width:360px;
+  height:220px;
+  object-fit:cover;
+  margin:15px auto 0;
+  border:2px solid #ffd400;
+  background:#000;
+}
+
+.remove-photo{
+  display:none;
+  margin:10px auto 0;
+  padding:9px 14px;
+  background:transparent;
+  border:1px solid #ff5555;
+  color:#ff5555;
+}
+
 .actions{
   display:flex;
   gap:10px;
@@ -258,6 +319,17 @@ textarea{
   color:#fff;
 }
 
+.account-photo{
+  width:100%;
+  max-width:320px;
+  height:190px;
+  object-fit:cover;
+  display:block;
+  margin:14px 0;
+  border:1px solid #00d9d0;
+  background:#000;
+}
+
 .account-meta{
   color:#00e5d5;
   font-size:13px;
@@ -296,10 +368,18 @@ textarea{
   display:none!important;
 }
 
+.uploading{
+  color:#ffd400;
+  font-size:13px;
+  margin-top:10px;
+  display:none;
+}
+
 @media(max-width:650px){
 
   header{
     flex-direction:column;
+    gap:12px;
   }
 
   .form-grid{
@@ -318,6 +398,14 @@ textarea{
   .admin-panel{
     padding:15px;
   }
+
+  .actions{
+    flex-direction:column;
+  }
+
+  .actions button{
+    width:100%!important;
+  }
 }
 </style>
 </head>
@@ -326,27 +414,27 @@ textarea{
 
 <header>
 
-  <img
-    src="logo.png.jpeg"
-    class="logo"
-    alt="CRISPY SHOP"
-  >
+<img
+  src="logo.png.jpeg"
+  class="logo"
+  alt="CRISPY SHOP"
+>
 
-  <div class="header-right">
+<div class="header-right">
 
-    <span
-      id="adminEmail"
-      class="admin-label"
-    ></span>
+<span
+  id="adminEmail"
+  class="admin-label"
+></span>
 
-    <button
-      id="logoutBtn"
-      class="logout hidden"
-    >
-      LOG OUT
-    </button>
+<button
+  id="logoutBtn"
+  class="logout hidden"
+>
+LOG OUT
+</button>
 
-  </div>
+</div>
 
 </header>
 
@@ -361,51 +449,51 @@ textarea{
   class="login-box"
 >
 
-  <img
-    src="logo.png.jpeg"
-    class="logo-large"
-    alt="CRISPY SHOP"
-  >
+<img
+  src="logo.png.jpeg"
+  class="logo-large"
+  alt="CRISPY SHOP"
+>
 
-  <h1>ADMIN PANEL</h1>
+<h1>ADMIN PANEL</h1>
 
-  <p class="subtitle">
-    Authorized administrators only
-  </p>
+<p class="subtitle">
+Authorized administrators only
+</p>
 
-  <label for="email">
-    ADMIN EMAIL
-  </label>
+<label for="email">
+ADMIN EMAIL
+</label>
 
-  <input
-    id="email"
-    type="email"
-    placeholder="Admin email"
-    autocomplete="username"
-  >
+<input
+  id="email"
+  type="email"
+  placeholder="Admin email"
+  autocomplete="username"
+>
 
-  <label for="password">
-    PASSWORD
-  </label>
+<label for="password">
+PASSWORD
+</label>
 
-  <input
-    id="password"
-    type="password"
-    placeholder="Admin password"
-    autocomplete="current-password"
-  >
+<input
+  id="password"
+  type="password"
+  placeholder="Admin password"
+  autocomplete="current-password"
+>
 
-  <button
-    id="loginBtn"
-    class="primary"
-  >
-    SECURE LOGIN
-  </button>
+<button
+  id="loginBtn"
+  class="primary"
+>
+SECURE LOGIN
+</button>
 
-  <div
-    id="loginMessage"
-    class="message"
-  ></div>
+<div
+  id="loginMessage"
+  class="message"
+></div>
 
 </section>
 
@@ -417,211 +505,288 @@ textarea{
   class="admin-panel"
 >
 
-  <div class="topbar">
+<div class="topbar">
 
-    <div>
-      <h2>⚙ CRISPY SHOP ADMIN</h2>
+<div>
 
-      <div class="status">
-        ● SECURE ADMIN SESSION
-      </div>
-    </div>
+<h2>
+⚙ CRISPY SHOP ADMIN
+</h2>
 
-  </div>
+<div class="status">
+● SECURE ADMIN SESSION
+</div>
 
+</div>
 
-  <!-- ADD / EDIT -->
-
-  <div class="form-box">
-
-    <h3 id="formTitle">
-      ADD GAMING ACCOUNT
-    </h3>
-
-    <div class="form-grid">
-
-      <div>
-        <label for="game">
-          GAME
-        </label>
-
-        <select id="game">
-          <option value="Free Fire">
-            Free Fire
-          </option>
-
-          <option value="eFootball">
-            eFootball
-          </option>
-
-          <option value="COD Mobile">
-            COD Mobile
-          </option>
-
-          <option value="DLS">
-            DLS
-          </option>
-
-          <option value="PUBG">
-            PUBG
-          </option>
-
-          <option value="Roblox">
-            Roblox
-          </option>
-
-          <option value="Other">
-            Other
-          </option>
-        </select>
-      </div>
+</div>
 
 
-      <div>
-        <label for="title">
-          ACCOUNT TITLE
-        </label>
+<!-- ADD / EDIT -->
 
-        <input
-          id="title"
-          type="text"
-          placeholder="Royal Vault 09"
-        >
-      </div>
+<div class="form-box">
+
+<h3 id="formTitle">
+ADD GAMING ACCOUNT
+</h3>
+
+<div class="form-grid">
 
 
-      <div>
-        <label for="level">
-          LEVEL
-        </label>
+<!-- PHOTO UPLOAD -->
 
-        <input
-          id="level"
-          type="number"
-          placeholder="86"
-        >
-      </div>
+<div class="full">
 
+<div class="photo-box">
 
-      <div>
-        <label for="region">
-          REGION
-        </label>
+<label
+  class="photo-label"
+  for="accountPhoto"
+>
+📷 UPLOAD ACCOUNT PHOTO
+</label>
 
-        <input
-          id="region"
-          type="text"
-          placeholder="SEA"
-        >
-      </div>
+<input
+  id="accountPhoto"
+  class="photo-input"
+  type="file"
+  accept="image/jpeg,image/png,image/webp,image/gif"
+>
 
+<div class="photo-help">
+Choose the picture of the gaming account you want to post.
+</div>
 
-      <div>
-        <label for="price">
-          PRICE
-        </label>
+<img
+  id="photoPreview"
+  class="photo-preview"
+  alt="Account photo preview"
+>
 
-        <input
-          id="price"
-          type="text"
-          placeholder="₦425,000"
-        >
-      </div>
+<button
+  type="button"
+  id="removePhotoBtn"
+  class="remove-photo"
+>
+REMOVE PHOTO
+</button>
 
+<div
+  id="uploadingMessage"
+  class="uploading"
+>
+Uploading photo...
+</div>
 
-      <div>
-        <label for="status">
-          STATUS
-        </label>
+</div>
 
-        <select id="status">
-          <option value="AVAILABLE">
-            AVAILABLE
-          </option>
-
-          <option value="SOLD">
-            SOLD
-          </option>
-
-          <option value="RESERVED">
-            RESERVED
-          </option>
-        </select>
-      </div>
+</div>
 
 
-      <div class="full">
+<!-- GAME -->
 
-        <label for="description">
-          DESCRIPTION
-        </label>
+<div>
 
-        <textarea
-          id="description"
-          placeholder="12 Evo Weapons, Booyah Pass archive"
-        ></textarea>
+<label for="game">
+GAME
+</label>
 
-      </div>
+<select id="game">
 
-    </div>
+<option value="Free Fire">
+Free Fire
+</option>
 
+<option value="eFootball">
+eFootball
+</option>
 
-    <div class="actions">
+<option value="COD Mobile">
+COD Mobile
+</option>
 
-      <button
-        id="saveBtn"
-        class="primary"
-        style="width:auto;margin-top:0"
-      >
-        ADD ACCOUNT
-      </button>
+<option value="DLS">
+DLS
+</option>
 
-      <button
-        id="cancelEditBtn"
-        class="secondary hidden"
-      >
-        CANCEL EDIT
-      </button>
+<option value="FC Mobile">
+FC Mobile
+</option>
 
-    </div>
+</select>
 
-
-    <div
-      id="formMessage"
-      class="message"
-    ></div>
-
-  </div>
+</div>
 
 
-  <!-- ACCOUNTS -->
+<!-- TITLE -->
 
-  <div class="topbar">
+<div>
 
-    <h2>
-      SHOP ACCOUNTS
-    </h2>
+<label for="title">
+ACCOUNT TITLE
+</label>
 
-    <button
-      id="refreshBtn"
-      class="secondary"
-    >
-      ↻ REFRESH
-    </button>
+<input
+  id="title"
+  type="text"
+  placeholder="Royal Vault 09"
+>
 
-  </div>
+</div>
 
 
-  <div
-    id="accountsList"
-    class="accounts"
-  >
+<!-- LEVEL -->
 
-    <p style="color:#999">
-      Loading accounts...
-    </p>
+<div>
 
-  </div>
+<label for="level">
+LEVEL
+</label>
+
+<input
+  id="level"
+  type="number"
+  placeholder="86"
+>
+
+</div>
+
+
+<!-- REGION -->
+
+<div>
+
+<label for="region">
+REGION
+</label>
+
+<input
+  id="region"
+  type="text"
+  placeholder="SEA"
+>
+
+</div>
+
+
+<!-- PRICE -->
+
+<div>
+
+<label for="price">
+PRICE
+</label>
+
+<input
+  id="price"
+  type="text"
+  placeholder="₦425,000"
+>
+
+</div>
+
+
+<!-- STATUS -->
+
+<div>
+
+<label for="status">
+STATUS
+</label>
+
+<select id="status">
+
+<option value="AVAILABLE">
+AVAILABLE
+</option>
+
+<option value="SOLD">
+SOLD
+</option>
+
+<option value="RESERVED">
+RESERVED
+</option>
+
+</select>
+
+</div>
+
+
+<!-- DESCRIPTION -->
+
+<div class="full">
+
+<label for="description">
+DESCRIPTION
+</label>
+
+<textarea
+  id="description"
+  placeholder="12 Evo Weapons, Booyah Pass..."
+></textarea>
+
+</div>
+
+</div>
+
+
+<div class="actions">
+
+<button
+  id="saveBtn"
+  class="primary"
+  style="width:auto;margin-top:0"
+>
+ADD ACCOUNT
+</button>
+
+<button
+  id="cancelEditBtn"
+  class="secondary hidden"
+>
+CANCEL EDIT
+</button>
+
+</div>
+
+
+<div
+  id="formMessage"
+  class="message"
+></div>
+
+</div>
+
+
+<!-- ACCOUNTS -->
+
+<div class="topbar">
+
+<h2>
+SHOP ACCOUNTS
+</h2>
+
+<button
+  id="refreshBtn"
+  class="secondary"
+>
+↻ REFRESH
+</button>
+
+</div>
+
+
+<div
+  id="accountsList"
+  class="accounts"
+>
+
+<p style="color:#999">
+Loading accounts...
+</p>
+
+</div>
 
 </section>
 
@@ -654,42 +819,47 @@ import {
   serverTimestamp
 } from "https://www.gstatic.com/firebasejs/10.12.2/firebase-firestore.js";
 
+import {
+  getStorage,
+  ref,
+  uploadBytes,
+  getDownloadURL,
+  deleteObject
+} from "https://www.gstatic.com/firebasejs/10.12.2/firebase-storage.js";
 
-/*
-====================================================
-PASTE YOUR EXISTING FIREBASE CONFIG HERE
-====================================================
 
-Use the SAME firebaseConfig from your index.html.
+/* FIREBASE CONFIG */
 
-Do NOT put a Firebase service-account private key here.
-====================================================
-*/
-  const firebaseConfig = {
-  apiKey: "AIzaSyC9FNL08mvrtbcjXXj_JBWPHvdUORioYr8",
-  authDomain: "crispy-shop-25644.firebaseapp.com",
-  projectId: "crispy-shop-25644",
-  storageBucket: "crispy-shop-25644.firebasestorage.app",
-  messagingSenderId: "311251480323",
-  appId: "1:311251480323:web:b0d9e14c947a0528ccc336"
+const firebaseConfig = {
+
+  apiKey:
+    "AIzaSyC9FNL08mvrtbcjXXj_JBWPHvdUORioYr8",
+
+  authDomain:
+    "crispy-shop-25644.firebaseapp.com",
+
+  projectId:
+    "crispy-shop-25644",
+
+  storageBucket:
+    "crispy-shop-25644.firebasestorage.app",
+
+  messagingSenderId:
+    "311251480323",
+
+  appId:
+    "1:311251480323:web:b0d9e14c947a0528ccc336"
+
 };
-/*
-====================================================
-ADMIN EMAIL
-====================================================
 
-Put the email address that is allowed to use
-this admin panel.
 
-This is only an extra client-side check.
-Firestore Security Rules MUST also protect
-the accounts collection.
-====================================================
-*/
+/* ADMIN EMAIL */
 
 const ADMIN_EMAIL =
   "crispyshop11@gmail.com";
 
+
+/* INITIALIZE */
 
 const app =
   initializeApp(firebaseConfig);
@@ -700,6 +870,11 @@ const auth =
 const db =
   getFirestore(app);
 
+const storage =
+  getStorage(app);
+
+
+/* ELEMENTS */
 
 const loginArea =
   document.getElementById("loginArea");
@@ -734,15 +909,29 @@ const cancelEditBtn =
 const refreshBtn =
   document.getElementById("refreshBtn");
 
+const accountPhoto =
+  document.getElementById("accountPhoto");
+
+const photoPreview =
+  document.getElementById("photoPreview");
+
+const removePhotoBtn =
+  document.getElementById("removePhotoBtn");
+
+const uploadingMessage =
+  document.getElementById("uploadingMessage");
+
 
 let editingId = null;
 
+let oldPhotoPath = "";
 
-/*
-====================================================
-MESSAGE
-====================================================
-*/
+let selectedPhotoFile = null;
+
+let selectedPhotoData = "";
+
+
+/* MESSAGE */
 
 function showMessage(
   element,
@@ -750,7 +939,8 @@ function showMessage(
   type
 ){
 
-  element.textContent = text;
+  element.textContent =
+    text;
 
   element.className =
     "message " + type;
@@ -758,21 +948,128 @@ function showMessage(
 }
 
 
-/*
-====================================================
-LOGIN
-====================================================
-*/
+/* PHOTO PREVIEW */
+
+accountPhoto.addEventListener(
+  "change",
+  function(){
+
+    const file =
+      accountPhoto.files[0];
+
+    if(!file){
+
+      selectedPhotoFile = null;
+
+      return;
+    }
+
+
+    if(
+      !file.type.startsWith("image/")
+    ){
+
+      showMessage(
+        formMessage,
+        "Please choose an image file.",
+        "error"
+      );
+
+      accountPhoto.value = "";
+
+      return;
+    }
+
+
+    if(
+      file.size > 10 * 1024 * 1024
+    ){
+
+      showMessage(
+        formMessage,
+        "Photo must be smaller than 10MB.",
+        "error"
+      );
+
+      accountPhoto.value = "";
+
+      return;
+    }
+
+
+    selectedPhotoFile =
+      file;
+
+
+    const reader =
+      new FileReader();
+
+
+    reader.onload =
+      function(event){
+
+        selectedPhotoData =
+          event.target.result;
+
+        photoPreview.src =
+          selectedPhotoData;
+
+        photoPreview.style.display =
+          "block";
+
+        removePhotoBtn.style.display =
+          "block";
+
+      };
+
+
+    reader.readAsDataURL(file);
+
+  }
+);
+
+
+/* REMOVE PHOTO */
+
+removePhotoBtn.addEventListener(
+  "click",
+  function(){
+
+    accountPhoto.value = "";
+
+    selectedPhotoFile = null;
+
+    selectedPhotoData = "";
+
+    photoPreview.src = "";
+
+    photoPreview.style.display =
+      "none";
+
+    removePhotoBtn.style.display =
+      "none";
+
+  }
+);
+
+
+/* LOGIN */
 
 loginBtn.addEventListener(
   "click",
-  async () => {
+  async function(){
 
     const email =
-      document.getElementById("email").value.trim();
+      document
+        .getElementById("email")
+        .value
+        .trim();
 
     const password =
-      document.getElementById("password").value;
+      document
+        .getElementById("password")
+        .value;
+
 
     if(!email || !password){
 
@@ -785,10 +1082,12 @@ loginBtn.addEventListener(
       return;
     }
 
+
     loginBtn.disabled = true;
 
     loginBtn.textContent =
       "LOGGING IN...";
+
 
     try{
 
@@ -812,21 +1111,18 @@ loginBtn.addEventListener(
 
       loginBtn.textContent =
         "SECURE LOGIN";
+
     }
 
   }
 );
 
 
-/*
-====================================================
-AUTH STATE
-====================================================
-*/
+/* AUTH STATE */
 
 onAuthStateChanged(
   auth,
-  async (user) => {
+  async function(user){
 
     if(!user){
 
@@ -840,20 +1136,17 @@ onAuthStateChanged(
         "hidden"
       );
 
-      adminEmail.textContent = "";
+      adminEmail.textContent =
+        "";
 
       return;
+
     }
 
 
-    /*
-    Extra admin email check.
-    */
-
     if(
-      ADMIN_EMAIL !==
-      "YOUR_ADMIN_EMAIL_HERE" &&
-      user.email !== ADMIN_EMAIL
+      user.email !==
+      ADMIN_EMAIL
     ){
 
       await signOut(auth);
@@ -865,6 +1158,7 @@ onAuthStateChanged(
       );
 
       return;
+
     }
 
 
@@ -881,21 +1175,18 @@ onAuthStateChanged(
     adminEmail.textContent =
       user.email || "";
 
+
     await loadAccounts();
 
   }
 );
 
 
-/*
-====================================================
-LOGOUT
-====================================================
-*/
+/* LOGOUT */
 
 logoutBtn.addEventListener(
   "click",
-  async () => {
+  async function(){
 
     await signOut(auth);
 
@@ -903,11 +1194,7 @@ logoutBtn.addEventListener(
 );
 
 
-/*
-====================================================
-GET FORM DATA
-====================================================
-*/
+/* GET FORM */
 
 function getFormData(){
 
@@ -939,11 +1226,7 @@ function getFormData(){
 }
 
 
-/*
-====================================================
-CLEAR FORM
-====================================================
-*/
+/* CLEAR FORM */
 
 function clearForm(){
 
@@ -968,7 +1251,26 @@ function clearForm(){
   document.getElementById("description").value =
     "";
 
-  editingId = null;
+  accountPhoto.value =
+    "";
+
+  selectedPhotoFile = null;
+
+  selectedPhotoData = "";
+
+  oldPhotoPath = "";
+
+  photoPreview.src =
+    "";
+
+  photoPreview.style.display =
+    "none";
+
+  removePhotoBtn.style.display =
+    "none";
+
+  editingId =
+    null;
 
   document.getElementById("formTitle").textContent =
     "ADD GAMING ACCOUNT";
@@ -983,18 +1285,89 @@ function clearForm(){
 }
 
 
-/*
-====================================================
-ADD / UPDATE ACCOUNT
-====================================================
-*/
+/* UPLOAD PHOTO */
+
+async function uploadAccountPhoto(
+  file
+){
+
+  const user =
+    auth.currentUser;
+
+  if(!user){
+
+    throw new Error(
+      "You must be logged in."
+    );
+
+  }
+
+
+  const safeName =
+    file.name
+      .replace(
+        /[^a-zA-Z0-9._-]/g,
+        "_"
+      );
+
+
+  const filePath =
+    "accountPhotos/"
+    + Date.now()
+    + "_"
+    + safeName;
+
+
+  const storageRef =
+    ref(
+      storage,
+      filePath
+    );
+
+
+  uploadingMessage.style.display =
+    "block";
+
+  uploadingMessage.textContent =
+    "Uploading photo...";
+
+
+  await uploadBytes(
+    storageRef,
+    file
+  );
+
+
+  const downloadURL =
+    await getDownloadURL(
+      storageRef
+    );
+
+
+  uploadingMessage.textContent =
+    "Photo uploaded successfully.";
+
+
+  return {
+
+    url:downloadURL,
+
+    path:filePath
+
+  };
+
+}
+
+
+/* SAVE ACCOUNT */
 
 saveBtn.addEventListener(
   "click",
-  async () => {
+  async function(){
 
     const user =
       auth.currentUser;
+
 
     if(!user){
 
@@ -1005,6 +1378,7 @@ saveBtn.addEventListener(
       );
 
       return;
+
     }
 
 
@@ -1024,35 +1398,52 @@ saveBtn.addEventListener(
       );
 
       return;
+
     }
 
 
-    saveBtn.disabled = true;
+    saveBtn.disabled =
+      true;
+
+    saveBtn.textContent =
+      "SAVING...";
+
 
     try{
 
-      if(editingId){
+      let photoUrl =
+        "";
 
-        await updateDoc(
-          doc(
-            db,
-            "accounts",
-            editingId
-          ),
-          {
-            ...data,
-            updatedAt:
-              serverTimestamp()
-          }
-        );
+      let photoPath =
+        "";
 
-        showMessage(
-          formMessage,
-          "Account updated successfully.",
-          "success"
-        );
 
-      }else{
+      /*
+      If a NEW photo was selected,
+      upload it first.
+      */
+
+      if(selectedPhotoFile){
+
+        const uploaded =
+          await uploadAccountPhoto(
+            selectedPhotoFile
+          );
+
+        photoUrl =
+          uploaded.url;
+
+        photoPath =
+          uploaded.path;
+
+      }
+
+
+      /*
+      ADD ACCOUNT
+      */
+
+      if(!editingId){
 
         await addDoc(
           collection(
@@ -1060,17 +1451,109 @@ saveBtn.addEventListener(
             "accounts"
           ),
           {
+
             ...data,
+
+            photoUrl:
+              photoUrl,
+
+            photoPath:
+              photoPath,
+
             createdAt:
               serverTimestamp(),
+
             updatedAt:
-              serverTimestamp()
+              serverTimestamp(),
+
+            createdBy:
+              user.email
+
           }
         );
 
+
         showMessage(
           formMessage,
-          "Account added successfully.",
+          "Account and photo added successfully.",
+          "success"
+        );
+
+      }
+
+
+      /*
+      UPDATE ACCOUNT
+      */
+
+      else{
+
+        const updateData = {
+
+          ...data,
+
+          updatedAt:
+            serverTimestamp()
+
+        };
+
+
+        if(photoUrl){
+
+          updateData.photoUrl =
+            photoUrl;
+
+          updateData.photoPath =
+            photoPath;
+
+        }
+
+
+        await updateDoc(
+          doc(
+            db,
+            "accounts",
+            editingId
+          ),
+          updateData
+        );
+
+
+        /*
+        Delete previous photo
+        after new photo succeeds.
+        */
+
+        if(
+          photoUrl &&
+          oldPhotoPath &&
+          oldPhotoPath !== photoPath
+        ){
+
+          try{
+
+            await deleteObject(
+              ref(
+                storage,
+                oldPhotoPath
+              )
+            );
+
+          }catch(error){
+
+            console.warn(
+              "Old photo could not be deleted.",
+              error
+            );
+
+          }
+
+        }
+
+
+        showMessage(
+          formMessage,
+          "Account updated successfully.",
           "success"
         );
 
@@ -1081,35 +1564,39 @@ saveBtn.addEventListener(
 
       await loadAccounts();
 
+
     }catch(error){
 
       console.error(error);
 
       showMessage(
         formMessage,
-        "Could not save the account. Check your Firebase Security Rules.",
+        "Could not save. Make sure Firebase Storage is enabled and your Storage Rules allow the admin to upload.",
         "error"
       );
 
     }
 
 
-    saveBtn.disabled = false;
+    saveBtn.disabled =
+      false;
+
+    saveBtn.textContent =
+      editingId
+        ? "SAVE CHANGES"
+        : "ADD ACCOUNT";
 
   }
 );
 
 
-/*
-====================================================
-LOAD ACCOUNTS
-====================================================
-*/
+/* LOAD ACCOUNTS */
 
 async function loadAccounts(){
 
   accountsList.innerHTML =
     "<p style='color:#999'>Loading accounts...</p>";
+
 
   try{
 
@@ -1128,25 +1615,43 @@ async function loadAccounts(){
         "<p style='color:#999'>No accounts yet.</p>";
 
       return;
+
     }
 
 
-    accountsList.innerHTML = "";
+    accountsList.innerHTML =
+      "";
 
 
     snapshot.forEach(
-      (item) => {
+      function(item){
 
         const data =
           item.data();
+
 
         const account =
           document.createElement(
             "div"
           );
 
+
         account.className =
           "account";
+
+
+        const photoHTML =
+          data.photoUrl
+            ?
+              `
+              <img
+                class="account-photo"
+                src="${escapeHtml(data.photoUrl)}"
+                alt="${escapeHtml(data.title || "Gaming account")}"
+              >
+              `
+            :
+              "";
 
 
         account.innerHTML = `
@@ -1155,18 +1660,21 @@ async function loadAccounts(){
 
             <h3>
               ${escapeHtml(
-                data.title || "Untitled Account"
+                data.title ||
+                "Untitled Account"
               )}
             </h3>
 
             <span class="account-status">
               ${escapeHtml(
-                data.status || "AVAILABLE"
+                data.status ||
+                "AVAILABLE"
               )}
             </span>
 
           </div>
 
+          ${photoHTML}
 
           <div class="account-meta">
 
@@ -1188,7 +1696,6 @@ async function loadAccounts(){
 
           </div>
 
-
           <div class="account-description">
 
             ${escapeHtml(
@@ -1197,7 +1704,6 @@ async function loadAccounts(){
 
           </div>
 
-
           <div class="account-price">
 
             ${escapeHtml(
@@ -1205,7 +1711,6 @@ async function loadAccounts(){
             )}
 
           </div>
-
 
           <div class="account-actions">
 
@@ -1236,20 +1741,16 @@ async function loadAccounts(){
     );
 
 
-    /*
-    EDIT buttons
-    */
-
     document
       .querySelectorAll(
         "[data-edit]"
       )
       .forEach(
-        button => {
+        function(button){
 
           button.addEventListener(
             "click",
-            () => {
+            function(){
 
               editAccount(
                 button.dataset.edit,
@@ -1263,20 +1764,16 @@ async function loadAccounts(){
       );
 
 
-    /*
-    DELETE buttons
-    */
-
     document
       .querySelectorAll(
         "[data-delete]"
       )
       .forEach(
-        button => {
+        function(button){
 
           button.addEventListener(
             "click",
-            () => {
+            function(){
 
               deleteAccount(
                 button.dataset.delete
@@ -1298,8 +1795,8 @@ async function loadAccounts(){
       <p style="color:#ff5555">
 
         Could not load accounts.
-        Check Firebase configuration
-        and Firestore Security Rules.
+        Check Firebase Firestore
+        and Security Rules.
 
       </p>
 
@@ -1310,11 +1807,7 @@ async function loadAccounts(){
 }
 
 
-/*
-====================================================
-EDIT ACCOUNT
-====================================================
-*/
+/* EDIT ACCOUNT */
 
 function editAccount(
   id,
@@ -1323,12 +1816,17 @@ function editAccount(
 
   const item =
     snapshot.docs.find(
-      docItem =>
-        docItem.id === id
+      function(docItem){
+
+        return docItem.id === id;
+
+      }
     );
 
 
-  if(!item) return;
+  if(!item){
+    return;
+  }
 
 
   const data =
@@ -1361,6 +1859,47 @@ function editAccount(
     id;
 
 
+  oldPhotoPath =
+    data.photoPath || "";
+
+
+  selectedPhotoFile =
+    null;
+
+
+  selectedPhotoData =
+    "";
+
+
+  accountPhoto.value =
+    "";
+
+
+  if(data.photoUrl){
+
+    photoPreview.src =
+      data.photoUrl;
+
+    photoPreview.style.display =
+      "block";
+
+    removePhotoBtn.style.display =
+      "block";
+
+  }else{
+
+    photoPreview.src =
+      "";
+
+    photoPreview.style.display =
+      "none";
+
+    removePhotoBtn.style.display =
+      "none";
+
+  }
+
+
   document.getElementById("formTitle").textContent =
     "EDIT GAMING ACCOUNT";
 
@@ -1380,15 +1919,11 @@ function editAccount(
 }
 
 
-/*
-====================================================
-CANCEL EDIT
-====================================================
-*/
+/* CANCEL */
 
 cancelEditBtn.addEventListener(
   "click",
-  () => {
+  function(){
 
     clearForm();
 
@@ -1396,11 +1931,7 @@ cancelEditBtn.addEventListener(
 );
 
 
-/*
-====================================================
-DELETE ACCOUNT
-====================================================
-*/
+/* DELETE ACCOUNT */
 
 async function deleteAccount(id){
 
@@ -1409,29 +1940,100 @@ async function deleteAccount(id){
       "Delete this gaming account?"
     );
 
-  if(!confirmed) return;
+
+  if(!confirmed){
+    return;
+  }
 
 
   try{
 
-    await deleteDoc(
+    const accountRef =
       doc(
         db,
         "accounts",
         id
-      )
+      );
+
+
+    const snapshot =
+      await getDocs(
+        collection(
+          db,
+          "accounts"
+        )
+      );
+
+
+    const item =
+      snapshot.docs.find(
+        function(docItem){
+
+          return docItem.id === id;
+
+        }
+      );
+
+
+    if(item){
+
+      const data =
+        item.data();
+
+
+      /*
+      Delete photo from Storage
+      if it exists.
+      */
+
+      if(data.photoPath){
+
+        try{
+
+          await deleteObject(
+            ref(
+              storage,
+              data.photoPath
+            )
+          );
+
+        }catch(error){
+
+          console.warn(
+            "Photo could not be deleted.",
+            error
+          );
+
+        }
+
+      }
+
+    }
+
+
+    await deleteDoc(
+      accountRef
     );
 
 
     await loadAccounts();
 
 
+    showMessage(
+      formMessage,
+      "Account deleted successfully.",
+      "success"
+    );
+
+
   }catch(error){
 
     console.error(error);
 
-    alert(
-      "Could not delete account. Check your Firebase Security Rules."
+    showMessage(
+      formMessage,
+      "Could not delete account.",
+      "error"
     );
 
   }
@@ -1439,11 +2041,7 @@ async function deleteAccount(id){
 }
 
 
-/*
-====================================================
-REFRESH
-====================================================
-*/
+/* REFRESH */
 
 refreshBtn.addEventListener(
   "click",
@@ -1451,20 +2049,31 @@ refreshBtn.addEventListener(
 );
 
 
-/*
-====================================================
-SAFE TEXT
-====================================================
-*/
+/* ESCAPE HTML */
 
 function escapeHtml(value){
 
   return String(value)
-    .replaceAll("&","&amp;")
-    .replaceAll("<","&lt;")
-    .replaceAll(">","&gt;")
-    .replaceAll('"',"&quot;")
-    .replaceAll("'","&#039;");
+    .replaceAll(
+      "&",
+      "&amp;"
+    )
+    .replaceAll(
+      "<",
+      "&lt;"
+    )
+    .replaceAll(
+      ">",
+      "&gt;"
+    )
+    .replaceAll(
+      '"',
+      "&quot;"
+    )
+    .replaceAll(
+      "'",
+      "&#039;"
+    );
 
 }
 
