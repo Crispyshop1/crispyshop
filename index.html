@@ -6,657 +6,1774 @@
 <title>CRISPY SHOP</title>
 
 <style>
-*{
-  box-sizing:border-box;
-  margin:0;
-  padding:0;
-}
-
-html{
-  scroll-behavior:smooth;
-}
-
-body{
-  background:#000;
-  color:#fff;
-  font-family:Arial,Helvetica,sans-serif;
-  overflow-x:hidden;
-}
-
-button,input{
-  font:inherit;
-}
-
-button{
-  cursor:pointer;
-}
+*{box-sizing:border-box;margin:0;padding:0}
+html{scroll-behavior:smooth}
+body{background:#000;color:#fff;font-family:Arial,Helvetica,sans-serif;overflow-x:hidden}
+button,input{font:inherit}
+button{cursor:pointer}
 
 :root{
-  --yellow:#ffd400;
-  --teal:#00e5d5;
-  --teal2:#00aaa5;
+--yellow:#ffd400;
+--teal:#00e5d5;
+--teal2:#00aaa5;
 }
 
-.hidden{
-  display:none!important;
+.hidden{display:none!important}
+
+/* ================= WELCOME ================= */
+
+#welcomeScreen{
+position:fixed;
+inset:0;
+z-index:9999;
+display:flex;
+background:#000;
+overflow-y:auto;
+overflow-x:hidden;
+-webkit-overflow-scrolling:touch;
 }
 
-/* ================= HEADER ================= */
-
-header{
-  min-height:78px;
-  display:flex;
-  align-items:center;
-  gap:15px;
-  padding:10px 22px;
-  background:#030506;
-  border-bottom:2px solid var(--yellow);
-  position:sticky;
-  top:0;
-  z-index:100;
+.welcome-left{
+width:50%;
+min-height:100vh;
+display:flex;
+align-items:center;
+justify-content:center;
+padding:30px;
+background:#000;
 }
 
-.logo{
-  width:135px;
-  height:55px;
-  object-fit:contain;
+.welcome-picture{
+width:min(420px,90%);
+height:auto;
+max-height:70vh;
+object-fit:contain;
+display:block;
 }
 
-.header-spacer{
-  flex:1;
+.welcome-right{
+width:50%;
+min-height:100vh;
+display:flex;
+align-items:center;
+justify-content:center;
+padding:35px;
+background:#000;
 }
 
-.header-icon{
-  width:42px;
-  height:42px;
-  background:none;
-  border:1px solid transparent;
-  color:var(--teal);
-  font-size:22px;
-  border-radius:5px;
+.welcome-content{
+width:100%;
+max-width:430px;
+margin:auto;
+text-align:center;
 }
 
-.header-icon:hover{
-  border-color:var(--teal);
-  color:var(--yellow);
+.welcome-title{
+color:#fff;
+font-size:16px;
+font-weight:bold;
+letter-spacing:2px;
+margin-bottom:10px;
 }
 
-.account-btn{
-  background:var(--yellow);
-  color:#000;
-  border:1px solid var(--yellow);
-  padding:12px 16px;
-  border-radius:5px;
-  font-weight:bold;
+.welcome-content h1{
+color:var(--yellow);
+font-size:38px;
+font-weight:900;
+margin-bottom:10px;
 }
 
-.menu-btn{
-  display:none;
-  width:42px;
-  height:42px;
-  background:none;
-  border:1px solid var(--yellow);
-  color:var(--yellow);
-  font-size:22px;
+.welcome-subtitle{
+color:#999;
+font-size:14px;
+line-height:1.6;
+margin-bottom:28px;
+}
+
+.welcome-login,
+.welcome-email{
+display:grid;
+gap:12px;
+}
+
+.welcome-login button,
+.welcome-email button{
+width:100%;
+padding:15px;
+background:#080d0f;
+border:1px solid var(--teal);
+color:#fff;
+font-weight:bold;
+border-radius:5px;
+}
+
+.welcome-login button:hover,
+.welcome-email button:hover{
+border-color:var(--yellow);
+color:var(--yellow);
+}
+
+.welcome-email input{
+width:100%;
+padding:14px;
+background:#050505;
+border:1px solid #294448;
+color:#fff;
+outline:none;
+border-radius:5px;
+}
+
+.welcome-email input:focus{
+border-color:var(--teal);
+}
+
+.welcome-main-btn{
+background:var(--yellow)!important;
+color:#000!important;
+border-color:var(--yellow)!important;
+}
+
+.welcome-divider{
+display:flex;
+align-items:center;
+gap:10px;
+color:#555;
+margin:20px 0;
+font-size:12px;
+}
+
+.welcome-divider:before,
+.welcome-divider:after{
+content:"";
+flex:1;
+height:1px;
+background:#222;
+}
+
+.welcome-message{
+min-height:20px;
+margin-top:12px;
+color:var(--yellow);
+font-size:12px;
+}
+
+.welcome-terms{
+color:#666;
+font-size:10px;
+line-height:1.5;
+margin-top:22px;
 }
 
 /* ================= MAIN ================= */
 
-#siteContent{
-  display:block;
+#siteContent{display:none}
+
+header{
+min-height:82px;
+display:flex;
+align-items:center;
+gap:18px;
+padding:10px 28px;
+background:#030506;
+border-bottom:2px solid var(--yellow);
+position:sticky;
+top:0;
+z-index:100;
 }
 
-.main-wrap{
-  width:100%;
-  max-width:1450px;
-  margin:auto;
-  padding:15px;
+.logo{
+width:155px;
+height:60px;
+object-fit:contain;
 }
 
-/* ================= TOP SHOP AREA ================= */
-
-.shop-top{
-  display:grid;
-  grid-template-columns:1fr 2fr;
-  gap:15px;
-  margin-bottom:15px;
+nav{
+display:flex;
+align-items:center;
+justify-content:center;
+gap:28px;
+flex:1;
 }
 
-/* CART — HORIZONTAL */
-
-.cart-banner{
-  min-height:250px;
-  border:1px solid var(--teal);
-  background:#05090a;
-  display:flex;
-  align-items:center;
-  justify-content:center;
-  padding:25px;
-  text-align:center;
+nav a{
+color:#fff;
+text-decoration:none;
+font-size:13px;
+font-weight:bold;
+padding:20px 0;
+position:relative;
 }
 
-.cart-banner-content{
-  width:100%;
+nav a:hover,
+nav a.active{
+color:var(--yellow);
 }
 
-.cart-banner-icon{
-  font-size:45px;
-  color:var(--yellow);
-  margin-bottom:10px;
+nav a.active:after{
+content:"";
+position:absolute;
+left:0;
+right:0;
+bottom:8px;
+height:3px;
+background:var(--yellow);
 }
 
-.cart-banner h2{
-  color:#fff;
-  font-size:25px;
-  margin-bottom:8px;
+.header-actions{
+display:flex;
+align-items:center;
+gap:8px;
 }
 
-.cart-banner p{
-  color:#888;
-  font-size:13px;
-  margin-bottom:18px;
+.header-icon{
+width:40px;
+height:40px;
+background:none;
+border:1px solid transparent;
+color:var(--teal);
+font-size:22px;
+border-radius:4px;
 }
 
-.cart-banner button{
-  background:var(--yellow);
-  border:1px solid var(--yellow);
-  color:#000;
-  padding:12px 25px;
-  font-weight:bold;
-  border-radius:4px;
+.header-icon:hover{
+border-color:var(--teal);
+color:var(--yellow);
 }
 
-/* WELCOME */
+.account-btn,
+.yellow-btn{
+background:var(--yellow);
+color:#050708;
+border:1px solid var(--yellow);
+padding:12px 17px;
+border-radius:4px;
+font-weight:bold;
+}
+
+.outline-btn{
+background:transparent;
+color:var(--yellow);
+border:1px solid var(--yellow);
+padding:12px 17px;
+border-radius:4px;
+font-weight:bold;
+}
+
+.outline-btn:hover{
+background:var(--yellow);
+color:#000;
+}
+
+.menu-btn{
+display:none;
+background:none;
+border:1px solid var(--yellow);
+color:var(--yellow);
+width:40px;
+height:40px;
+font-size:23px;
+}
+
+/* ================= LAYOUT ================= */
+
+.layout{
+display:grid;
+grid-template-columns:250px 1fr;
+gap:18px;
+padding:18px;
+max-width:1500px;
+margin:auto;
+}
+
+.profile{
+border:1px solid var(--teal);
+background:#05090a;
+padding:18px;
+height:max-content;
+}
+
+.profile-title{
+color:var(--yellow);
+font-size:14px;
+font-weight:bold;
+margin-bottom:18px;
+}
+
+.profile-logo{
+width:175px;
+height:175px;
+margin:auto;
+display:block;
+object-fit:contain;
+border-radius:50%;
+border:3px solid var(--yellow);
+background:#000;
+padding:10px;
+}
+
+.profile-level{
+color:var(--teal);
+font-weight:bold;
+margin-top:20px;
+}
+
+.progress{
+height:5px;
+background:#20282b;
+margin-top:10px;
+}
+
+.progress span{
+display:block;
+width:68%;
+height:100%;
+background:var(--yellow);
+}
+
+.profile-section{
+border-top:1px solid #153f40;
+margin-top:20px;
+padding-top:18px;
+}
+
+.profile-section h3{
+color:var(--teal);
+font-size:14px;
+margin-bottom:12px;
+}
+
+.profile-section p{
+color:#c0c7c9;
+margin:9px 0;
+font-size:13px;
+line-height:1.5;
+}
+
+.profile-section b{
+float:right;
+color:#fff;
+}
+
+.stars{
+color:var(--yellow);
+}
+
+.contact{
+width:100%;
+padding:12px;
+margin-top:12px;
+background:transparent;
+border:1px solid var(--yellow);
+color:var(--yellow);
+font-weight:bold;
+}
+
+/* ================= HERO ================= */
 
 .hero{
-  min-height:250px;
-  border:1px solid var(--teal);
-  background:#000;
-  display:flex;
-  align-items:center;
-  justify-content:center;
-  text-align:center;
-  padding:30px;
+position:relative;
+width:100%;
+min-height:260px;
+border:1px solid var(--teal);
+overflow:hidden;
+background:#000;
+display:flex;
+align-items:center;
+justify-content:center;
+text-align:center;
+padding:30px;
 }
 
-.hero-content{
-  width:100%;
+.hero-welcome h2{
+color:#fff;
+font-size:30px;
+margin-bottom:8px;
 }
 
-.hero-small{
-  color:#fff;
-  font-size:15px;
-  font-weight:bold;
-  letter-spacing:2px;
-  margin-bottom:8px;
+.hero-welcome strong{
+color:var(--yellow);
+font-size:38px;
 }
 
-.hero h1{
-  color:var(--yellow);
-  font-size:40px;
-  font-weight:900;
-  margin-bottom:8px;
+.hero-welcome p{
+color:#999;
+margin-top:10px;
 }
 
-.hero p{
-  color:#999;
-  font-size:14px;
-  margin-bottom:20px;
+.hero-actions{
+display:flex;
+justify-content:center;
+gap:12px;
+margin-top:24px;
+flex-wrap:wrap;
 }
 
-.browse-btn{
-  display:inline-block;
-  padding:13px 25px;
-  background:var(--yellow);
-  color:#000;
-  border:1px solid var(--yellow);
-  border-radius:4px;
-  font-weight:bold;
+.hero-actions .yellow-btn,
+.hero-actions .outline-btn{
+min-width:190px;
 }
 
-/* ================= PURCHASE AREA ================= */
-
-.purchase-area{
-  margin-top:15px;
-  border:1px solid var(--teal);
-  background:#05090a;
-  padding:25px;
-  text-align:center;
+@media(max-width:600px){
+.hero-actions{
+flex-direction:column;
+}
+.hero-actions .yellow-btn,
+.hero-actions .outline-btn{
+width:100%;
+}
 }
 
-.purchase-title{
-  color:#fff;
-  font-size:22px;
-  font-weight:bold;
+
+/* ================= TRUST ================= */
+
+.trust{
+display:grid;
+grid-template-columns:repeat(3,1fr);
+border:1px solid var(--teal);
+border-top:0;
 }
 
-.purchase-arrow{
-  color:var(--yellow);
-  font-size:28px;
-  margin:8px 0;
+.trust-box{
+padding:18px;
+text-align:center;
+border-right:1px solid #153f40;
 }
 
-.all-btn{
-  min-width:160px;
-  padding:14px 30px;
-  background:var(--yellow);
-  color:#000;
-  border:1px solid var(--yellow);
-  border-radius:4px;
-  font-size:15px;
-  font-weight:900;
+.trust-box:last-child{
+border-right:0;
 }
 
-.all-btn:hover{
-  background:#fff;
-  border-color:#fff;
+.trust-icon{
+color:var(--yellow);
+font-size:25px;
 }
 
-/* ================= ALL CHOICES ================= */
-
-.purchase-choices{
-  display:none;
-  grid-template-columns:1fr 1fr;
-  gap:12px;
-  margin-top:15px;
+.trust-box h3{
+color:var(--teal);
+font-size:14px;
+margin-top:5px;
 }
 
-.purchase-choices.show{
-  display:grid;
+.trust-box p{
+color:#999;
+font-size:12px;
+margin-top:5px;
 }
 
-.purchase-choice{
-  min-height:90px;
-  background:#071619;
-  border:1px solid var(--teal);
-  color:#fff;
-  font-weight:900;
-  font-size:16px;
+/* ================= FILTERS ================= */
+
+.filters{
+display:flex;
+gap:10px;
+overflow-x:auto;
+padding:20px 0 5px;
 }
 
-.purchase-choice:hover{
-  border-color:var(--yellow);
-  color:var(--yellow);
+.filter{
+white-space:nowrap;
+background:#071114;
+color:var(--teal);
+border:1px solid var(--teal);
+padding:11px 17px;
+border-radius:4px;
+font-weight:bold;
 }
 
-/* ================= GAME CHOICES ================= */
-
-.game-choices{
-  display:none;
-  grid-template-columns:repeat(5,1fr);
-  gap:10px;
-  margin-top:15px;
+.filter.active{
+background:var(--yellow);
+border-color:var(--yellow);
+color:#000;
 }
 
-.game-choices.show{
-  display:grid;
-}
-
-.game-choice{
-  min-height:125px;
-  background:#071619;
-  border:1px solid var(--teal);
-  color:#fff;
-  padding:15px 8px;
-  display:flex;
-  flex-direction:column;
-  align-items:center;
-  justify-content:center;
-  gap:10px;
-  font-weight:900;
-}
-
-.game-choice:hover{
-  border-color:var(--yellow);
-  color:var(--yellow);
-}
-
-.game-icon{
-  font-size:32px;
-  line-height:1;
-}
-
-.game-name{
-  font-size:12px;
-}
-
-/* ================= ACCOUNT/TOPUP SECTIONS ================= */
-
-.shop-sections{
-  margin-top:20px;
-}
+/* ================= PRODUCTS ================= */
 
 .game-section{
-  display:none;
-  margin-top:25px;
-  scroll-margin-top:100px;
-}
-
-.game-section.show{
-  display:block;
+scroll-margin-top:105px;
+margin-top:25px;
 }
 
 .section-heading{
-  display:flex;
-  align-items:center;
-  justify-content:space-between;
-  margin-bottom:12px;
+display:flex;
+align-items:center;
+justify-content:space-between;
+margin-bottom:12px;
 }
 
 .section-heading h2{
-  font-size:22px;
+font-size:22px;
 }
 
 .section-heading h2:after{
-  content:"";
-  display:block;
-  width:45px;
-  height:3px;
-  background:var(--yellow);
-  margin-top:7px;
+content:"";
+display:block;
+width:40px;
+height:3px;
+background:var(--yellow);
+margin-top:6px;
 }
 
 .products{
-  display:grid;
-  grid-template-columns:repeat(4,1fr);
-  gap:12px;
+display:grid;
+grid-template-columns:repeat(4,1fr);
+gap:12px;
 }
 
 .product{
-  position:relative;
-  border:1px solid var(--teal2);
-  background:#070b0d;
-  padding:15px;
+position:relative;
+border:1px solid var(--teal2);
+background:#070b0d;
+padding:14px;
+transition:.2s;
 }
 
 .product:hover{
-  border-color:var(--yellow);
+border-color:var(--yellow);
+transform:translateY(-3px);
 }
 
-.product-icon{
-  font-size:30px;
-  color:var(--yellow);
-  text-align:center;
-  margin:15px 0;
+.available{
+position:absolute;
+top:10px;
+right:10px;
+background:var(--yellow);
+color:#000;
+padding:6px 8px;
+font-size:10px;
+font-weight:bold;
+}
+
+.heart{
+color:#fff;
+font-size:20px;
+}
+
+.account-photo{
+width:100%;
+height:180px;
+object-fit:cover;
+display:block;
+margin:10px 0 12px;
+border:1px solid #153f40;
+background:#000;
+}
+
+.game{
+color:#fff;
+font-size:22px;
+font-weight:900;
+font-style:italic;
+margin:22px 0 12px;
 }
 
 .product h3{
-  font-size:16px;
-  margin-bottom:8px;
+font-size:16px;
+margin-bottom:8px;
 }
 
-.product p{
-  color:#999;
-  font-size:12px;
-  line-height:1.5;
+.details{
+color:var(--teal);
+font-size:13px;
+margin-bottom:8px;
 }
 
-.product .price{
-  color:var(--yellow);
-  font-size:19px;
-  font-weight:bold;
-  margin-top:12px;
+.description{
+color:#999;
+font-size:12px;
+min-height:34px;
 }
 
-.select-btn{
-  width:100%;
-  padding:10px;
-  margin-top:12px;
-  background:transparent;
-  border:1px solid var(--yellow);
-  color:var(--yellow);
-  font-weight:bold;
+.price{
+color:var(--yellow);
+font-size:20px;
+font-weight:bold;
+margin-top:15px;
 }
 
-/* ================= SECURITY FEATURES ================= */
+.details-btn{
+width:100%;
+margin-top:12px;
+padding:10px;
+background:transparent;
+border:1px solid var(--yellow);
+color:var(--yellow);
+font-weight:bold;
+}
+
+.details-btn:disabled{
+opacity:.5;
+cursor:not-allowed;
+}
+
+/* ================= FEATURES ================= */
 
 .features{
-  display:grid;
-  grid-template-columns:repeat(3,1fr);
-  border:1px solid var(--teal);
-  margin-top:25px;
+display:grid;
+grid-template-columns:repeat(4,1fr);
+margin-top:25px;
+border:1px solid var(--teal);
 }
 
 .feature{
-  padding:22px;
-  text-align:center;
-  border-right:1px solid #153f40;
+padding:18px;
+text-align:center;
+border-right:1px solid #153f40;
 }
 
 .feature:last-child{
-  border-right:0;
+border-right:0;
 }
 
 .feature-icon{
-  color:var(--yellow);
-  font-size:30px;
+color:var(--teal);
+font-size:27px;
 }
 
 .feature h3{
-  color:var(--teal);
-  font-size:14px;
-  margin-top:8px;
+margin-top:8px;
+font-size:14px;
 }
 
 .feature p{
-  color:#888;
-  font-size:12px;
-  margin-top:5px;
+color:#999;
+font-size:12px;
+margin-top:5px;
 }
 
 /* ================= FOOTER ================= */
 
 footer{
-  border-top:2px solid var(--yellow);
-  margin-top:20px;
-  padding:20px 5px;
-  display:flex;
-  align-items:center;
-  justify-content:space-between;
-  gap:15px;
+border-top:2px solid var(--yellow);
+margin-top:18px;
+padding:20px 5px;
+display:flex;
+align-items:center;
+justify-content:space-between;
+gap:15px;
 }
 
 .footer-logo{
-  width:120px;
+width:120px;
 }
 
 .socials{
-  display:flex;
-  gap:18px;
+display:flex;
+gap:18px;
 }
 
 .socials a{
-  color:#fff;
-  text-decoration:none;
-  font-weight:bold;
+color:#fff;
+text-decoration:none;
+font-weight:bold;
 }
 
 .socials a:hover{
-  color:var(--yellow);
+color:var(--yellow);
 }
 
 .slogan{
-  color:var(--yellow);
-  font-weight:bold;
+color:var(--yellow);
+font-weight:bold;
 }
 
-/* ================= MODAL ================= */
+
+/* ================= TOP CART + WELCOME ================= */
+
+.top-shop-row{
+display:grid;
+grid-template-columns:1fr 2fr;
+gap:15px;
+margin-bottom:15px;
+}
+
+.cart-top-card{
+min-height:260px;
+border:1px solid var(--teal);
+background:#05090a;
+display:flex;
+align-items:center;
+justify-content:center;
+text-align:center;
+padding:24px;
+}
+
+.cart-top-icon{
+font-size:46px;
+color:var(--yellow);
+margin-bottom:10px;
+}
+
+.cart-top-card h2{
+font-size:24px;
+color:#fff;
+margin-bottom:8px;
+}
+
+.cart-top-card p{
+font-size:13px;
+color:#999;
+margin-bottom:15px;
+}
+
+.hero-actions{
+display:block;
+}
+
+@media(max-width:850px){
+.top-shop-row{
+grid-template-columns:1fr;
+}
+
+.cart-top-card{
+min-height:190px;
+}
+}
+
+
+/* ================= PURCHASE SELECTOR ================= */
+
+.is-hidden{
+display:none!important;
+}
+
+.purchase-panel{
+margin-top:24px;
+padding:28px 22px 22px;
+border:1px solid var(--teal);
+background:#030607;
+text-align:center;
+}
+
+.purchase-icon{
+font-size:32px;
+margin-bottom:8px;
+}
+
+.purchase-panel h2{
+font-size:22px;
+font-weight:700;
+color:#fff;
+}
+
+.purchase-arrow{
+font-size:34px;
+line-height:1;
+color:var(--yellow);
+margin:8px 0 12px;
+}
+
+.all-purchase-btn{
+width:100%;
+padding:16px;
+background:var(--yellow);
+border:1px solid var(--yellow);
+color:#000;
+font-size:18px;
+font-weight:900;
+border-radius:4px;
+}
+
+.all-choices{
+display:none;
+grid-template-columns:1fr 1fr;
+gap:12px;
+margin-top:12px;
+}
+
+.all-choices.show{
+display:grid;
+}
+
+.all-choice{
+padding:16px;
+background:#05090a;
+border:1px solid var(--yellow);
+color:var(--yellow);
+font-weight:900;
+border-radius:4px;
+}
+
+.all-choice.topup-choice{
+border-color:var(--teal);
+color:var(--teal);
+}
+
+.all-choice:hover{
+background:var(--yellow);
+color:#000;
+}
+
+.all-choice.topup-choice:hover{
+background:var(--teal);
+color:#000;
+}
+
+.purchase-hint{
+color:#888;
+font-size:12px;
+margin-top:12px;
+}
+
+.game-section{
+scroll-margin-top:100px;
+}
+
+@media(max-width:600px){
+.purchase-panel{
+padding:25px 12px 18px;
+}
+
+.purchase-panel h2{
+font-size:20px;
+}
+
+.all-choices{
+grid-template-columns:1fr;
+}
+}
+
+/* ================= MODALS ================= */
 
 .modal{
-  display:none;
-  position:fixed;
-  inset:0;
-  z-index:2000;
-  background:rgba(0,0,0,.88);
-  align-items:center;
-  justify-content:center;
-  padding:18px;
+display:none;
+position:fixed;
+inset:0;
+z-index:2000;
+background:rgba(0,0,0,.88);
+align-items:center;
+justify-content:center;
+padding:18px;
 }
 
 .modal.show{
-  display:flex;
+display:flex;
 }
 
 .modal-box{
-  width:100%;
-  max-width:700px;
-  max-height:90vh;
-  overflow:auto;
-  background:#061012;
-  border:1px solid var(--teal);
-  padding:25px;
-}
-
-.modal-close{
-  float:right;
-  width:35px;
-  height:35px;
-  background:transparent;
-  color:#fff;
-  border:1px solid #555;
-  font-size:22px;
+width:100%;
+max-width:720px;
+max-height:90vh;
+overflow:auto;
+background:#061012;
+border:1px solid var(--teal);
+padding:24px;
 }
 
 .modal-box h2{
-  color:var(--yellow);
-  margin-bottom:10px;
+color:var(--yellow);
+margin-bottom:8px;
 }
 
-.modal-box p{
-  color:#999;
+.modal-box>p{
+color:#aaa;
+margin-bottom:18px;
 }
 
-/* ================= CART MODAL ================= */
+.modal-close{
+float:right;
+background:transparent;
+color:#fff;
+border:1px solid #555;
+width:34px;
+height:34px;
+font-size:22px;
+}
+
+.choice-grid{
+display:grid;
+grid-template-columns:repeat(5,1fr);
+gap:10px;
+}
+
+.choice{
+min-height:120px;
+background:#071619;
+color:#fff;
+border:1px solid var(--teal);
+padding:15px 8px;
+display:flex;
+flex-direction:column;
+align-items:center;
+justify-content:center;
+gap:10px;
+font-weight:900;
+}
+
+.choice:hover{
+border-color:var(--yellow);
+color:var(--yellow);
+}
+
+.choice-icon{
+font-size:28px;
+}
+
+.contact-options{
+display:grid;
+grid-template-columns:repeat(2,1fr);
+gap:12px;
+}
+
+.contact-option{
+display:block;
+padding:18px;
+text-align:center;
+text-decoration:none;
+color:#fff;
+border:1px solid var(--teal);
+background:#071619;
+font-weight:bold;
+}
+
+.contact-option:hover{
+border-color:var(--yellow);
+color:var(--yellow);
+}
+
+.form-input{
+width:100%;
+padding:13px;
+margin-bottom:12px;
+background:#020506;
+border:1px solid var(--teal);
+color:#fff;
+outline:none;
+}
+
+.form-input:focus{
+border-color:var(--yellow);
+}
+
+.full-btn{
+width:100%;
+margin-top:4px;
+}
+
+.social-login{
+display:grid;
+grid-template-columns:repeat(2,1fr);
+gap:8px;
+margin:15px 0;
+}
+
+.social-login button{
+padding:12px 5px;
+background:#071619;
+color:#fff;
+border:1px solid var(--teal);
+font-weight:bold;
+}
+
+.search-result{
+padding:13px;
+border-bottom:1px solid #173d3d;
+cursor:pointer;
+}
+
+.search-result:hover{
+color:var(--yellow);
+}
 
 .cart-item{
-  display:flex;
-  justify-content:space-between;
-  align-items:center;
-  gap:10px;
-  padding:13px 0;
-  border-bottom:1px solid #153f40;
-}
-
-.cart-item strong{
-  color:#fff;
+display:flex;
+align-items:center;
+justify-content:space-between;
+gap:12px;
+padding:12px 0;
+border-bottom:1px solid #173d3d;
 }
 
 .cart-price,
 .cart-total{
-  color:var(--yellow);
+color:var(--yellow);
 }
 
 .cart-total{
-  font-size:20px;
-  font-weight:bold;
-  margin-top:18px;
+font-size:20px;
+font-weight:bold;
+margin-top:18px;
 }
 
 .empty{
-  color:#888;
-  text-align:center;
-  padding:30px;
+color:#999;
+text-align:center;
+padding:30px;
 }
 
-/* ================= MOBILE ================= */
+/* ================= CUSTOMER ================= */
 
-@media(max-width:900px){
+.customer-profile{
+display:flex;
+align-items:center;
+gap:20px;
+padding:20px;
+margin:15px 0 20px;
+border:1px solid var(--teal);
+background:#05090a;
+}
 
-.shop-top{
-  grid-template-columns:1fr;
+.customer-photo-area{
+width:145px;
+text-align:center;
+flex-shrink:0;
+}
+
+.customer-photo-circle{
+width:120px;
+height:120px;
+margin:auto;
+border-radius:50%;
+overflow:hidden;
+display:grid;
+place-items:center;
+background:#071619;
+border:3px solid var(--yellow);
+color:var(--yellow);
+font-size:45px;
+}
+
+.customer-photo-circle img{
+width:100%;
+height:100%;
+object-fit:cover;
+}
+
+.upload-photo-label{
+display:inline-block;
+margin-top:12px;
+padding:9px 10px;
+font-size:11px;
+cursor:pointer;
+}
+
+.customer-details h3{
+color:var(--yellow);
+margin-bottom:8px;
+font-size:20px;
+}
+
+.customer-details p{
+color:#aaa;
+font-size:13px;
+}
+
+.customer-badge{
+display:inline-block;
+margin-top:10px;
+padding:6px 9px;
+color:#21d86b;
+border:1px solid #21d86b;
+font-size:10px;
+font-weight:bold;
+}
+
+.customer-options{
+display:grid;
+grid-template-columns:repeat(2,1fr);
+gap:10px;
+}
+
+.customer-option{
+min-height:80px;
+background:#071619;
+border:1px solid var(--teal);
+color:#fff;
+font-weight:bold;
+font-size:13px;
+}
+
+.customer-option:hover{
+border-color:var(--yellow);
+color:var(--yellow);
+}
+
+.logout-option{
+color:#ff5555;
+border-color:#ff5555;
+}
+
+.customer-info{
+margin-top:20px;
+padding-top:18px;
+border-top:1px solid #153f40;
+}
+
+.info-card{
+margin-top:15px;
+padding:18px;
+background:#05090a;
+border:1px solid var(--teal);
+}
+
+.info-card h3{
+color:var(--yellow);
+margin-bottom:10px;
+}
+
+.info-card p{
+color:#aaa;
+margin:8px 0;
+}
+
+.message{
+color:var(--yellow);
+margin-top:12px;
+text-align:center;
+}
+
+/* ================= ACCOUNT DETAILS ================= */
+
+.account-detail-photo{
+width:100%;
+max-height:360px;
+object-fit:contain;
+background:#000;
+border:1px solid #153f40;
+margin:12px 0 18px;
+}
+
+.account-detail-grid{
+display:grid;
+grid-template-columns:1fr 1fr;
+gap:10px;
+margin:15px 0;
+}
+
+.detail-card{
+background:#05090a;
+border:1px solid #153f40;
+padding:14px;
+}
+
+.detail-card span{
+display:block;
+color:#888;
+font-size:11px;
+margin-bottom:5px;
+}
+
+.detail-card strong{
+color:#fff;
+}
+
+.detail-description{
+color:#aaa;
+line-height:1.6;
+margin:15px 0;
+}
+
+.detail-price{
+font-size:26px;
+color:var(--yellow);
+font-weight:bold;
+margin:15px 0;
+}
+
+/* ================= DRAWER ================= */
+
+.mobile-drawer{
+display:none;
+position:fixed;
+inset:0;
+z-index:3000;
+background:rgba(0,0,0,.8);
+}
+
+.mobile-drawer.open{
+display:block;
+}
+
+.drawer-panel{
+width:min(330px,86vw);
+height:100%;
+overflow:auto;
+background:#05090a;
+border-right:2px solid var(--yellow);
+padding:14px;
+}
+
+.drawer-head{
+display:flex;
+align-items:center;
+justify-content:space-between;
+margin-bottom:15px;
+}
+
+.drawer-head strong{
+color:var(--yellow);
+}
+
+.drawer-close{
+background:none;
+border:1px solid var(--yellow);
+color:var(--yellow);
+width:38px;
+height:38px;
+}
+  /* ================= RESPONSIVE ================= */
+
+@media(max-width:1100px){
+
+.layout{
+grid-template-columns:210px 1fr;
 }
 
 .products{
-  grid-template-columns:repeat(2,1fr);
+grid-template-columns:repeat(3,1fr);
 }
 
-.game-choices{
-  grid-template-columns:repeat(3,1fr);
+}
+
+@media(max-width:850px){
+
+header{
+padding:10px 15px;
+}
+
+header nav{
+display:none;
+}
+
+.menu-btn{
+display:block;
+}
+
+.logo{
+width:125px;
+}
+
+.header-actions{
+margin-left:auto;
+}
+
+.account-btn{
+padding:10px 12px;
+font-size:11px;
+}
+
+.layout{
+grid-template-columns:1fr;
+padding:12px;
+}
+
+.profile{
+display:none;
+}
+
+.products{
+grid-template-columns:repeat(2,1fr);
+}
+
+.features{
+grid-template-columns:repeat(2,1fr);
+}
+
+.feature:nth-child(2){
+border-right:0;
+}
+
+.feature:nth-child(-n+2){
+border-bottom:1px solid #153f40;
+}
+
+.choice-grid{
+grid-template-columns:repeat(2,1fr);
 }
 
 }
 
 @media(max-width:600px){
 
-header{
-  padding:8px 12px;
+.welcome-left{
+display:none;
 }
 
-.menu-btn{
-  display:block;
+.welcome-right{
+width:100%;
+padding:22px;
+}
+
+.welcome-content h1{
+font-size:32px;
+}
+
+header{
+min-height:65px;
 }
 
 .logo{
-  width:110px;
+width:110px;
+height:48px;
 }
 
-.account-btn{
-  display:none;
+.header-actions{
+gap:3px;
 }
 
 .header-icon{
-  width:36px;
-  height:36px;
+width:36px;
+height:36px;
+font-size:19px;
 }
 
-.main-wrap{
-  padding:10px;
+.account-btn{
+display:none;
 }
 
-.shop-top{
-  grid-template-columns:1fr;
-}
-
-.cart-banner,
 .hero{
-  min-height:210px;
+min-height:210px;
+padding:20px;
 }
 
-.hero h1{
-  font-size:30px;
+.hero-welcome h2{
+font-size:22px;
 }
 
-.purchase-area{
-  padding:20px 12px;
+.hero-welcome strong{
+font-size:30px;
 }
 
-.purchase-choices{
-  grid-template-columns:1fr;
+.trust{
+grid-template-columns:1fr;
 }
 
-.game-choices{
-  grid-template-columns:1fr 1fr;
+.trust-box{
+border-right:0;
+border-bottom:1px solid #153f40;
+}
+
+.trust-box:last-child{
+border-bottom:0;
 }
 
 .products{
-  grid-template-columns:1fr;
+grid-template-columns:1fr;
 }
 
 .features{
-  grid-template-columns:1fr;
+grid-template-columns:1fr;
 }
 
-.feature{
-  border-right:0;
-  border-bottom:1px solid #153f40;
+.feature,
+.feature:nth-child(2){
+border-right:0;
+border-bottom:1px solid #153f40;
 }
 
 .feature:last-child{
-  border-bottom:0;
+border-bottom:0;
+}
+
+.customer-profile{
+flex-direction:column;
+text-align:center;
+}
+
+.customer-options{
+grid-template-columns:1fr;
+}
+
+.contact-options{
+grid-template-columns:1fr;
+}
+
+.account-detail-grid{
+grid-template-columns:1fr;
 }
 
 footer{
-  flex-direction:column;
-  text-align:center;
+flex-direction:column;
+text-align:center;
 }
 
+}
+
+/* ================= TOPUP/ACCOUNT VISIBILITY ================= */
+
+/*
+IMPORTANT:
+Nothing underneath the ALL selector is shown initially.
+
+The account sections become visible ONLY after:
+ALL -> ACCOUNT
+
+The top-up sections become visible ONLY after:
+ALL -> TOP UP
+*/
+
+#purchaseArea{
+margin-top:20px;
+}
+
+#accountSections,
+#topupSections{
+display:none;
+}
+
+#accountSections.show,
+#topupSections.show{
+display:block;
+}
+
+#accountSections .game-section,
+#topupSections .game-section{
+display:none;
+}
+
+#accountSections.show .game-section,
+#topupSections.show .game-section{
+display:block;
+}
+
+/* Hide the old filter row completely */
+.old-filters{
+display:none!important;
+}
+
+/* ================= SECTION ICONS ================= */
+
+.section-icon{
+width:52px;
+height:52px;
+object-fit:contain;
+display:block;
+margin:0 auto 10px;
+}
+
+.choice-icon img{
+width:45px;
+height:45px;
+object-fit:contain;
+}
+
+/* ================= ALL SELECTOR ================= */
+
+.all-selector{
+width:100%;
+border:1px solid var(--teal);
+background:#05090a;
+padding:22px;
+text-align:center;
+margin-top:20px;
+}
+
+.all-selector h2{
+font-size:21px;
+margin-bottom:8px;
+}
+
+.all-selector p{
+font-size:12px;
+color:#888;
+margin-bottom:15px;
+}
+
+.all-button{
+display:inline-flex;
+align-items:center;
+justify-content:center;
+gap:8px;
+min-width:180px;
+padding:14px 25px;
+background:var(--yellow);
+color:#000;
+border:1px solid var(--yellow);
+font-weight:900;
+border-radius:4px;
+}
+
+.all-button span{
+font-size:18px;
+}
+
+.all-menu{
+display:none;
+grid-template-columns:1fr 1fr;
+gap:12px;
+margin-top:15px;
+}
+
+.all-menu.show{
+display:grid;
+}
+
+.all-menu button{
+padding:18px 12px;
+background:#071619;
+border:1px solid var(--teal);
+color:#fff;
+font-weight:900;
+font-size:15px;
+border-radius:4px;
+}
+
+.all-menu button:first-child{
+border-color:var(--yellow);
+color:var(--yellow);
+}
+
+.all-menu button:hover{
+background:var(--yellow);
+color:#000;
+}
+
+.all-menu button:last-child:hover{
+background:var(--teal);
+color:#000;
+}
+
+@media(max-width:500px){
+
+.all-menu{
+grid-template-columns:1fr;
+}
+
+.all-selector{
+padding:18px 12px;
+}
+
+}
+
+
+/* ================= ACCOUNT/TOPUP HEADERS ================= */
+
+.category-header{
+display:none;
+margin-top:25px;
+padding:18px;
+border:1px solid var(--yellow);
+background:#05090a;
+text-align:center;
+}
+
+.category-header.show{
+display:block;
+}
+
+.category-header h2{
+color:var(--yellow);
+font-size:22px;
+}
+
+.category-header p{
+color:#888;
+font-size:12px;
+margin-top:7px;
+}
+
+
+/* ================= KEEP ORIGINAL TOPUP CARDS ================= */
+
+#topupSections .game-section{
+margin-top:18px;
+}
+
+#topupSections .product{
+min-height:190px;
+}
+
+#topupSections .game{
+color:var(--yellow);
+}
+
+
+/* ================= CART TOP SPOT ================= */
+
+.cart-top-card{
+position:relative;
+overflow:hidden;
+}
+
+.cart-top-card:before{
+content:"";
+position:absolute;
+inset:0;
+background:linear-gradient(
+90deg,
+rgba(0,229,213,.03),
+transparent,
+rgba(255,212,0,.03)
+);
+pointer-events:none;
+}
+
+.cart-top-inner{
+position:relative;
+z-index:1;
+}
+
+.cart-top-inner button{
+margin-top:10px;
+}
+
+
+/* ================= REMOVE OLD ACCOUNT/TOPUP NAV ================= */
+
+.desktop-old-category{
+display:none!important;
+}
+
+
+/* ================= PURCHASE FLOW ================= */
+
+body.purchase-account #accountSections{
+display:block;
+}
+
+body.purchase-account #topupSections{
+display:none;
+}
+
+body.purchase-topup #topupSections{
+display:block;
+}
+
+body.purchase-topup #accountSections{
+display:none;
+}
+
+body.purchase-none #accountSections,
+body.purchase-none #topupSections{
+display:none;
+}
+
+
+/* ================= LOADING ================= */
+
+.loading{
+padding:35px;
+text-align:center;
+color:#888;
+}
+
+.loading span{
+color:var(--yellow);
+}
+
+
+/* ================= SMALL HELPERS ================= */
+
+.text-yellow{
+color:var(--yellow);
+}
+
+.text-teal{
+color:var(--teal);
+}
+
+.center{
+text-align:center;
+}
+
+.mt-10{
+margin-top:10px;
+}
+
+.mt-20{
+margin-top:20px;
 }
 </style>
 </head>
 
 <body>
 
-<!-- ================= HEADER ================= -->
+<!-- ================= WELCOME ================= -->
+
+<section id="welcomeScreen">
+
+<div class="welcome-left">
+
+<img
+src="logo.png.jpeg"
+class="welcome-picture"
+alt="CRISPY SHOP"
+>
+
+</div>
+
+<div class="welcome-right">
+
+<div class="welcome-content">
+
+<div class="welcome-title">
+WELCOME TO
+</div>
+
+<h1>
+CRISPY SHOP
+</h1>
+
+<p class="welcome-subtitle">
+Shop the best gaming accounts.
+<br>
+Secure. Fast. Trusted.
+</p>
+
+<div class="welcome-login">
+
+<button onclick="socialLogin('google')">
+G&nbsp;&nbsp; CONTINUE WITH GOOGLE
+</button>
+
+<button onclick="socialLogin('apple')">
+&nbsp;&nbsp; CONTINUE WITH APPLE
+</button>
+
+</div>
+
+<div class="welcome-divider">
+OR
+</div>
+
+<div class="welcome-email">
+
+<input
+id="welcomeEmail"
+type="email"
+placeholder="Email address"
+autocomplete="email"
+>
+
+<input
+id="welcomePassword"
+type="password"
+placeholder="Password"
+autocomplete="current-password"
+>
+
+<button
+class="welcome-main-btn"
+onclick="welcomeLogin()"
+>
+LOGIN
+</button>
+
+<button onclick="welcomeSignup()">
+CREATE ACCOUNT
+</button>
+
+<button onclick="welcomeResetPassword()">
+FORGOT PASSWORD?
+</button>
+
+</div>
+
+<div
+id="welcomeMessage"
+class="welcome-message"
+></div>
+
+<div class="welcome-terms">
+By continuing, you agree to use Crispy Shop responsibly.
+</div>
+
+</div>
+
+</div>
+
+</section>
+
+
+<!-- ================= MAIN SITE ================= -->
 
 <div id="siteContent">
 
@@ -675,7 +1792,32 @@ class="logo"
 alt="CRISPY SHOP"
 >
 
-<div class="header-spacer"></div>
+<nav>
+
+<a
+href="#home"
+class="active"
+>
+HOME
+</a>
+
+<a
+href="#purchaseArea"
+onclick="showAllMenu();return false;"
+>
+ALL
+</a>
+
+<a
+href="#reviews"
+onclick="openReviews();return false;"
+>
+REVIEWS
+</a>
+
+</nav>
+
+<div class="header-actions">
 
 <button
 class="header-icon"
@@ -698,22 +1840,184 @@ onclick="openCustomerAccount()"
 ♙ MY ACCOUNT
 </button>
 
+</div>
+
 </header>
 
 
-<!-- ================= MAIN ================= -->
+<!-- ================= MOBILE DRAWER ================= -->
 
-<div class="main-wrap">
+<div
+class="mobile-drawer"
+id="drawer"
+onclick="drawerOutside(event)"
+>
 
-<!-- CART + WELCOME ARE HORIZONTAL -->
+<div class="drawer-panel">
 
-<section class="shop-top">
+<div class="drawer-head">
 
-<div class="cart-banner">
+<strong>
+CRISPY SHOP
+</strong>
 
-<div class="cart-banner-content">
+<button
+class="drawer-close"
+onclick="closeDrawer()"
+>
+×
+</button>
 
-<div class="cart-banner-icon">
+</div>
+
+<button
+class="contact"
+onclick="openCustomerAccount();closeDrawer()"
+>
+♙ MY ACCOUNT
+</button>
+
+<button
+class="contact"
+onclick="showAllMenu();closeDrawer()"
+>
+▣ ALL
+</button>
+
+<button
+class="contact"
+onclick="openReviews();closeDrawer()"
+>
+⭐ REVIEWS
+</button>
+
+<button
+class="contact"
+onclick="contactMe();closeDrawer()"
+>
+💬 CONTACT ME
+</button>
+
+</div>
+
+</div>
+
+
+<div
+class="layout"
+id="home"
+>
+
+<!-- ================= PROFILE ================= -->
+
+<aside class="profile">
+
+<div class="profile-title">
+MY PROFILE 👑
+</div>
+
+<img
+src="logo.png.jpeg"
+class="profile-logo"
+alt="CRISPY SHOP"
+>
+
+<div class="profile-level">
+LEVEL 17 TRADER
+</div>
+
+<div class="progress">
+<span></span>
+</div>
+
+<div class="profile-section">
+
+<h3>
+ABOUT
+</h3>
+
+<p>♙ Trader</p>
+<p>♙ Gaming Account Seller</p>
+<p>▣ Member Since 2024</p>
+
+<p>
+☆ Shop Rating
+</p>
+
+<div class="stars">
+★★★★★
+<span style="color:#fff">
+5.0
+</span>
+</div>
+
+<p>
+♧ Orders Completed
+<b>
+250+
+</b>
+</p>
+
+</div>
+
+<div class="profile-section">
+
+<h3>
+SHOP STATS
+</h3>
+
+<p>
+▣ Total Accounts
+<b>120+</b>
+</p>
+
+<p>
+♙ Total Sales
+<b>1.2K+</b>
+</p>
+
+<p>
+♙ Happy Customers
+<b>980+</b>
+</p>
+
+<p>
+✓ Success Rate
+<b>99%</b>
+</p>
+
+</div>
+
+<button
+class="contact"
+onclick="openContactOptions()"
+>
+💬 CONTACT ME
+</button>
+
+<button
+class="contact"
+onclick="openContactOptions()"
+>
+☘ MESSAGE ME
+</button>
+
+</aside>
+
+
+<!-- ================= MAIN CONTENT ================= -->
+
+<main>
+
+<!-- CART + WELCOME SHARE THIS TOP AREA -->
+
+<div class="top-shop-row">
+
+<div class="cart-top-card">
+
+<div class="cart-top-inner">
+
+<div class="cart-top-icon">
 🛒
 </div>
 
@@ -722,13 +2026,14 @@ YOUR CART
 </h2>
 
 <p>
-Your selected items will appear here.
+View your selected items
 </p>
 
 <button
+class="yellow-btn"
 onclick="openCart()"
 >
-VIEW CART
+OPEN CART
 </button>
 
 </div>
@@ -736,25 +2041,27 @@ VIEW CART
 </div>
 
 
-<div class="hero">
+<section class="hero">
 
-<div class="hero-content">
+<div class="hero-welcome">
 
-<div class="hero-small">
+<h2>
 WELCOME TO
-</div>
+</h2>
 
-<h1>
+<strong>
 CRISPY SHOP
-</h1>
+</strong>
 
 <p>
 LEVEL UP. PLAY MORE. 👑
 </p>
 
+<div class="hero-actions">
+
 <button
-class="browse-btn"
-onclick="goToAll()"
+class="yellow-btn"
+onclick="showAllMenu()"
 >
 BROWSE ACCOUNTS ↓
 </button>
@@ -765,198 +2072,170 @@ BROWSE ACCOUNTS ↓
 
 </section>
 
+</div>
+
+
+<!-- ================= TRUST ================= -->
+
+<section class="trust">
+
+<div class="trust-box">
+
+<div class="trust-icon">
+♢
+</div>
+
+<h3>
+100% SAFE
+</h3>
+
+<p>
+Secure Transactions
+</p>
+
+</div>
+
+<div class="trust-box">
+
+<div class="trust-icon">
+ϟ
+</div>
+
+<h3>
+INSTANT DELIVERY
+</h3>
+
+<p>
+Get it instantly
+</p>
+
+</div>
+
+<div class="trust-box">
+
+<div class="trust-icon">
+♧
+</div>
+
+<h3>
+24/7 SUPPORT
+</h3>
+
+<p>
+We're here to help
+</p>
+
+</div>
+
+</section>
+
 
 <!-- ================= ALL ================= -->
 
 <section
-class="purchase-area"
+class="all-selector"
 id="purchaseArea"
 >
 
-<div class="purchase-title">
-WHAT WOULD YOU LIKE TO PURCHASE?
-</div>
+<h2>
+What would you like to purchase?
+</h2>
 
 <div class="purchase-arrow">
 ↓
 </div>
 
 <button
-class="all-btn"
-id="allButton"
-onclick="showAllChoices()"
+class="all-button"
+onclick="showAllMenu()"
 >
 ALL
+<span>↓</span>
 </button>
 
-
-<!-- ACCOUNT / TOP UP -->
-
 <div
-class="purchase-choices"
-id="purchaseChoices"
+class="all-menu"
+id="allMenu"
 >
 
 <button
-class="purchase-choice"
-onclick="showAccountChoices()"
+onclick="showAccountSections()"
 >
 🎮 ACCOUNT
 </button>
 
 <button
-class="purchase-choice"
-onclick="showTopupChoices()"
+onclick="showTopupSections()"
 >
 💎 TOP UP
 </button>
 
 </div>
 
+<p class="purchase-hint">
+Choose one option above to continue.
+</p>
 
-<!-- ACCOUNT 5 -->
+</section>
+
+
+<!-- ================= CATEGORY HEADER ================= -->
 
 <div
-class="game-choices"
-id="accountChoices"
+id="accountHeader"
+class="category-header"
 >
 
-<button
-class="game-choice"
-onclick="showGameSection('account-freefire')"
->
-<span class="game-icon">🔥</span>
-<span class="game-name">FREE FIRE</span>
-</button>
+<h2>
+ACCOUNT
+</h2>
 
-<button
-class="game-choice"
-onclick="showGameSection('account-efootball')"
->
-<span class="game-icon">⚽</span>
-<span class="game-name">eFOOTBALL</span>
-</button>
-
-<button
-class="game-choice"
-onclick="showGameSection('account-codm')"
->
-<span class="game-icon">🎯</span>
-<span class="game-name">CODM</span>
-</button>
-
-<button
-class="game-choice"
-onclick="showGameSection('account-dls')"
->
-<span class="game-icon">💎</span>
-<span class="game-name">DLS</span>
-</button>
-
-<button
-class="game-choice"
-onclick="showGameSection('account-fcmobile')"
->
-<span class="game-icon">⚽</span>
-<span class="game-name">FC MOBILE</span>
-</button>
+<p>
+Choose from the five gaming account sections below.
+</p>
 
 </div>
 
-
-<!-- TOP UP 5 -->
 
 <div
-class="game-choices"
-id="topupChoices"
+id="topupHeader"
+class="category-header"
 >
 
-<button
-class="game-choice"
-onclick="showGameSection('topup-freefire')"
->
-<span class="game-icon">💎</span>
-<span class="game-name">FREE FIRE DIAMONDS</span>
-</button>
+<h2>
+TOP UP
+</h2>
 
-<button
-class="game-choice"
-onclick="showGameSection('topup-efootball')"
->
-<span class="game-icon">🪙</span>
-<span class="game-name">eFOOTBALL COINS</span>
-</button>
-
-<button
-class="game-choice"
-onclick="showGameSection('topup-codm')"
->
-<span class="game-icon">🎯</span>
-<span class="game-name">CODM CP</span>
-</button>
-
-<button
-class="game-choice"
-onclick="showGameSection('topup-dls')"
->
-<span class="game-icon">💎</span>
-<span class="game-name">DLS DIAMONDS</span>
-</button>
-
-<button
-class="game-choice"
-onclick="showGameSection('topup-fcmobile')"
->
-<span class="game-icon">⚽</span>
-<span class="game-name">FC MOBILE</span>
-</button>
+<p>
+Choose the game you want to top up.
+</p>
 
 </div>
 
-</section>
 
+<!-- ================= ACCOUNT SECTIONS ================= -->
 
-<!-- ================= SECTIONS ================= -->
+<div id="accountSections">
 
-<div class="shop-sections">
 
 <section
 class="game-section"
-id="account-freefire"
+id="freefire-section"
+data-game="freefire"
 >
 
 <div class="section-heading">
-<h2>🔥 FREE FIRE ACCOUNTS</h2>
+
+<h2>
+🔥 FREE FIRE
+</h2>
+
 </div>
 
-<div class="products">
-  <div class="product">
-
-<div class="product-icon">
-🔥
-</div>
-
-<h3>
-FREE FIRE ACCOUNT
-</h3>
-
-<p>
-Gaming account listings will appear here.
-</p>
-
-<div class="price">
-₦0
-</div>
-
-<button
-class="select-btn"
-onclick="showToast('Free Fire account selected')"
+<div
+class="products"
+id="freefire-products"
 >
-VIEW DETAILS
-</button>
-
-</div>
-
 </div>
 
 </section>
@@ -964,42 +2243,19 @@ VIEW DETAILS
 
 <section
 class="game-section"
-id="account-efootball"
+id="efootball-section"
+data-game="efootball"
 >
 
 <div class="section-heading">
-<h2>⚽ eFOOTBALL ACCOUNTS</h2>
+
+<h2>
+⚽ eFOOTBALL
+</h2>
+
 </div>
 
 <div class="products">
-
-<div class="product">
-
-<div class="product-icon">
-⚽
-</div>
-
-<h3>
-eFOOTBALL ACCOUNT
-</h3>
-
-<p>
-Gaming account listings will appear here.
-</p>
-
-<div class="price">
-₦0
-</div>
-
-<button
-class="select-btn"
-onclick="showToast('eFootball account selected')"
->
-VIEW DETAILS
-</button>
-
-</div>
-
 </div>
 
 </section>
@@ -1007,42 +2263,19 @@ VIEW DETAILS
 
 <section
 class="game-section"
-id="account-codm"
+id="codm-section"
+data-game="codm"
 >
 
 <div class="section-heading">
-<h2>🎯 CODM ACCOUNTS</h2>
+
+<h2>
+🎯 CODM
+</h2>
+
 </div>
 
 <div class="products">
-
-<div class="product">
-
-<div class="product-icon">
-🎯
-</div>
-
-<h3>
-CODM ACCOUNT
-</h3>
-
-<p>
-Gaming account listings will appear here.
-</p>
-
-<div class="price">
-₦0
-</div>
-
-<button
-class="select-btn"
-onclick="showToast('CODM account selected')"
->
-VIEW DETAILS
-</button>
-
-</div>
-
 </div>
 
 </section>
@@ -1050,42 +2283,19 @@ VIEW DETAILS
 
 <section
 class="game-section"
-id="account-dls"
+id="dls-section"
+data-game="dls"
 >
 
 <div class="section-heading">
-<h2>💎 DLS ACCOUNTS</h2>
+
+<h2>
+⚽ DLS
+</h2>
+
 </div>
 
 <div class="products">
-
-<div class="product">
-
-<div class="product-icon">
-💎
-</div>
-
-<h3>
-DLS ACCOUNT
-</h3>
-
-<p>
-Gaming account listings will appear here.
-</p>
-
-<div class="price">
-₦0
-</div>
-
-<button
-class="select-btn"
-onclick="showToast('DLS account selected')"
->
-VIEW DETAILS
-</button>
-
-</div>
-
 </div>
 
 </section>
@@ -1093,81 +2303,64 @@ VIEW DETAILS
 
 <section
 class="game-section"
-id="account-fcmobile"
+id="fcmobile-section"
+data-game="fcmobile"
 >
 
 <div class="section-heading">
-<h2>⚽ FC MOBILE ACCOUNTS</h2>
+
+<h2>
+⚽ FC MOBILE
+</h2>
+
 </div>
 
 <div class="products">
-
-<div class="product">
-
-<div class="product-icon">
-⚽
-</div>
-
-<h3>
-FC MOBILE ACCOUNT
-</h3>
-
-<p>
-Gaming account listings will appear here.
-</p>
-
-<div class="price">
-₦0
-</div>
-
-<button
-class="select-btn"
-onclick="showToast('FC Mobile account selected')"
->
-VIEW DETAILS
-</button>
-
-</div>
-
 </div>
 
 </section>
+
+</div>
 
 
 <!-- ================= TOP UP SECTIONS ================= -->
 
+<div id="topupSections">
+
+
 <section
 class="game-section"
 id="topup-freefire"
+data-topup-section="freefire"
 >
 
 <div class="section-heading">
-<h2>💎 FREE FIRE DIAMONDS</h2>
+
+<h2>
+💎 FREE FIRE DIAMONDS
+</h2>
+
 </div>
 
 <div class="products">
 
 <div class="product">
 
-<div class="product-icon">
-💎
+<div class="game">
+💎 DIAMONDS
 </div>
 
 <h3>
 FREE FIRE DIAMONDS
 </h3>
 
-<p>
-Choose your Free Fire Diamonds package.
-</p>
-
-<div class="price">
-₦0
+<div class="description">
+Top-up packages will be posted here.
 </div>
 
 <button
-class="select-btn"
-onclick="showToast('Free Fire Diamonds selected')"
+class="details-btn"
+onclick="showToast('Free Fire top-up selected')"
 >
 SELECT
 </button>
@@ -1182,35 +2375,36 @@ SELECT
 <section
 class="game-section"
 id="topup-efootball"
+data-topup-section="efootball"
 >
 
 <div class="section-heading">
-<h2>🪙 eFOOTBALL COINS</h2>
+
+<h2>
+🪙 eFOOTBALL COINS
+</h2>
+
 </div>
 
 <div class="products">
 
 <div class="product">
 
-<div class="product-icon">
-🪙
+<div class="game">
+🪙 COINS
 </div>
 
 <h3>
 eFOOTBALL COINS
 </h3>
 
-<p>
-Choose your eFootball Coins package.
-</p>
-
-<div class="price">
-₦0
+<div class="description">
+Top-up packages will be posted here.
 </div>
 
 <button
-class="select-btn"
-onclick="showToast('eFootball Coins selected')"
+class="details-btn"
+onclick="showToast('eFootball top-up selected')"
 >
 SELECT
 </button>
@@ -1225,35 +2419,36 @@ SELECT
 <section
 class="game-section"
 id="topup-codm"
+data-topup-section="codm"
 >
 
 <div class="section-heading">
-<h2>🎯 CODM CP</h2>
+
+<h2>
+🎯 CODM CP
+</h2>
+
 </div>
 
 <div class="products">
 
 <div class="product">
 
-<div class="product-icon">
-🎯
+<div class="game">
+🎯 CP
 </div>
 
 <h3>
 CODM CP
 </h3>
 
-<p>
-Choose your CODM CP package.
-</p>
-
-<div class="price">
-₦0
+<div class="description">
+Top-up packages will be posted here.
 </div>
 
 <button
-class="select-btn"
-onclick="showToast('CODM CP selected')"
+class="details-btn"
+onclick="showToast('CODM top-up selected')"
 >
 SELECT
 </button>
@@ -1268,35 +2463,36 @@ SELECT
 <section
 class="game-section"
 id="topup-dls"
+data-topup-section="dls"
 >
 
 <div class="section-heading">
-<h2>💎 DLS DIAMONDS</h2>
+
+<h2>
+💎 DLS DIAMONDS
+</h2>
+
 </div>
 
 <div class="products">
 
 <div class="product">
 
-<div class="product-icon">
-💎
+<div class="game">
+💎 DIAMONDS
 </div>
 
 <h3>
 DLS DIAMONDS
 </h3>
 
-<p>
-Choose your DLS Diamonds package.
-</p>
-
-<div class="price">
-₦0
+<div class="description">
+Top-up packages will be posted here.
 </div>
 
 <button
-class="select-btn"
-onclick="showToast('DLS Diamonds selected')"
+class="details-btn"
+onclick="showToast('DLS top-up selected')"
 >
 SELECT
 </button>
@@ -1311,34 +2507,35 @@ SELECT
 <section
 class="game-section"
 id="topup-fcmobile"
+data-topup-section="fcmobile"
 >
 
 <div class="section-heading">
-<h2>⚽ FC MOBILE TOP UP</h2>
+
+<h2>
+⚽ FC MOBILE
+</h2>
+
 </div>
 
 <div class="products">
 
 <div class="product">
 
-<div class="product-icon">
-⚽
+<div class="game">
+⚽ FC MOBILE
 </div>
 
 <h3>
 FC MOBILE TOP UP
 </h3>
 
-<p>
-Choose your FC Mobile package.
-</p>
-
-<div class="price">
-₦0
+<div class="description">
+Top-up packages will be posted here.
 </div>
 
 <button
-class="select-btn"
+class="details-btn"
 onclick="showToast('FC Mobile top-up selected')"
 >
 SELECT
@@ -1351,8 +2548,6 @@ SELECT
 </section>
 
 </div>
-
-
 <!-- ================= FEATURES ================= -->
 
 <section class="features">
@@ -1360,15 +2555,15 @@ SELECT
 <div class="feature">
 
 <div class="feature-icon">
-🛡️
+♢
 </div>
 
 <h3>
-100% SAFE
+100% SECURE
 </h3>
 
 <p>
-Secure transactions.
+All accounts are checked and verified.
 </p>
 
 </div>
@@ -1377,7 +2572,7 @@ Secure transactions.
 <div class="feature">
 
 <div class="feature-icon">
-⚡
+ϟ
 </div>
 
 <h3>
@@ -1385,7 +2580,7 @@ INSTANT DELIVERY
 </h3>
 
 <p>
-Get your purchase instantly.
+Get your account details instantly.
 </p>
 
 </div>
@@ -1394,7 +2589,24 @@ Get your purchase instantly.
 <div class="feature">
 
 <div class="feature-icon">
-💬
+♧
+</div>
+
+<h3>
+BEST PRICES
+</h3>
+
+<p>
+Affordable prices you can trust.
+</p>
+
+</div>
+
+
+<div class="feature">
+
+<div class="feature-icon">
+♧
 </div>
 
 <h3>
@@ -1451,246 +2663,156 @@ LEVEL UP. PLAY MORE. 👑
 
 </footer>
 
-</div>
+</main>
 
 </div>
-<!-- ================= CUSTOMER ACCOUNT ================= -->
+<!-- ================= ACCOUNT MODAL ================= -->
 
 <div
 class="modal"
-id="customerAccountModal"
+id="accountModal"
 >
 
 <div class="modal-box">
 
 <button
 class="modal-close"
-onclick="closeModal('customerAccountModal')"
+onclick="closeModal('accountModal')"
 >
 ×
 </button>
 
 <h2>
-MY ACCOUNT
+ACCOUNT
 </h2>
 
-<p id="customerWelcome">
-Create an account or login to Crispy Shop.
+<p>
+Choose a game.
 </p>
 
-
-<div id="authChoices">
-
-<div class="purchase-choices">
+<div class="choice-grid">
 
 <button
-class="purchase-choice"
-onclick="showSignup()"
+class="choice"
+onclick="chooseGame('freefire')"
 >
-👤 CREATE ACCOUNT
+<span class="choice-icon">🔥</span>
+FREE FIRE
 </button>
 
 <button
-class="purchase-choice"
-onclick="showLogin()"
+class="choice"
+onclick="chooseGame('efootball')"
 >
-🔐 LOGIN
+<span class="choice-icon">⚽</span>
+eFOOTBALL
+</button>
+
+<button
+class="choice"
+onclick="chooseGame('codm')"
+>
+<span class="choice-icon">🎯</span>
+CODM
+</button>
+
+<button
+class="choice"
+onclick="chooseGame('dls')"
+>
+<span class="choice-icon">💎</span>
+DLS
+</button>
+
+<button
+class="choice"
+onclick="chooseGame('fcmobile')"
+>
+<span class="choice-icon">⚽</span>
+FC MOBILE
 </button>
 
 </div>
 
+</div>
+
+</div>
+
+
+<!-- ================= TOP UP MODAL ================= -->
 
 <div
-id="signupBox"
-style="display:none;margin-top:20px"
+class="modal"
+id="topupModal"
 >
 
-<input
-id="signupName"
-class="form-input"
-type="text"
-placeholder="Your name"
->
-
-<input
-id="signupEmail"
-class="form-input"
-type="email"
-placeholder="Email address"
->
-
-<input
-id="signupPassword"
-class="form-input"
-type="password"
-placeholder="Password"
->
+<div class="modal-box">
 
 <button
-class="all-btn"
-onclick="createCustomerAccount()"
+class="modal-close"
+onclick="closeModal('topupModal')"
 >
-CREATE ACCOUNT
+×
 </button>
 
-</div>
+<h2>
+TOP UP
+</h2>
 
-
-<div
-id="loginBox"
-style="display:none;margin-top:20px"
->
-
-<input
-id="loginEmail"
-class="form-input"
-type="email"
-placeholder="Email address"
->
-
-<input
-id="loginPassword"
-class="form-input"
-type="password"
-placeholder="Password"
->
-
-<button
-class="all-btn"
-onclick="loginCustomer()"
->
-LOGIN
-</button>
-
-<button
-class="select-btn"
-onclick="customerForgotPassword()"
->
-FORGOT PASSWORD?
-</button>
-
-</div>
-
-</div>
-
-
-<!-- CUSTOMER DASHBOARD -->
-
-<div
-id="customerDashboard"
-style="display:none"
->
-
-<div class="customer-profile">
-
-<div class="customer-photo-circle">
-
-<img
-id="customerPhotoPreview"
-src=""
-alt="Profile photo"
-style="display:none"
->
-
-<span id="customerPhotoPlaceholder">
-👤
-</span>
-
-</div>
-
-<label
-for="customerPhoto"
-class="all-btn"
->
-📸 CHANGE PHOTO
-</label>
-
-<input
-id="customerPhoto"
-type="file"
-accept="image/*"
-style="display:none"
-onchange="uploadCustomerPhoto(event)"
->
-
-</div>
-
-
-<h3 id="customerName">
-Customer
-</h3>
-
-<p id="customerEmail">
-Email
+<p>
+Choose what you want to top up.
 </p>
 
-
-<div class="purchase-choices">
+<div class="choice-grid">
 
 <button
-class="purchase-choice"
-onclick="customerInfo('PROFILE')"
+class="choice"
+onclick="chooseTopup('topup-freefire')"
 >
-👤 MY PROFILE
+<span class="choice-icon">💎</span>
+FREE FIRE
 </button>
 
 <button
-class="purchase-choice"
-onclick="customerInfo('ORDERS')"
+class="choice"
+onclick="chooseTopup('topup-efootball')"
 >
-🛒 MY ORDERS
+<span class="choice-icon">🪙</span>
+eFOOTBALL
 </button>
 
 <button
-class="purchase-choice"
-onclick="customerInfo('PURCHASED')"
+class="choice"
+onclick="chooseTopup('topup-codm')"
 >
-🎮 PURCHASED ACCOUNTS
+<span class="choice-icon">🎯</span>
+CODM
 </button>
 
 <button
-class="purchase-choice"
-onclick="customerInfo('TOPUPS')"
+class="choice"
+onclick="chooseTopup('topup-dls')"
 >
-💎 MY TOP-UPS
+<span class="choice-icon">💎</span>
+DLS
 </button>
 
 <button
-class="purchase-choice"
-onclick="customerInfo('REVIEWS')"
+class="choice"
+onclick="chooseTopup('topup-fcmobile')"
 >
-⭐ MY REVIEWS
-</button>
-
-<button
-class="purchase-choice"
-onclick="customerInfo('PASSWORD')"
->
-🔐 CHANGE PASSWORD
-</button>
-
-<button
-class="purchase-choice"
-onclick="customerLogout()"
->
-🚪 LOGOUT
+<span class="choice-icon">⚽</span>
+FC MOBILE
 </button>
 
 </div>
 
 </div>
 
-<div
-id="accountMessage"
-style="color:var(--yellow);margin-top:15px"
-></div>
-
-</div>
-
 </div>
 
 
-<!-- ================= SEARCH ================= -->
+<!-- ================= SEARCH MODAL ================= -->
 
 <div
 class="modal"
@@ -1714,15 +2836,16 @@ SEARCH CRISPY SHOP
 id="searchInput"
 class="form-input"
 type="search"
-placeholder="Search accounts, games or top ups..."
+placeholder="Search accounts or games..."
+oninput="runSearch()"
 >
 
-<div id="searchResults">
-
+<div
+id="searchResults"
+>
 <div class="empty">
 Type something to search.
 </div>
-
 </div>
 
 </div>
@@ -1730,7 +2853,7 @@ Type something to search.
 </div>
 
 
-<!-- ================= CART ================= -->
+<!-- ================= CART MODAL ================= -->
 
 <div
 class="modal"
@@ -1752,9 +2875,10 @@ YOUR CART 🛒
 
 <div
 id="cartList"
-class="empty"
 >
+<div class="empty">
 Your cart is empty.
+</div>
 </div>
 
 <div
@@ -1791,47 +2915,79 @@ ACCOUNT DETAILS
 
 <img
 id="detailPhoto"
-class="account-photo"
+class="account-detail-photo"
 src=""
-alt="Account"
+alt="Gaming account"
 style="display:none"
 >
 
 <div class="account-detail-grid">
 
-<div>
-<strong>GAME</strong>
-<p id="detailGame"></p>
-</div>
+<div class="detail-card">
 
-<div>
-<strong>STATUS</strong>
-<p id="detailStatus"></p>
-</div>
+<span>GAME</span>
 
-<div>
-<strong>LEVEL</strong>
-<p id="detailLevel"></p>
-</div>
-
-<div>
-<strong>REGION</strong>
-<p id="detailRegion"></p>
-</div>
+<strong id="detailGame">
+—
+</strong>
 
 </div>
 
-<p id="detailDescription"></p>
+
+<div class="detail-card">
+
+<span>STATUS</span>
+
+<strong id="detailStatus">
+—
+</strong>
+
+</div>
+
+
+<div class="detail-card">
+
+<span>LEVEL</span>
+
+<strong id="detailLevel">
+—
+</strong>
+
+</div>
+
+
+<div class="detail-card">
+
+<span>REGION</span>
+
+<strong id="detailRegion">
+—
+</strong>
+
+</div>
+
+</div>
+
+
+<div
+id="detailDescription"
+class="detail-description"
+>
+No description provided.
+</div>
+
 
 <div
 id="detailPrice"
-class="price"
+class="detail-price"
 >
+₦0
 </div>
+
 
 <button
 id="detailCartButton"
-class="all-btn"
+class="yellow-btn full-btn"
 >
 ADD TO CART
 </button>
@@ -1841,7 +2997,222 @@ ADD TO CART
 </div>
 
 
-<!-- ================= REVIEWS ================= -->
+<!-- ================= CUSTOMER ACCOUNT ================= -->
+
+<div
+class="modal"
+id="customerAccountModal"
+>
+
+<div class="modal-box">
+
+<button
+class="modal-close"
+onclick="closeModal('customerAccountModal')"
+>
+×
+</button>
+
+<h2>
+MY ACCOUNT
+</h2>
+
+<div id="customerLoginArea">
+
+<div class="social-login">
+
+<button
+onclick="socialLogin('google')"
+>
+G GOOGLE
+</button>
+
+<button
+onclick="socialLogin('apple')"
+>
+ APPLE
+</button>
+
+</div>
+
+<input
+id="customerEmail"
+class="form-input"
+type="email"
+placeholder="Email address"
+>
+
+<input
+id="customerPassword"
+class="form-input"
+type="password"
+placeholder="Password"
+>
+
+<button
+class="yellow-btn full-btn"
+onclick="customerLogin()"
+>
+LOGIN
+</button>
+
+<button
+class="outline-btn full-btn mt-10"
+onclick="customerSignup()"
+>
+CREATE ACCOUNT
+</button>
+
+<button
+class="outline-btn full-btn mt-10"
+onclick="customerForgotPassword()"
+>
+FORGOT PASSWORD?
+</button>
+
+</div>
+
+
+<div
+id="customerDashboard"
+style="display:none"
+>
+
+<div class="customer-profile">
+
+<div class="customer-photo-area">
+
+<div
+class="customer-photo-circle"
+>
+
+<img
+id="customerPhotoPreview"
+src=""
+alt="Profile photo"
+style="display:none"
+>
+
+<span
+id="customerPhotoPlaceholder"
+>
+👤
+</span>
+
+</div>
+
+<label
+for="customerPhoto"
+class="yellow-btn upload-photo-label"
+>
+CHANGE PHOTO
+</label>
+
+<input
+id="customerPhoto"
+type="file"
+accept="image/*"
+style="display:none"
+onchange="uploadCustomerPhoto(event)"
+>
+
+</div>
+
+
+<div class="customer-details">
+
+<h3 id="customerName">
+Customer
+</h3>
+
+<p id="customerEmailDisplay">
+Email
+</p>
+
+<div class="customer-badge">
+VERIFIED CUSTOMER
+</div>
+
+</div>
+
+</div>
+
+
+<div class="customer-options">
+
+<button
+class="customer-option"
+onclick="customerInfo('PROFILE')"
+>
+👤 MY PROFILE
+</button>
+
+<button
+class="customer-option"
+onclick="customerInfo('ORDERS')"
+>
+🛒 MY ORDERS
+</button>
+
+<button
+class="customer-option"
+onclick="customerInfo('ACCOUNTS')"
+>
+🎮 PURCHASED ACCOUNTS
+</button>
+
+<button
+class="customer-option"
+onclick="customerInfo('TOPUPS')"
+>
+💎 MY TOP UPS
+</button>
+
+<button
+class="customer-option"
+onclick="customerInfo('REVIEWS')"
+>
+⭐ MY REVIEWS
+</button>
+
+<button
+class="customer-option"
+onclick="customerInfo('PASSWORD')"
+>
+🔐 CHANGE PASSWORD
+</button>
+
+<button
+class="customer-option logout-option"
+onclick="customerLogout()"
+>
+🚪 LOGOUT
+</button>
+
+</div>
+
+
+<div
+id="customerInfo"
+class="customer-info"
+>
+</div>
+
+</div>
+
+
+<div
+id="customerMessage"
+class="message"
+>
+</div>
+
+</div>
+
+</div>
+
+
+<!-- ================= REVIEW MODAL ================= -->
 
 <div
 class="modal"
@@ -1862,49 +3233,49 @@ RATE CRISPY SHOP
 </h2>
 
 <p>
-How would you rate your experience?
+Choose your rating.
 </p>
 
-<div class="game-choices show">
+<div class="choice-grid">
 
 <button
-class="game-choice"
+class="choice"
 onclick="sendReview(5)"
 >
-<span class="game-icon">★★★★★</span>
-<span class="game-name">5 STAR</span>
+<span class="choice-icon">★★★★★</span>
+5 STAR
 </button>
 
 <button
-class="game-choice"
+class="choice"
 onclick="sendReview(4)"
 >
-<span class="game-icon">★★★★</span>
-<span class="game-name">4 STAR</span>
+<span class="choice-icon">★★★★</span>
+4 STAR
 </button>
 
 <button
-class="game-choice"
+class="choice"
 onclick="sendReview(3)"
 >
-<span class="game-icon">★★★</span>
-<span class="game-name">3 STAR</span>
+<span class="choice-icon">★★★</span>
+3 STAR
 </button>
 
 <button
-class="game-choice"
+class="choice"
 onclick="sendReview(2)"
 >
-<span class="game-icon">★★</span>
-<span class="game-name">2 STAR</span>
+<span class="choice-icon">★★</span>
+2 STAR
 </button>
 
 <button
-class="game-choice"
+class="choice"
 onclick="sendReview(1)"
 >
-<span class="game-icon">★</span>
-<span class="game-name">1 STAR</span>
+<span class="choice-icon">★</span>
+1 STAR
 </button>
 
 </div>
@@ -1914,7 +3285,7 @@ onclick="sendReview(1)"
 </div>
 
 
-<!-- ================= CONTACT ================= -->
+<!-- ================= CONTACT MODAL ================= -->
 
 <div
 class="modal"
@@ -1935,13 +3306,13 @@ CONTACT CRISPY SHOP
 </h2>
 
 <p>
-Choose how you want to contact us.
+We're available 24/7.
 </p>
 
-<div class="purchase-choices">
+<div class="contact-options">
 
 <a
-class="purchase-choice"
+class="contact-option"
 href="https://wa.me/2347051885555"
 target="_blank"
 >
@@ -1949,7 +3320,7 @@ target="_blank"
 </a>
 
 <a
-class="purchase-choice"
+class="contact-option"
 href="https://www.tiktok.com/@_itzcrispy"
 target="_blank"
 >
@@ -1957,7 +3328,7 @@ target="_blank"
 </a>
 
 <a
-class="purchase-choice"
+class="contact-option"
 href="https://x.com/crispysoloss"
 target="_blank"
 >
@@ -1965,7 +3336,7 @@ target="_blank"
 </a>
 
 <a
-class="purchase-choice"
+class="contact-option"
 href="https://t.me/crispyshop_1"
 target="_blank"
 >
@@ -1979,835 +3350,608 @@ target="_blank"
 </div>
 
 
-<!-- ================= DRAWER ================= -->
+<!-- ================= TOAST ================= -->
 
 <div
-class="modal"
-id="drawer"
-onclick="drawerOutside(event)"
->
-
-<div class="modal-box">
-
-<div
+id="crispyToast"
 style="
-display:flex;
-align-items:center;
-justify-content:space-between;
-margin-bottom:20px;
+display:none;
+position:fixed;
+z-index:5000;
+left:50%;
+bottom:25px;
+transform:translateX(-50%);
+padding:13px 20px;
+background:#ffd400;
+color:#050708;
+font-weight:bold;
+border-radius:4px;
 "
 >
-
-<strong
-style="color:var(--yellow)"
->
-CRISPY SHOP
-</strong>
-
-<button
-class="modal-close"
-onclick="closeDrawer()"
->
-×
-</button>
-
-</div>
-
-<button
-class="purchase-choice"
-style="width:100%;margin-bottom:10px"
-onclick="goToAll();closeDrawer()"
->
-ALL
-</button>
-
-<button
-class="purchase-choice"
-style="width:100%;margin-bottom:10px"
-onclick="openCustomerAccount();closeDrawer()"
->
-MY ACCOUNT
-</button>
-
-<button
-class="purchase-choice"
-style="width:100%;margin-bottom:10px"
-onclick="openReviews();closeDrawer()"
->
-REVIEWS
-</button>
-
-<button
-class="purchase-choice"
-style="width:100%"
-onclick="openContactOptions();closeDrawer()"
->
-CONTACT
-</button>
-
-</div>
-
 </div>
 <script>
 
-/* ================= ALL NAVIGATION ================= */
-
-function goToAll(){
-
-  const area = document.getElementById("purchaseArea");
-
-  if(area){
-    area.scrollIntoView({
-      behavior:"smooth",
-      block:"start"
-    });
-  }
-
-  setTimeout(function(){
-    showAllChoices();
-  },300);
-}
-
-
-/* ================= ALL BUTTON ================= */
-
-function showAllChoices(){
-
-  // Show only ACCOUNT + TOP UP
-  document
-    .getElementById("purchaseChoices")
-    .classList.add("show");
-
-  // Hide the 5 account choices
-  document
-    .getElementById("accountChoices")
-    .classList.remove("show");
-
-  // Hide the 5 top-up choices
-  document
-    .getElementById("topupChoices")
-    .classList.remove("show");
-
-  // Hide every actual product section
-  hideAllGameSections();
-
-}
-
-
-/* ================= ACCOUNT ================= */
-
-function showAccountChoices(){
-
-  // ACCOUNT and TOP UP buttons stay visible
-  document
-    .getElementById("purchaseChoices")
-    .classList.add("show");
-
-  // Show the 5 ACCOUNT choices
-  document
-    .getElementById("accountChoices")
-    .classList.add("show");
-
-  // Hide the 5 TOP UP choices
-  document
-    .getElementById("topupChoices")
-    .classList.remove("show");
-
-  // Don't show any actual section yet
-  hideAllGameSections();
-
-}
-
-
-/* ================= TOP UP ================= */
-
-function showTopupChoices(){
-
-  // ACCOUNT and TOP UP buttons stay visible
-  document
-    .getElementById("purchaseChoices")
-    .classList.add("show");
-
-  // Hide ACCOUNT choices
-  document
-    .getElementById("accountChoices")
-    .classList.remove("show");
-
-  // Show TOP UP choices
-  document
-    .getElementById("topupChoices")
-    .classList.add("show");
-
-  // Don't show any actual section yet
-  hideAllGameSections();
-
-}
-
-
-/* ================= GAME SECTIONS ================= */
-
-function hideAllGameSections(){
-
-  document
-    .querySelectorAll(".game-section")
-    .forEach(function(section){
-
-      section.classList.remove("show");
-
-    });
-
-}
-
-
-function showGameSection(id){
-
-  // Hide all sections first
-  hideAllGameSections();
-
-  // Find selected section
-  const section =
-    document.getElementById(id);
-
-  if(!section){
-    return;
-  }
-
-  // Show selected section
-  section.classList.add("show");
-
-  // Scroll to it
-  setTimeout(function(){
-
-    section.scrollIntoView({
-      behavior:"smooth",
-      block:"start"
-    });
-
-  },100);
-
-}
-
-
-/* ================= INITIAL STATE ================= */
-/*
-   IMPORTANT:
-
-   When the page first loads:
-   - ACCOUNT is hidden
-   - TOP UP is hidden
-   - ALL choices are hidden
-   - All 10 game sections are hidden
-
-   Nothing underneath "WHAT WOULD YOU LIKE TO PURCHASE?"
-   appears until ALL is tapped.
-*/
-
-document.addEventListener(
-  "DOMContentLoaded",
-  function(){
-
-    // Hide Account + Top Up
-    document
-      .getElementById("purchaseChoices")
-      .classList.remove("show");
-
-    // Hide the 5 Account choices
-    document
-      .getElementById("accountChoices")
-      .classList.remove("show");
-
-    // Hide the 5 Top-Up choices
-    document
-      .getElementById("topupChoices")
-      .classList.remove("show");
-
-    // Hide all 10 sections
-    hideAllGameSections();
-
-  }
-);
-
-
-/* ================= MODALS ================= */
+/* ================= BASIC MODALS ================= */
 
 function openModal(id){
 
-  const modal =
-    document.getElementById(id);
+const modal=
+document.getElementById(id);
 
-  if(modal){
-    modal.classList.add("show");
-  }
+if(modal)
+modal.classList.add("show");
 
 }
 
 
 function closeModal(id){
 
-  const modal =
-    document.getElementById(id);
+const modal=
+document.getElementById(id);
 
-  if(modal){
-    modal.classList.remove("show");
-  }
-
-}
-
-
-function openCustomerAccount(){
-
-  openModal("customerAccountModal");
+if(modal)
+modal.classList.remove("show");
 
 }
 
 
-function openSearch(){
+document
+.querySelectorAll(".modal")
+.forEach(function(modal){
 
-  openModal("searchModal");
+modal.addEventListener(
+"click",
+function(e){
+
+if(e.target===modal)
+modal.classList.remove("show");
+
+}
+);
+
+});
+
+
+/* ================= ALL ================= */
+
+function showAllMenu(){
+
+const menu=
+document.getElementById("allMenu");
+
+if(menu)
+menu.classList.add("show");
+
+document
+.getElementById("accountHeader")
+.classList.remove("show");
+
+document
+.getElementById("topupHeader")
+.classList.remove("show");
+
+document
+.getElementById("accountSections")
+.classList.remove("show");
+
+document
+.getElementById("topupSections")
+.classList.remove("show");
+
+window.scrollTo({
+top:document.getElementById(
+"purchaseArea"
+).offsetTop-80,
+behavior:"smooth"
+});
 
 }
 
 
-function openCart(){
+/* ================= ACCOUNT ================= */
 
-  openModal("cartModal");
+function showAccountSections(){
+
+document
+.getElementById("allMenu")
+.classList.add("show");
+
+document
+.getElementById("topupSections")
+.classList.remove("show");
+
+document
+.getElementById("topupHeader")
+.classList.remove("show");
+
+document
+.getElementById("accountSections")
+.classList.add("show");
+
+document
+.getElementById("accountHeader")
+.classList.add("show");
+
+document
+.getElementById("accountHeader")
+.scrollIntoView({
+behavior:"smooth",
+block:"start"
+});
 
 }
 
 
-function openReviews(){
+/* ================= TOP UP ================= */
 
-  openModal("reviewModal");
+function showTopupSections(){
+
+document
+.getElementById("allMenu")
+.classList.add("show");
+
+document
+.getElementById("accountSections")
+.classList.remove("show");
+
+document
+.getElementById("accountHeader")
+.classList.remove("show");
+
+document
+.getElementById("topupSections")
+.classList.add("show");
+
+document
+.getElementById("topupHeader")
+.classList.add("show");
+
+document
+.getElementById("topupHeader")
+.scrollIntoView({
+behavior:"smooth",
+block:"start"
+});
 
 }
 
 
-function openContactOptions(){
+/* ================= ACCOUNT CHOICES ================= */
 
-  openModal("contactModal");
+function openAccountChoices(){
+
+openModal("accountModal");
 
 }
 
 
-function openAccountDetails(account){
+function chooseGame(game){
 
-  const title =
-    document.getElementById("detailTitle");
+closeModal("accountModal");
 
-  const game =
-    document.getElementById("detailGame");
+showAccountSections();
 
-  const status =
-    document.getElementById("detailStatus");
+setTimeout(function(){
 
-  const level =
-    document.getElementById("detailLevel");
+const target=
+document.getElementById(
+game+"-section"
+);
 
-  const region =
-    document.getElementById("detailRegion");
+if(
+target&&
+target.querySelectorAll(
+"[data-firestore-id]"
+).length
+){
 
-  const description =
-    document.getElementById("detailDescription");
+target.scrollIntoView({
+behavior:"smooth",
+block:"start"
+});
 
-  const price =
-    document.getElementById("detailPrice");
+}else{
 
-  const photo =
-    document.getElementById("detailPhoto");
+showToast(
+"No accounts available for this game yet."
+);
 
-  title.textContent =
-    account.title || "ACCOUNT DETAILS";
+}
 
-  game.textContent =
-    account.game || "N/A";
+},250);
 
-  status.textContent =
-    account.status || "AVAILABLE";
+}
 
-  level.textContent =
-    account.level || "N/A";
 
-  region.textContent =
-    account.region || "N/A";
+/* ================= TOPUP CHOICES ================= */
 
-  description.textContent =
-    account.description ||
-    "No description provided.";
+function openTopup(){
 
-  price.textContent =
-    account.price || "₦0";
+openModal("topupModal");
 
-  if(account.photoUrl){
+}
 
-    photo.src =
-      account.photoUrl;
 
-    photo.style.display =
-      "block";
+function chooseTopup(id){
 
-  }else{
+closeModal("topupModal");
 
-    photo.style.display =
-      "none";
+showTopupSections();
 
-  }
+setTimeout(function(){
 
-  document
-    .getElementById("detailCartButton")
-    .onclick = function(){
+const target=
+document.getElementById(id);
 
-      addToCart(account);
+if(target){
 
-    };
+target.scrollIntoView({
+behavior:"smooth",
+block:"start"
+});
 
-  openModal(
-    "accountDetailsModal"
-  );
+}
+
+},250);
 
 }
 
 
 /* ================= CART ================= */
 
-let cart = [];
+let cart=[];
 
 
-function addToCart(item){
+function addToCart(name,price){
 
-  cart.push(item);
+cart.push({
+name:name,
+price:price
+});
 
-  renderCart();
+renderCart();
 
-  closeModal(
-    "accountDetailsModal"
-  );
-
-  showToast(
-    "Added to cart."
-  );
-
-}
-
-
-function removeFromCart(index){
-
-  cart.splice(index,1);
-
-  renderCart();
+showToast(
+"Added to cart."
+);
 
 }
 
 
 function renderCart(){
 
-  const list =
-    document.getElementById(
-      "cartList"
-    );
+const list=
+document.getElementById(
+"cartList"
+);
 
-  const total =
-    document.getElementById(
-      "cartTotal"
-    );
+const total=
+document.getElementById(
+"cartTotal"
+);
 
-  if(!cart.length){
+if(!cart.length){
 
-    list.className =
-      "empty";
+list.innerHTML=
+'<div class="empty">'+
+'Your cart is empty.'+
+'</div>';
 
-    list.innerHTML =
-      "Your cart is empty.";
+total.textContent=
+"Total: ₦0";
 
-    total.textContent =
-      "Total: ₦0";
-
-    return;
-
-  }
-
-
-  list.className = "";
-
-
-  let sum = 0;
-
-
-  list.innerHTML =
-    cart.map(function(item,index){
-
-      const number =
-        Number(
-          String(
-            item.price || 0
-          ).replace(
-            /[^0-9.]/g,
-            ""
-          )
-        ) || 0;
-
-      sum += number;
-
-
-      return `
-
-        <div class="cart-item">
-
-          <div>
-
-            <strong>
-              ${item.title || "Gaming Account"}
-            </strong>
-
-            <div class="cart-price">
-              ${item.price || "₦0"}
-            </div>
-
-          </div>
-
-          <button
-            class="select-btn"
-            onclick="removeFromCart(${index})"
-          >
-            REMOVE
-          </button>
-
-        </div>
-
-      `;
-
-    }).join("");
-
-
-  total.textContent =
-    "Total: ₦" +
-    sum.toLocaleString();
+return;
 
 }
 
 
-/* ================= CUSTOMER AUTH ================= */
+let sum=0;
 
-function showSignup(){
 
-  document
-    .getElementById("signupBox")
-    .style.display =
-    "block";
+list.innerHTML=
+cart.map(
+function(item,index){
 
-  document
-    .getElementById("loginBox")
-    .style.display =
-    "none";
+const value=
+Number(
+String(item.price)
+.replace(/[₦,]/g,"")
+)||0;
+
+sum+=value;
+
+
+return `
+
+<div class="cart-item">
+
+<span>
+${escapeCart(item.name)}
+</span>
+
+<strong class="cart-price">
+${escapeCart(item.price)}
+</strong>
+
+<button
+onclick="removeCart(${index})"
+style="
+background:none;
+border:0;
+color:#ff5555;
+font-size:22px;
+"
+>
+×
+</button>
+
+</div>
+
+`;
+
+}
+).join("")
++
+
+`
+
+<button
+class="yellow-btn"
+style="width:100%;margin-top:18px"
+onclick="checkout()"
+>
+CHECKOUT ON WHATSAPP
+</button>
+
+`;
+
+
+total.textContent=
+"Total: ₦"+
+sum.toLocaleString();
 
 }
 
 
-function showLogin(){
+function escapeCart(value){
 
-  document
-    .getElementById("loginBox")
-    .style.display =
-    "block";
-
-  document
-    .getElementById("signupBox")
-    .style.display =
-    "none";
+return String(value)
+.replaceAll("&","&amp;")
+.replaceAll("<","&lt;")
+.replaceAll(">","&gt;")
+.replaceAll('"',"&quot;")
+.replaceAll("'","&#039;");
 
 }
 
 
-/* ================= CUSTOMER PHOTO ================= */
+function removeCart(index){
 
-function uploadCustomerPhoto(event){
+cart.splice(index,1);
 
-  const file =
-    event.target.files[0];
-
-  if(!file){
-    return;
-  }
-
-  const reader =
-    new FileReader();
-
-  reader.onload =
-    function(){
-
-      const image =
-        document.getElementById(
-          "customerPhotoPreview"
-        );
-
-      const placeholder =
-        document.getElementById(
-          "customerPhotoPlaceholder"
-        );
-
-      image.src =
-        reader.result;
-
-      image.style.display =
-        "block";
-
-      placeholder.style.display =
-        "none";
-
-    };
-
-  reader.readAsDataURL(file);
+renderCart();
 
 }
 
 
-/* ================= CUSTOMER INFO ================= */
+function openCart(){
 
-function customerInfo(type){
+renderCart();
 
-  let message = "";
-
-  if(type === "PROFILE"){
-    message =
-      "Your Crispy Shop profile.";
-  }
-
-  if(type === "ORDERS"){
-    message =
-      "Your orders will appear here.";
-  }
-
-  if(type === "PURCHASED"){
-    message =
-      "Your purchased gaming accounts will appear here.";
-  }
-
-  if(type === "TOPUPS"){
-    message =
-      "Your top-up history will appear here.";
-  }
-
-  if(type === "REVIEWS"){
-    message =
-      "Your reviews will appear here.";
-  }
-
-  if(type === "PASSWORD"){
-    message =
-      "Use the password reset option to change your password.";
-  }
-
-  document
-    .getElementById(
-      "accountMessage"
-    )
-    .textContent =
-    message;
+openModal("cartModal");
 
 }
 
 
-/* ================= SEARCH ================= */
+function checkout(){
 
-const searchInput =
-  document.getElementById(
-    "searchInput"
-  );
+if(!cart.length)
+return;
 
+const text=
+"Hello Crispy Shop, I want to buy:\n"+
+cart.map(
+function(item){
 
-if(searchInput){
+return "- "+
+item.name+
+" ("+
+item.price+
+")";
 
-  searchInput.addEventListener(
-    "input",
-    function(){
-
-      const query =
-        this.value
-          .trim()
-          .toLowerCase();
-
-      const results =
-        document.getElementById(
-          "searchResults"
-        );
+}
+).join("\n");
 
 
-      if(!query){
-
-        results.innerHTML = `
-
-          <div class="empty">
-            Type something to search.
-          </div>
-
-        `;
-
-        return;
-
-      }
-
-
-      const games = [
-
-        "🔥 Free Fire",
-        "⚽ eFootball",
-        "🎯 CODM",
-        "💎 DLS",
-        "⚽ FC Mobile",
-
-        "💎 Free Fire Diamonds",
-        "🪙 eFootball Coins",
-        "🎯 CODM CP",
-        "💎 DLS Diamonds",
-        "⚽ FC Mobile Top Up"
-
-      ];
-
-
-      const matches =
-        games.filter(function(game){
-
-          return game
-            .toLowerCase()
-            .includes(query);
-
-        });
-
-
-      if(!matches.length){
-
-        results.innerHTML = `
-
-          <div class="empty">
-            No results found.
-          </div>
-
-        `;
-
-        return;
-
-      }
-
-
-      results.innerHTML =
-        matches.map(function(game){
-
-          return `
-
-            <button
-              class="purchase-choice"
-              style="width:100%;margin-top:8px"
-              onclick="showToast('${game.replace(/'/g,"")} selected')"
-            >
-              ${game}
-            </button>
-
-          `;
-
-        }).join("");
-
-    }
-
-  );
+window.open(
+"https://wa.me/"+
+WHATSAPP+
+"?text="+
+encodeURIComponent(text),
+"_blank"
+);
 
 }
 
 
-/* ================= REVIEWS ================= */
+/* ================= ACCOUNT DETAILS ================= */
 
-function sendReview(stars){
+window.openAccountDetails=
+function(account){
 
-  closeModal(
-    "reviewModal"
-  );
+const photo=
+document.getElementById(
+"detailPhoto"
+);
 
-  showToast(
-    "Thanks for your " +
-    stars +
-    " star review!"
-  );
+
+document.getElementById(
+"detailTitle"
+).textContent=
+account.title;
+
+
+document.getElementById(
+"detailGame"
+).textContent=
+account.game;
+
+
+document.getElementById(
+"detailStatus"
+).textContent=
+account.status;
+
+
+document.getElementById(
+"detailLevel"
+).textContent=
+account.level;
+
+
+document.getElementById(
+"detailRegion"
+).textContent=
+account.region;
+
+
+document.getElementById(
+"detailDescription"
+).textContent=
+account.description||
+"No description provided.";
+
+
+document.getElementById(
+"detailPrice"
+).textContent=
+account.price;
+
+
+if(account.photoUrl){
+
+photo.src=
+account.photoUrl;
+
+photo.style.display=
+"block";
+
+}else{
+
+photo.src="";
+photo.style.display=
+"none";
 
 }
 
 
-/* ================= TOAST ================= */
-
-function showToast(message){
-
-  let toast =
-    document.getElementById(
-      "crispyToast"
-    );
+const button=
+document.getElementById(
+"detailCartButton"
+);
 
 
-  if(!toast){
-
-    toast =
-      document.createElement(
-        "div"
-      );
-
-    toast.id =
-      "crispyToast";
-
-    toast.style.position =
-      "fixed";
-
-    toast.style.left =
-      "50%";
-
-    toast.style.bottom =
-      "25px";
-
-    toast.style.transform =
-      "translateX(-50%)";
-
-    toast.style.background =
-      "#071619";
-
-    toast.style.color =
-      "#ffd400";
-
-    toast.style.border =
-      "1px solid #00e5d5";
-
-    toast.style.padding =
-      "12px 20px";
-
-    toast.style.zIndex =
-      "99999";
-
-    toast.style.fontWeight =
-      "bold";
-
-    toast.style.borderRadius =
-      "5px";
-
-    document.body.appendChild(
-      toast
-    );
-
-  }
+button.disabled=
+account.status==="SOLD"||
+account.price==="₦0";
 
 
-  toast.textContent =
-    message;
-
-  toast.style.display =
-    "block";
-
-
-  clearTimeout(
-    window.crispyToastTimer
-  );
+button.textContent=
+account.status==="SOLD"
+?
+"SOLD OUT"
+:
+"ADD TO CART";
 
 
-  window.crispyToastTimer =
-    setTimeout(function(){
+button.onclick=function(){
 
-      toast.style.display =
-        "none";
+if(!button.disabled){
 
-    },2500);
+addToCart(
+account.title,
+account.price
+);
+
+closeModal(
+"accountDetailsModal"
+);
+
+}
+
+};
+
+
+openModal(
+"accountDetailsModal"
+);
+
+};
+
+
+/* ================= FILTER ================= */
+
+/*
+The old filters are no longer used
+for the main homepage flow.
+
+Account visibility is now controlled by:
+
+ALL
+ ↓
+ACCOUNT
+ ↓
+five account sections
+
+or
+
+ALL
+ ↓
+TOP UP
+ ↓
+five top-up sections
+*/
+
+function filterProducts(game,button){
+
+document
+.querySelectorAll(".filter")
+.forEach(
+function(x){
+
+x.classList.remove("active");
+
+}
+);
+
+if(button)
+button.classList.add("active");
+
+
+document
+.querySelectorAll(
+".game-section[data-game]"
+)
+.forEach(
+function(section){
+
+const hasAccounts=
+section.querySelectorAll(
+"[data-firestore-id]"
+).length>0;
+
+section.style.display=
+(
+game==="all"||
+section.dataset.game===game
+)&&hasAccounts
+?
+"block"
+:
+"none";
+
+}
+);
 
 }
 
@@ -2816,130 +3960,467 @@ function showToast(message){
 
 function openDrawer(){
 
-  const drawer =
-    document.getElementById(
-      "drawer"
-    );
-
-  if(drawer){
-    drawer.classList.add("show");
-  }
+document
+.getElementById("drawer")
+.classList.add("open");
 
 }
 
 
 function closeDrawer(){
 
-  const drawer =
-    document.getElementById(
-      "drawer"
-    );
-
-  if(drawer){
-    drawer.classList.remove("show");
-  }
-
-}
-
-
-function drawerOutside(event){
-
-  if(
-    event.target.id ===
-    "drawer"
-  ){
-
-    closeDrawer();
-
-  }
-
-}
-
-
-/* ================= CLOSE MODALS ================= */
-
 document
-  .querySelectorAll(".modal")
-  .forEach(function(modal){
+.getElementById("drawer")
+.classList.remove("open");
 
-    modal.addEventListener(
-      "click",
-      function(event){
-
-        if(
-          event.target ===
-          modal
-        ){
-
-          modal.classList.remove(
-            "show"
-          );
-
-        }
-
-      }
-    );
-
-  });
+}
 
 
-/* ================= FINAL INITIAL STATE ================= */
+function drawerOutside(e){
+
+if(e.target.id==="drawer")
+closeDrawer();
+
+}
+
+
+/* ================= SEARCH ================= */
+
+function openSearch(){
+
+openModal("searchModal");
+
+setTimeout(
+function(){
+
+const input=
+document.getElementById(
+"searchInput"
+);
+
+if(input)
+input.focus();
+
+},
+100
+);
+
+}
+
+
+function runSearch(){
+
+const q=
+document
+.getElementById("searchInput")
+.value
+.toLowerCase()
+.trim();
+
+
+const results=
+document.getElementById(
+"searchResults"
+);
+
+
+if(!q){
+
+results.innerHTML=
+'<div class="search-result">'+
+'Type something to search.'+
+'</div>';
+
+return;
+
+}
+
+
+const products=
+Array.from(
+document.querySelectorAll(
+".product[data-firestore-id]"
+)
+);
+
+
+const matches=
+products.filter(
+function(product){
+
+return product
+.innerText
+.toLowerCase()
+.includes(q);
+
+}
+);
+
+
+if(!matches.length){
+
+results.innerHTML=
+'<div class="search-result">'+
+'No matching accounts found.'+
+'</div>';
+
+return;
+
+}
+
+
+results.innerHTML=
+matches.map(
+function(product){
+
+const id=
+product.dataset.firestoreId;
+
+const title=
+product.querySelector("h3")?
+product.querySelector("h3")
+.textContent
+.trim()
+:
+"Gaming Account";
+
+
+return `
+
+<div
+class="search-result"
+onclick="openSearchAccount('${id}')"
+>
+${escapeHtml(title)}
+</div>
+
+`;
+
+}
+).join("");
+
+}
+
+
+function openSearchAccount(id){
+
+const product=
+document.querySelector(
+'[data-firestore-id="'+
+CSS.escape(id)+
+'"]'
+);
+
+if(!product)
+return;
+
+const button=
+product.querySelector(
+".details-btn"
+);
+
+if(button)
+button.click();
+
+closeModal(
+"searchModal"
+);
+
+}
+
+
+/* ================= REVIEWS ================= */
+
+function openReviews(){
+
+openModal("reviewModal");
+
+}
+
+
+function sendReview(stars){
+
+closeModal("reviewModal");
+
+window.open(
+"https://wa.me/"+
+WHATSAPP+
+"?text="+
+encodeURIComponent(
+"Hello Crispy Shop, I want to leave a "+
+stars+
+" star review."
+),
+"_blank"
+);
+
+}
+
+
+/* ================= CONTACT ================= */
+
+function openContactOptions(){
+
+openModal("contactModal");
+
+}
+
+
+function contactMe(){
+
+openContactOptions();
+
+}
+
+
+/* ================= CUSTOMER ACCOUNT ================= */
+
+function openCustomerAccount(){
+
+openModal(
+"customerAccountModal"
+);
+
+}
+
+
+function customerLogin(){
+
+showToast(
+"Use the existing Firebase login system."
+);
+
+}
+
+
+function customerSignup(){
+
+showToast(
+"Use the existing Firebase signup system."
+);
+
+}
+
+
+function customerForgotPassword(){
+
+showToast(
+"Password reset will use your existing account system."
+);
+
+}
+
+
+function customerLogout(){
+
+showToast(
+"Logging out..."
+);
+
+}
+
+
+function customerInfo(type){
+
+const box=
+document.getElementById(
+"customerInfo"
+);
+
+let text="";
+
+
+if(type==="PROFILE")
+text="Your profile information.";
+
+if(type==="ORDERS")
+text="Your orders will appear here.";
+
+if(type==="ACCOUNTS")
+text="Your purchased gaming accounts will appear here.";
+
+if(type==="TOPUPS")
+text="Your top-up history will appear here.";
+
+if(type==="REVIEWS")
+text="Your reviews will appear here.";
+
+if(type==="PASSWORD")
+text="Password management.";
+
+box.innerHTML=
+`
+<div class="info-card">
+<h3>${type}</h3>
+<p>${text}</p>
+</div>
+`;
+
+}
+
+
+function uploadCustomerPhoto(event){
+
+const file=
+event.target.files[0];
+
+if(!file)
+return;
+
+const reader=
+new FileReader();
+
+reader.onload=
+function(){
+
+const img=
+document.getElementById(
+"customerPhotoPreview"
+);
+
+const placeholder=
+document.getElementById(
+"customerPhotoPlaceholder"
+);
+
+img.src=
+reader.result;
+
+img.style.display=
+"block";
+
+placeholder.style.display=
+"none";
+
+};
+
+reader.readAsDataURL(file);
+
+}
+
+
+/* ================= TOAST ================= */
+
+function showToast(message){
+
+let toast=
+document.getElementById(
+"crispyToast"
+);
+
+
+toast.textContent=
+message;
+
+toast.style.display=
+"block";
+
+
+clearTimeout(
+window.crispyToastTimer
+);
+
+
+window.crispyToastTimer=
+setTimeout(
+function(){
+
+toast.style.display=
+"none";
+
+},
+2500
+);
+
+}
+
+
+/* ================= ESCAPE ================= */
+
+function escapeHtml(value){
+
+return String(value)
+.replaceAll("&","&amp;")
+.replaceAll("<","&lt;")
+.replaceAll(">","&gt;")
+.replaceAll('"',"&quot;")
+.replaceAll("'","&#039;");
+
+}
+
+
+/* ================= INITIAL STATE ================= */
 
 /*
-  VERY IMPORTANT:
+FIRST LOAD:
 
-  When the website loads:
+Account = hidden
+Top Up = hidden
+Five Account sections = hidden
+Five Top Up sections = hidden
 
-  ALL
-    ↓
-  hidden
+Only:
+"What would you like to purchase?"
+and
+"ALL"
 
-  ACCOUNT
-    ↓
-  hidden
+are visible.
 
-  TOP UP
-    ↓
-  hidden
-
-  All 5 ACCOUNT sections
-    ↓
-  hidden
-
-  All 5 TOP-UP sections
-    ↓
-  hidden
-
-  Only after the user taps ALL
-  will ACCOUNT and TOP UP appear.
 */
 
 document.addEventListener(
-  "DOMContentLoaded",
-  function(){
+"DOMContentLoaded",
+function(){
 
-    document
-      .getElementById(
-        "purchaseChoices"
-      )
-      .classList.remove("show");
+document
+.getElementById(
+"allMenu"
+)
+.classList.remove("show");
 
-    document
-      .getElementById(
-        "accountChoices"
-      )
-      .classList.remove("show");
+document
+.getElementById(
+"accountHeader"
+)
+.classList.remove("show");
 
-    document
-      .getElementById(
-        "topupChoices"
-      )
-      .classList.remove("show");
+document
+.getElementById(
+"topupHeader"
+)
+.classList.remove("show");
 
-    hideAllGameSections();
+document
+.getElementById(
+"accountSections"
+)
+.classList.remove("show");
 
-  }
+document
+.getElementById(
+"topupSections"
+)
+.classList.remove("show");
+
+}
 );
+
+
+/* ================= ALL BUTTON FLOW ================= */
+
+/*
+BROWSE ACCOUNTS
+        ↓
+       ALL
+        ↓
+  ┌───────────┐
+  │           │
+ACCOUNT     TOP UP
+  │           │
+  ↓           ↓
+5 ACCOUNT   5 TOP-UP
+SECTIONS    SECTIONS
+*/
 
 </script>
 
