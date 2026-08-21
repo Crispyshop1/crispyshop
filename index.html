@@ -7,6 +7,7 @@
 
 <style>
 *{box-sizing:border-box;margin:0;padding:0}
+
 html{scroll-behavior:smooth}
 
 body{
@@ -227,68 +228,23 @@ nav a.active:after{
   color:#21d86b;
 }
 
+/* FULL WIDTH HERO */
+
 .hero{
   position:relative;
-  min-height:430px;
+  width:100%;
+  height:430px;
   border:1px solid var(--teal);
   overflow:hidden;
-  background:
-    linear-gradient(rgba(0,229,213,.1) 1px,transparent 1px),
-    linear-gradient(90deg,rgba(0,229,213,.1) 1px,transparent 1px),
-    #050a0b;
-  background-size:40px 40px;
+  background:#050a0b;
 }
 
-.hero:after{
-  content:"";
-  position:absolute;
-  inset:0;
-  background:
-    radial-gradient(
-      circle at 75% 50%,
-      rgba(0,229,213,.2),
-      transparent 38%
-    );
-  pointer-events:none;
-}
-
-.hero-content{
-  position:relative;
-  z-index:2;
-  padding:35px;
-  text-align:center;
-}
-
-.welcome{
-  color:var(--yellow);
-  font-size:20px;
-  letter-spacing:3px;
-  font-weight:bold;
-}
-
-.hero-logo{
-  width:min(520px,90%);
-  max-height:210px;
-  margin:20px auto;
+.hero-full-image{
+  width:100%;
+  height:100%;
   display:block;
-  object-fit:contain;
-}
-
-.hero-text{
-  color:#ddd;
-  font-size:16px;
-  line-height:1.6;
-}
-
-.hero-text strong{
-  color:var(--yellow);
-}
-
-.hero-buttons{
-  margin-top:25px;
-  display:flex;
-  justify-content:center;
-  gap:12px;
+  object-fit:cover;
+  object-position:center;
 }
 
 .trust{
@@ -304,9 +260,7 @@ nav a.active:after{
   border-right:1px solid #153f40;
 }
 
-.trust-box:last-child{
-  border-right:0;
-}
+.trust-box:last-child{border-right:0}
 
 .trust-icon{
   color:var(--yellow);
@@ -478,9 +432,7 @@ nav a.active:after{
   border-right:1px solid #153f40;
 }
 
-.feature:last-child{
-  border-right:0;
-}
+.feature:last-child{border-right:0}
 
 .feature-icon{
   color:var(--teal);
@@ -523,9 +475,7 @@ footer{
   font-weight:bold;
 }
 
-.socials a:hover{
-  color:var(--yellow);
-}
+.socials a:hover{color:var(--yellow)}
 
 .slogan{
   color:var(--yellow);
@@ -545,13 +495,11 @@ footer{
   padding:18px;
 }
 
-.modal.show{
-  display:flex;
-}
+.modal.show{display:flex}
 
 .modal-box{
   width:100%;
-  max-width:760px;
+  max-width:720px;
   max-height:90vh;
   overflow:auto;
   background:#061012;
@@ -630,44 +578,6 @@ footer{
   color:var(--yellow);
 }
 
-/* SOCIAL LOGIN */
-
-.oauth{
-  display:grid;
-  grid-template-columns:repeat(3,1fr);
-  gap:10px;
-  margin:12px 0 18px;
-}
-
-.oauth button{
-  padding:13px;
-  background:#071619;
-  color:#fff;
-  border:1px solid var(--teal);
-  font-weight:bold;
-}
-
-.oauth button:hover{
-  border-color:var(--yellow);
-  color:var(--yellow);
-}
-
-.divider{
-  display:flex;
-  align-items:center;
-  gap:10px;
-  color:#777;
-  margin:10px 0;
-}
-
-.divider:before,
-.divider:after{
-  content:"";
-  height:1px;
-  background:#173d3d;
-  flex:1;
-}
-
 .form-input{
   width:100%;
   padding:13px;
@@ -678,13 +588,48 @@ footer{
   outline:none;
 }
 
-.form-input:focus{
-  border-color:var(--yellow);
-}
+.form-input:focus{border-color:var(--yellow)}
 
 .full-btn{
   width:100%;
   margin-top:4px;
+}
+
+.social-login{
+  display:grid;
+  grid-template-columns:repeat(3,1fr);
+  gap:8px;
+  margin:15px 0;
+}
+
+.social-login button{
+  padding:12px 5px;
+  background:#071619;
+  color:#fff;
+  border:1px solid var(--teal);
+  font-weight:bold;
+}
+
+.social-login button:hover{
+  border-color:var(--yellow);
+  color:var(--yellow);
+}
+
+.divider{
+  display:flex;
+  align-items:center;
+  gap:10px;
+  color:#777;
+  margin:15px 0;
+  font-size:12px;
+}
+
+.divider:before,
+.divider:after{
+  content:"";
+  flex:1;
+  height:1px;
+  background:#21494b;
 }
 
 .search-result{
@@ -838,76 +783,13 @@ footer{
   margin:8px 0;
 }
 
-/* ADMIN */
-
-.admin-form{
-  display:grid;
-  grid-template-columns:1fr 1fr;
-  gap:12px;
-}
-
-.full{
-  grid-column:1/-1;
-}
-
-.admin-label{
-  display:block;
-  color:var(--teal);
-  font-size:12px;
-  font-weight:bold;
-  margin-bottom:6px;
-}
-
-.admin-input,
-.admin-select,
-.admin-textarea{
-  width:100%;
-  padding:12px;
-  background:#020506;
-  border:1px solid var(--teal);
-  color:#fff;
-  outline:none;
-}
-
-.admin-textarea{
-  min-height:100px;
-  resize:vertical;
-}
-
-.photo-upload{
-  border:1px dashed var(--teal);
-  padding:16px;
-  text-align:center;
-  background:#05090a;
-}
-
-.admin-photo-preview{
-  width:100%;
-  max-width:300px;
-  height:190px;
-  object-fit:cover;
-  display:none;
-  margin:12px auto;
-  border:1px solid #153f40;
-}
-
-.admin-actions{
-  display:flex;
-  gap:10px;
-  margin-top:14px;
-}
-
-.admin-actions button{
-  flex:1;
-}
-
-.admin-message{
+.message{
   color:var(--yellow);
   margin-top:12px;
   text-align:center;
 }
 
-/* MOBILE */
+/* MOBILE DRAWER */
 
 .mobile-drawer{
   display:none;
@@ -917,9 +799,7 @@ footer{
   background:rgba(0,0,0,.8);
 }
 
-.mobile-drawer.open{
-  display:block;
-}
+.mobile-drawer.open{display:block}
 
 .drawer-panel{
   width:min(330px,86vw);
@@ -937,9 +817,7 @@ footer{
   margin-bottom:15px;
 }
 
-.drawer-head strong{
-  color:var(--yellow);
-}
+.drawer-head strong{color:var(--yellow)}
 
 .drawer-close{
   background:none;
@@ -969,17 +847,11 @@ footer{
     padding:10px 14px;
   }
 
-  nav{
-    display:none;
-  }
+  nav{display:none}
 
-  .menu-btn{
-    display:block;
-  }
+  .menu-btn{display:block}
 
-  .header-actions{
-    margin-left:auto;
-  }
+  .header-actions{margin-left:auto}
 
   .layout{
     grid-template-columns:1fr;
@@ -1016,15 +888,7 @@ footer{
   }
 
   .hero{
-    min-height:390px;
-  }
-
-  .hero-content{
-    padding:25px 10px;
-  }
-
-  .hero-buttons{
-    flex-direction:column;
+    height:300px;
   }
 
   .trust{
@@ -1052,25 +916,13 @@ footer{
 
   .contact-options,
   .customer-options,
-  .oauth{
+  .social-login{
     grid-template-columns:1fr;
   }
 
   .customer-profile{
     flex-direction:column;
     text-align:center;
-  }
-
-  .admin-form{
-    grid-template-columns:1fr;
-  }
-
-  .full{
-    grid-column:auto;
-  }
-
-  .admin-actions{
-    flex-direction:column;
   }
 
   footer{
@@ -1086,7 +938,12 @@ footer{
 
 <header>
 
-<button class="menu-btn" onclick="openDrawer()">☰</button>
+<button
+  class="menu-btn"
+  onclick="openDrawer()"
+>
+☰
+</button>
 
 <img
   src="logo.png.jpeg"
@@ -1096,25 +953,27 @@ footer{
 
 <nav>
 
-<a href="#home" class="active">HOME</a>
+<a href="#home" class="active">
+HOME
+</a>
 
 <a
   href="#accounts"
-  onclick="openAccountChoices();return false"
+  onclick="openAccountChoices();return false;"
 >
 ACCOUNTS
 </a>
 
 <a
-  href="#topup-freefire"
-  onclick="openTopup();return false"
+  href="#topup"
+  onclick="openTopup();return false;"
 >
 TOP UP
 </a>
 
 <a
   href="#reviews"
-  onclick="openReviews();return false"
+  onclick="openReviews();return false;"
 >
 REVIEWS
 </a>
@@ -1126,6 +985,7 @@ REVIEWS
 <button
   class="header-icon"
   onclick="openSearch()"
+  aria-label="Search"
 >
 ⌕
 </button>
@@ -1133,6 +993,7 @@ REVIEWS
 <button
   class="header-icon"
   onclick="openCart()"
+  aria-label="Cart"
 >
 🛒
 </button>
@@ -1148,6 +1009,8 @@ REVIEWS
 
 </header>
 
+
+<!-- MOBILE DRAWER -->
 
 <div
   class="mobile-drawer"
@@ -1213,6 +1076,8 @@ REVIEWS
   class="layout"
   id="home"
 >
+
+<!-- PROFILE -->
 
 <aside class="profile">
 
@@ -1286,47 +1151,20 @@ LEVEL 17 TRADER
 
 <main>
 
+<!-- FULL WIDTH HERO IMAGE -->
+
 <section class="hero">
 
-<div class="hero-content">
-
-<div class="welcome">
-── WELCOME TO ──
-</div>
-
 <img
-  src="logo.png.jpeg"
-  class="hero-logo"
+  src="IMG_8370E7FA-ED0F-4AC6-924C-DB8185E9DB47.jpeg"
+  class="hero-full-image"
   alt="CRISPY SHOP"
 >
 
-<p class="hero-text">
-Premium gaming accounts, top ups and more.
-<strong>100% safe, secure &amp; trusted.</strong>
-</p>
-
-<div class="hero-buttons">
-
-<button
-  class="yellow-btn"
-  onclick="openAccountChoices()"
->
-🛍 BROWSE ACCOUNTS
-</button>
-
-<button
-  class="outline-btn"
-  onclick="openTopup()"
->
-💎 TOP UP
-</button>
-
-</div>
-
-</div>
-
 </section>
 
+
+<!-- TRUST -->
 
 <section class="trust">
 
@@ -1350,6 +1188,8 @@ Premium gaming accounts, top ups and more.
 
 </section>
 
+
+<!-- FILTERS -->
 
 <div class="filters">
 
@@ -1398,6 +1238,8 @@ FC MOBILE
 </div>
 
 
+<!-- ACCOUNTS -->
+
 <section id="accounts">
 
 <div class="section-heading">
@@ -1415,6 +1257,8 @@ VIEW ALL →
 
 </section>
 
+
+<!-- FREE FIRE -->
 
 <section
   class="game-section"
@@ -1449,7 +1293,7 @@ Level — · REGION
 </div>
 
 <div class="description">
-No account posted yet. Add one from your owner/admin panel.
+No account posted yet.
 </div>
 
 <div class="price">₦0</div>
@@ -1468,6 +1312,8 @@ ADD TO CART
 </section>
 
 
+<!-- EFOOTBALL -->
+
 <section
   class="game-section"
   id="efootball-section"
@@ -1478,10 +1324,7 @@ ADD TO CART
 <h2>eFOOTBALL</h2>
 </div>
 
-<div
-  class="products"
-  id="efootball-products"
->
+<div class="products">
 
 <div
   class="product"
@@ -1501,7 +1344,7 @@ Level — · REGION
 </div>
 
 <div class="description">
-No account posted yet. Add one from your owner/admin panel.
+No account posted yet.
 </div>
 
 <div class="price">₦0</div>
@@ -1520,6 +1363,8 @@ ADD TO CART
 </section>
 
 
+<!-- CODM -->
+
 <section
   class="game-section"
   id="codm-section"
@@ -1530,10 +1375,7 @@ ADD TO CART
 <h2>CODM</h2>
 </div>
 
-<div
-  class="products"
-  id="codm-products"
->
+<div class="products">
 
 <div
   class="product"
@@ -1553,7 +1395,7 @@ Level — · REGION
 </div>
 
 <div class="description">
-No account posted yet. Add one from your owner/admin panel.
+No account posted yet.
 </div>
 
 <div class="price">₦0</div>
@@ -1572,6 +1414,8 @@ ADD TO CART
 </section>
 
 
+<!-- DLS -->
+
 <section
   class="game-section"
   id="dls-section"
@@ -1582,10 +1426,7 @@ ADD TO CART
 <h2>DLS</h2>
 </div>
 
-<div
-  class="products"
-  id="dls-products"
->
+<div class="products">
 
 <div
   class="product"
@@ -1605,7 +1446,7 @@ Level — · REGION
 </div>
 
 <div class="description">
-No account posted yet. Add one from your owner/admin panel.
+No account posted yet.
 </div>
 
 <div class="price">₦0</div>
@@ -1624,6 +1465,8 @@ ADD TO CART
 </section>
 
 
+<!-- FC MOBILE -->
+
 <section
   class="game-section"
   id="fcmobile-section"
@@ -1634,10 +1477,7 @@ ADD TO CART
 <h2>FC MOBILE</h2>
 </div>
 
-<div
-  class="products"
-  id="fcmobile-products"
->
+<div class="products">
 
 <div
   class="product"
@@ -1657,7 +1497,7 @@ Level — · REGION
 </div>
 
 <div class="description">
-No account posted yet. Add one from your owner/admin panel.
+No account posted yet.
 </div>
 
 <div class="price">₦0</div>
@@ -1674,32 +1514,32 @@ ADD TO CART
 </div>
 
 </section>
-<!-- TOP UP SECTIONS -->
+  <!-- TOP UP SECTIONS -->
 
 <section
   class="game-section"
   id="topup-freefire"
   data-topup-section="freefire"
 >
-  <div class="section-heading">
-    <h2>FREE FIRE TOP UP</h2>
-  </div>
+<div class="section-heading">
+<h2>FREE FIRE TOP UP</h2>
+</div>
 
-  <div class="products">
-    <div class="product">
-      <div class="game">💎 DIAMONDS</div>
-      <h3>FREE FIRE DIAMONDS</h3>
-      <div class="description">
-        Top-up packages will be posted here.
-      </div>
-      <button
-        class="details-btn"
-        onclick="showToast('Free Fire top-up selected')"
-      >
-        SELECT
-      </button>
-    </div>
-  </div>
+<div class="products">
+<div class="product">
+<div class="game">💎 DIAMONDS</div>
+<h3>FREE FIRE DIAMONDS</h3>
+<div class="description">
+Top-up packages will be posted here.
+</div>
+<button
+  class="details-btn"
+  onclick="showToast('Free Fire top-up selected')"
+>
+SELECT
+</button>
+</div>
+</div>
 </section>
 
 
@@ -1708,25 +1548,25 @@ ADD TO CART
   id="topup-efootball"
   data-topup-section="efootball"
 >
-  <div class="section-heading">
-    <h2>eFOOTBALL TOP UP</h2>
-  </div>
+<div class="section-heading">
+<h2>eFOOTBALL TOP UP</h2>
+</div>
 
-  <div class="products">
-    <div class="product">
-      <div class="game">🪙 COINS</div>
-      <h3>eFOOTBALL COINS</h3>
-      <div class="description">
-        Top-up packages will be posted here.
-      </div>
-      <button
-        class="details-btn"
-        onclick="showToast('eFootball top-up selected')"
-      >
-        SELECT
-      </button>
-    </div>
-  </div>
+<div class="products">
+<div class="product">
+<div class="game">🪙 COINS</div>
+<h3>eFOOTBALL COINS</h3>
+<div class="description">
+Top-up packages will be posted here.
+</div>
+<button
+  class="details-btn"
+  onclick="showToast('eFootball top-up selected')"
+>
+SELECT
+</button>
+</div>
+</div>
 </section>
 
 
@@ -1735,25 +1575,25 @@ ADD TO CART
   id="topup-codm"
   data-topup-section="codm"
 >
-  <div class="section-heading">
-    <h2>CODM TOP UP</h2>
-  </div>
+<div class="section-heading">
+<h2>CODM TOP UP</h2>
+</div>
 
-  <div class="products">
-    <div class="product">
-      <div class="game">🎯 CP</div>
-      <h3>CODM CP</h3>
-      <div class="description">
-        Top-up packages will be posted here.
-      </div>
-      <button
-        class="details-btn"
-        onclick="showToast('CODM top-up selected')"
-      >
-        SELECT
-      </button>
-    </div>
-  </div>
+<div class="products">
+<div class="product">
+<div class="game">🎯 CP</div>
+<h3>CODM CP</h3>
+<div class="description">
+Top-up packages will be posted here.
+</div>
+<button
+  class="details-btn"
+  onclick="showToast('CODM top-up selected')"
+>
+SELECT
+</button>
+</div>
+</div>
 </section>
 
 
@@ -1762,25 +1602,25 @@ ADD TO CART
   id="topup-dls"
   data-topup-section="dls"
 >
-  <div class="section-heading">
-    <h2>DLS TOP UP</h2>
-  </div>
+<div class="section-heading">
+<h2>DLS TOP UP</h2>
+</div>
 
-  <div class="products">
-    <div class="product">
-      <div class="game">💎 DIAMONDS</div>
-      <h3>DLS DIAMONDS</h3>
-      <div class="description">
-        Top-up packages will be posted here.
-      </div>
-      <button
-        class="details-btn"
-        onclick="showToast('DLS top-up selected')"
-      >
-        SELECT
-      </button>
-    </div>
-  </div>
+<div class="products">
+<div class="product">
+<div class="game">💎 DIAMONDS</div>
+<h3>DLS DIAMONDS</h3>
+<div class="description">
+Top-up packages will be posted here.
+</div>
+<button
+  class="details-btn"
+  onclick="showToast('DLS top-up selected')"
+>
+SELECT
+</button>
+</div>
+</div>
 </section>
 
 
@@ -1789,25 +1629,25 @@ ADD TO CART
   id="topup-fcmobile"
   data-topup-section="fcmobile"
 >
-  <div class="section-heading">
-    <h2>FC MOBILE TOP UP</h2>
-  </div>
+<div class="section-heading">
+<h2>FC MOBILE TOP UP</h2>
+</div>
 
-  <div class="products">
-    <div class="product">
-      <div class="game">⚽ FC MOBILE</div>
-      <h3>FC MOBILE TOP UP</h3>
-      <div class="description">
-        Top-up packages will be posted here.
-      </div>
-      <button
-        class="details-btn"
-        onclick="showToast('FC Mobile top-up selected')"
-      >
-        SELECT
-      </button>
-    </div>
-  </div>
+<div class="products">
+<div class="product">
+<div class="game">⚽ FC MOBILE</div>
+<h3>FC MOBILE TOP UP</h3>
+<div class="description">
+Top-up packages will be posted here.
+</div>
+<button
+  class="details-btn"
+  onclick="showToast('FC Mobile top-up selected')"
+>
+SELECT
+</button>
+</div>
+</div>
 </section>
 
 
@@ -1815,69 +1655,69 @@ ADD TO CART
 
 <section class="features">
 
-  <div class="feature">
-    <div class="feature-icon">♢</div>
-    <h3>100% SECURE</h3>
-    <p>All accounts are checked and verified.</p>
-  </div>
+<div class="feature">
+<div class="feature-icon">♢</div>
+<h3>100% SECURE</h3>
+<p>All accounts are checked and verified.</p>
+</div>
 
-  <div class="feature">
-    <div class="feature-icon">ϟ</div>
-    <h3>INSTANT DELIVERY</h3>
-    <p>Get your account details instantly.</p>
-  </div>
+<div class="feature">
+<div class="feature-icon">ϟ</div>
+<h3>INSTANT DELIVERY</h3>
+<p>Get your account details instantly.</p>
+</div>
 
-  <div class="feature">
-    <div class="feature-icon">♧</div>
-    <h3>BEST PRICES</h3>
-    <p>Affordable prices you can trust.</p>
-  </div>
+<div class="feature">
+<div class="feature-icon">♧</div>
+<h3>BEST PRICES</h3>
+<p>Affordable prices you can trust.</p>
+</div>
 
-  <div class="feature">
-    <div class="feature-icon">♧</div>
-    <h3>24/7 SUPPORT</h3>
-    <p>We're always here to help.</p>
-  </div>
+<div class="feature">
+<div class="feature-icon">♧</div>
+<h3>24/7 SUPPORT</h3>
+<p>We're always here to help.</p>
+</div>
 
 </section>
 
 
 <footer>
 
-  <img
-    src="logo.png.jpeg"
-    class="footer-logo"
-    alt="CRISPY SHOP"
-  >
+<img
+  src="logo.png.jpeg"
+  class="footer-logo"
+  alt="CRISPY SHOP"
+>
 
-  <div class="socials">
+<div class="socials">
 
-    <a
-      href="https://www.tiktok.com/@_itzcrispy"
-      target="_blank"
-    >
-      TikTok
-    </a>
+<a
+  href="https://www.tiktok.com/@_itzcrispy"
+  target="_blank"
+>
+TikTok
+</a>
 
-    <a
-      href="https://x.com/crispysoloss"
-      target="_blank"
-    >
-      X
-    </a>
+<a
+  href="https://x.com/crispysoloss"
+  target="_blank"
+>
+X
+</a>
 
-    <a
-      href="https://t.me/crispyshop_1"
-      target="_blank"
-    >
-      Telegram
-    </a>
+<a
+  href="https://t.me/crispyshop_1"
+  target="_blank"
+>
+Telegram
+</a>
 
-  </div>
+</div>
 
-  <div class="slogan">
-    LEVEL UP. PLAY MORE. 👑
-  </div>
+<div class="slogan">
+LEVEL UP. PLAY MORE. 👑
+</div>
 
 </footer>
 
@@ -1910,26 +1750,6 @@ Create an account or login to Crispy Shop.
 
 <div id="authChoices">
 
-<div class="oauth">
-
-<button onclick="loginWithGoogle()">
-  🌐 GOOGLE
-</button>
-
-<button onclick="loginWithFacebook()">
-  f FACEBOOK
-</button>
-
-<button onclick="loginWithApple()">
-   APPLE
-</button>
-
-</div>
-
-<div class="divider">
-  OR
-</div>
-
 <div class="contact-options">
 
 <button
@@ -1944,6 +1764,28 @@ Create an account or login to Crispy Shop.
   onclick="showLogin()"
 >
 🔐 LOGIN
+</button>
+
+</div>
+
+
+<div class="divider">
+OR CONTINUE WITH
+</div>
+
+
+<div class="social-login">
+
+<button onclick="socialLogin('google')">
+G GOOGLE
+</button>
+
+<button onclick="socialLogin('facebook')">
+F FACEBOOK
+</button>
+
+<button onclick="socialLogin('apple')">
+ APPLE
 </button>
 
 </div>
@@ -2158,7 +2000,7 @@ VERIFIED CUSTOMER
 
 <div
   id="accountMessage"
-  class="admin-message"
+  class="message"
 >
 </div>
 
@@ -2475,9 +2317,11 @@ Choose how you want to contact me.
 >
 
 <div id="searchResults">
+
 <div class="search-result">
 Type something to search.
 </div>
+
 </div>
 
 </div>
@@ -2522,298 +2366,12 @@ Total: ₦0
 </div>
 
 
-<!-- ADMIN LOGIN -->
-
-<div
-  class="modal"
-  id="adminLoginModal"
->
-
-<div class="modal-box">
-
-<button
-  class="modal-close"
-  onclick="closeModal('adminLoginModal')"
->
-×
-</button>
-
-<h2>OWNER / ADMIN</h2>
-
-<p>
-This area is only for the Crispy Shop owner.
-</p>
-
-<input
-  id="adminEmail"
-  class="form-input"
-  type="email"
-  placeholder="Admin email"
->
-
-<input
-  id="adminPassword"
-  class="form-input"
-  type="password"
-  placeholder="Admin password"
->
-
-<button
-  class="yellow-btn full-btn"
-  onclick="adminLogin()"
->
-ADMIN LOGIN
-</button>
-
-<div
-  id="adminLoginMessage"
-  class="admin-message"
->
-</div>
-
-</div>
-
-</div>
-
-
-<!-- ADMIN EDITOR -->
-
-<div
-  class="modal"
-  id="adminModal"
->
-
-<div class="modal-box">
-
-<button
-  class="modal-close"
-  onclick="closeModal('adminModal')"
->
-×
-</button>
-
-<h2>OWNER DASHBOARD 👑</h2>
-
-<p>
-Post or edit gaming accounts here.
-Customers cannot access these controls.
-</p>
-
-<div class="photo-upload">
-
-<label
-  class="admin-label"
-  for="accountPhoto"
->
-📸 GAMING ACCOUNT PHOTO
-</label>
-
-<input
-  id="accountPhoto"
-  class="admin-input"
-  type="file"
-  accept="image/*"
-  onchange="previewAdminPhoto(event)"
->
-
-<img
-  id="adminPhotoPreview"
-  class="admin-photo-preview"
-  src=""
-  alt="Gaming account photo"
->
-
-</div>
-
-
-<div
-  class="admin-form"
-  style="margin-top:15px"
->
-
-<div>
-
-<label class="admin-label">
-GAME
-</label>
-
-<select
-  id="adminGame"
-  class="admin-select"
->
-
-<option value="freefire">
-FREE FIRE
-</option>
-
-<option value="efootball">
-eFOOTBALL
-</option>
-
-<option value="codm">
-CODM
-</option>
-
-<option value="dls">
-DLS
-</option>
-
-<option value="fcmobile">
-FC MOBILE
-</option>
-
-</select>
-
-</div>
-
-
-<div>
-
-<label class="admin-label">
-ACCOUNT TITLE
-</label>
-
-<input
-  id="adminAccountName"
-  class="admin-input"
-  placeholder="Account name"
->
-
-</div>
-
-
-<div>
-
-<label class="admin-label">
-LEVEL
-</label>
-
-<input
-  id="adminLevel"
-  class="admin-input"
-  placeholder="e.g. 3231"
->
-
-</div>
-
-
-<div>
-
-<label class="admin-label">
-REGION
-</label>
-
-<input
-  id="adminRegion"
-  class="admin-input"
-  placeholder="e.g. JAPAN"
->
-
-</div>
-
-
-<div>
-
-<label class="admin-label">
-PRICE
-</label>
-
-<input
-  id="adminPrice"
-  class="admin-input"
-  placeholder="e.g. ₦20,000"
->
-
-</div>
-
-
-<div>
-
-<label class="admin-label">
-STATUS
-</label>
-
-<select
-  id="adminStatus"
-  class="admin-select"
->
-
-<option value="AVAILABLE">
-AVAILABLE
-</option>
-
-<option value="SOLD OUT">
-SOLD OUT
-</option>
-
-</select>
-
-</div>
-
-
-<div class="full">
-
-<label class="admin-label">
-DESCRIPTION
-</label>
-
-<textarea
-  id="adminDescription"
-  class="admin-textarea"
-  placeholder="Account details..."
-></textarea>
-
-</div>
-
-</div>
-
-
-<div class="admin-actions">
-
-<button
-  class="yellow-btn"
-  onclick="saveAdminAccount()"
->
-SAVE ACCOUNT
-</button>
-
-<button
-  class="outline-btn"
-  onclick="clearAdminForm()"
->
-CLEAR
-</button>
-
-</div>
-
-<button
-  class="outline-btn"
-  style="width:100%;margin-top:10px"
-  onclick="adminLogout()"
->
-LOG OUT ADMIN
-</button>
-
-<div
-  id="adminMessage"
-  class="admin-message"
->
-</div>
-
-</div>
-
-</div>
-
-
-<!-- FIREBASE -->
-
 <script type="module">
 
 import {
   initializeApp
 }
-from
-"https://www.gstatic.com/firebasejs/10.12.2/firebase-app.js";
+from "https://www.gstatic.com/firebasejs/10.12.2/firebase-app.js";
 
 import {
   getAuth,
@@ -2828,8 +2386,14 @@ import {
   OAuthProvider,
   signInWithPopup
 }
-from
-"https://www.gstatic.com/firebasejs/10.12.2/firebase-auth.js";
+from "https://www.gstatic.com/firebasejs/10.12.2/firebase-auth.js";
+
+import {
+  getFirestore,
+  collection,
+  getDocs
+}
+from "https://www.gstatic.com/firebasejs/10.12.2/firebase-firestore.js";
 
 
 const firebaseConfig={
@@ -2855,15 +2419,14 @@ const firebaseConfig={
 };
 
 
-const app=
+const app =
 initializeApp(firebaseConfig);
 
-const auth=
+const auth =
 getAuth(app);
 
-
-const ADMIN_EMAIL=
-"crispyshop11@gmail.com";
+const db =
+getFirestore(app);
 
 
 /* CUSTOMER ACCOUNT */
@@ -2874,178 +2437,11 @@ window.openCustomerAccount=function(){
 
   if(auth.currentUser){
 
-    if(
-      auth.currentUser.email.toLowerCase()
-      ===
-      ADMIN_EMAIL.toLowerCase()
-    ){
-
-      showAuthChoices();
-
-    }else{
-
-      showCustomerDashboard();
-
-    }
+    showCustomerDashboard();
 
   }else{
 
     showAuthChoices();
-
-  }
-
-};
-
-
-/* GOOGLE LOGIN */
-
-window.loginWithGoogle=
-async function(){
-
-  const provider=
-    new GoogleAuthProvider();
-
-  try{
-
-    const result=
-      await signInWithPopup(
-        auth,
-        provider
-      );
-
-    if(
-      result.user.email &&
-      result.user.email.toLowerCase()
-      ===
-      ADMIN_EMAIL.toLowerCase()
-    ){
-
-      await signOut(auth);
-
-      showToast(
-        "Owner account must use Admin Login."
-      );
-
-      return;
-
-    }
-
-    showCustomerDashboard();
-
-  }
-
-  catch(error){
-
-    console.error(error);
-
-    document.getElementById(
-      "accountMessage"
-    ).textContent=
-      "Google login failed.";
-
-  }
-
-};
-
-
-/* FACEBOOK LOGIN */
-
-window.loginWithFacebook=
-async function(){
-
-  const provider=
-    new FacebookAuthProvider();
-
-  try{
-
-    const result=
-      await signInWithPopup(
-        auth,
-        provider
-      );
-
-    if(
-      result.user.email &&
-      result.user.email.toLowerCase()
-      ===
-      ADMIN_EMAIL.toLowerCase()
-    ){
-
-      await signOut(auth);
-
-      showToast(
-        "Owner account must use Admin Login."
-      );
-
-      return;
-
-    }
-
-    showCustomerDashboard();
-
-  }
-
-  catch(error){
-
-    console.error(error);
-
-    document.getElementById(
-      "accountMessage"
-    ).textContent=
-      "Facebook login failed.";
-
-  }
-
-};
-
-
-/* APPLE LOGIN */
-
-window.loginWithApple=
-async function(){
-
-  const provider=
-    new OAuthProvider(
-      "apple.com"
-    );
-
-  try{
-
-    const result=
-      await signInWithPopup(
-        auth,
-        provider
-      );
-
-    if(
-      result.user.email &&
-      result.user.email.toLowerCase()
-      ===
-      ADMIN_EMAIL.toLowerCase()
-    ){
-
-      await signOut(auth);
-
-      showToast(
-        "Owner account must use Admin Login."
-      );
-
-      return;
-
-    }
-
-    showCustomerDashboard();
-
-  }
-
-  catch(error){
-
-    console.error(error);
-
-    document.getElementById(
-      "accountMessage"
-    ).textContent=
-      "Apple login failed.";
 
   }
 
@@ -3067,7 +2463,7 @@ window.showSignup=function(){
 };
 
 
-/* LOGIN FORM */
+/* LOGIN */
 
 window.showLogin=function(){
 
@@ -3082,8 +2478,6 @@ window.showLogin=function(){
 };
 
 
-/* AUTH CHOICES */
-
 function showAuthChoices(){
 
   document.getElementById(
@@ -3097,25 +2491,11 @@ function showAuthChoices(){
 }
 
 
-/* CUSTOMER DASHBOARD */
-
 function showCustomerDashboard(){
 
   const user=auth.currentUser;
 
   if(!user)return;
-
-  if(
-    user.email &&
-    user.email.toLowerCase()
-    ===
-    ADMIN_EMAIL.toLowerCase()
-  ){
-
-    showAuthChoices();
-    return;
-
-  }
 
   document.getElementById(
     "authChoices"
@@ -3135,22 +2515,18 @@ function showCustomerDashboard(){
   document.getElementById(
     "customerWelcome"
   ).textContent=
-    "Welcome back, "
-    +name
-    +" 👋";
+    "Welcome back, "+name+" 👋";
 
 
   document.getElementById(
     "customerName"
-  ).textContent=
-    name;
+  ).textContent=name;
 
 
   document.getElementById(
     "customerEmail"
   ).textContent=
-    user.email ||
-    "Email hidden";
+    user.email || "";
 
 
   loadCustomerPhoto();
@@ -3158,7 +2534,7 @@ function showCustomerDashboard(){
 }
 
 
-/* CREATE CUSTOMER ACCOUNT */
+/* CREATE ACCOUNT */
 
 window.createCustomerAccount=
 async function(){
@@ -3205,10 +2581,6 @@ async function(){
   }
 
 
-  message.textContent=
-    "Creating account...";
-
-
   try{
 
     const result=
@@ -3229,6 +2601,7 @@ async function(){
 
     message.textContent=
       "Account created successfully!";
+
 
     showCustomerDashboard();
 
@@ -3278,36 +2651,13 @@ async function(){
   }
 
 
-  message.textContent=
-    "Logging in...";
-
-
   try{
 
-    const result=
-      await signInWithEmailAndPassword(
-        auth,
-        email,
-        password
-      );
-
-
-    if(
-      result.user.email &&
-      result.user.email.toLowerCase()
-      ===
-      ADMIN_EMAIL.toLowerCase()
-    ){
-
-      message.textContent=
-        "Owner account detected. Use the admin login.";
-
-      await signOut(auth);
-
-      return;
-
-    }
-
+    await signInWithEmailAndPassword(
+      auth,
+      email,
+      password
+    );
 
     showCustomerDashboard();
 
@@ -3328,6 +2678,76 @@ async function(){
 };
 
 
+/* GOOGLE / FACEBOOK / APPLE */
+
+window.socialLogin=
+async function(type){
+
+  const message=
+    document.getElementById(
+      "accountMessage"
+    );
+
+
+  let provider;
+
+
+  if(type==="google"){
+
+    provider=
+      new GoogleAuthProvider();
+
+  }
+
+
+  if(type==="facebook"){
+
+    provider=
+      new FacebookAuthProvider();
+
+  }
+
+
+  if(type==="apple"){
+
+    provider=
+      new OAuthProvider(
+        "apple.com"
+      );
+
+  }
+
+
+  if(!provider)return;
+
+
+  try{
+
+    await signInWithPopup(
+      auth,
+      provider
+    );
+
+    showCustomerDashboard();
+
+    message.textContent=
+      "Login successful!";
+
+  }
+
+  catch(error){
+
+    console.error(error);
+
+    message.textContent=
+      error.message ||
+      "Social login failed.";
+
+  }
+
+};
+
+
 /* CUSTOMER PHOTO */
 
 window.uploadCustomerPhoto=
@@ -3335,16 +2755,7 @@ function(event){
 
   const user=auth.currentUser;
 
-  if(!user){
-
-    document.getElementById(
-      "accountMessage"
-    ).textContent=
-      "Please log in first.";
-
-    return;
-
-  }
+  if(!user)return;
 
 
   const file=
@@ -3371,8 +2782,7 @@ function(event){
   reader.onload=function(){
 
     localStorage.setItem(
-      "crispyCustomerPhoto_"
-      +user.uid,
+      "crispyCustomerPhoto_"+user.uid,
       reader.result
     );
 
@@ -3402,8 +2812,7 @@ function loadCustomerPhoto(){
 
   const photo=
     localStorage.getItem(
-      "crispyCustomerPhoto_"
-      +user.uid
+      "crispyCustomerPhoto_"+user.uid
     );
 
 
@@ -3460,6 +2869,8 @@ window.customerInfo=function(type){
 
   if(type==="PROFILE"){
 
+    const user=auth.currentUser;
+
     content.innerHTML=`
 
       <div class="info-card">
@@ -3468,17 +2879,19 @@ window.customerInfo=function(type){
 
         <p>
           👤 Name:
-          ${auth.currentUser.displayName||"Customer"}
+          ${escapeHtml(
+            user.displayName||"Customer"
+          )}
         </p>
 
         <p>
           📧 Email:
-          ${auth.currentUser.email||"Hidden"}
+          ${escapeHtml(
+            user.email||""
+          )}
         </p>
 
-        <p>
-          ✅ Account: Active
-        </p>
+        <p>✅ Account: Active</p>
 
       </div>
 
@@ -3495,9 +2908,7 @@ window.customerInfo=function(type){
 
         <h3>MY ORDERS</h3>
 
-        <p>
-          Your orders will appear here.
-        </p>
+        <p>Your orders will appear here.</p>
 
       </div>
 
@@ -3553,9 +2964,7 @@ window.customerInfo=function(type){
 
         <h3>MY REVIEWS</h3>
 
-        <p>
-          Your reviews will appear here.
-        </p>
+        <p>Your reviews will appear here.</p>
 
       </div>
 
@@ -3652,8 +3061,6 @@ async function(){
 };
 
 
-/* CUSTOMER LOGOUT */
-
 window.customerLogout=
 async function(){
 
@@ -3666,605 +3073,13 @@ async function(){
 };
 
 
-/* ADMIN LOGIN */
-
-window.adminLogin=
-async function(){
-
-  const email=
-    document.getElementById(
-      "adminEmail"
-    ).value.trim();
-
-  const password=
-    document.getElementById(
-      "adminPassword"
-    ).value;
-
-
-  const message=
-    document.getElementById(
-      "adminLoginMessage"
-    );
-
-
-  if(
-    email.toLowerCase()
-    !==
-    ADMIN_EMAIL.toLowerCase()
-  ){
-
-    message.textContent=
-      "Access denied.";
-
-    return;
-
-  }
-
-
-  message.textContent=
-    "Checking owner account...";
-
-
-  try{
-
-    const result=
-      await signInWithEmailAndPassword(
-        auth,
-        email,
-        password
-      );
-
-
-    if(
-      !result.user.email ||
-      result.user.email.toLowerCase()
-      !==
-      ADMIN_EMAIL.toLowerCase()
-    ){
-
-      await signOut(auth);
-
-      message.textContent=
-        "Access denied.";
-
-      return;
-
-    }
-
-
-    closeModal(
-      "adminLoginModal"
-    );
-
-    openModal(
-      "adminModal"
-    );
-
-  }
-
-  catch(error){
-
-    console.error(error);
-
-    message.textContent=
-      "Admin login failed.";
-
-  }
-
-};
-
-
-/* ADMIN LOGOUT */
-
-window.adminLogout=
-async function(){
-
-  await signOut(auth);
-
-  closeModal(
-    "adminModal"
-  );
-
-};
-
-
-/* ADMIN PHOTO */
-
-let adminPhotoData="";
-
-
-window.previewAdminPhoto=
-function(event){
-
-  const file=
-    event.target.files &&
-    event.target.files[0];
-
-
-  const preview=
-    document.getElementById(
-      "adminPhotoPreview"
-    );
-
-
-  if(!file){
-
-    adminPhotoData="";
-
-    preview.style.display="none";
-
-    return;
-
-  }
-
-
-  const reader=
-    new FileReader();
-
-
-  reader.onload=function(){
-
-    adminPhotoData=
-      reader.result;
-
-    preview.src=
-      adminPhotoData;
-
-    preview.style.display=
-      "block";
-
-  };
-
-
-  reader.readAsDataURL(file);
-
-};
-
-
-/* SAVE ADMIN ACCOUNT */
-
-window.saveAdminAccount=
-function(){
-
-  const game=
-    document.getElementById(
-      "adminGame"
-    ).value;
-
-  const name=
-    document.getElementById(
-      "adminAccountName"
-    ).value.trim()
-    ||
-    game.toUpperCase()
-    +" ACCOUNT";
-
-  const level=
-    document.getElementById(
-      "adminLevel"
-    ).value.trim()
-    ||
-    "—";
-
-  const region=
-    document.getElementById(
-      "adminRegion"
-    ).value.trim()
-    ||
-    "REGION";
-
-  const price=
-    document.getElementById(
-      "adminPrice"
-    ).value.trim()
-    ||
-    "₦0";
-
-  const status=
-    document.getElementById(
-      "adminStatus"
-    ).value;
-
-  const description=
-    document.getElementById(
-      "adminDescription"
-    ).value.trim()
-    ||
-    "Account details will appear here.";
-
-
-  const section=
-    document.getElementById(
-      game+"-section"
-    );
-
-
-  if(!section){
-
-    document.getElementById(
-      "adminMessage"
-    ).textContent=
-      "Game section not found.";
-
-    return;
-
-  }
-
-
-  const product=
-    section.querySelector(
-      ".product"
-    );
-
-
-  product.querySelector(
-    ".game"
-  ).textContent=
-    game==="freefire"
-      ?"FREE F⚡RE"
-      :game.toUpperCase();
-
-
-  product.querySelector(
-    "h3"
-  ).textContent=name;
-
-
-  product.querySelector(
-    ".details"
-  ).textContent=
-    "Level "
-    +level
-    +" · "
-    +region;
-
-
-  product.querySelector(
-    ".description"
-  ).textContent=
-    description;
-
-
-  product.querySelector(
-    ".price"
-  ).textContent=
-    price;
-
-
-  product.querySelector(
-    ".available"
-  ).textContent=
-    status;
-
-
-  const button=
-    product.querySelector(
-      ".details-btn"
-    );
-
-
-  button.disabled=
-    status==="SOLD OUT";
-
-
-  button.textContent=
-    status==="SOLD OUT"
-      ?"SOLD OUT"
-      :"ADD TO CART";
-
-
-  button.onclick=
-    status==="SOLD OUT"
-      ?null
-      :function(){
-
-        addToCart(
-          name,
-          price
-        );
-
-      };
-
-
-  let photo=
-    product.querySelector(
-      ".account-photo"
-    );
-
-
-  if(adminPhotoData){
-
-    if(!photo){
-
-      photo=
-        document.createElement("img");
-
-      photo.className=
-        "account-photo";
-
-      product.insertBefore(
-        photo,
-        product.querySelector(".game")
-      );
-
-    }
-
-    photo.src=
-      adminPhotoData;
-
-  }
-
-
-  localStorage.setItem(
-    "crispyAccount_"+game,
-    JSON.stringify({
-
-      name:name,
-      level:level,
-      region:region,
-      price:price,
-      status:status,
-      description:description,
-      photo:adminPhotoData
-
-    })
-  );
-
-
-  document.getElementById(
-    "adminMessage"
-  ).textContent=
-    "Gaming account posted successfully.";
-
-};
-
-
-/* CLEAR ADMIN FORM */
-
-window.clearAdminForm=function(){
-
-  document.getElementById(
-    "adminAccountName"
-  ).value="";
-
-  document.getElementById(
-    "adminLevel"
-  ).value="";
-
-  document.getElementById(
-    "adminRegion"
-  ).value="";
-
-  document.getElementById(
-    "adminPrice"
-  ).value="";
-
-  document.getElementById(
-    "adminDescription"
-  ).value="";
-
-  document.getElementById(
-    "accountPhoto"
-  ).value="";
-
-  adminPhotoData="";
-
-  document.getElementById(
-    "adminPhotoPreview"
-  ).style.display="none";
-
-};
-
-
-/* LOAD SAVED ACCOUNTS */
-
-function loadAdminAccounts(){
-
-  [
-    "freefire",
-    "efootball",
-    "codm",
-    "dls",
-    "fcmobile"
-  ].forEach(function(game){
-
-    const saved=
-      localStorage.getItem(
-        "crispyAccount_"+game
-      );
-
-    if(!saved)return;
-
-    try{
-
-      const data=
-        JSON.parse(saved);
-
-      applyAdminAccount(
-        game,
-        data
-      );
-
-    }
-
-    catch(error){
-
-      console.error(
-        "Could not load account:",
-        game,
-        error
-      );
-
-    }
-
-  });
-
-}
-
-
-function applyAdminAccount(
-  game,
-  data
-){
-
-  const section=
-    document.getElementById(
-      game+"-section"
-    );
-
-  if(!section)return;
-
-  const product=
-    section.querySelector(
-      ".product"
-    );
-
-
-  product.querySelector(
-    ".game"
-  ).textContent=
-    game==="freefire"
-      ?"FREE F⚡RE"
-      :game.toUpperCase();
-
-
-  product.querySelector(
-    "h3"
-  ).textContent=
-    data.name;
-
-
-  product.querySelector(
-    ".details"
-  ).textContent=
-    "Level "
-    +(data.level||"—")
-    +" · "
-    +(data.region||"REGION");
-
-
-  product.querySelector(
-    ".description"
-  ).textContent=
-    data.description;
-
-
-  product.querySelector(
-    ".price"
-  ).textContent=
-    data.price;
-
-
-  product.querySelector(
-    ".available"
-  ).textContent=
-    data.status;
-
-
-  const button=
-    product.querySelector(
-      ".details-btn"
-    );
-
-
-  button.disabled=
-    data.status==="SOLD OUT";
-
-
-  button.textContent=
-    data.status==="SOLD OUT"
-      ?"SOLD OUT"
-      :"ADD TO CART";
-
-
-  button.onclick=
-    data.status==="SOLD OUT"
-      ?null
-      :function(){
-
-        addToCart(
-          data.name,
-          data.price
-        );
-
-      };
-
-
-  if(data.photo){
-
-    let photo=
-      product.querySelector(
-        ".account-photo"
-      );
-
-
-    if(!photo){
-
-      photo=
-        document.createElement("img");
-
-      photo.className=
-        "account-photo";
-
-      product.insertBefore(
-        photo,
-        product.querySelector(".game")
-      );
-
-    }
-
-    photo.src=
-      data.photo;
-
-  }
-
-}
-
-
-/* ADMIN LINK */
-
-function checkAdminLink(){
-
-  if(
-    location.hash
-    ===
-    "#crispy-admin"
-  ){
-
-    openModal(
-      "adminLoginModal"
-    );
-
-  }
-
-}
-
-
-/* AUTH STATE */
-
 onAuthStateChanged(
   auth,
   function(user){
 
-    if(!user)return;
+    if(user){
 
-    if(
-      user.email &&
-      user.email.toLowerCase()
-      !==
-      ADMIN_EMAIL.toLowerCase()
-    ){
-
-      if(
-        document.getElementById(
-          "customerAccountModal"
-        ).classList.contains("show")
-      ){
-
-        showCustomerDashboard();
-
-      }
+      showCustomerDashboard();
 
     }
 
@@ -4272,27 +3087,244 @@ onAuthStateChanged(
 );
 
 
-loadAdminAccounts();
-checkAdminLink();
+/* FIRESTORE ACCOUNTS */
+
+async function loadShopAccounts(){
+
+  try{
+
+    const snapshot=
+      await getDocs(
+        collection(
+          db,
+          "accounts"
+        )
+      );
+
+
+    snapshot.forEach(function(item){
+
+      const data=item.data();
+
+      applyFirestoreAccount(
+        item.id,
+        data
+      );
+
+    });
+
+  }
+
+  catch(error){
+
+    console.error(
+      "Could not load shop accounts:",
+      error
+    );
+
+  }
+
+}
+
+
+function gameToId(game){
+
+  const value=
+    String(game||"")
+    .toLowerCase();
+
+
+  if(value.includes("free fire"))
+    return "freefire";
+
+  if(value.includes("efootball"))
+    return "efootball";
+
+  if(value.includes("cod"))
+    return "codm";
+
+  if(value.includes("dls"))
+    return "dls";
+
+  if(value.includes("fc"))
+    return "fcmobile";
+
+  return "";
+
+}
+
+
+function applyFirestoreAccount(
+  id,
+  data
+){
+
+  const game=
+    gameToId(data.game);
+
+
+  if(!game)return;
+
+
+  const section=
+    document.getElementById(
+      game+"-section"
+    );
+
+
+  if(!section)return;
+
+
+  const products=
+    section.querySelector(
+      ".products"
+    );
+
+
+  let product=
+    document.querySelector(
+      '[data-firestore-id="'+id+'"]'
+    );
+
+
+  if(!product){
+
+    product=
+      document.createElement("div");
+
+    product.className=
+      "product";
+
+    product.dataset.firestoreId=
+      id;
+
+    products.appendChild(
+      product
+    );
+
+  }
+
+
+  const status=
+    data.status ||
+    "AVAILABLE";
+
+
+  product.innerHTML=`
+
+    <span class="heart">♡</span>
+
+    <span class="available">
+      ${escapeHtml(status)}
+    </span>
+
+    ${
+      data.photoUrl
+      ?
+      `
+      <img
+        class="account-photo"
+        src="${escapeHtml(data.photoUrl)}"
+        alt="${escapeHtml(data.title||"Gaming account")}"
+      >
+      `
+      :
+      ""
+    }
+
+    <div class="game">
+      ${game==="freefire"
+        ?"FREE F⚡RE"
+        :escapeHtml(data.game||game.toUpperCase())}
+    </div>
+
+    <h3>
+      ${escapeHtml(
+        data.title||"Gaming Account"
+      )}
+    </h3>
+
+    <div class="details">
+      Level
+      ${escapeHtml(data.level||"—")}
+      ·
+      ${escapeHtml(data.region||"REGION")}
+    </div>
+
+    <div class="description">
+      ${escapeHtml(
+        data.description||""
+      )}
+    </div>
+
+    <div class="price">
+      ${escapeHtml(data.price||"₦0")}
+    </div>
+
+    <button
+      class="details-btn"
+      ${
+        status==="SOLD"
+        ?"disabled"
+        :""
+      }
+    >
+      ${
+        status==="SOLD"
+        ?"SOLD OUT"
+        :"ADD TO CART"
+      }
+    </button>
+
+  `;
+
+
+  const button=
+    product.querySelector(
+      ".details-btn"
+    );
+
+
+  if(status!=="SOLD"){
+
+    button.onclick=
+      function(){
+
+        addToCart(
+          data.title||"Gaming Account",
+          data.price||"₦0"
+        );
+
+      };
+
+  }
+
+}
+
+
+function escapeHtml(value){
+
+  return String(value)
+    .replaceAll("&","&amp;")
+    .replaceAll("<","&lt;")
+    .replaceAll(">","&gt;")
+    .replaceAll('"',"&quot;")
+    .replaceAll("'","&#039;");
+
+}
+
+
+loadShopAccounts();
 
 </script>
 
 
-<!-- NORMAL JAVASCRIPT -->
-
 <script>
+
+/* CONSTANTS */
 
 const WHATSAPP=
 "2347051885555";
-
-const TIKTOK=
-"https://www.tiktok.com/@_itzcrispy";
-
-const X_LINK=
-"https://x.com/crispysoloss";
-
-const TELEGRAM=
-"https://t.me/crispyshop_1";
 
 
 /* MODALS */
@@ -4327,11 +3359,8 @@ document
     "click",
     function(e){
 
-      if(e.target===modal){
-
+      if(e.target===modal)
         modal.classList.remove("show");
-
-      }
 
     }
   );
@@ -4343,32 +3372,26 @@ document
 
 function openAccountChoices(){
 
-  openModal(
-    "accountModal"
-  );
+  openModal("accountModal");
 
 }
 
 
 function chooseGame(game){
 
-  closeModal(
-    "accountModal"
-  );
+  closeModal("accountModal");
 
   const target=
     document.getElementById(
       game+"-section"
     );
 
+
   if(target){
 
     target.scrollIntoView({
-
       behavior:"smooth",
-
       block:"start"
-
     });
 
   }
@@ -4380,30 +3403,24 @@ function chooseGame(game){
 
 function openTopup(){
 
-  openModal(
-    "topupModal"
-  );
+  openModal("topupModal");
 
 }
 
 
 function chooseTopup(id){
 
-  closeModal(
-    "topupModal"
-  );
+  closeModal("topupModal");
 
   const target=
     document.getElementById(id);
 
+
   if(target){
 
     target.scrollIntoView({
-
       behavior:"smooth",
-
       block:"start"
-
     });
 
   }
@@ -4415,37 +3432,26 @@ function chooseTopup(id){
 
 function openReviews(){
 
-  openModal(
-    "reviewModal"
-  );
+  openModal("reviewModal");
 
 }
 
 
 function sendReview(stars){
 
-  closeModal(
-    "reviewModal"
-  );
+  closeModal("reviewModal");
 
 
   window.open(
-
     "https://wa.me/"
     +WHATSAPP
     +"?text="
-    +
-    encodeURIComponent(
-
-      "Hello Crispy Shop, "
-      +"I want to leave a "
+    +encodeURIComponent(
+      "Hello Crispy Shop, I want to leave a "
       +stars
       +" star review."
-
     ),
-
     "_blank"
-
   );
 
 }
@@ -4455,9 +3461,7 @@ function sendReview(stars){
 
 function openContactOptions(){
 
-  openModal(
-    "contactModal"
-  );
+  openModal("contactModal");
 
 }
 
@@ -4473,26 +3477,16 @@ function contactMe(){
 
 function openSearch(){
 
-  openModal(
-    "searchModal"
-  );
+  openModal("searchModal");
 
 
-  setTimeout(
+  setTimeout(function(){
 
-    function(){
-
-      document
-      .getElementById(
-        "searchInput"
-      )
+    document
+      .getElementById("searchInput")
       .focus();
 
-    },
-
-    100
-
-  );
+  },100);
 
 }
 
@@ -4500,8 +3494,7 @@ function openSearch(){
 function runSearch(){
 
   const q=
-    document
-    .getElementById(
+    document.getElementById(
       "searchInput"
     )
     .value
@@ -4510,8 +3503,7 @@ function runSearch(){
 
 
   const results=
-    document
-    .getElementById(
+    document.getElementById(
       "searchResults"
     );
 
@@ -4530,27 +3522,21 @@ function runSearch(){
 
   const products=
     Array.from(
-
       document.querySelectorAll(
-        ".product[data-account-id]"
+        ".product[data-account-id],.product[data-firestore-id]"
       )
-
     );
 
 
   const matches=
-    products.filter(
+    products.filter(function(product){
 
-      function(product){
+      return product
+        .innerText
+        .toLowerCase()
+        .includes(q);
 
-        return product
-          .innerText
-          .toLowerCase()
-          .includes(q);
-
-      }
-
-    );
+    });
 
 
   if(!matches.length){
@@ -4566,79 +3552,84 @@ function runSearch(){
 
 
   results.innerHTML=
+    matches.map(function(product){
 
-    matches
-    .map(
+      const title=
+        product.querySelector("h3")
+        ?.innerText ||
+        "Gaming Account";
 
-      function(product){
 
-        return `
+      const price=
+        product.querySelector(".price")
+        ?.innerText ||
+        "₦0";
 
-          <div
-            class="search-result"
-            onclick="
-              goToProduct(
-                '${product.dataset.accountId}'
-              )
-            "
-          >
 
-            ${
-              product
-              .querySelector("h3")
-              .innerText
-            }
+      return `
+        <div
+          class="search-result"
+          onclick="goToProduct(this)"
+        >
+          ${escapeSearch(title)}
+          —
+          ${escapeSearch(price)}
+        </div>
+      `;
 
-            —
+    }).join("");
 
-            ${
-              product
-              .querySelector(".price")
-              .innerText
-            }
 
-          </div>
-
-        `;
-
-      }
-
-    )
-    .join("");
+  window.searchMatches=
+    matches;
 
 }
 
 
-function goToProduct(id){
+function escapeSearch(value){
 
-  closeModal(
-    "searchModal"
-  );
+  return String(value)
+    .replaceAll("&","&amp;")
+    .replaceAll("<","&lt;")
+    .replaceAll(">","&gt;")
+    .replaceAll('"',"&quot;")
+    .replaceAll("'","&#039;");
+
+}
 
 
-  const product=
-    document.querySelector(
+window.goToProduct=
+function(element){
 
-      '[data-account-id="'
-      +id
-      +'"]'
-
+  const results=
+    Array.from(
+      document.querySelectorAll(
+        "#searchResults .search-result"
+      )
     );
 
+  const index=
+    results.indexOf(element);
 
-  if(product){
 
-    product.scrollIntoView({
-
-      behavior:"smooth",
-
-      block:"center"
-
-    });
-
+  if(
+    !window.searchMatches ||
+    !window.searchMatches[index]
+  ){
+    return;
   }
 
-}
+
+  closeModal("searchModal");
+
+
+  window.searchMatches[index]
+    .scrollIntoView({
+      behavior:"smooth",
+      block:"center"
+    });
+
+};
 
 
 /* CART */
@@ -4663,11 +3654,8 @@ function addToCart(
 
 
   cart.push({
-
     name:name,
-
     price:price
-
   });
 
 
@@ -4675,8 +3663,7 @@ function addToCart(
 
 
   showToast(
-    name
-    +" added to cart."
+    name+" added to cart."
   );
 
 }
@@ -4714,72 +3701,53 @@ function renderCart(){
 
 
   list.innerHTML=
+    cart.map(function(item,index){
 
-    cart
-    .map(
-
-      function(item,index){
-
-        const value=
-
-          Number(
-
-            String(item.price)
-            .replace(/[₦,]/g,"")
-
-          )
-
-          ||0;
+      const value=
+        Number(
+          String(item.price)
+          .replace(/[₦,]/g,"")
+        )||0;
 
 
-        sum+=value;
+      sum+=value;
 
 
-        return `
+      return `
 
-          <div class="cart-item">
+        <div class="cart-item">
 
-            <span>
-              ${item.name}
-            </span>
+          <span>
+            ${escapeCart(item.name)}
+          </span>
 
-            <strong class="cart-price">
-              ${item.price}
-            </strong>
+          <strong class="cart-price">
+            ${escapeCart(item.price)}
+          </strong>
 
-            <button
-              onclick="
-                removeCart(${index})
-              "
-              style="
-                background:none;
-                border:0;
-                color:#ff5555;
-                font-size:22px;
-              "
-            >
-              ×
-            </button>
+          <button
+            onclick="removeCart(${index})"
+            style="
+              background:none;
+              border:0;
+              color:#ff5555;
+              font-size:22px;
+            "
+          >
+            ×
+          </button>
 
-          </div>
+        </div>
 
-        `;
+      `;
 
-      }
-
-    )
-    .join("")
-
+    }).join("")
     +
-
     `
 
       <button
         class="yellow-btn"
-        style="
-          width:100%;
-          margin-top:18px
-        "
+        style="width:100%;margin-top:18px"
         onclick="checkout()"
       >
         CHECKOUT ON WHATSAPP
@@ -4795,12 +3763,21 @@ function renderCart(){
 }
 
 
+function escapeCart(value){
+
+  return String(value)
+    .replaceAll("&","&amp;")
+    .replaceAll("<","&lt;")
+    .replaceAll(">","&gt;")
+    .replaceAll('"',"&quot;")
+    .replaceAll("'","&#039;");
+
+}
+
+
 function removeCart(index){
 
-  cart.splice(
-    index,
-    1
-  );
+  cart.splice(index,1);
 
   renderCart();
 
@@ -4811,9 +3788,7 @@ function openCart(){
 
   renderCart();
 
-  openModal(
-    "cartModal"
-  );
+  openModal("cartModal");
 
 }
 
@@ -4824,38 +3799,25 @@ function checkout(){
 
 
   const text=
-
-    "Hello Crispy Shop, "
-    +"I want to buy:\n"
-
+    "Hello Crispy Shop, I want to buy:\n"
     +
+    cart.map(function(item){
 
-    cart
-    .map(
+      return "- "
+        +item.name
+        +" ("
+        +item.price
+        +")";
 
-      function(item){
-
-        return "- "
-          +item.name
-          +" ("
-          +item.price
-          +")";
-
-      }
-
-    )
-    .join("\n");
+    }).join("\n");
 
 
   window.open(
-
     "https://wa.me/"
     +WHATSAPP
     +"?text="
     +encodeURIComponent(text),
-
     "_blank"
-
   );
 
 }
@@ -4870,57 +3832,36 @@ function filterProducts(
 
   document
     .querySelectorAll(".filter")
-    .forEach(
+    .forEach(function(x){
 
-      function(x){
+      x.classList.remove("active");
 
-        x.classList.remove(
-          "active"
-        );
-
-      }
-
-    );
+    });
 
 
-  button.classList.add(
-    "active"
-  );
+  button.classList.add("active");
 
 
   document
     .querySelectorAll(
       ".game-section[data-game]"
     )
-    .forEach(
+    .forEach(function(section){
 
-      function(section){
+      if(
+        game==="all" ||
+        section.dataset.game===game
+      ){
 
-        if(
+        section.style.display="block";
 
-          game==="all"
+      }else{
 
-          ||
-
-          section.dataset.game
-          ===
-          game
-
-        ){
-
-          section.style.display=
-            "block";
-
-        }else{
-
-          section.style.display=
-            "none";
-
-        }
+        section.style.display="none";
 
       }
 
-    );
+    });
 
 }
 
@@ -4947,15 +3888,8 @@ function closeDrawer(){
 
 function drawerOutside(e){
 
-  if(
-    e.target.id
-    ===
-    "drawer"
-  ){
-
+  if(e.target.id==="drawer")
     closeDrawer();
-
-  }
 
 }
 
@@ -4973,41 +3907,24 @@ function showToast(message){
   if(!toast){
 
     toast=
-      document.createElement(
-        "div"
-      );
-
+      document.createElement("div");
 
     toast.id=
       "crispyToast";
 
 
     toast.style.cssText=
-
       `
-
       position:fixed;
-
       z-index:5000;
-
       left:50%;
-
       bottom:25px;
-
-      transform:
-        translateX(-50%);
-
-      padding:
-        13px 20px;
-
+      transform:translateX(-50%);
+      padding:13px 20px;
       background:#ffd400;
-
       color:#050708;
-
       font-weight:bold;
-
       border-radius:4px;
-
       `;
 
 
@@ -5026,100 +3943,45 @@ function showToast(message){
     "block";
 
 
-  setTimeout(
+  setTimeout(function(){
 
-    function(){
+    toast.style.display=
+      "none";
 
-      toast.style.display=
-        "none";
-
-    },
-
-    2500
-
-  );
+  },2500);
 
 }
 
 
-/* NAV ACTIVE */
+/* NAV */
 
 document
 .querySelectorAll("nav a")
-.forEach(
+.forEach(function(link){
 
-  function(link){
-
-    link.addEventListener(
-
-      "click",
-
-      function(){
-
-        document
-          .querySelectorAll(
-            "nav a"
-          )
-          .forEach(
-
-            function(a){
-
-              a.classList.remove(
-                "active"
-              );
-
-            }
-
-          );
-
-
-        this.classList.add(
-          "active"
-        );
-
-      }
-
-    );
-
-  }
-
-);
-
-
-/* ESC KEY */
-
-document.addEventListener(
-  "keydown",
-  function(e){
-
-    if(
-      e.key
-      ===
-      "Escape"
-    ){
+  link.addEventListener(
+    "click",
+    function(){
 
       document
-        .querySelectorAll(
-          ".modal.show"
-        )
-        .forEach(
+        .querySelectorAll("nav a")
+        .forEach(function(a){
 
-          function(modal){
+          a.classList.remove(
+            "active"
+          );
 
-            modal.classList.remove(
-              "show"
-            );
+        });
 
-          }
 
-        );
-
-      closeDrawer();
+      this.classList.add(
+        "active"
+      );
 
     }
+  );
 
-  }
-);
+});
 
 </script>
 
