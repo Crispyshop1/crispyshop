@@ -1,0 +1,4886 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1.0">
+<title>CRISPY SHOP</title>
+
+<style>
+*{box-sizing:border-box;margin:0;padding:0}
+html{scroll-behavior:smooth}
+body{background:#000;color:#fff;font-family:Arial,Helvetica,sans-serif;overflow-x:hidden}
+button,input{font:inherit}
+button{cursor:pointer}
+
+:root{
+--yellow:#ffd400;
+--teal:#00e5d5;
+--teal2:#00aaa5;
+}
+
+.hidden{display:none!important}
+
+/* ================= WELCOME ================= */
+
+#welcomeScreen{
+position:fixed;
+inset:0;
+z-index:9999;
+display:flex;
+background:#000;
+overflow-y:auto;
+overflow-x:hidden;
+-webkit-overflow-scrolling:touch;
+}
+
+.welcome-left{
+width:50%;
+min-height:100vh;
+display:flex;
+align-items:center;
+justify-content:center;
+padding:30px;
+background:#000;
+}
+
+.welcome-picture{
+width:min(420px,90%);
+height:auto;
+max-height:70vh;
+object-fit:contain;
+display:block;
+}
+
+.welcome-right{
+width:50%;
+min-height:100vh;
+display:flex;
+align-items:center;
+justify-content:center;
+padding:35px;
+background:#000;
+}
+
+.welcome-content{
+width:100%;
+max-width:430px;
+margin:auto;
+text-align:center;
+}
+
+.welcome-title{
+color:#fff;
+font-size:16px;
+font-weight:bold;
+letter-spacing:2px;
+margin-bottom:10px;
+}
+
+.welcome-content h1{
+color:var(--yellow);
+font-size:38px;
+font-weight:900;
+margin-bottom:10px;
+}
+
+.welcome-subtitle{
+color:#999;
+font-size:14px;
+line-height:1.6;
+margin-bottom:28px;
+}
+
+.welcome-login,
+.welcome-email{
+display:grid;
+gap:12px;
+}
+
+.welcome-login button,
+.welcome-email button{
+width:100%;
+padding:15px;
+background:#080d0f;
+border:1px solid var(--teal);
+color:#fff;
+font-weight:bold;
+border-radius:5px;
+}
+
+.welcome-login button:hover,
+.welcome-email button:hover{
+border-color:var(--yellow);
+color:var(--yellow);
+}
+
+.guest-btn{
+width:100%;
+padding:15px;
+margin-top:12px;
+background:transparent;
+border:1px solid var(--yellow);
+color:var(--yellow);
+font-weight:900;
+border-radius:5px;
+cursor:pointer;
+}
+
+.guest-btn:hover{
+background:var(--yellow);
+color:#000;
+}
+
+.welcome-email input{
+width:100%;
+padding:14px;
+background:#050505;
+border:1px solid #294448;
+color:#fff;
+outline:none;
+border-radius:5px;
+}
+
+.welcome-email input:focus{
+border-color:var(--teal);
+}
+
+.welcome-main-btn{
+background:var(--yellow)!important;
+color:#000!important;
+border-color:var(--yellow)!important;
+}
+
+.welcome-divider{
+display:flex;
+align-items:center;
+gap:10px;
+color:#555;
+margin:20px 0;
+font-size:12px;
+}
+
+.welcome-divider:before,
+.welcome-divider:after{
+content:"";
+flex:1;
+height:1px;
+background:#222;
+}
+
+.welcome-message{
+min-height:20px;
+margin-top:12px;
+color:var(--yellow);
+font-size:12px;
+}
+
+.welcome-terms{
+color:#666;
+font-size:10px;
+line-height:1.5;
+margin-top:22px;
+}
+
+/* ================= MAIN ================= */
+
+#siteContent{display:none}
+
+header{
+min-height:82px;
+display:flex;
+align-items:center;
+gap:18px;
+padding:10px 28px;
+background:#030506;
+border-bottom:2px solid var(--yellow);
+position:sticky;
+top:0;
+z-index:100;
+}
+
+.logo{
+width:155px;
+height:60px;
+object-fit:contain;
+}
+
+nav{
+display:flex;
+align-items:center;
+justify-content:center;
+gap:28px;
+flex:1;
+}
+
+nav a{
+color:#fff;
+text-decoration:none;
+font-size:13px;
+font-weight:bold;
+padding:20px 0;
+position:relative;
+}
+
+nav a:hover,
+nav a.active{
+color:var(--yellow);
+}
+
+nav a.active:after{
+content:"";
+position:absolute;
+left:0;
+right:0;
+bottom:8px;
+height:3px;
+background:var(--yellow);
+}
+
+.header-actions{
+display:flex;
+align-items:center;
+gap:8px;
+}
+
+.header-icon{
+width:40px;
+height:40px;
+background:none;
+border:1px solid transparent;
+color:var(--teal);
+font-size:22px;
+border-radius:4px;
+}
+
+.header-icon:hover{
+border-color:var(--teal);
+color:var(--yellow);
+}
+
+.account-btn,
+.yellow-btn{
+background:var(--yellow);
+color:#050708;
+border:1px solid var(--yellow);
+padding:12px 17px;
+border-radius:4px;
+font-weight:bold;
+}
+
+.outline-btn{
+background:transparent;
+color:var(--yellow);
+border:1px solid var(--yellow);
+padding:12px 17px;
+border-radius:4px;
+font-weight:bold;
+}
+
+.outline-btn:hover{
+background:var(--yellow);
+color:#000;
+}
+
+.menu-btn{
+display:none;
+background:none;
+border:1px solid var(--yellow);
+color:var(--yellow);
+width:40px;
+height:40px;
+font-size:23px;
+}
+
+/* ================= LAYOUT ================= */
+
+.layout{
+display:grid;
+grid-template-columns:250px 1fr;
+gap:18px;
+padding:18px;
+max-width:1500px;
+margin:auto;
+}
+
+.profile{
+border:1px solid var(--teal);
+background:#05090a;
+padding:18px;
+height:max-content;
+}
+
+.profile-title{
+color:var(--yellow);
+font-size:14px;
+font-weight:bold;
+margin-bottom:18px;
+}
+
+.profile-logo{
+width:175px;
+height:175px;
+margin:auto;
+display:block;
+object-fit:contain;
+border-radius:50%;
+border:3px solid var(--yellow);
+background:#000;
+padding:10px;
+}
+
+.profile-level{
+color:var(--teal);
+font-weight:bold;
+margin-top:20px;
+}
+
+.progress{
+height:5px;
+background:#20282b;
+margin-top:10px;
+}
+
+.progress span{
+display:block;
+width:68%;
+height:100%;
+background:var(--yellow);
+}
+
+.profile-section{
+border-top:1px solid #153f40;
+margin-top:20px;
+padding-top:18px;
+}
+
+.profile-section h3{
+color:var(--teal);
+font-size:14px;
+margin-bottom:12px;
+}
+
+.profile-section p{
+color:#c0c7c9;
+margin:9px 0;
+font-size:13px;
+line-height:1.5;
+}
+
+.profile-section b{
+float:right;
+color:#fff;
+}
+
+.stars{
+color:var(--yellow);
+}
+
+.contact{
+width:100%;
+padding:12px;
+margin-top:12px;
+background:transparent;
+border:1px solid var(--yellow);
+color:var(--yellow);
+font-weight:bold;
+}
+
+/* ================= HERO ================= */
+
+.hero{
+position:relative;
+width:100%;
+min-height:260px;
+border:1px solid var(--teal);
+overflow:hidden;
+background:#000;
+display:flex;
+align-items:center;
+justify-content:center;
+text-align:center;
+padding:30px;
+}
+
+.hero-welcome h2{
+color:#fff;
+font-size:30px;
+margin-bottom:8px;
+}
+
+.hero-welcome strong{
+color:var(--yellow);
+font-size:38px;
+}
+
+.hero-welcome p{
+color:#999;
+margin-top:10px;
+}
+
+/* ================= TRUST ================= */
+
+.trust{
+display:grid;
+grid-template-columns:repeat(3,1fr);
+border:1px solid var(--teal);
+border-top:0;
+}
+
+.trust-box{
+padding:18px;
+text-align:center;
+border-right:1px solid #153f40;
+}
+
+.trust-box:last-child{
+border-right:0;
+}
+
+.trust-icon{
+color:var(--yellow);
+font-size:25px;
+}
+
+.trust-box h3{
+color:var(--teal);
+font-size:14px;
+margin-top:5px;
+}
+
+.trust-box p{
+color:#999;
+font-size:12px;
+margin-top:5px;
+}
+
+/* ================= ALL CATEGORY CHOICES ================= */
+.all-choices{display:none;grid-template-columns:1fr;gap:14px;margin:22px auto 0;max-width:380px}
+.all-choices.show{display:grid}
+.all-choice{width:100%;min-height:0;height:82px;padding:14px 20px;background:#071619;color:#fff;border:1px solid var(--teal);font-weight:900;font-size:17px;border-radius:6px;box-shadow:none}
+.all-choice:hover{border-color:var(--yellow);color:var(--yellow)}
+@media(max-width:600px){.all-choices{max-width:330px;margin-left:auto;margin-right:auto}.all-choice{height:72px;font-size:16px}}
+
+/* ================= FILTERS ================= */
+
+.filters{display:none !important;}
+.legacy-filters{display:none !important;}
+/*
+display:flex;
+gap:10px;
+overflow-x:auto;
+padding:20px 0 5px;
+}
+
+.filter{
+white-space:nowrap;
+background:#071114;
+color:var(--teal);
+border:1px solid var(--teal);
+padding:11px 17px;
+border-radius:4px;
+font-weight:bold;
+}
+
+.filter.active{
+background:var(--yellow);
+border-color:var(--yellow);
+color:#000;
+}
+
+/* ================= PRODUCTS ================= */
+
+.game-section{
+scroll-margin-top:105px;
+margin-top:25px;
+}
+
+.section-heading{
+display:flex;
+align-items:center;
+justify-content:space-between;
+margin-bottom:12px;
+}
+
+.section-heading h2{
+font-size:22px;
+}
+
+.section-heading h2:after{
+content:"";
+display:block;
+width:40px;
+height:3px;
+background:var(--yellow);
+margin-top:6px;
+}
+
+.products{
+display:grid;
+grid-template-columns:repeat(4,1fr);
+gap:12px;
+}
+
+.product{
+position:relative;
+border:1px solid var(--teal2);
+background:#070b0d;
+padding:14px;
+transition:.2s;
+}
+
+.product:hover{
+border-color:var(--yellow);
+transform:translateY(-3px);
+}
+
+.available{
+position:absolute;
+top:10px;
+right:10px;
+background:var(--yellow);
+color:#000;
+padding:6px 8px;
+font-size:10px;
+font-weight:bold;
+}
+
+.heart{
+color:#fff;
+font-size:20px;
+}
+
+.account-photo{
+width:100%;
+height:180px;
+object-fit:cover;
+display:block;
+margin:10px 0 12px;
+border:1px solid #153f40;
+background:#000;
+}
+
+.topup-photo{
+width:100%;
+max-width:100%;
+height:auto;
+max-height:260px;
+object-fit:contain;
+display:block;
+margin:0 0 16px;
+border:1px solid #153f40;
+background:#000;
+}
+
+.game{
+color:#fff;
+font-size:22px;
+font-weight:900;
+font-style:italic;
+margin:22px 0 12px;
+}
+
+.product h3{
+font-size:16px;
+margin-bottom:8px;
+}
+
+.details{
+color:var(--teal);
+font-size:13px;
+margin-bottom:8px;
+}
+
+.description{
+color:#999;
+font-size:12px;
+min-height:34px;
+}
+
+.price{
+color:var(--yellow);
+font-size:20px;
+font-weight:bold;
+margin-top:15px;
+}
+
+.details-btn{
+width:100%;
+margin-top:12px;
+padding:10px;
+background:transparent;
+border:1px solid var(--yellow);
+color:var(--yellow);
+font-weight:bold;
+}
+
+.details-btn:disabled{
+opacity:.5;
+cursor:not-allowed;
+}
+
+/* ================= FEATURES ================= */
+
+.features{
+display:grid;
+grid-template-columns:repeat(4,1fr);
+margin-top:25px;
+border:1px solid var(--teal);
+}
+
+.feature{
+padding:18px;
+text-align:center;
+border-right:1px solid #153f40;
+}
+
+.feature:last-child{
+border-right:0;
+}
+
+.feature-icon{
+color:var(--teal);
+font-size:27px;
+}
+
+.feature h3{
+margin-top:8px;
+font-size:14px;
+}
+
+.feature p{
+color:#999;
+font-size:12px;
+margin-top:5px;
+}
+
+/* ================= FOOTER ================= */
+
+footer{
+border-top:2px solid var(--yellow);
+margin-top:18px;
+padding:20px 5px;
+display:flex;
+align-items:center;
+justify-content:space-between;
+gap:15px;
+}
+
+.footer-logo{
+width:120px;
+}
+
+.socials{
+display:flex;
+gap:18px;
+}
+
+.socials a{
+color:#fff;
+text-decoration:none;
+font-weight:bold;
+}
+
+.socials a:hover{
+color:var(--yellow);
+}
+
+.slogan{
+color:var(--yellow);
+font-weight:bold;
+}
+
+/* ================= MODALS ================= */
+
+.modal{
+display:none;
+position:fixed;
+inset:0;
+z-index:2000;
+background:rgba(0,0,0,.88);
+align-items:center;
+justify-content:center;
+padding:18px;
+}
+
+.modal.show{
+display:flex;
+}
+
+.modal-box{
+width:100%;
+max-width:720px;
+max-height:90vh;
+overflow:auto;
+background:#061012;
+border:1px solid var(--teal);
+padding:24px;
+}
+
+.modal-box h2{
+color:var(--yellow);
+margin-bottom:8px;
+}
+
+.modal-box>p{
+color:#aaa;
+margin-bottom:18px;
+}
+
+.modal-close{
+float:right;
+background:transparent;
+color:#fff;
+border:1px solid #555;
+width:34px;
+height:34px;
+font-size:22px;
+}
+
+.choice-grid{
+display:grid;
+grid-template-columns:repeat(5,1fr);
+gap:10px;
+}
+
+.choice{
+min-height:120px;
+background:#071619;
+color:#fff;
+border:1px solid var(--teal);
+padding:15px 8px;
+display:flex;
+flex-direction:column;
+align-items:center;
+justify-content:center;
+gap:10px;
+font-weight:900;
+}
+
+.choice:hover{
+border-color:var(--yellow);
+color:var(--yellow);
+}
+
+.choice-icon{
+font-size:28px;
+}
+
+.contact-options{
+display:grid;
+grid-template-columns:repeat(2,1fr);
+gap:12px;
+}
+
+.contact-option{
+display:block;
+padding:18px;
+text-align:center;
+text-decoration:none;
+color:#fff;
+border:1px solid var(--teal);
+background:#071619;
+font-weight:bold;
+}
+
+.contact-option:hover{
+border-color:var(--yellow);
+color:var(--yellow);
+}
+
+.form-input{
+width:100%;
+padding:13px;
+margin-bottom:12px;
+background:#020506;
+border:1px solid var(--teal);
+color:#fff;
+outline:none;
+}
+
+.form-input:focus{
+border-color:var(--yellow);
+}
+
+.full-btn{
+width:100%;
+margin-top:4px;
+}
+
+.social-login{
+display:grid;
+grid-template-columns:repeat(2,1fr);
+gap:8px;
+margin:15px 0;
+}
+
+.social-login button{
+padding:12px 5px;
+background:#071619;
+color:#fff;
+border:1px solid var(--teal);
+font-weight:bold;
+}
+
+.search-result{
+padding:13px;
+border-bottom:1px solid #173d3d;
+cursor:pointer;
+}
+
+.search-result:hover{
+color:var(--yellow);
+}
+
+.cart-item{
+display:flex;
+align-items:center;
+justify-content:space-between;
+gap:12px;
+padding:12px 0;
+border-bottom:1px solid #173d3d;
+}
+
+.cart-price,
+.cart-total{
+color:var(--yellow);
+}
+
+.cart-total{
+font-size:20px;
+font-weight:bold;
+margin-top:18px;
+}
+
+.empty{
+color:#999;
+text-align:center;
+padding:30px;
+}
+
+/* ================= CUSTOMER ================= */
+
+.customer-profile{
+display:flex;
+align-items:center;
+gap:20px;
+padding:20px;
+margin:15px 0 20px;
+border:1px solid var(--teal);
+background:#05090a;
+}
+
+.customer-photo-area{
+width:145px;
+text-align:center;
+flex-shrink:0;
+}
+
+.customer-photo-circle{
+width:120px;
+height:120px;
+margin:auto;
+border-radius:50%;
+overflow:hidden;
+display:grid;
+place-items:center;
+background:#071619;
+border:3px solid var(--yellow);
+color:var(--yellow);
+font-size:45px;
+}
+
+.customer-photo-circle img{
+width:100%;
+height:100%;
+object-fit:cover;
+}
+
+.upload-photo-label{
+display:inline-block;
+margin-top:12px;
+padding:9px 10px;
+font-size:11px;
+cursor:pointer;
+}
+
+.customer-details h3{
+color:var(--yellow);
+margin-bottom:8px;
+font-size:20px;
+}
+
+.customer-details p{
+color:#aaa;
+font-size:13px;
+}
+
+.customer-badge{
+display:inline-block;
+margin-top:10px;
+padding:6px 9px;
+color:#21d86b;
+border:1px solid #21d86b;
+font-size:10px;
+font-weight:bold;
+}
+
+.customer-options{
+display:grid;
+grid-template-columns:repeat(2,1fr);
+gap:10px;
+}
+
+.customer-option{
+min-height:80px;
+background:#071619;
+border:1px solid var(--teal);
+color:#fff;
+font-weight:bold;
+font-size:13px;
+}
+
+.customer-option:hover{
+border-color:var(--yellow);
+color:var(--yellow);
+}
+
+.logout-option{
+color:#ff5555;
+border-color:#ff5555;
+}
+
+.customer-info{
+margin-top:20px;
+padding-top:18px;
+border-top:1px solid #153f40;
+}
+
+.info-card{
+margin-top:15px;
+padding:18px;
+background:#05090a;
+border:1px solid var(--teal);
+}
+
+.info-card h3{
+color:var(--yellow);
+margin-bottom:10px;
+}
+
+.info-card p{
+color:#aaa;
+margin:8px 0;
+}
+
+.message{
+color:var(--yellow);
+margin-top:12px;
+text-align:center;
+}
+
+/* ================= ACCOUNT DETAILS ================= */
+
+.account-detail-photo{
+width:100%;
+max-height:360px;
+object-fit:contain;
+background:#000;
+border:1px solid #153f40;
+margin:12px 0 18px;
+}
+
+.account-detail-grid{
+display:grid;
+grid-template-columns:1fr 1fr;
+gap:10px;
+margin:15px 0;
+}
+
+.detail-card{
+background:#05090a;
+border:1px solid #153f40;
+padding:14px;
+}
+
+.detail-card span{
+display:block;
+color:#888;
+font-size:11px;
+margin-bottom:5px;
+}
+
+.detail-card strong{
+color:#fff;
+}
+
+.detail-description{
+color:#aaa;
+line-height:1.6;
+margin:15px 0;
+}
+
+.detail-price{
+font-size:26px;
+color:var(--yellow);
+font-weight:bold;
+margin:15px 0;
+}
+
+/* ================= DRAWER ================= */
+
+.mobile-drawer{
+display:none;
+position:fixed;
+inset:0;
+z-index:3000;
+background:rgba(0,0,0,.8);
+}
+
+.mobile-drawer.open{
+display:block;
+}
+
+.drawer-panel{
+width:min(330px,86vw);
+height:100%;
+overflow:auto;
+background:#05090a;
+border-right:2px solid var(--yellow);
+padding:14px;
+}
+
+.drawer-head{
+display:flex;
+align-items:center;
+justify-content:space-between;
+margin-bottom:15px;
+}
+
+.drawer-head strong{
+color:var(--yellow);
+}
+
+.drawer-close{
+background:none;
+border:1px solid var(--yellow);
+color:var(--yellow);
+width:38px;
+height:38px;
+}
+
+/* ================= MOBILE ================= */
+
+@media(max-width:1100px){
+.products{
+grid-template-columns:repeat(3,1fr);
+}
+}
+
+@media(max-width:850px){
+
+.welcome-left{
+width:42%;
+padding:10px;
+}
+
+.welcome-right{
+width:58%;
+padding:20px;
+}
+
+.welcome-content h1{
+font-size:28px;
+}
+
+nav{
+display:none;
+}
+
+.menu-btn{
+display:block;
+}
+
+.header-actions{
+margin-left:auto;
+}
+
+.layout{
+grid-template-columns:1fr;
+padding:10px;
+}
+
+.layout>.profile{
+display:none;
+}
+
+.products{
+grid-template-columns:repeat(2,1fr);
+}
+
+}
+
+@media(max-width:600px){
+
+#welcomeScreen{
+position:fixed;
+inset:0;
+display:block;
+height:100vh;
+overflow-y:auto;
+overflow-x:hidden;
+-webkit-overflow-scrolling:touch;
+}
+
+.welcome-left{
+width:100%;
+height:auto;
+min-height:300px;
+padding:25px 10px;
+}
+
+.welcome-picture{
+width:85%;
+max-height:300px;
+}
+
+.welcome-right{
+width:100%;
+min-height:650px;
+padding:40px 20px 70px;
+display:flex;
+align-items:center;
+justify-content:center;
+}
+
+.welcome-content{
+width:100%;
+max-width:430px;
+margin:auto;
+text-align:center;
+}
+
+.welcome-content h1{
+font-size:30px;
+}
+
+.logo{
+width:120px;
+}
+
+.account-btn{
+display:none;
+}
+
+.hero{
+min-height:220px;
+}
+
+.trust{
+grid-template-columns:1fr;
+}
+
+.trust-box{
+border-right:0;
+border-bottom:1px solid #153f40;
+}
+
+.products,
+.features{
+grid-template-columns:1fr;
+}
+
+.feature{
+border-right:0;
+border-bottom:1px solid #153f40;
+}
+
+.choice-grid{
+grid-template-columns:1fr 1fr;
+}
+
+.contact-options,
+.customer-options,
+.social-login{
+grid-template-columns:1fr;
+}
+
+.customer-profile{
+flex-direction:column;
+text-align:center;
+}
+
+.account-detail-grid{
+grid-template-columns:1fr;
+}
+
+footer{
+flex-direction:column;
+text-align:center;
+}
+
+}
+
+.empty-shop-message{
+width:100%;
+padding:28px 18px;
+text-align:center;
+color:#888;
+border:1px dashed #17484a;
+background:#05090a;
+font-size:14px;
+}
+.empty-shop-message strong{
+color:#fff;
+display:block;
+margin-bottom:6px;
+}
+
+
+#accounts{display:none!important;}
+
+/* ===== CRISPY SHOP FINAL MOBILE DESIGN ===== */
+.profile{display:none!important}
+.layout{display:block!important;overflow-x:hidden!important}
+main{width:100%!important}
+.hero{
+  min-height:190px!important;
+  justify-content:flex-start!important;
+  text-align:left!important;
+  padding:28px 22px!important;
+  margin:0 0 18px!important;
+  border:1px solid var(--teal)!important;
+}
+.hero-welcome h2{font-size:24px!important;margin-bottom:6px!important}
+.hero-welcome strong{font-size:38px!important;display:block}
+.hero-welcome p{font-size:15px!important;margin-top:10px!important}
+.hero-welcome p::after{content:"";display:block}
+.all-choices{
+  display:grid!important;
+  grid-template-columns:1fr 1fr!important;
+  gap:14px!important;
+  max-width:none!important;
+  margin:0 0 24px!important;
+}
+.all-choice{
+  height:145px!important;
+  min-height:145px!important;
+  padding:22px 18px!important;
+  text-align:left!important;
+  border:1px solid var(--teal)!important;
+  border-radius:10px!important;
+  background:#050a0c!important;
+  font-size:21px!important;
+  display:flex!important;
+  flex-direction:column!important;
+  justify-content:center!important;
+  gap:8px!important;
+}
+.all-choice:first-child{border-color:var(--teal)!important}
+.all-choice:nth-child(2){border-color:var(--yellow)!important;color:var(--yellow)!important}
+.all-choice:first-child::after{
+  content:"Premium gaming accounts";
+  color:#c7c7c7;font-size:13px;font-weight:500;
+}
+.all-choice:nth-child(2)::after{
+  content:"Game currency topups";
+  color:#c7c7c7;font-size:13px;font-weight:500;
+}
+.home-categories{
+  display:none!important;
+  margin-top:6px;
+}
+.home-categories-title{
+  color:#fff;
+  font-size:20px;
+  font-weight:900;
+  text-align:center;
+  margin:14px 0 10px;
+  border-top:1px solid var(--teal);
+  padding-top:12px;
+}
+.home-category{
+  width:100%;
+  min-height:58px;
+  margin:7px 0;
+  padding:12px 16px;
+  background:#050a0c;
+  color:#fff;
+  border:1px solid var(--teal);
+  border-radius:7px;
+  display:flex;
+  align-items:center;
+  justify-content:space-between;
+  font-size:17px;
+  font-weight:900;
+  text-align:left;
+}
+.home-category .cat-left{display:flex;align-items:center;gap:12px}
+.home-category .cat-icon{
+  width:54px;height:38px;object-fit:contain;display:block;
+  background:#020506;border-radius:4px;
+}
+.home-category .chev{color:var(--teal);font-size:26px}
+.game-section{
+  display:none!important;
+  margin-top:0!important;
+  padding-top:0!important;
+}
+body.product-page .game-section.active-page{
+  display:block!important;
+}
+body.product-page .hero,
+body.product-page .all-choices,
+body.product-page .home-categories,
+body.product-page .features{
+  display:none!important;
+}
+body.product-page .section-heading{
+  padding:14px 4px 12px;
+  margin-bottom:12px;
+  border-top:1px solid var(--yellow);
+  border-bottom:1px solid var(--teal);
+}
+body.product-page .section-heading h2{font-size:22px!important}
+.page-back{
+  display:block;
+  width:100%;
+  padding:10px 0 14px;
+  color:var(--yellow);
+  background:none;
+  border:0;
+  text-align:left;
+  font-size:17px;
+  font-weight:900;
+}
+.products{grid-template-columns:1fr!important;gap:14px!important}
+.product{
+  border-radius:9px!important;
+  padding:14px!important;
+  background:#050a0c!important;
+}
+.account-photo{height:150px!important;object-fit:cover!important;border-radius:7px}
+.topup-photo{height:170px!important;max-height:170px!important;object-fit:contain!important;border-radius:7px}
+.product-actions{
+  display:grid!important;
+  grid-template-columns:1fr 1fr!important;
+  gap:10px!important;
+  margin-top:10px!important;
+}
+.product-actions button{
+  margin-top:0!important;
+  min-height:48px!important;
+}
+.cart-btn{
+  border:1px solid var(--yellow)!important;
+  color:var(--yellow)!important;
+  background:transparent!important;
+}
+.details-btn{
+  border:1px solid var(--teal)!important;
+  color:var(--teal)!important;
+}
+@media(max-width:600px){
+  .all-choice{height:128px!important;min-height:128px!important;font-size:19px!important}
+  .home-category{min-height:58px}
+}
+
+
+/* ===== VERTICAL-ONLY LAYOUT ===== */
+html, body{
+  width:100%;
+  max-width:100%;
+  overflow-x:hidden!important;
+}
+*{
+  max-width:100%;
+}
+.all-choices{
+  grid-template-columns:1fr!important;
+  width:100%!important;
+}
+.home-category{
+  width:100%!important;
+}
+.products{
+  grid-template-columns:1fr!important;
+  width:100%!important;
+}
+.game-section{
+  width:100%!important;
+  overflow-x:hidden!important;
+}
+.product{
+  width:100%!important;
+  min-width:0!important;
+}
+.product img,
+.account-photo,
+.topup-photo{
+  max-width:100%!important;
+}
+
+
+/* ===== ROBUST PAGE NAVIGATION ===== */
+body.product-page .hero,
+body.product-page .all-choices,
+body.product-page .home-categories,
+body.product-page .features{display:none!important}
+body.product-page .game-section{display:none!important}
+body.product-page .game-section.active-page{display:block!important}
+
+
+/* ===== FREE FIRE CATALOG — SAMPLE STYLE ===== */
+.catalog-page{display:none;width:min(760px,94%);margin:0 auto 50px}
+body.catalog-mode .hero,body.catalog-mode .all-choices,body.catalog-mode .home-categories,body.catalog-mode .game-section,body.catalog-mode .features,body.catalog-mode footer{display:none!important}
+body.catalog-mode .catalog-page{display:block!important}
+.catalog-top{display:flex;align-items:center;gap:14px;padding:12px 0;border-bottom:1px solid var(--yellow);margin-bottom:12px}
+.catalog-back{background:none;border:0;color:var(--yellow);font-size:18px;font-weight:900;padding:8px 4px}
+.catalog-title{flex:1}.catalog-title h1{font-size:25px;color:var(--yellow);text-align:center}.catalog-title p{display:none}
+.catalog-tools{display:flex;gap:10px;margin-bottom:16px}.catalog-tools button,.catalog-tools select{min-height:42px;border:1px solid var(--teal);background:#050a0c;color:var(--teal);border-radius:6px;padding:8px 12px;font-weight:900}.catalog-tools button:last-child{border-color:var(--yellow);color:var(--yellow)}
+.catalog-grid{display:grid;grid-template-columns:1fr;gap:14px}
+.catalog-card{display:grid;grid-template-columns:145px 1fr;gap:14px;align-items:center;background:#050a0c;border:1px solid var(--teal);border-radius:12px;padding:12px;min-width:0}
+.catalog-card img,.catalog-placeholder{width:145px;height:145px;object-fit:cover;border-radius:8px;background:#020506;border:1px solid #173e3e;grid-row:1 / span 3}
+.catalog-placeholder{display:flex;align-items:center;justify-content:center;font-size:52px}
+.catalog-info h3{font-size:20px;margin:0 0 6px;color:#fff}.catalog-info .available{color:var(--teal);font-size:13px;font-weight:900;margin-bottom:8px}.catalog-info p{color:#aaa;line-height:1.45;font-size:14px;margin:0}.catalog-price{color:var(--yellow);font-size:22px;font-weight:900;margin:10px 0}
+.catalog-actions{display:grid;grid-template-columns:1fr 1fr;gap:9px}.catalog-actions button{min-height:43px;border-radius:6px;font-weight:900;border:1px solid var(--teal);background:transparent;color:var(--teal)}.catalog-actions .add{border-color:var(--yellow);color:var(--yellow)}
+.catalog-empty{border:1px dashed #155353;padding:38px 18px;text-align:center;color:#aaa}.catalog-empty strong{display:block;color:#fff;margin-bottom:6px}
+.detail-page{display:none;width:min(760px,94%);margin:0 auto 50px}.detail-card{border:1px solid var(--teal);border-radius:12px;background:#050a0c;padding:14px}.detail-card img{width:100%;max-height:430px;object-fit:contain;border-radius:8px;background:#020506;margin-bottom:14px}.detail-card h1{font-size:26px;margin-bottom:8px}.detail-meta{color:#aaa;line-height:1.7}.detail-price{font-size:28px;color:var(--yellow);font-weight:900;margin:14px 0}.detail-buy{width:100%;min-height:50px;border:1px solid var(--yellow);border-radius:7px;background:var(--yellow);color:#000;font-weight:900}
+@media(max-width:600px){.catalog-page{width:94%}.catalog-title h1{font-size:21px}.catalog-card{grid-template-columns:105px 1fr;gap:11px}.catalog-card img,.catalog-placeholder{width:105px;height:115px}.catalog-info h3{font-size:17px}.catalog-actions{grid-column:1 / -1}.catalog-price{font-size:21px}}
+
+
+/* ===== TOP-UP DETAIL PAGE — INSPO STYLE ===== */
+.topup-detail-page{display:none;width:min(790px,94%);margin:0 auto 55px}
+body.topup-detail-mode .hero,body.topup-detail-mode .all-choices,body.topup-detail-mode .home-categories,body.topup-detail-mode .features,body.topup-detail-mode .game-section,body.topup-detail-mode .catalog-page,body.topup-detail-mode .detail-page,body.topup-detail-mode footer{display:none!important}
+body.topup-detail-mode .topup-detail-page{display:block!important}
+.topup-detail-back{display:block;width:100%;padding:18px 0 20px;background:none;border:0;border-bottom:1px solid var(--yellow);color:var(--yellow);text-align:left;font-size:18px;font-weight:900;letter-spacing:.2px}
+.topup-detail-heading{padding:25px 8px 18px;border-bottom:1px solid var(--teal)}
+.topup-detail-heading h1{margin:0;color:#fff;font-size:30px;font-weight:900}
+.topup-detail-heading span{display:block;width:48px;height:4px;background:var(--yellow);margin-top:12px}
+.topup-detail-card{margin-top:20px;border:2px solid var(--yellow);border-radius:18px;background:#050a0c;padding:30px 28px;box-shadow:0 0 18px rgba(255,210,0,.07)}
+.topup-detail-photo{width:100%;max-height:360px;object-fit:contain;border-radius:10px;background:#020506;border:1px solid #163d3d;margin-bottom:24px}
+.topup-detail-game{font-size:34px;font-style:italic;color:#fff;margin:0 0 14px}
+.topup-detail-package{font-size:25px;color:#fff;font-weight:900;margin-bottom:14px}
+.topup-detail-description{font-size:17px;color:#aaa;line-height:1.55;margin-bottom:18px}
+.topup-detail-price{font-size:32px;color:var(--yellow);font-weight:900;margin:22px 0}
+.topup-detail-status{color:#00e676;font-weight:900;font-size:14px;margin-bottom:12px}
+.topup-detail-actions{display:grid;grid-template-columns:1fr 1fr;gap:14px}
+.topup-detail-actions button{min-height:55px;border-radius:7px;font-size:16px;font-weight:900;border:1px solid var(--teal);background:transparent;color:var(--teal)}
+.topup-detail-actions .buy{border-color:var(--yellow);background:var(--yellow);color:#000}
+@media(max-width:600px){.topup-detail-page{width:94%}.topup-detail-heading h1{font-size:25px}.topup-detail-card{padding:24px 18px}.topup-detail-game{font-size:29px}.topup-detail-package{font-size:22px}.topup-detail-actions{grid-template-columns:1fr}.topup-detail-photo{max-height:300px}}
+
+
+/* ===== INSPO-MATCHED CUSTOMER NAVIGATION ===== */
+.gaming-accounts-page{display:none;width:min(760px,94%);margin:0 auto 55px}
+body.gaming-accounts-mode .hero,body.gaming-accounts-mode .all-choices,body.gaming-accounts-mode .home-categories,body.gaming-accounts-mode .game-section,body.gaming-accounts-mode .features,body.gaming-accounts-mode .catalog-page,body.gaming-accounts-mode .detail-page,body.gaming-accounts-mode .topup-detail-page,body.gaming-accounts-mode footer{display:none!important}
+body.gaming-accounts-mode .gaming-accounts-page{display:block!important}
+.inspo-page-head{display:flex;align-items:center;gap:12px;padding:13px 0 14px;border-bottom:1px solid var(--yellow);margin-bottom:18px}
+.inspo-back{background:none;border:0;color:var(--teal);font-size:30px;font-weight:900;padding:0 4px;line-height:1}
+.inspo-head-copy{flex:1}.inspo-head-copy h1{font-size:25px;color:#fff;margin:0}.inspo-head-copy p{color:#aaa;margin:6px 0 0;font-size:14px}
+.inspo-game-card{display:grid;grid-template-columns:96px 1fr 28px;gap:16px;align-items:center;padding:15px;margin:0 0 14px;border:1px solid var(--teal);border-radius:12px;background:#050a0c;box-shadow:0 0 13px rgba(0,229,229,.04);text-align:left}
+.inspo-game-icon{width:96px;height:96px;border-radius:8px;background:#020506;border:1px solid #163c3c;display:flex;align-items:center;justify-content:center;font-size:52px;overflow:hidden}
+.inspo-game-icon img{width:100%;height:100%;object-fit:contain}
+.inspo-game-copy h2{font-size:20px;margin:0 0 7px}.inspo-game-copy p{color:#aaa;margin:0 0 10px;font-size:14px}.inspo-view{color:var(--teal);font-weight:900;font-size:15px}
+.inspo-game-card .arrow{color:var(--teal);font-size:32px}
+/* Match the Free Fire account screenshot: compact horizontal cards, stacked vertically. */
+body.catalog-mode .catalog-page{width:min(790px,94%)}
+body.catalog-mode .catalog-top{padding:12px 0 14px;border-bottom:1px solid var(--yellow);margin-bottom:14px}
+body.catalog-mode .catalog-title h1{text-align:left;font-size:24px;color:#fff}
+body.catalog-mode .catalog-title p{display:block;color:#aaa;margin-top:5px;font-size:13px}
+body.catalog-mode .catalog-card{grid-template-columns:105px 1fr;gap:14px;padding:13px;border-radius:12px}
+body.catalog-mode .catalog-card img,body.catalog-mode .catalog-placeholder{width:105px;height:105px;grid-row:1 / span 3}
+body.catalog-mode .catalog-info h3{font-size:18px}
+body.catalog-mode .catalog-info p{font-size:13px}
+body.catalog-mode .catalog-price{font-size:22px;margin:8px 0}
+body.catalog-mode .catalog-actions{display:grid;grid-template-columns:1fr 1fr;gap:9px}
+body.catalog-mode .catalog-actions button{min-height:43px}
+body.catalog-mode .catalog-tools{display:grid;grid-template-columns:1fr 1.5fr 1fr}
+@media(max-width:600px){.gaming-accounts-page{width:94%}.inspo-game-card{grid-template-columns:82px 1fr 20px;gap:12px;padding:12px}.inspo-game-icon{width:82px;height:82px;font-size:42px}.inspo-game-copy h2{font-size:18px}.inspo-game-copy p{font-size:13px}.inspo-game-card .arrow{font-size:28px}body.catalog-mode .catalog-tools{grid-template-columns:1fr 1fr 1fr}body.catalog-mode .catalog-card{grid-template-columns:92px 1fr}.catalog-card img,.catalog-placeholder{width:92px!important;height:105px!important}}
+
+</style>
+</head>
+
+<body>
+
+<!-- ================= WELCOME ================= -->
+
+<section id="welcomeScreen">
+
+<div class="welcome-left">
+
+<img
+src="logo.png.jpeg"
+class="welcome-picture"
+alt="CRISPY SHOP"
+>
+
+</div>
+
+<div class="welcome-right">
+
+<div class="welcome-content">
+
+<div class="welcome-title">
+WELCOME TO
+</div>
+
+<h1>
+CRISPY SHOP
+</h1>
+
+<p class="welcome-subtitle">
+Shop the best gaming accounts.
+<br>
+Secure. Fast. Trusted.
+</p>
+
+<div class="welcome-login">
+
+<button onclick="socialLogin('google')">
+G&nbsp;&nbsp; CONTINUE WITH GOOGLE
+</button>
+
+<button onclick="socialLogin('apple')">
+&nbsp;&nbsp; CONTINUE WITH APPLE
+</button>
+
+</div>
+
+<div class="welcome-divider">
+OR
+</div>
+
+<div class="welcome-email">
+
+<input
+id="welcomeEmail"
+type="email"
+placeholder="Email address"
+autocomplete="email"
+>
+
+<input
+id="welcomePassword"
+type="password"
+placeholder="Password"
+autocomplete="current-password"
+>
+
+<button
+class="welcome-main-btn"
+onclick="welcomeLogin()"
+>
+LOGIN
+</button>
+
+<button onclick="welcomeSignup()">
+CREATE ACCOUNT
+</button>
+
+<button onclick="welcomeResetPassword()">
+FORGOT PASSWORD?
+</button>
+
+<button class="guest-btn" onclick="continueAsGuest()">
+CONTINUE AS GUEST
+</button>
+
+</div>
+
+<div
+id="welcomeMessage"
+class="welcome-message"
+></div>
+
+<div class="welcome-terms">
+By continuing, you agree to use Crispy Shop responsibly.
+</div>
+
+</div>
+
+</div>
+
+</section>
+
+
+<!-- ================= MAIN SITE ================= -->
+
+<div id="siteContent">
+
+<header>
+
+<button
+class="menu-btn"
+onclick="openDrawer()"
+>
+☰
+</button>
+
+<img
+src="logo.png.jpeg"
+class="logo"
+alt="CRISPY SHOP"
+>
+
+<nav>
+
+<a
+href="#home"
+class="active"
+>
+HOME
+</a>
+
+<a
+href="#accounts"
+onclick="openFreeFireCatalog();return false;"
+>
+ACCOUNTS
+</a>
+
+<a
+href="#topup"
+onclick="openTopup();return false;"
+>
+TOP UP
+</a>
+
+<a
+href="#reviews"
+onclick="openReviews();return false;"
+>
+REVIEWS
+</a>
+
+</nav>
+
+<div class="header-actions">
+
+<button
+class="header-icon"
+onclick="openSearch()"
+>
+⌕
+</button>
+
+<button
+class="header-icon"
+onclick="openCart()"
+>
+🛒
+</button>
+
+<button
+class="account-btn"
+onclick="openCustomerAccount()"
+>
+♙ MY ACCOUNT
+</button>
+
+</div>
+
+</header>
+
+
+<!-- MOBILE DRAWER -->
+
+<div
+class="mobile-drawer"
+id="drawer"
+onclick="drawerOutside(event)"
+>
+
+<div class="drawer-panel">
+
+<div class="drawer-head">
+
+<strong>
+CRISPY SHOP
+</strong>
+
+<button
+class="drawer-close"
+onclick="closeDrawer()"
+>
+×
+</button>
+
+</div>
+
+<button
+class="contact"
+onclick="openCustomerAccount();closeDrawer()"
+>
+♙ MY ACCOUNT
+</button>
+
+<button
+class="contact"
+onclick="openAccountChoices();closeDrawer()"
+>
+🎮 ACCOUNTS
+</button>
+
+<button
+class="contact"
+onclick="openTopup();closeDrawer()"
+>
+💎 TOP UP
+</button>
+
+<button
+class="contact"
+onclick="openReviews();closeDrawer()"
+>
+⭐ REVIEWS
+</button>
+
+<button
+class="contact"
+onclick="contactMe();closeDrawer()"
+>
+💬 CONTACT ME
+</button>
+
+</div>
+
+</div>
+
+
+<div
+class="layout"
+id="home"
+>
+
+<!-- PROFILE -->
+
+<aside class="profile">
+
+<div class="profile-title">
+MY PROFILE 👑
+</div>
+
+<img
+src="logo.png.jpeg"
+class="profile-logo"
+alt="CRISPY SHOP"
+>
+
+<div class="profile-level">
+LEVEL 17 TRADER
+</div>
+
+<div class="progress">
+<span></span>
+</div>
+
+<div class="profile-section">
+
+<h3>
+ABOUT
+</h3>
+
+<p>♙ Trader</p>
+<p>♙ Gaming Account Seller</p>
+<p>▣ Member Since 2024</p>
+
+<p>
+☆ Shop Rating
+</p>
+
+<div class="stars">
+★★★★★
+<span style="color:#fff">
+5.0
+</span>
+</div>
+
+<p>
+♧ Orders Completed
+<b>
+250+
+</b>
+</p>
+
+</div>
+
+<div class="profile-section">
+
+<h3>
+SHOP STATS
+</h3>
+
+<p>
+▣ Total Accounts
+<b>120+</b>
+</p>
+
+<p>
+♙ Total Sales
+<b>1.2K+</b>
+</p>
+
+<p>
+♙ Happy Customers
+<b>980+</b>
+</p>
+
+<p>
+✓ Success Rate
+<b>99%</b>
+</p>
+
+</div>
+
+<button
+class="contact"
+onclick="openContactOptions()"
+>
+💬 CONTACT ME
+</button>
+
+<button
+class="contact"
+onclick="openContactOptions()"
+>
+☘ MESSAGE ME
+</button>
+
+</aside>
+
+
+<main>
+
+
+<section class="hero">
+  <div class="hero-welcome">
+    <h2>WELCOME TO</h2>
+    <strong>CRISPY SHOP</strong>
+    <p>Gaming Accounts • Top Ups • Fast Service 👑</p>
+  </div>
+</section>
+
+<div id="allChoices" class="all-choices">
+  <button type="button" class="all-choice" onclick="openAccountChoices();return false;">🎮 GAMING ACCOUNTS</button>
+  <button type="button" class="all-choice" onclick="openTopup();return false;">💎 TOP UP</button>
+</div>
+
+<div class="home-categories">
+  <button type="button" class="home-category" onclick="chooseGame('freefire')">
+    <span class="cat-left"><span class="cat-icon">🔥</span><span>FREE FIRE</span></span>
+    <span class="chev">›</span>
+  </button>
+
+  <button type="button" class="home-category" onclick="chooseGame('efootball')">
+    <span class="cat-left"><span class="cat-icon">⚽</span><span>eFOOTBALL</span></span>
+    <span class="chev">›</span>
+  </button>
+
+  <button type="button" class="home-category" onclick="chooseGame('codm')">
+    <span class="cat-left"><span class="cat-icon">🎯</span><span>CODM</span></span>
+    <span class="chev">›</span>
+  </button>
+
+  <button type="button" class="home-category" onclick="chooseGame('dls')">
+    <span class="cat-left"><span class="cat-icon">DLS</span><span>DLS</span></span>
+    <span class="chev">›</span>
+  </button>
+
+  <button type="button" class="home-category" onclick="chooseGame('fcmobile')">
+    <span class="cat-left"><span class="cat-icon">FC</span><span>FC MOBILE</span></span>
+    <span class="chev">›</span>
+  </button>
+</div>
+
+<section id="accounts" style="display:none!important"></section>
+
+<section class="game-section" id="freefire-section" data-game="freefire">
+  <button class="page-back" onclick="returnToHome()">‹ BACK TO SHOP</button>
+<div class="section-heading"><h2>FREE FIRE ACCOUNTS</h2></div>
+  <div class="products" id="freefire-products"></div>
+</section>
+
+<section class="game-section" id="efootball-section" data-game="efootball">
+  <button class="page-back" onclick="returnToHome()">‹ BACK TO SHOP</button>
+<div class="section-heading"><h2>eFOOTBALL ACCOUNTS</h2></div>
+  <div class="products" id="efootball-products"></div>
+</section>
+
+<section class="game-section" id="codm-section" data-game="codm">
+  <button class="page-back" onclick="returnToHome()">‹ BACK TO SHOP</button>
+<div class="section-heading"><h2>CODM ACCOUNTS</h2></div>
+  <div class="products" id="codm-products"></div>
+</section>
+
+<section class="game-section" id="dls-section" data-game="dls">
+  <button class="page-back" onclick="returnToHome()">‹ BACK TO SHOP</button>
+<div class="section-heading"><h2>DLS ACCOUNTS</h2></div>
+  <div class="products" id="dls-products"></div>
+</section>
+
+<section class="game-section" id="fcmobile-section" data-game="fcmobile">
+  <button class="page-back" onclick="returnToHome()">‹ BACK TO SHOP</button>
+<div class="section-heading"><h2>FC MOBILE ACCOUNTS</h2></div>
+  <div class="products" id="fcmobile-products"></div>
+</section>
+
+<section class="game-section" id="topup-freefire" data-topup-section="freefire">
+  <button class="page-back" onclick="returnToHome()">‹ BACK TO SHOP</button>
+<div class="section-heading"><h2>FREE FIRE TOP UP</h2></div>
+  <div class="products" id="freefire-topup-products"></div>
+</section>
+
+<section class="game-section" id="topup-efootball" data-topup-section="efootball">
+  <button class="page-back" onclick="returnToHome()">‹ BACK TO SHOP</button>
+<div class="section-heading"><h2>eFOOTBALL TOP UP</h2></div>
+  <div class="products" id="efootball-topup-products"></div>
+</section>
+
+<section class="game-section" id="topup-codm" data-topup-section="codm">
+  <button class="page-back" onclick="returnToHome()">‹ BACK TO SHOP</button>
+<div class="section-heading"><h2>CODM TOP UP</h2></div>
+  <div class="products" id="codm-topup-products"></div>
+</section>
+
+<section class="game-section" id="topup-dls" data-topup-section="dls">
+  <button class="page-back" onclick="returnToHome()">‹ BACK TO SHOP</button>
+<div class="section-heading"><h2>DLS TOP UP</h2></div>
+  <div class="products" id="dls-topup-products"></div>
+</section>
+
+<section class="game-section" id="topup-fcmobile" data-topup-section="fcmobile">
+  <button class="page-back" onclick="returnToHome()">‹ BACK TO SHOP</button>
+<div class="section-heading"><h2>FC MOBILE TOP UP</h2></div>
+  <div class="products" id="fcmobile-topup-products"></div>
+</section>
+
+<section class="features"></section>
+
+
+
+
+
+<section class="gaming-accounts-page" id="gamingAccountsPage">
+  <div class="inspo-page-head">
+    <button class="inspo-back" onclick="closeGamingAccounts()">‹</button>
+    <div class="inspo-head-copy">
+      <h1>GAMING ACCOUNTS</h1>
+      <p>Premium gaming accounts for all popular games.</p>
+    </div>
+  </div>
+  <button class="inspo-game-card" onclick="openFreeFireCatalog()">
+    <span class="inspo-game-icon">🔥</span>
+    <span class="inspo-game-copy"><h2>FREE FIRE</h2><p>Premium Free Fire accounts</p><span class="inspo-view">View accounts →</span></span>
+    <span class="arrow">›</span>
+  </button>
+  <button class="inspo-game-card" onclick="chooseGame('efootball')">
+    <span class="inspo-game-icon">⚽</span>
+    <span class="inspo-game-copy"><h2>eFOOTBALL</h2><p>Premium eFootball accounts</p><span class="inspo-view">View accounts →</span></span>
+    <span class="arrow">›</span>
+  </button>
+  <button class="inspo-game-card" onclick="chooseGame('codm')">
+    <span class="inspo-game-icon">🎯</span>
+    <span class="inspo-game-copy"><h2>CODM</h2><p>Premium COD Mobile accounts</p><span class="inspo-view">View accounts →</span></span>
+    <span class="arrow">›</span>
+  </button>
+  <button class="inspo-game-card" onclick="chooseGame('dls')">
+    <span class="inspo-game-icon">DLS25</span>
+    <span class="inspo-game-copy"><h2>DLS</h2><p>Premium DLS accounts</p><span class="inspo-view">View accounts →</span></span>
+    <span class="arrow">›</span>
+  </button>
+  <button class="inspo-game-card" onclick="chooseGame('fcmobile')">
+    <span class="inspo-game-icon">FC</span>
+    <span class="inspo-game-copy"><h2>FC MOBILE</h2><p>Premium FC Mobile accounts</p><span class="inspo-view">View accounts →</span></span>
+    <span class="arrow">›</span>
+  </button>
+</section>
+
+<section class="catalog-page" id="freeFireCatalog">
+  <div class="catalog-top">
+    <button class="catalog-back" onclick="closeCatalog()">‹ BACK</button>
+    <div class="catalog-title">
+      <h1>🔥 FREE FIRE ACCOUNTS</h1>
+      <p>Premium Free Fire accounts</p>
+    </div>
+  </div>
+  <div class="catalog-tools">
+    <button onclick="showToast('Filter opened')">⚱ FILTER</button>
+    <select id="catalogSort" onchange="sortCatalog(this.value)">
+      <option value="low">↕ PRICE: LOW TO HIGH</option>
+      <option value="high">↕ PRICE: HIGH TO LOW</option>
+    </select>
+    <button onclick="renderFreeFireCatalog()">↻ REFRESH</button>
+  </div>
+  <div class="catalog-grid" id="freeFireCatalogGrid"></div>
+</section>
+
+<section class="detail-page" id="accountDetail">
+  <div class="catalog-top">
+    <button class="catalog-back" onclick="closeDetail()">‹ BACK</button>
+    <div class="catalog-title"><h1>ACCOUNT DETAILS</h1></div>
+  </div>
+  <div class="detail-card" id="accountDetailCard"></div>
+</section>
+
+<section class="topup-detail-page" id="topupDetailPage">
+  <button class="topup-detail-back" onclick="closeTopupDetail()">‹ BACK TO SHOP</button>
+  <div class="topup-detail-heading">
+    <h1 id="topupDetailGame">FREE FIRE TOP UP</h1>
+    <span></span>
+  </div>
+  <article class="topup-detail-card" id="topupDetailCard"></article>
+</section>
+
+<footer>
+
+<img
+src="logo.png.jpeg"
+class="footer-logo"
+alt="CRISPY SHOP"
+>
+
+<div class="socials">
+
+<a
+href="https://www.tiktok.com/@_itzcrispy"
+target="_blank"
+>
+TikTok
+</a>
+
+<a
+href="https://x.com/crispysoloss"
+target="_blank"
+>
+X
+</a>
+
+<a
+href="https://t.me/crispyshop_1"
+target="_blank"
+>
+Telegram
+</a>
+
+</div>
+
+<div class="slogan">
+LEVEL UP. PLAY MORE. 👑
+</div>
+
+</footer>
+
+</main>
+
+</div>
+
+</div>
+
+
+<!-- ================= CUSTOMER ACCOUNT ================= -->
+
+<div
+class="modal"
+id="customerAccountModal"
+>
+
+<div class="modal-box">
+
+<button
+class="modal-close"
+onclick="closeModal('customerAccountModal')"
+>
+×
+</button>
+
+<h2>
+MY ACCOUNT
+</h2>
+
+<p id="customerWelcome">
+Create an account or login to Crispy Shop.
+</p>
+
+
+<div id="authChoices">
+
+<div class="contact-options">
+
+<button
+class="contact-option"
+onclick="showSignup()"
+>
+👤 CREATE ACCOUNT
+</button>
+
+<button
+class="contact-option"
+onclick="showLogin()"
+>
+🔐 LOGIN
+</button>
+
+</div>
+
+<p>
+OR CONTINUE WITH
+</p>
+
+<div class="social-login">
+
+<button onclick="socialLogin('google')">
+G GOOGLE
+</button>
+
+<button onclick="socialLogin('apple')">
+ APPLE
+</button>
+
+</div>
+
+
+<div
+id="signupBox"
+style="display:none;margin-top:20px"
+>
+
+<input
+id="signupName"
+class="form-input"
+type="text"
+placeholder="Your name"
+>
+
+<input
+id="signupEmail"
+class="form-input"
+type="email"
+placeholder="Email address"
+>
+
+<input
+id="signupPassword"
+class="form-input"
+type="password"
+placeholder="Password"
+>
+
+<button
+class="yellow-btn full-btn"
+onclick="createCustomerAccount()"
+>
+CREATE ACCOUNT
+</button>
+
+</div>
+
+
+<div
+id="loginBox"
+style="display:none;margin-top:20px"
+>
+
+<input
+id="loginEmail"
+class="form-input"
+type="email"
+placeholder="Email address"
+>
+
+<input
+id="loginPassword"
+class="form-input"
+type="password"
+placeholder="Password"
+>
+
+<button
+class="yellow-btn full-btn"
+onclick="loginCustomer()"
+>
+LOGIN
+</button>
+
+<button
+class="outline-btn full-btn"
+style="margin-top:10px"
+onclick="customerForgotPassword()"
+>
+FORGOT PASSWORD?
+</button>
+
+</div>
+
+</div>
+
+
+<!-- CUSTOMER DASHBOARD -->
+
+<div
+id="customerDashboard"
+style="display:none"
+>
+
+<div class="customer-profile">
+
+<div class="customer-photo-area">
+
+<div class="customer-photo-circle">
+
+<img
+id="customerPhotoPreview"
+src=""
+alt="Profile photo"
+style="display:none"
+>
+
+<span id="customerPhotoPlaceholder">
+👤
+</span>
+
+</div>
+
+<label
+for="customerPhoto"
+class="yellow-btn upload-photo-label"
+>
+📸 UPLOAD / CHANGE PHOTO
+</label>
+
+<input
+id="customerPhoto"
+type="file"
+accept="image/*"
+style="display:none"
+onchange="uploadCustomerPhoto(event)"
+>
+
+</div>
+
+
+<div class="customer-details">
+
+<h3 id="customerName">
+Customer
+</h3>
+
+<p id="customerEmail">
+Email
+</p>
+
+<span class="customer-badge">
+VERIFIED CUSTOMER
+</span>
+
+</div>
+
+</div>
+
+
+<div
+id="customerOptions"
+class="customer-options"
+>
+
+<button
+class="customer-option"
+onclick="customerInfo('PROFILE')"
+>
+👤 MY PROFILE
+</button>
+
+<button
+class="customer-option"
+onclick="customerInfo('ORDERS')"
+>
+🛒 MY ORDERS
+</button>
+
+<button
+class="customer-option"
+onclick="customerInfo('PURCHASED')"
+>
+🎮 MY PURCHASED ACCOUNTS
+</button>
+
+<button
+class="customer-option"
+onclick="customerInfo('TOPUPS')"
+>
+💎 MY TOP-UPS
+</button>
+
+<button
+class="customer-option"
+onclick="customerInfo('REVIEWS')"
+>
+⭐ MY REVIEWS
+</button>
+
+<button
+class="customer-option"
+onclick="customerInfo('PASSWORD')"
+>
+🔐 CHANGE PASSWORD
+</button>
+
+<button
+class="customer-option logout-option"
+onclick="customerLogout()"
+>
+🚪 LOGOUT
+</button>
+
+</div>
+
+
+<div
+id="customerInfo"
+class="customer-info"
+style="display:none"
+>
+
+<button
+class="outline-btn"
+onclick="backCustomerOptions()"
+>
+← BACK
+</button>
+
+<div id="customerInfoContent">
+</div>
+
+</div>
+
+</div>
+
+<div
+id="accountMessage"
+class="message"
+></div>
+
+</div>
+
+</div>
+
+
+<!-- ================= ACCOUNT CHOICES ================= -->
+
+<div
+class="modal"
+id="accountModal"
+>
+
+<div class="modal-box">
+
+<button
+class="modal-close"
+onclick="closeModal('accountModal')"
+>
+×
+</button>
+
+<h2>
+CHOOSE YOUR GAME
+</h2>
+
+<p>
+Choose the game account you want.
+</p>
+
+<div class="choice-grid">
+
+<button
+class="choice"
+onclick="chooseGame('freefire')"
+>
+<span class="choice-icon">🔥</span>
+FREE FIRE
+</button>
+
+<button
+class="choice"
+onclick="chooseGame('efootball')"
+>
+<span class="choice-icon">⚽</span>
+eFOOTBALL
+</button>
+
+<button
+class="choice"
+onclick="chooseGame('codm')"
+>
+<span class="choice-icon">🎯</span>
+CODM
+</button>
+
+<button
+class="choice"
+onclick="chooseGame('dls')"
+>
+<span class="choice-icon">💎</span>
+DLS
+</button>
+
+<button
+class="choice"
+onclick="chooseGame('fcmobile')"
+>
+<span class="choice-icon">⚽</span>
+FC MOBILE
+</button>
+
+</div>
+
+</div>
+
+</div>
+
+
+<!-- ================= TOP UP ================= -->
+
+<div
+class="modal"
+id="topupModal"
+>
+
+<div class="modal-box">
+
+<button
+class="modal-close"
+onclick="closeModal('topupModal')"
+>
+×
+</button>
+
+<h2>
+CHOOSE TOP UP
+</h2>
+
+<p>
+Each game has its own top-up section.
+</p>
+
+<div class="choice-grid">
+
+<button
+class="choice"
+onclick="chooseTopup('topup-freefire')"
+>
+💎
+FREE FIRE
+</button>
+
+<button
+class="choice"
+onclick="chooseTopup('topup-efootball')"
+>
+🪙
+eFOOTBALL
+</button>
+
+<button
+class="choice"
+onclick="chooseTopup('topup-codm')"
+>
+🎯
+CODM
+</button>
+
+<button
+class="choice"
+onclick="chooseTopup('topup-dls')"
+>
+💎
+DLS
+</button>
+
+<button
+class="choice"
+onclick="chooseTopup('topup-fcmobile')"
+>
+⚽
+FC MOBILE
+</button>
+
+</div>
+
+</div>
+
+</div>
+
+
+<!-- ================= REVIEWS ================= -->
+
+<div
+class="modal"
+id="reviewModal"
+>
+
+<div class="modal-box">
+
+<button
+class="modal-close"
+onclick="closeModal('reviewModal')"
+>
+×
+</button>
+
+<h2>
+RATE CRISPY SHOP
+</h2>
+
+<p>
+How would you rate your experience?
+</p>
+
+<div class="choice-grid">
+
+<button
+class="choice"
+onclick="sendReview(5)"
+>
+★★★★★
+<br>
+5 STAR
+</button>
+
+<button
+class="choice"
+onclick="sendReview(4)"
+>
+★★★★
+<br>
+4 STAR
+</button>
+
+<button
+class="choice"
+onclick="sendReview(3)"
+>
+★★★
+<br>
+3 STAR
+</button>
+
+<button
+class="choice"
+onclick="sendReview(2)"
+>
+★★
+<br>
+2 STAR
+</button>
+
+<button
+class="choice"
+onclick="sendReview(1)"
+>
+★
+<br>
+1 STAR
+</button>
+
+</div>
+
+</div>
+
+</div>
+
+
+<!-- ================= CONTACT ================= -->
+
+<div
+class="modal"
+id="contactModal"
+>
+
+<div class="modal-box">
+
+<button
+class="modal-close"
+onclick="closeModal('contactModal')"
+>
+×
+</button>
+
+<h2>
+CONTACT CRISPY SHOP
+</h2>
+
+<p>
+Choose how you want to contact me.
+</p>
+
+<div class="contact-options">
+
+<a
+class="contact-option"
+href="https://wa.me/2347051885555"
+target="_blank"
+>
+💬 WHATSAPP
+</a>
+
+<a
+class="contact-option"
+href="https://www.tiktok.com/@_itzcrispy"
+target="_blank"
+>
+🎵 TIKTOK
+</a>
+
+<a
+class="contact-option"
+href="https://x.com/crispysoloss"
+target="_blank"
+>
+𝕏 X
+</a>
+
+<a
+class="contact-option"
+href="https://t.me/crispyshop_1"
+target="_blank"
+>
+✈ TELEGRAM
+</a>
+
+</div>
+
+</div>
+
+</div>
+
+
+<!-- ================= SEARCH ================= -->
+
+<div
+class="modal"
+id="searchModal"
+>
+
+<div class="modal-box">
+
+<button
+class="modal-close"
+onclick="closeModal('searchModal')"
+>
+×
+</button>
+
+<h2>
+SEARCH CRISPY SHOP
+</h2>
+
+<input
+id="searchInput"
+class="form-input"
+type="search"
+placeholder="Search accounts, games or top ups..."
+>
+
+<div id="searchResults">
+
+<div class="search-result">
+Type something to search.
+</div>
+
+</div>
+
+</div>
+
+</div>
+
+
+<!-- ================= CART ================= -->
+
+<div
+class="modal"
+id="cartModal"
+>
+
+<div class="modal-box">
+
+<button
+class="modal-close"
+onclick="closeModal('cartModal')"
+>
+×
+</button>
+
+<h2>
+YOUR CART 🛒
+</h2>
+
+<div
+id="cartList"
+class="empty"
+>
+Your cart is empty.
+</div>
+
+<div
+id="cartTotal"
+class="cart-total"
+>
+Total: ₦0
+</div>
+
+</div>
+
+</div>
+
+
+<!-- ================= ACCOUNT DETAILS ================= -->
+
+<div
+class="modal"
+id="accountDetailsModal"
+>
+
+<div class="modal-box">
+
+<button
+class="modal-close"
+onclick="closeModal('accountDetailsModal')"
+>
+×
+</button>
+
+<h2 id="detailTitle">
+ACCOUNT DETAILS
+</h2>
+
+<img
+id="detailPhoto"
+class="account-detail-photo"
+src=""
+alt="Account image"
+style="display:none"
+>
+
+<div class="account-detail-grid">
+
+<div class="detail-card">
+<span>GAME</span>
+<strong id="detailGame"></strong>
+</div>
+
+<div class="detail-card">
+<span>STATUS</span>
+<strong id="detailStatus"></strong>
+</div>
+
+<div class="detail-card">
+<span>LEVEL</span>
+<strong id="detailLevel"></strong>
+</div>
+
+<div class="detail-card">
+<span>REGION</span>
+<strong id="detailRegion"></strong>
+</div>
+
+</div>
+
+<div
+id="detailDescription"
+class="detail-description"
+>
+</div>
+
+<div
+id="detailPrice"
+class="detail-price"
+>
+</div>
+
+<button
+id="detailCartButton"
+class="yellow-btn full-btn"
+>
+ADD TO CART
+</button>
+
+</div>
+
+</div>
+
+
+<!-- ================= FIREBASE ================= -->
+
+<script type="module">
+
+import {
+initializeApp
+}
+from "https://www.gstatic.com/firebasejs/10.12.2/firebase-app.js";
+
+import {
+getAuth,
+createUserWithEmailAndPassword,
+signInWithEmailAndPassword,
+updateProfile,
+onAuthStateChanged,
+signOut,
+sendPasswordResetEmail,
+GoogleAuthProvider,
+OAuthProvider,
+signInWithRedirect,
+getRedirectResult
+}
+from "https://www.gstatic.com/firebasejs/10.12.2/firebase-auth.js";
+
+import {
+getFirestore,
+collection,
+getDocs
+}
+from "https://www.gstatic.com/firebasejs/10.12.2/firebase-firestore.js";
+
+
+const firebaseConfig={
+
+apiKey:
+"AIzaSyC9FNL08mvrtbcjXXj_JBWPHvdUORioYr8",
+
+authDomain:
+"crispy-shop-25644.firebaseapp.com",
+
+projectId:
+"crispy-shop-25644",
+
+storageBucket:
+"crispy-shop-25644.firebasestorage.app",
+
+messagingSenderId:
+"311251480323",
+
+appId:
+"1:311251480323:web:b0d9e14c947a0528ccc336"
+
+};
+
+
+const app=initializeApp(firebaseConfig);
+const auth=getAuth(app);
+const db=getFirestore(app);
+
+
+/* Handle Google/Apple redirect result after returning to the site. */
+getRedirectResult(auth)
+  .then((result)=>{
+    if(result && result.user){
+      const message=document.getElementById("welcomeMessage");
+      if(message) message.textContent="Login successful.";
+      showSite();
+    }
+  })
+  .catch((error)=>{
+    console.error(error);
+    const message=document.getElementById("welcomeMessage");
+    if(!message) return;
+    message.textContent =
+      error.code === "auth/operation-not-allowed"
+        ? "This sign-in provider is disabled in Firebase Authentication."
+        : error.code === "auth/unauthorized-domain"
+          ? "This website domain is not authorized in Firebase Authentication."
+          : (error.message || "Social login failed.");
+  });
+
+
+/* ================= LOGIN ================= */
+
+window.socialLogin=async function(type){
+
+try { localStorage.removeItem("crispyGuest"); } catch(e) {}
+
+const message=
+document.getElementById("welcomeMessage");
+
+let provider;
+
+if(type==="google"){
+provider=new GoogleAuthProvider();
+}
+
+if(type==="apple"){
+provider=new OAuthProvider("apple.com");
+}
+
+if(!provider)return;
+
+try{
+
+message.textContent="Opening sign-in...";
+
+/* Redirect is more reliable on mobile Safari than popup OAuth. */
+await signInWithRedirect(auth,provider);
+
+}
+
+catch(error){
+
+console.error(error);
+
+message.textContent =
+  error.code === "auth/operation-not-allowed"
+    ? `This sign-in method is disabled in Firebase. Enable ${type === "google" ? "Google" : "Apple"} in Firebase Authentication → Sign-in method.`
+    : error.code === "auth/unauthorized-domain"
+      ? "This website domain is not authorized in Firebase Authentication."
+      : (error.message || "Login failed.");
+
+}
+
+};
+
+
+window.continueAsGuest=function(){
+  try {
+    localStorage.setItem("crispyGuest", "1");
+  } catch(e) {}
+  const message=document.getElementById("welcomeMessage");
+  if(message) message.textContent="Continuing as guest...";
+  showSite();
+};
+
+window.welcomeLogin=async function(){
+
+try { localStorage.removeItem("crispyGuest"); } catch(e) {}
+
+const email=
+document.getElementById("welcomeEmail").value.trim();
+
+const password=
+document.getElementById("welcomePassword").value;
+
+const message=
+document.getElementById("welcomeMessage");
+
+if(!email||!password){
+
+message.textContent=
+"Enter your email and password.";
+
+return;
+
+}
+
+try{
+
+message.textContent="Logging in...";
+
+await signInWithEmailAndPassword(
+auth,
+email,
+password
+);
+
+showSite();
+
+}
+
+catch(error){
+
+console.error(error);
+
+message.textContent =
+  error.code === "auth/operation-not-allowed"
+    ? "Email/password login is disabled in Firebase Authentication. Enable Email/Password in Firebase Console."
+    : (error.code === "auth/invalid-credential" || error.code === "auth/wrong-password" || error.code === "auth/user-not-found")
+      ? "Incorrect email or password."
+      : (error.message || "Login failed.");
+
+}
+
+};
+
+
+window.welcomeSignup=async function(){
+
+try { localStorage.removeItem("crispyGuest"); } catch(e) {}
+
+const email=
+document.getElementById("welcomeEmail").value.trim();
+
+const password=
+document.getElementById("welcomePassword").value;
+
+const message=
+document.getElementById("welcomeMessage");
+
+if(!email||!password){
+
+message.textContent=
+"Enter an email and password first.";
+
+return;
+
+}
+
+if(password.length<6){
+
+message.textContent=
+"Password must be at least 6 characters.";
+
+return;
+
+}
+
+try{
+
+message.textContent="Creating account...";
+
+await createUserWithEmailAndPassword(
+auth,
+email,
+password
+);
+
+showSite();
+
+}
+
+catch(error){
+
+console.error(error);
+
+message.textContent=
+error.message||"Could not create account.";
+
+}
+
+};
+
+
+window.welcomeResetPassword=async function(){
+
+const email=
+document.getElementById("welcomeEmail").value.trim();
+
+const message=
+document.getElementById("welcomeMessage");
+
+if(!email){
+
+message.textContent=
+"Enter your Gmail/email address first.";
+
+return;
+
+}
+
+try{
+
+await sendPasswordResetEmail(
+auth,
+email
+);
+
+message.textContent=
+"Password reset email sent. Check your Gmail inbox.";
+
+}
+
+catch(error){
+
+console.error(error);
+
+message.textContent=
+"Could not send the reset email. Check the email address.";
+
+}
+
+};
+
+
+function showSite(){
+
+document.getElementById("welcomeScreen").style.display="none";
+document.getElementById("siteContent").style.display="block";
+
+}
+
+
+/* ================= CUSTOMER ACCOUNT ================= */
+
+window.openCustomerAccount=function(){
+
+openModal("customerAccountModal");
+
+if(auth.currentUser){
+
+showCustomerDashboard();
+
+}else{
+
+showAuthChoices();
+
+}
+
+};
+
+
+window.showSignup=function(){
+
+document.getElementById("signupBox").style.display="block";
+document.getElementById("loginBox").style.display="none";
+
+};
+
+
+window.showLogin=function(){
+
+document.getElementById("signupBox").style.display="none";
+document.getElementById("loginBox").style.display="block";
+
+};
+
+
+function showAuthChoices(){
+
+document.getElementById("authChoices").style.display="block";
+document.getElementById("customerDashboard").style.display="none";
+
+};
+
+
+function showCustomerDashboard(){
+
+const user=auth.currentUser;
+
+if(!user)return;
+
+showSite();
+
+document.getElementById("authChoices").style.display="none";
+document.getElementById("customerDashboard").style.display="block";
+
+const name=
+user.displayName||
+user.email||
+"Customer";
+
+document.getElementById("customerWelcome").textContent=
+"Welcome back, "+name+" 👋";
+
+document.getElementById("customerName").textContent=name;
+
+document.getElementById("customerEmail").textContent=
+user.email||"";
+
+loadCustomerPhoto();
+
+};
+
+
+/* ================= CUSTOMER CREATE ================= */
+
+window.createCustomerAccount=async function(){
+
+const name=
+document.getElementById("signupName").value.trim();
+
+const email=
+document.getElementById("signupEmail").value.trim();
+
+const password=
+document.getElementById("signupPassword").value;
+
+const message=
+document.getElementById("accountMessage");
+
+if(!name||!email||!password){
+
+message.textContent=
+"Please fill in everything.";
+
+return;
+
+}
+
+if(password.length<6){
+
+message.textContent=
+"Password must be at least 6 characters.";
+
+return;
+
+}
+
+try{
+
+const result=
+await createUserWithEmailAndPassword(
+auth,
+email,
+password
+);
+
+await updateProfile(
+result.user,
+{
+displayName:name
+}
+);
+
+message.textContent=
+"Account created successfully!";
+
+showCustomerDashboard();
+
+}
+
+catch(error){
+
+console.error(error);
+
+message.textContent=error.message;
+
+}
+
+};
+
+
+/* ================= CUSTOMER LOGIN ================= */
+
+window.loginCustomer=async function(){
+
+const email=
+document.getElementById("loginEmail").value.trim();
+
+const password=
+document.getElementById("loginPassword").value;
+
+const message=
+document.getElementById("accountMessage");
+
+if(!email||!password){
+
+message.textContent=
+"Enter your email and password.";
+
+return;
+
+}
+
+try{
+
+await signInWithEmailAndPassword(
+auth,
+email,
+password
+);
+
+showCustomerDashboard();
+
+message.textContent=
+"Login successful!";
+
+}
+
+catch(error){
+
+console.error(error);
+
+message.textContent=
+"Login failed. Check your email and password.";
+
+}
+
+};
+
+
+/* ================= CUSTOMER PASSWORD RESET ================= */
+
+window.customerForgotPassword=async function(){
+
+const email=
+document.getElementById("loginEmail").value.trim();
+
+const message=
+document.getElementById("accountMessage");
+
+if(!email){
+
+message.textContent=
+"Enter your email address first.";
+
+return;
+
+}
+
+try{
+
+await sendPasswordResetEmail(
+auth,
+email
+);
+
+message.textContent=
+"Password reset email sent to your Gmail. Check your inbox.";
+
+}
+
+catch(error){
+
+console.error(error);
+
+message.textContent=
+"Could not send the password reset email.";
+
+}
+
+};
+
+
+/* ================= PHOTO ================= */
+
+window.uploadCustomerPhoto=function(event){
+
+const user=auth.currentUser;
+
+if(!user)return;
+
+const file=
+event.target.files&&event.target.files[0];
+
+if(!file)return;
+
+if(!file.type.startsWith("image/")){
+
+alert("Please select an image.");
+
+return;
+
+}
+
+const reader=new FileReader();
+
+reader.onload=function(){
+
+localStorage.setItem(
+"crispyCustomerPhoto_"+user.uid,
+reader.result
+);
+
+loadCustomerPhoto();
+
+document.getElementById(
+"accountMessage"
+).textContent=
+"Profile photo updated successfully.";
+
+};
+
+reader.readAsDataURL(file);
+
+};
+
+
+function loadCustomerPhoto(){
+
+const user=auth.currentUser;
+
+if(!user)return;
+
+const photo=
+localStorage.getItem(
+"crispyCustomerPhoto_"+user.uid
+);
+
+const img=
+document.getElementById(
+"customerPhotoPreview"
+);
+
+const placeholder=
+document.getElementById(
+"customerPhotoPlaceholder"
+);
+
+if(!img||!placeholder)return;
+
+if(photo){
+
+img.src=photo;
+img.style.display="block";
+placeholder.style.display="none";
+
+}else{
+
+img.src="";
+img.style.display="none";
+placeholder.style.display="block";
+
+}
+
+}
+
+
+/* ================= CUSTOMER INFO ================= */
+
+window.customerInfo=function(type){
+
+const content=
+document.getElementById(
+"customerInfoContent"
+);
+
+document.getElementById(
+"customerOptions"
+).style.display="none";
+
+document.getElementById(
+"customerInfo"
+).style.display="block";
+
+
+if(type==="PROFILE"){
+
+const user=auth.currentUser;
+
+content.innerHTML=`
+
+<div class="info-card">
+
+<h3>MY PROFILE</h3>
+
+<p>
+👤 Name:
+${escapeHtml(user.displayName||"Customer")}
+</p>
+
+<p>
+📧 Email:
+${escapeHtml(user.email||"")}
+</p>
+
+<p>
+✅ Account: Active
+</p>
+
+</div>
+
+`;
+
+}
+
+
+if(type==="ORDERS"){
+
+content.innerHTML=`
+
+<div class="info-card">
+
+<h3>MY ORDERS</h3>
+
+<p>
+Your orders will appear here.
+</p>
+
+</div>
+
+`;
+
+}
+
+
+if(type==="PURCHASED"){
+
+content.innerHTML=`
+
+<div class="info-card">
+
+<h3>MY PURCHASED ACCOUNTS</h3>
+
+<p>
+Your purchased gaming accounts
+will appear here.
+</p>
+
+</div>
+
+`;
+
+}
+
+
+if(type==="TOPUPS"){
+
+content.innerHTML=`
+
+<div class="info-card">
+
+<h3>MY TOP-UPS</h3>
+
+<p>
+Your top-up history will appear here.
+</p>
+
+</div>
+
+`;
+
+}
+
+
+if(type==="REVIEWS"){
+
+content.innerHTML=`
+
+<div class="info-card">
+
+<h3>MY REVIEWS</h3>
+
+<p>
+Your reviews will appear here.
+</p>
+
+</div>
+
+`;
+
+}
+
+
+if(type==="PASSWORD"){
+
+content.innerHTML=`
+
+<div class="info-card">
+
+<h3>CHANGE PASSWORD</h3>
+
+<p>
+We will send a password reset email to
+your account email.
+</p>
+
+<button
+class="yellow-btn full-btn"
+onclick="sendDashboardPasswordReset()"
+>
+SEND PASSWORD RESET EMAIL
+</button>
+
+</div>
+
+`;
+
+}
+
+};
+
+
+window.sendDashboardPasswordReset=
+async function(){
+
+const user=auth.currentUser;
+
+if(!user||!user.email){
+
+alert("Please log in first.");
+
+return;
+
+}
+
+try{
+
+await sendPasswordResetEmail(
+auth,
+user.email
+);
+
+alert(
+"Password reset email sent to "+user.email+
+". Check your Gmail inbox."
+);
+
+}
+
+catch(error){
+
+console.error(error);
+
+alert(
+"Could not send the password reset email."
+);
+
+}
+
+};
+
+
+window.backCustomerOptions=function(){
+
+document.getElementById(
+"customerOptions"
+).style.display="grid";
+
+document.getElementById(
+"customerInfo"
+).style.display="none";
+
+};
+
+
+window.customerLogout=async function(){
+
+await signOut(auth);
+try { localStorage.removeItem("crispyGuest"); } catch(e) {}
+
+closeModal(
+"customerAccountModal"
+);
+
+};
+
+
+/* ================= AUTH STATE ================= */
+
+onAuthStateChanged(
+auth,
+function(user){
+
+if(user){
+
+try { localStorage.removeItem("crispyGuest"); } catch(e) {}
+showSite();
+
+}else{
+
+let isGuest=false;
+try { isGuest=localStorage.getItem("crispyGuest")==="1"; } catch(e) {}
+
+if(isGuest){
+  showSite();
+}else{
+  document.getElementById("welcomeScreen").style.display="flex";
+  document.getElementById("siteContent").style.display="none";
+}
+
+}
+
+}
+);
+
+
+/* ================= FIRESTORE ================= */
+
+async function loadShopAccounts(){
+
+try{
+
+const snapshot=
+await getDocs(
+collection(
+db,
+"accounts"
+)
+);
+
+snapshot.forEach(function(item){
+
+applyFirestoreAccount(
+item.id,
+item.data()
+);
+
+});
+
+cleanupEmptyGameSections();
+
+}
+
+catch(error){
+
+console.error(
+"Could not load shop accounts:",
+error
+);
+
+cleanupEmptyGameSections();
+
+}
+
+}
+
+
+function gameToId(game){
+
+const value=
+String(game||"").toLowerCase();
+
+if(
+value.includes("free fire")||
+value.includes("freefire")
+)
+return "freefire";
+
+if(
+value.includes("efootball")||
+value.includes("e-football")
+)
+return "efootball";
+
+if(value.includes("cod"))
+return "codm";
+
+if(value.includes("dls"))
+return "dls";
+
+if(value.includes("fc"))
+return "fcmobile";
+
+return "";
+
+}
+
+
+function applyFirestoreAccount(
+id,
+data
+){
+
+const game=
+gameToId(data.game);
+
+if(!game)return;
+
+const section=
+document.getElementById(
+game+"-section"
+);
+
+if(!section)return;
+
+const products=
+section.querySelector(".products");
+
+let product=
+document.querySelector(
+'[data-firestore-id="'+CSS.escape(id)+'"]'
+);
+
+if(!product){
+
+product=
+document.createElement("div");
+
+product.className="product";
+
+product.dataset.firestoreId=id;
+
+products.appendChild(product);
+
+}
+
+const status=
+String(
+data.status||"AVAILABLE"
+).toUpperCase();
+
+const price=
+data.price||"₦0";
+
+product.innerHTML=`
+
+<span class="heart">
+♡
+</span>
+
+<span class="available">
+${escapeHtml(status)}
+</span>
+
+${
+data.photoUrl
+?
+`
+<img
+class="account-photo"
+src="${escapeHtml(data.photoUrl)}"
+alt="${escapeHtml(data.title||"Gaming account")}"
+>
+`
+:
+""
+}
+
+<div class="game">
+
+${
+game==="freefire"
+?
+"FREE F⚡RE"
+:
+escapeHtml(
+data.game||game.toUpperCase()
+)
+}
+
+</div>
+
+<h3>
+${escapeHtml(
+data.title||"Gaming Account"
+)}
+</h3>
+
+<div class="details">
+Level
+${escapeHtml(data.level||"—")}
+·
+${escapeHtml(data.region||"REGION")}
+</div>
+
+<div class="description">
+${escapeHtml(data.description||"")}
+</div>
+
+<div class="price">
+${escapeHtml(price)}
+</div>
+
+<div class="product-actions">
+<button
+class="details-btn"
+${status==="SOLD"?"disabled":""}
+>
+${status==="SOLD"
+?"SOLD OUT"
+:"VIEW DETAILS"}
+</button>
+<button
+class="details-btn cart-btn"
+${status==="SOLD"?"disabled":""}
+>
+ADD TO CART
+</button>
+</div>
+
+`;
+
+const button=
+product.querySelector(".details-btn");
+
+if(status!=="SOLD"){
+
+button.onclick=function(){
+
+openAccountDetails({
+
+id:id,
+
+game:
+data.game||game,
+
+title:
+data.title||"Gaming Account",
+
+level:
+data.level||"—",
+
+region:
+data.region||"REGION",
+
+description:
+data.description||"",
+
+price:price,
+
+photoUrl:
+data.photoUrl||"",
+
+status:status
+
+});
+
+};
+
+}
+
+const cartButton = product.querySelector(".cart-btn");
+if(cartButton && status!=="SOLD"){
+  cartButton.onclick=function(){
+    addToCart({
+      id:id,
+      type:"account",
+      title:data.title||"Gaming Account",
+      price:price,
+      game:data.game||game,
+      photoUrl:data.photoUrl||""
+    });
+  };
+}
+
+section.style.display="block";
+
+}
+
+
+function cleanupEmptyGameSections(){
+getAccountSections().forEach(function(section){
+const products=section.querySelector(".products");
+if(products && !products.querySelector(".product")){
+products.innerHTML='<div class="empty-shop-message"><strong>No account published yet.</strong>There are no '+escapeHtml(section.querySelector("h2")?.textContent||"game")+' accounts available right now.</div>';
+}
+});
+
+if(typeof shopView!=="undefined" && shopView==="all"){
+  hideAllShopSections();
+  return;
+}
+
+if(typeof shopView!=="undefined" && shopView==="topups"){
+  getAccountSections().forEach(function(section){section.style.display="none";});
+  return;
+}
+
+if(typeof shopView!=="undefined" && shopView==="accounts"){
+  getTopupSections().forEach(function(section){section.style.display="none";});
+}
+}
+
+
+/* ================= ACCOUNT DETAILS ================= */
+
+window.openAccountDetails=function(account){
+
+const photo=
+document.getElementById(
+"detailPhoto"
+);
+
+document.getElementById(
+"detailTitle"
+).textContent=
+account.title;
+
+document.getElementById(
+"detailGame"
+).textContent=
+account.game;
+
+document.getElementById(
+"detailStatus"
+).textContent=
+account.status;
+
+document.getElementById(
+"detailLevel"
+).textContent=
+account.level;
+
+document.getElementById(
+"detailRegion"
+).textContent=
+account.region;
+
+document.getElementById(
+"detailDescription"
+).textContent=
+account.description||
+"No description provided.";
+
+document.getElementById(
+"detailPrice"
+).textContent=
+account.price;
+
+if(account.photoUrl){
+
+photo.src=account.photoUrl;
+photo.style.display="block";
+
+}else{
+
+photo.src="";
+photo.style.display="none";
+
+}
+
+const button=
+document.getElementById(
+"detailCartButton"
+);
+
+button.disabled=
+account.status==="SOLD"||
+account.price==="₦0";
+
+button.textContent=
+account.status==="SOLD"
+?
+"SOLD OUT"
+:
+"ADD TO CART";
+
+button.onclick=function(){
+
+if(!button.disabled){
+
+addToCart(
+account.title,
+account.price
+);
+
+closeModal(
+"accountDetailsModal"
+);
+
+}
+
+};
+
+openModal(
+"accountDetailsModal"
+);
+
+};
+
+
+function escapeHtml(value){
+
+return String(value)
+.replaceAll("&","&amp;")
+.replaceAll("<","&lt;")
+.replaceAll(">","&gt;")
+.replaceAll('"',"&quot;")
+.replaceAll("'","&#039;");
+
+}
+
+
+async function loadShopTopups(){
+try{
+const snapshot=await getDocs(collection(db,"topups"));
+const buckets={freefire:[],efootball:[],codm:[],dls:[],fcmobile:[]};
+snapshot.forEach(function(item){
+const data=item.data()||{};
+const game=gameToId(data.game);
+if(!game||!buckets[game])return;
+const status=String(data.status||"AVAILABLE").toUpperCase();
+if(status==="HIDDEN"||status==="SOLD OUT")return;
+buckets[game].push({id:item.id,data:data});
+});
+Object.keys(buckets).forEach(function(game){
+const box=document.getElementById(game+"-topup-products");
+if(!box)return;
+box.innerHTML="";
+if(!buckets[game].length){
+box.innerHTML='<div class="empty-shop-message"><strong>No top-ups posted yet.</strong>Check back soon for '+escapeHtml(gameLabel(game))+' packages.</div>';
+return;
+}
+buckets[game].forEach(function(item){
+const data=item.data;
+const card=document.createElement("div");
+card.className="product";
+card.dataset.topupFirestoreId=item.id;
+const price=data.price||"₦0";
+const packageName=data.package||"Top-up package";
+const status=String(data.status||"AVAILABLE").toUpperCase();
+card.innerHTML=`
+${data.photoUrl?`<img class="topup-photo" src="${escapeHtml(data.photoUrl)}" alt="${escapeHtml(packageName)}" onerror="this.style.display='none'">`:``}
+<div class="game">${escapeHtml(data.game||game.toUpperCase())}</div>
+<h3>${escapeHtml(packageName)}</h3>
+<div class="description">${escapeHtml(data.description||"")}</div>
+<div class="price">${escapeHtml(price)}</div>
+<div class="product-actions">
+<button class="details-btn">${status==="SOLD"?"SOLD OUT":"VIEW DETAILS"}</button>
+<button class="details-btn cart-btn" ${status==="SOLD"?"disabled":""}>ADD TO CART</button>
+</div>
+`;
+const btn=card.querySelector(".details-btn");
+const cartBtn=card.querySelector(".cart-btn");
+if(status!=="SOLD"){
+  btn.onclick=function(){openTopupDetail({id:item.id,...data});};
+  if(cartBtn) cartBtn.onclick=function(){
+    addToCart({
+      id:item.id,
+      type:"topup",
+      title:packageName,
+      price:price,
+      game:data.game||game,
+      photoUrl:data.photoUrl||""
+    });
+  };
+}else{
+  btn.disabled=true;
+}
+box.appendChild(card);
+});
+});
+}catch(error){
+console.error("Could not load shop topups:",error);
+["freefire","efootball","codm","dls","fcmobile"].forEach(function(game){
+const box=document.getElementById(game+"-topup-products");
+if(box)box.innerHTML='<div class="empty-shop-message"><strong>No top-ups posted yet.</strong>Check back soon.</div>';
+});
+}
+}
+function gameLabel(game){
+const labels={freefire:"Free Fire",efootball:"eFootball",codm:"CODM",dls:"DLS",fcmobile:"FC Mobile"};
+return labels[game]||game;
+}
+loadShopAccounts();
+loadShopTopups();
+
+
+
+/* ===== TOP-UP DETAILS ===== */
+function openTopupDetail(item){
+  document.body.classList.remove("catalog-mode","detail-mode","product-page");
+  document.body.classList.add("topup-detail-mode");
+  window.scrollTo({top:0,behavior:"instant"});
+  const game=item.game||"Free Fire";
+  const pkg=item.package||item.title||"Top-up package";
+  const price=item.price||"";
+  const status=String(item.status||"AVAILABLE").toUpperCase();
+  const photo=item.photoUrl||item.image||"";
+  const card=document.getElementById("topupDetailCard");
+  document.getElementById("topupDetailGame").textContent=game.toUpperCase()+" TOP UP";
+  const payload=JSON.stringify({id:item.id,type:"topup",title:pkg,price:price,game:game,photoUrl:photo}).replace(/'/g,"&#39;");
+  card.innerHTML=`
+    ${photo?`<img class="topup-detail-photo" src="${escapeHtml(photo)}" alt="${escapeHtml(pkg)}" onerror="this.style.display='none'">`:``}
+    <h2 class="topup-detail-game">${escapeHtml(game)}</h2>
+    <div class="topup-detail-package">${escapeHtml(pkg)}</div>
+    <div class="topup-detail-status">● ${escapeHtml(status)}</div>
+    <div class="topup-detail-description">${escapeHtml(item.description||"Double Diamonds Varies")}</div>
+    <div class="topup-detail-price">${escapeHtml(String(price))}</div>
+    <div class="topup-detail-actions">
+      <button onclick='addToCart(${payload})'>🛒 ADD TO CART</button>
+      <button class="buy" onclick='addToCart(${payload});showToast("Added to cart")'>BUY NOW</button>
+    </div>`;
+}
+function closeTopupDetail(){
+  document.body.classList.remove("topup-detail-mode");
+  const active=document.querySelector('body.product-page .game-section.active-page');
+  if(active){document.body.classList.add("product-page");return;}
+  openTopup();
+}
+
+/* ===== FREE FIRE CATALOG ===== */
+async function openFreeFireCatalog(){document.body.classList.remove("detail-mode");document.body.classList.add("catalog-mode");window.scrollTo({top:0,behavior:"instant"});await loadFreeFireCatalogLive();}
+function closeCatalog(){document.body.classList.remove("catalog-mode");window.scrollTo({top:0,behavior:"instant"});}
+function closeDetail(){document.body.classList.remove("detail-mode");openFreeFireCatalog();}
+async function loadFreeFireCatalogLive(){
+ const grid=document.getElementById("freeFireCatalogGrid");if(!grid)return;
+ grid.innerHTML='<div class="catalog-empty">Loading Free Fire accounts...</div>';
+ try{const snapshot=await getDocs(collection(db,"accounts"));let items=[];snapshot.forEach(doc=>{const d=doc.data()||{};const g=String(d.game||"").toLowerCase();if(g.includes("free fire")||g.includes("freefire"))items.push(normalizeCatalogItem({...d,id:doc.id}));});freeFireCatalogItems=items;renderFreeFireCatalog();}
+ catch(e){console.error(e);grid.innerHTML='<div class="catalog-empty"><strong>Could not load accounts.</strong>Please refresh and try again.</div>';}
+}
+function normalizeCatalogItem(item){return{id:item.id||Date.now()+Math.random(),title:item.title||item.accountTitle||"Free Fire Account",game:item.game||"Free Fire",level:item.level||"",region:item.region||"",price:item.price??item.amount??"",status:String(item.status||"AVAILABLE").toUpperCase(),description:item.description||"",photoUrl:item.photoUrl||item.image||item.photo||""};}
+function renderFreeFireCatalog(){
+ const grid=document.getElementById("freeFireCatalogGrid");if(!grid)return;let items=freeFireCatalogItems.map(normalizeCatalogItem);const sort=document.getElementById("catalogSort")?.value||"low";
+ items.sort((a,b)=>{const pa=parseFloat(String(a.price).replace(/[^0-9.]/g,""))||0,pb=parseFloat(String(b.price).replace(/[^0-9.]/g,""))||0;return sort==="high"?pb-pa:pa-pb;});
+ if(!items.length){grid.innerHTML='<div class="catalog-empty"><strong>No Free Fire accounts published yet.</strong>There are no Free Fire accounts available right now.</div>';return;}
+ grid.innerHTML=items.map(item=>{const photo=item.photoUrl?`<img src="${escapeHtml(item.photoUrl)}" alt="${escapeHtml(item.title)}">`:`<div class="catalog-placeholder">🔥</div>`;const payload=JSON.stringify(item).replace(/'/g,"&#39;");return `<article class="catalog-card">${photo}<div class="catalog-info"><h3>${escapeHtml(item.title)}</h3><div class="available">${escapeHtml(item.status)}</div><p>Free Fire${item.level?" · Level "+escapeHtml(item.level):""}${item.region?" · "+escapeHtml(item.region):""}<br>${escapeHtml(item.description)}</p><div class="catalog-price">${escapeHtml(String(item.price))}</div><div class="catalog-actions"><button onclick='openAccountDetail(${payload})'>◉ VIEW DETAILS</button><button class="add" onclick='addToCart(${payload})'>🛒 ADD TO CART</button></div></div></article>`;}).join("");
+}
+function sortCatalog(){renderFreeFireCatalog();}
+function openAccountDetail(item){document.body.classList.remove("catalog-mode");document.body.classList.add("detail-mode");window.scrollTo({top:0,behavior:"instant"});const card=document.getElementById("accountDetailCard");const photo=item.photoUrl?`<img src="${escapeHtml(item.photoUrl)}" alt="${escapeHtml(item.title)}">`:"";const payload=JSON.stringify(item).replace(/'/g,"&#39;");card.innerHTML=`${photo}<h1>${escapeHtml(item.title)}</h1><div class="available">${escapeHtml(item.status||"AVAILABLE")}</div><div class="detail-meta">Game: Free Fire<br>${item.level?"Level: "+escapeHtml(item.level)+"<br>":""}${item.region?"Region: "+escapeHtml(item.region)+"<br>":""}${escapeHtml(item.description||"")}</div><div class="detail-price">${escapeHtml(String(item.price))}</div><button class="detail-buy" onclick='addToCart(${payload})'>🛒 ADD TO CART</button>`;}
+
+/* ===== INSPO PAGE NAV OVERRIDES ===== */
+function openAccountChoices(){
+  closeModal('accountModal');
+  document.body.classList.remove('product-page','catalog-mode','detail-mode','topup-detail-mode');
+  document.body.classList.add('gaming-accounts-mode');
+  window.scrollTo({top:0,behavior:'instant'});
+}
+function closeGamingAccounts(){
+  document.body.classList.remove('gaming-accounts-mode');
+  window.scrollTo({top:0,behavior:'instant'});
+}
+function chooseGame(game){
+  closeModal('accountModal');
+  document.body.classList.remove('gaming-accounts-mode');
+  if(game==='freefire'){
+    openFreeFireCatalog();
+    return;
+  }
+  activateProductPage(game+'-section');
+}
+
+</script>
+
+
+<!-- ================= NORMAL JAVASCRIPT ================= -->
+
+<script>
+
+const WHATSAPP=
+"2347051885555";
+
+let shopView="all";
+
+function getAccountSections(){
+return Array.from(document.querySelectorAll(".game-section[data-game]"));
+}
+
+function getTopupSections(){
+return Array.from(document.querySelectorAll(".game-section[data-topup-section]"));
+}
+
+function hideAllShopSections(){
+getAccountSections().forEach(function(section){section.style.display="none";});
+getTopupSections().forEach(function(section){section.style.display="none";});
+}
+
+function clearFilterActive(){
+document.querySelectorAll(".filter").forEach(function(x){x.classList.remove("active");});
+}
+
+function showAllChoices(){
+shopView="all";
+hideAllShopSections();
+clearFilterActive();
+const allButton=document.querySelector('.filter[onclick="filterProducts(\'all\',this)"]');
+if(allButton) allButton.classList.add("active");
+const choices=document.getElementById("allChoices");
+if(choices) choices.classList.add("show");
+}
+
+function showAllAccounts(){
+shopView="accounts";
+const choices=document.getElementById("allChoices");
+if(choices) choices.classList.remove("show");
+getTopupSections().forEach(function(section){section.style.display="none";});
+getAccountSections().forEach(function(section){section.style.display="block";});
+clearFilterActive();
+const allButton=document.querySelector('.filter[onclick="filterProducts(\'all\',this)"]');
+if(allButton) allButton.classList.add("active");
+}
+
+function showAllTopups(){
+shopView="topups";
+const choices=document.getElementById("allChoices");
+if(choices) choices.classList.remove("show");
+getAccountSections().forEach(function(section){section.style.display="none";});
+getTopupSections().forEach(function(section){section.style.display="block";});
+clearFilterActive();
+const allButton=document.querySelector('.filter[onclick="filterProducts(\'all\',this)"]');
+if(allButton) allButton.classList.add("active");
+}
+
+
+hideAllShopSections();
+showAllChoices();
+returnToHome();
+
+/* MODALS */
+
+function openModal(id){
+
+const modal=
+document.getElementById(id);
+
+if(modal)
+modal.classList.add("show");
+
+}
+
+
+function closeModal(id){
+
+const modal=
+document.getElementById(id);
+
+if(modal)
+modal.classList.remove("show");
+
+}
+
+
+document
+.querySelectorAll(".modal")
+.forEach(function(modal){
+
+modal.addEventListener(
+"click",
+function(e){
+
+if(e.target===modal)
+modal.classList.remove("show");
+
+}
+);
+
+});
+
+
+/* ACCOUNT */
+
+function openAccountChoices(){
+  openModal("accountModal");
+}
+
+function openTopup(){
+  openModal("topupModal");
+}
+
+function activateProductPage(id){
+  document.body.classList.add("product-page");
+  document.querySelectorAll(".game-section").forEach(function(section){
+    section.classList.remove("active-page");
+    section.style.display="none";
+  });
+  document.querySelectorAll(".hero,.all-choices,.home-categories").forEach(function(el){
+    el.style.display="none";
+  });
+  const target=document.getElementById(id);
+  if(target){
+    target.classList.add("active-page");
+    target.style.display="block";
+    window.scrollTo(0,0);
+  }
+}
+
+function returnToHome(){
+  document.body.classList.remove("product-page");
+  document.querySelectorAll(".game-section").forEach(function(section){
+    section.classList.remove("active-page");
+    section.style.display="none";
+  });
+  document.querySelectorAll(".hero,.all-choices,.home-categories").forEach(function(el){
+    el.style.display="";
+  });
+  window.scrollTo(0,0);
+}
+
+function chooseGame(game){
+  closeModal("accountModal");
+  activateProductPage(game+"-section");
+}
+
+function chooseTopup(id){
+  closeModal("topupModal");
+  activateProductPage(id);
+}
+
+/* REVIEWS */
+function openReviews(){
+
+
+openModal("reviewModal");
+
+}
+
+
+function sendReview(stars){
+
+closeModal("reviewModal");
+
+window.open(
+"https://wa.me/"+
+WHATSAPP+
+"?text="+
+encodeURIComponent(
+"Hello Crispy Shop, I want to leave a "+
+stars+
+" star review."
+),
+"_blank"
+);
+
+}
+
+
+/* CONTACT */
+
+function openContactOptions(){
+
+openModal("contactModal");
+
+}
+
+
+function contactMe(){
+
+openContactOptions();
+
+}
+
+
+/* SEARCH */
+
+function openSearch(){
+
+openModal("searchModal");
+
+setTimeout(
+function(){
+
+document
+.getElementById("searchInput")
+.focus();
+
+},
+100
+);
+
+}
+
+
+function runSearch(){
+
+const q=
+document
+.getElementById("searchInput")
+.value
+.toLowerCase()
+.trim();
+
+const results=
+document.getElementById(
+"searchResults"
+);
+
+if(!q){
+
+results.innerHTML=
+'<div class="search-result">'+
+'Type something to search.'+
+'</div>';
+
+return;
+
+}
+
+const products=
+Array.from(
+document.querySelectorAll(
+".product[data-firestore-id]"
+)
+);
+
+const matches=
+products.filter(
+function(product){
+
+return product.innerText
+.toLowerCase()
+.includes(q);
+
+}
+);
+
+if(!matches.length){
+
+results.innerHTML=
+'<div class="search-result">'+
+'No matching account found.'+
+'</div>';
+
+return;
+
+}
+
+results.innerHTML=
+matches.map(
+function(product){
+
+const title=
+product.querySelector("h3")
+?.innerText||
+"Gaming Account";
+
+const price=
+product.querySelector(".price")
+?.innerText||
+"₦0";
+
+return `
+
+<div
+class="search-result"
+onclick="goToProduct(this)"
+>
+${escapeSearch(title)}
+—
+${escapeSearch(price)}
+</div>
+
+`;
+
+}
+).join("");
+
+window.searchMatches=
+matches;
+
+}
+
+
+document
+.getElementById("searchInput")
+.addEventListener(
+"input",
+runSearch
+);
+
+
+function escapeSearch(value){
+
+return String(value)
+.replaceAll("&","&amp;")
+.replaceAll("<","&lt;")
+.replaceAll(">","&gt;")
+.replaceAll('"',"&quot;")
+.replaceAll("'","&#039;");
+
+}
+
+
+window.goToProduct=
+function(element){
+
+const results=
+Array.from(
+document.querySelectorAll(
+"#searchResults .search-result"
+)
+);
+
+const index=
+results.indexOf(element);
+
+if(
+!window.searchMatches||
+!window.searchMatches[index]
+)
+return;
+
+closeModal("searchModal");
+
+window.searchMatches[index]
+.scrollIntoView({
+behavior:"smooth",
+block:"center"
+});
+
+};
+
+
+/* ================= CART ================= */
+
+let cart=[];
+
+
+function addToCart(
+name,
+price
+){
+
+if(price==="₦0"){
+
+showToast(
+"This account has not been posted yet."
+);
+
+return;
+
+}
+
+cart.push({
+name:name,
+price:price
+});
+
+renderCart();
+
+showToast(
+name+
+" added to cart."
+);
+
+}
+
+
+function renderCart(){
+
+const list=
+document.getElementById(
+"cartList"
+);
+
+const total=
+document.getElementById(
+"cartTotal"
+);
+
+if(!cart.length){
+
+list.innerHTML=
+'<div class="empty">'+
+'Your cart is empty.'+
+'</div>';
+
+total.textContent=
+"Total: ₦0";
+
+return;
+
+}
+
+let sum=0;
+
+list.innerHTML=
+cart.map(
+function(item,index){
+
+const value=
+Number(
+String(item.price)
+.replace(/[₦,]/g,"")
+)||0;
+
+sum+=value;
+
+return `
+
+<div class="cart-item">
+
+<span>
+${escapeCart(item.name)}
+</span>
+
+<strong class="cart-price">
+${escapeCart(item.price)}
+</strong>
+
+<button
+onclick="removeCart(${index})"
+style="
+background:none;
+border:0;
+color:#ff5555;
+font-size:22px;
+"
+>
+×
+</button>
+
+</div>
+
+`;
+
+}
+).join("")
++
+`
+
+<button
+class="yellow-btn"
+style="width:100%;margin-top:18px"
+onclick="checkout()"
+>
+CHECKOUT ON WHATSAPP
+</button>
+
+`;
+
+total.textContent=
+"Total: ₦"+
+sum.toLocaleString();
+
+}
+
+
+function escapeCart(value){
+
+return String(value)
+.replaceAll("&","&amp;")
+.replaceAll("<","&lt;")
+.replaceAll(">","&gt;")
+.replaceAll('"',"&quot;")
+.replaceAll("'","&#039;");
+
+}
+
+
+function removeCart(index){
+
+cart.splice(index,1);
+
+renderCart();
+
+}
+
+
+function openCart(){
+
+renderCart();
+
+openModal("cartModal");
+
+}
+
+
+function checkout(){
+
+if(!cart.length)return;
+
+const text=
+"Hello Crispy Shop, I want to buy:\n"+
+cart.map(
+function(item){
+
+return "- "+
+item.name+
+" ("+
+item.price+
+")";
+
+}
+).join("\n");
+
+window.open(
+"https://wa.me/"+
+WHATSAPP+
+"?text="+
+encodeURIComponent(text),
+"_blank"
+);
+
+}
+
+
+/* FILTER */
+
+function filterProducts(game,button){
+
+if(game==="all"){
+showAllChoices();
+return;
+}
+
+shopView="accounts";
+const choices=document.getElementById("allChoices");
+if(choices) choices.classList.remove("show");
+getTopupSections().forEach(function(section){section.style.display="none";});
+
+document.querySelectorAll(".filter").forEach(function(x){x.classList.remove("active");});
+if(button) button.classList.add("active");
+
+getAccountSections().forEach(function(section){
+section.style.display=section.dataset.game===game?"block":"none";
+});
+
+const target=document.getElementById(game+"-section");
+if(target) target.scrollIntoView({behavior:"smooth",block:"start"});
+}
+
+
+/* DRAWER */
+
+function openDrawer(){
+
+document
+.getElementById("drawer")
+.classList.add("open");
+
+}
+
+
+function closeDrawer(){
+
+document
+.getElementById("drawer")
+.classList.remove("open");
+
+}
+
+
+function drawerOutside(e){
+
+if(e.target.id==="drawer")
+closeDrawer();
+
+}
+
+
+/* TOAST */
+
+function showToast(message){
+
+let toast=
+document.getElementById(
+"crispyToast"
+);
+
+if(!toast){
+
+toast=
+document.createElement("div");
+
+toast.id="crispyToast";
+
+toast.style.cssText=
+`
+position:fixed;
+z-index:5000;
+left:50%;
+bottom:25px;
+transform:translateX(-50%);
+padding:13px 20px;
+background:#ffd400;
+color:#050708;
+font-weight:bold;
+border-radius:4px;
+`;
+
+document.body.appendChild(toast);
+
+}
+
+toast.textContent=message;
+
+toast.style.display="block";
+
+setTimeout(
+function(){
+
+toast.style.display="none";
+
+},
+2500
+);
+
+}
+
+
+/* NAV */
+
+document
+.querySelectorAll("nav a")
+.forEach(
+function(link){
+
+link.addEventListener(
+"click",
+function(){
+
+document
+.querySelectorAll("nav a")
+.forEach(
+function(a){
+
+a.classList.remove("active");
+
+}
+);
+
+this.classList.add("active");
+
+}
+);
+
+}
+);
+
+</script>
+
+</body>
+</html>
