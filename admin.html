@@ -28,12 +28,6 @@ header{
   background:#050708;
 }
 
-.logo{
-  width:140px;
-  max-height:65px;
-  object-fit:contain;
-}
-
 .header-right{
   display:flex;
   align-items:center;
@@ -259,7 +253,53 @@ textarea{
   margin-bottom:10px;
 }
 
+.topup-box{
+  border-color:#ffd400;
+}
+
+.topup-box h3{
+  color:#ffd400;
+}
+
+.topup-card{
+  border:1px solid #00aaa5;
+  background:#070b0d;
+  padding:18px;
+  margin-bottom:12px;
+}
+
+.topup-card h3{
+  color:#ffd400;
+  margin-bottom:8px;
+}
+
+.topup-meta{
+  color:#00e5d5;
+  font-size:13px;
+  margin-bottom:8px;
+}
+
+.topup-price{
+  color:#fff;
+  font-size:20px;
+  font-weight:bold;
+  margin:10px 0;
+}
+
+.topup-description{
+  color:#aaa;
+  font-size:13px;
+  margin-bottom:12px;
+}
+
+.topup-actions{
+  display:flex;
+  gap:10px;
+  flex-wrap:wrap;
+}
+
 @media(max-width:650px){
+
   header{
     flex-direction:column;
     gap:12px;
@@ -289,20 +329,7 @@ textarea{
   .actions button{
     width:100%!important;
   }
-}
 
-.logo-fallback{
-  display:none;
-  color:#00e5d5;
-  font-weight:900;
-  letter-spacing:2px;
-  font-size:18px;
-}
-
-.logo-fallback-large{
-  text-align:center;
-  font-size:28px;
-  margin:0 auto 20px;
 }
 </style>
 </head>
@@ -339,7 +366,7 @@ textarea{
 >
 
 <img
-  src="YOUR_EMBEDDED_LOGO_HERE"
+  src="logo.png.jpeg"
   class="logo-large"
   alt="CRISPY SHOP"
 >
@@ -438,7 +465,7 @@ textarea{
 
 </div>
 
-<!-- ADD / EDIT -->
+<!-- ADD / EDIT GAMING ACCOUNT -->
 
 <div class="form-box">
 
@@ -448,11 +475,7 @@ textarea{
 
 <div class="form-grid">
 
-<!-- PHOTO -->
-
 <div class="full">
-
-<div class="photo-box">
 
 <label
   class="photo-label"
@@ -463,13 +486,12 @@ textarea{
 
 <input
   id="accountPhoto"
-  class="photo-input"
   type="file"
   accept="image/jpeg,image/png,image/webp,image/gif"
 >
 
 <div class="photo-help">
-  Choose an account picture. It will be compressed automatically so it can be stored on the free Firebase plan.
+  Choose an account picture.
 </div>
 
 <img
@@ -481,7 +503,7 @@ textarea{
 <button
   type="button"
   id="removePhotoBtn"
-  class="remove-photo"
+  class="danger"
 >
   REMOVE PHOTO
 </button>
@@ -494,10 +516,6 @@ textarea{
 </div>
 
 </div>
-
-</div>
-
-<!-- GAME -->
 
 <div>
 
@@ -531,8 +549,6 @@ textarea{
 
 </div>
 
-<!-- TITLE -->
-
 <div>
 
 <label for="title">
@@ -546,8 +562,6 @@ textarea{
 >
 
 </div>
-
-<!-- LEVEL -->
 
 <div>
 
@@ -563,8 +577,6 @@ textarea{
 
 </div>
 
-<!-- REGION -->
-
 <div>
 
 <label for="region">
@@ -579,8 +591,6 @@ textarea{
 
 </div>
 
-<!-- PRICE -->
-
 <div>
 
 <label for="price">
@@ -594,8 +604,6 @@ textarea{
 >
 
 </div>
-
-<!-- STATUS -->
 
 <div>
 
@@ -620,8 +628,6 @@ textarea{
 </select>
 
 </div>
-
-<!-- DESCRIPTION -->
 
 <div class="full">
 
@@ -664,6 +670,167 @@ textarea{
 
 </div>
 
+<!-- TOPUP MANAGEMENT -->
+
+<div class="form-box topup-box">
+
+<h3>
+  TOPUP MANAGEMENT
+</h3>
+
+<div class="form-grid">
+
+<div>
+
+<label for="topupGame">
+  TOPUP GAME
+</label>
+
+<select id="topupGame">
+
+<option value="Free Fire">
+  🔥 Free Fire Diamonds
+</option>
+
+<option value="eFootball">
+  ⚽ eFootball Coins
+</option>
+
+<option value="COD Mobile">
+  🎯 COD Mobile CP
+</option>
+
+<option value="DLS">
+  💎 DLS Diamonds
+</option>
+
+<option value="FC Mobile">
+  🟦 FC Mobile
+</option>
+
+</select>
+
+</div>
+
+<div>
+
+<label for="topupPackage">
+  PACKAGE
+</label>
+
+<input
+  id="topupPackage"
+  type="text"
+  placeholder="e.g. 100 Diamonds"
+>
+
+</div>
+
+<div>
+
+<label for="topupPrice">
+  PRICE
+</label>
+
+<input
+  id="topupPrice"
+  type="text"
+  placeholder="₦2,000"
+>
+
+</div>
+
+<div>
+
+<label for="topupStatus">
+  STATUS
+</label>
+
+<select id="topupStatus">
+
+<option value="AVAILABLE">
+  AVAILABLE
+</option>
+
+<option value="SOLD OUT">
+  SOLD OUT
+</option>
+
+<option value="HIDDEN">
+  HIDDEN
+</option>
+
+</select>
+
+</div>
+
+<div class="full">
+
+<label for="topupDescription">
+  DESCRIPTION
+</label>
+
+<textarea
+  id="topupDescription"
+  placeholder="Describe this topup package..."
+></textarea>
+
+</div>
+
+</div>
+
+<div class="actions">
+
+<button
+  id="saveTopupBtn"
+  class="primary"
+  style="width:auto;margin-top:0"
+>
+  POST TOPUP
+</button>
+
+<button
+  id="cancelTopupEditBtn"
+  class="secondary hidden"
+>
+  CANCEL EDIT
+</button>
+
+</div>
+
+<div
+  id="topupMessage"
+  class="message"
+></div>
+
+</div>
+
+<div class="topbar">
+
+<h2>
+  TOPUP PRODUCTS
+</h2>
+
+<button
+  id="refreshTopupsBtn"
+  class="secondary"
+>
+  ↻ REFRESH
+</button>
+
+</div>
+
+<div
+  id="topupsList"
+  class="accounts"
+>
+
+<p style="color:#999">
+  Loading topups...
+</p>
+
+</div>
+
 <!-- ACCOUNTS -->
 
 <div class="topbar">
@@ -695,7 +862,6 @@ textarea{
 </section>
 
 </main>
-
 <!-- FIREBASE -->
 
 <script type="module">
@@ -1270,14 +1436,22 @@ function updatePasskeyButtons(){
 
   if(!passkeySupported()){
 
-    passkeyLoginBtn.classList.add("hidden");
-    registerPasskeyBtn.classList.add("hidden");
+    passkeyLoginBtn.classList.add(
+      "hidden"
+    );
+
+    registerPasskeyBtn.classList.add(
+      "hidden"
+    );
 
     return;
 
   }
 
-  passkeyLoginBtn.classList.remove("hidden");
+  passkeyLoginBtn.classList.remove(
+    "hidden"
+  );
+
 
   if(
     auth.currentUser &&
@@ -1300,6 +1474,7 @@ function updatePasskeyButtons(){
   }
 
 }
+
 
 updatePasskeyButtons();
 
@@ -1340,8 +1515,11 @@ function compressImage(file){
           image.onload =
             function(){
 
-              const maxWidth = 900;
-              const maxHeight = 900;
+              const maxWidth =
+                900;
+
+              const maxHeight =
+                900;
 
               let width =
                 image.width;
@@ -1416,7 +1594,8 @@ function compressImage(file){
                 quality > 0.35
               ){
 
-                quality -= 0.08;
+                quality -=
+                  0.08;
 
                 result =
                   canvas.toDataURL(
@@ -1519,7 +1698,8 @@ accountPhoto.addEventListener(
 
 
     if(
-      file.size > 10 * 1024 * 1024
+      file.size >
+      10 * 1024 * 1024
     ){
 
       showMessage(
@@ -1878,6 +2058,8 @@ onAuthStateChanged(
 
     await loadAccounts();
 
+    await loadTopups();
+
   }
 );
 
@@ -1892,9 +2074,9 @@ logoutBtn.addEventListener(
 
   }
 );
-
-
-/* GET FORM */
+  /* =========================
+   GAMING ACCOUNT MANAGEMENT
+========================= */
 
 function getFormData(){
 
@@ -1945,8 +2127,6 @@ function getFormData(){
 }
 
 
-/* CLEAR FORM */
-
 function clearForm(){
 
   document.getElementById("game").value =
@@ -1994,7 +2174,9 @@ function clearForm(){
   editingId =
     null;
 
-  document.getElementById("formTitle").textContent =
+  document.getElementById(
+    "formTitle"
+  ).textContent =
     "ADD GAMING ACCOUNT";
 
   saveBtn.textContent =
@@ -2007,15 +2189,12 @@ function clearForm(){
 }
 
 
-/* SAVE ACCOUNT */
-
 saveBtn.addEventListener(
   "click",
   async function(){
 
     const user =
       auth.currentUser;
-
 
     if(!user){
 
@@ -2094,10 +2273,7 @@ saveBtn.addEventListener(
           "success"
         );
 
-      }
-
-
-      else{
+      }else{
 
         const updateData = {
 
@@ -2151,7 +2327,10 @@ saveBtn.addEventListener(
 
     }catch(error){
 
-      console.error(error);
+      console.error(
+        "Save account:",
+        error
+      );
 
       showMessage(
         formMessage,
@@ -2230,8 +2409,13 @@ async function loadAccounts(){
               `
               <img
                 class="account-photo"
-                src="${escapeHtml(data.photoUrl)}"
-                alt="${escapeHtml(data.title || "Gaming account")}"
+                src="${escapeHtml(
+                  data.photoUrl
+                )}"
+                alt="${escapeHtml(
+                  data.title ||
+                  "Gaming account"
+                )}"
               >
               `
             :
@@ -2372,16 +2556,17 @@ async function loadAccounts(){
 
   }catch(error){
 
-    console.error(error);
+    console.error(
+      "Load accounts:",
+      error
+    );
 
     accountsList.innerHTML = `
 
       <p style="color:#ff5555">
-
         Could not load accounts.
         Check Firebase Firestore
         and Security Rules.
-
       </p>
 
     `;
@@ -2417,26 +2602,47 @@ function editAccount(
     item.data();
 
 
-  document.getElementById("game").value =
-    data.game || "Free Fire";
+  document.getElementById(
+    "game"
+  ).value =
+    data.game ||
+    "Free Fire";
 
-  document.getElementById("title").value =
-    data.title || "";
+  document.getElementById(
+    "title"
+  ).value =
+    data.title ||
+    "";
 
-  document.getElementById("level").value =
-    data.level || "";
+  document.getElementById(
+    "level"
+  ).value =
+    data.level ||
+    "";
 
-  document.getElementById("region").value =
-    data.region || "";
+  document.getElementById(
+    "region"
+  ).value =
+    data.region ||
+    "";
 
-  document.getElementById("price").value =
-    data.price || "";
+  document.getElementById(
+    "price"
+  ).value =
+    data.price ||
+    "";
 
-  document.getElementById("status").value =
-    data.status || "AVAILABLE";
+  document.getElementById(
+    "status"
+  ).value =
+    data.status ||
+    "AVAILABLE";
 
-  document.getElementById("description").value =
-    data.description || "";
+  document.getElementById(
+    "description"
+  ).value =
+    data.description ||
+    "";
 
 
   editingId =
@@ -2444,7 +2650,8 @@ function editAccount(
 
 
   oldPhotoData =
-    data.photoUrl || "";
+    data.photoUrl ||
+    "";
 
   selectedPhotoData =
     "";
@@ -2488,11 +2695,15 @@ function editAccount(
   }
 
 
-  document.getElementById("formTitle").textContent =
+  document.getElementById(
+    "formTitle"
+  ).textContent =
     "EDIT GAMING ACCOUNT";
+
 
   saveBtn.textContent =
     "SAVE CHANGES";
+
 
   cancelEditBtn.classList.remove(
     "hidden"
@@ -2506,8 +2717,6 @@ function editAccount(
 
 }
 
-
-/* CANCEL EDIT */
 
 cancelEditBtn.addEventListener(
   "click",
@@ -2557,7 +2766,11 @@ async function deleteAccount(id){
 
   }catch(error){
 
-    console.error(error);
+    console.error(
+      "Delete account:",
+      error
+    );
+
 
     showMessage(
       formMessage,
@@ -2570,11 +2783,598 @@ async function deleteAccount(id){
 }
 
 
-/* REFRESH */
-
 refreshBtn.addEventListener(
   "click",
   loadAccounts
+);
+
+
+/* =========================
+   TOPUP MANAGEMENT
+========================= */
+
+const topupGame =
+  document.getElementById(
+    "topupGame"
+  );
+
+const topupPackage =
+  document.getElementById(
+    "topupPackage"
+  );
+
+const topupPrice =
+  document.getElementById(
+    "topupPrice"
+  );
+
+const topupStatus =
+  document.getElementById(
+    "topupStatus"
+  );
+
+const topupDescription =
+  document.getElementById(
+    "topupDescription"
+  );
+
+const saveTopupBtn =
+  document.getElementById(
+    "saveTopupBtn"
+  );
+
+const cancelTopupEditBtn =
+  document.getElementById(
+    "cancelTopupEditBtn"
+  );
+
+const refreshTopupsBtn =
+  document.getElementById(
+    "refreshTopupsBtn"
+  );
+
+const topupsList =
+  document.getElementById(
+    "topupsList"
+  );
+
+const topupMessage =
+  document.getElementById(
+    "topupMessage"
+  );
+
+
+let editingTopupId =
+  null;
+
+
+function getTopupData(){
+
+  return {
+
+    game:
+      topupGame.value,
+
+    package:
+      topupPackage.value.trim(),
+
+    price:
+      topupPrice.value.trim(),
+
+    status:
+      topupStatus.value,
+
+    description:
+      topupDescription.value.trim()
+
+  };
+
+}
+
+
+function clearTopupForm(){
+
+  topupGame.value =
+    "Free Fire";
+
+  topupPackage.value =
+    "";
+
+  topupPrice.value =
+    "";
+
+  topupStatus.value =
+    "AVAILABLE";
+
+  topupDescription.value =
+    "";
+
+  editingTopupId =
+    null;
+
+  saveTopupBtn.textContent =
+    "POST TOPUP";
+
+  cancelTopupEditBtn.classList.add(
+    "hidden"
+  );
+
+}
+
+
+saveTopupBtn.addEventListener(
+  "click",
+  async function(){
+
+    const user =
+      auth.currentUser;
+
+
+    if(!user){
+
+      showMessage(
+        topupMessage,
+        "You must be logged in as admin.",
+        "error"
+      );
+
+      return;
+
+    }
+
+
+    const data =
+      getTopupData();
+
+
+    if(
+      !data.package ||
+      !data.price
+    ){
+
+      showMessage(
+        topupMessage,
+        "Package and price are required.",
+        "error"
+      );
+
+      return;
+
+    }
+
+
+    saveTopupBtn.disabled =
+      true;
+
+    saveTopupBtn.textContent =
+      editingTopupId
+        ? "SAVING..."
+        : "POSTING...";
+
+
+    try{
+
+      if(!editingTopupId){
+
+        await addDoc(
+          collection(
+            db,
+            "topups"
+          ),
+          {
+
+            ...data,
+
+            createdAt:
+              serverTimestamp(),
+
+            updatedAt:
+              serverTimestamp(),
+
+            createdBy:
+              user.email
+
+          }
+        );
+
+
+        showMessage(
+          topupMessage,
+          "✓ Topup posted successfully.",
+          "success"
+        );
+
+
+      }else{
+
+        await updateDoc(
+          doc(
+            db,
+            "topups",
+            editingTopupId
+          ),
+          {
+
+            ...data,
+
+            updatedAt:
+              serverTimestamp()
+
+          }
+        );
+
+
+        showMessage(
+          topupMessage,
+          "✓ Topup updated successfully.",
+          "success"
+        );
+
+      }
+
+
+      await loadTopups();
+
+      clearTopupForm();
+
+
+    }catch(error){
+
+      console.error(
+        "Save topup:",
+        error
+      );
+
+
+      showMessage(
+        topupMessage,
+        "Could not save topup. Check your Firestore Rules.",
+        "error"
+      );
+
+    }
+
+
+    saveTopupBtn.disabled =
+      false;
+
+    saveTopupBtn.textContent =
+      editingTopupId
+        ? "SAVE CHANGES"
+        : "POST TOPUP";
+
+  }
+);
+
+
+/* LOAD TOPUPS */
+
+async function loadTopups(){
+
+  if(!topupsList){
+    return;
+  }
+
+
+  topupsList.innerHTML =
+    "<p style='color:#999'>Loading topups...</p>";
+
+
+  try{
+
+    const snapshot =
+      await getDocs(
+        collection(
+          db,
+          "topups"
+        )
+      );
+
+
+    if(snapshot.empty){
+
+      topupsList.innerHTML =
+        "<p style='color:#999'>No topups posted yet.</p>";
+
+      return;
+
+    }
+
+
+    topupsList.innerHTML =
+      "";
+
+
+    snapshot.forEach(
+      function(item){
+
+        const data =
+          item.data();
+
+
+        const card =
+          document.createElement(
+            "div"
+          );
+
+
+        card.className =
+          "topup-card";
+
+
+        card.innerHTML = `
+
+          <h3>
+            ${escapeHtml(
+              data.game ||
+              "Topup"
+            )}
+          </h3>
+
+          <div class="topup-meta">
+
+            ${escapeHtml(
+              data.package ||
+              ""
+            )}
+
+            ·
+
+            ${escapeHtml(
+              data.status ||
+              "AVAILABLE"
+            )}
+
+          </div>
+
+          <div class="topup-price">
+
+            ${escapeHtml(
+              data.price ||
+              ""
+            )}
+
+          </div>
+
+          <div class="topup-description">
+
+            ${escapeHtml(
+              data.description ||
+              ""
+            )}
+
+          </div>
+
+          <div class="topup-actions">
+
+            <button
+              class="secondary"
+              data-topup-edit="${item.id}"
+            >
+              EDIT
+            </button>
+
+            <button
+              class="danger"
+              data-topup-delete="${item.id}"
+            >
+              DELETE
+            </button>
+
+          </div>
+
+        `;
+
+
+        topupsList.appendChild(
+          card
+        );
+
+      }
+    );
+
+
+    document
+      .querySelectorAll(
+        "[data-topup-edit]"
+      )
+      .forEach(
+        function(button){
+
+          button.addEventListener(
+            "click",
+            function(){
+
+              editTopup(
+                button.dataset.topupEdit,
+                snapshot
+              );
+
+            }
+          );
+
+        }
+      );
+
+
+    document
+      .querySelectorAll(
+        "[data-topup-delete]"
+      )
+      .forEach(
+        function(button){
+
+          button.addEventListener(
+            "click",
+            function(){
+
+              deleteTopup(
+                button.dataset.topupDelete
+              );
+
+            }
+          );
+
+        }
+      );
+
+
+  }catch(error){
+
+    console.error(
+      "Load topups:",
+      error
+    );
+
+
+    topupsList.innerHTML =
+      "<p style='color:#ff5555'>Could not load topups. Check Firestore Rules.</p>";
+
+  }
+
+}
+
+
+/* EDIT TOPUP */
+
+function editTopup(
+  id,
+  snapshot
+){
+
+  const item =
+    snapshot.docs.find(
+      function(docItem){
+
+        return docItem.id === id;
+
+      }
+    );
+
+
+  if(!item){
+    return;
+  }
+
+
+  const data =
+    item.data();
+
+
+  topupGame.value =
+    data.game ||
+    "Free Fire";
+
+  topupPackage.value =
+    data.package ||
+    "";
+
+  topupPrice.value =
+    data.price ||
+    "";
+
+  topupStatus.value =
+    data.status ||
+    "AVAILABLE";
+
+  topupDescription.value =
+    data.description ||
+    "";
+
+
+  editingTopupId =
+    id;
+
+
+  saveTopupBtn.textContent =
+    "SAVE CHANGES";
+
+
+  cancelTopupEditBtn.classList.remove(
+    "hidden"
+  );
+
+
+  window.scrollTo({
+    top:0,
+    behavior:"smooth"
+  });
+
+}
+
+
+cancelTopupEditBtn.addEventListener(
+  "click",
+  function(){
+
+    clearTopupForm();
+
+  }
+);
+
+
+/* DELETE TOPUP */
+
+async function deleteTopup(id){
+
+  if(
+    !confirm(
+      "Delete this topup product?"
+    )
+  ){
+
+    return;
+
+  }
+
+
+  try{
+
+    await deleteDoc(
+      doc(
+        db,
+        "topups",
+        id
+      )
+    );
+
+
+    await loadTopups();
+
+
+    showMessage(
+      topupMessage,
+      "Topup deleted successfully.",
+      "success"
+    );
+
+
+  }catch(error){
+
+    console.error(
+      "Delete topup:",
+      error
+    );
+
+
+    showMessage(
+      topupMessage,
+      "Could not delete topup.",
+      "error"
+    );
+
+  }
+
+}
+
+
+refreshTopupsBtn.addEventListener(
+  "click",
+  function(){
+
+    loadTopups();
+
+  }
 );
 
 
@@ -2583,22 +3383,27 @@ refreshBtn.addEventListener(
 function escapeHtml(value){
 
   return String(value)
+
     .replaceAll(
       "&",
       "&amp;"
     )
+
     .replaceAll(
       "<",
       "&lt;"
     )
+
     .replaceAll(
       ">",
       "&gt;"
     )
+
     .replaceAll(
       '"',
       "&quot;"
     )
+
     .replaceAll(
       "'",
       "&#039;"
