@@ -223,7 +223,7 @@ textarea{
   margin-bottom:10px;
 }
 
-/* PHOTO UPLOAD */
+/* PHOTO */
 
 .photo-box{
   border:1px dashed #00e5d5;
@@ -257,6 +257,7 @@ textarea{
   color:#888;
   font-size:12px;
   margin-top:9px;
+  line-height:1.5;
 }
 
 .photo-preview{
@@ -277,6 +278,14 @@ textarea{
   background:transparent;
   border:1px solid #ff5555;
   color:#ff5555;
+}
+
+.photo-status{
+  display:none;
+  margin-top:10px;
+  color:#21d86b;
+  font-size:12px;
+  font-weight:bold;
 }
 
 .actions{
@@ -368,13 +377,6 @@ textarea{
   display:none!important;
 }
 
-.uploading{
-  color:#ffd400;
-  font-size:13px;
-  margin-top:10px;
-  display:none;
-}
-
 @media(max-width:650px){
 
   header{
@@ -438,9 +440,7 @@ LOG OUT
 
 </header>
 
-
 <main>
-
 
 <!-- LOGIN -->
 
@@ -497,7 +497,6 @@ SECURE LOGIN
 
 </section>
 
-
 <!-- ADMIN AREA -->
 
 <section
@@ -521,7 +520,6 @@ SECURE LOGIN
 
 </div>
 
-
 <!-- ADD / EDIT -->
 
 <div class="form-box">
@@ -532,8 +530,7 @@ ADD GAMING ACCOUNT
 
 <div class="form-grid">
 
-
-<!-- PHOTO UPLOAD -->
+<!-- PHOTO -->
 
 <div class="full">
 
@@ -554,7 +551,7 @@ ADD GAMING ACCOUNT
 >
 
 <div class="photo-help">
-Choose the picture of the gaming account you want to post.
+Choose an account picture. It will be compressed automatically so it can be stored on the free Firebase plan.
 </div>
 
 <img
@@ -572,16 +569,15 @@ REMOVE PHOTO
 </button>
 
 <div
-  id="uploadingMessage"
-  class="uploading"
+  id="photoStatus"
+  class="photo-status"
 >
-Uploading photo...
+✓ PHOTO READY
 </div>
 
 </div>
 
 </div>
-
 
 <!-- GAME -->
 
@@ -617,7 +613,6 @@ FC Mobile
 
 </div>
 
-
 <!-- TITLE -->
 
 <div>
@@ -633,7 +628,6 @@ ACCOUNT TITLE
 >
 
 </div>
-
 
 <!-- LEVEL -->
 
@@ -651,7 +645,6 @@ LEVEL
 
 </div>
 
-
 <!-- REGION -->
 
 <div>
@@ -668,7 +661,6 @@ REGION
 
 </div>
 
-
 <!-- PRICE -->
 
 <div>
@@ -684,7 +676,6 @@ PRICE
 >
 
 </div>
-
 
 <!-- STATUS -->
 
@@ -712,7 +703,6 @@ RESERVED
 
 </div>
 
-
 <!-- DESCRIPTION -->
 
 <div class="full">
@@ -729,7 +719,6 @@ DESCRIPTION
 </div>
 
 </div>
-
 
 <div class="actions">
 
@@ -750,14 +739,12 @@ CANCEL EDIT
 
 </div>
 
-
 <div
   id="formMessage"
   class="message"
 ></div>
 
 </div>
-
 
 <!-- ACCOUNTS -->
 
@@ -776,7 +763,6 @@ SHOP ACCOUNTS
 
 </div>
 
-
 <div
   id="accountsList"
   class="accounts"
@@ -791,7 +777,6 @@ Loading accounts...
 </section>
 
 </main>
-
 
 <!-- FIREBASE -->
 
@@ -818,14 +803,6 @@ import {
   deleteDoc,
   serverTimestamp
 } from "https://www.gstatic.com/firebasejs/10.12.2/firebase-firestore.js";
-
-import {
-  getStorage,
-  ref,
-  uploadBytes,
-  getDownloadURL,
-  deleteObject
-} from "https://www.gstatic.com/firebasejs/10.12.2/firebase-storage.js";
 
 
 /* FIREBASE CONFIG */
@@ -869,9 +846,6 @@ const auth =
 
 const db =
   getFirestore(app);
-
-const storage =
-  getStorage(app);
 
 
 /* ELEMENTS */
@@ -918,17 +892,15 @@ const photoPreview =
 const removePhotoBtn =
   document.getElementById("removePhotoBtn");
 
-const uploadingMessage =
-  document.getElementById("uploadingMessage");
+const photoStatus =
+  document.getElementById("photoStatus");
 
 
 let editingId = null;
 
-let oldPhotoPath = "";
-
-let selectedPhotoFile = null;
-
 let selectedPhotoData = "";
+
+let oldPhotoData = "";
 
 
 /* MESSAGE */
@@ -948,20 +920,195 @@ function showMessage(
 }
 
 
-/* PHOTO PREVIEW */
+/* PHOTO COMPRESSION */
+
+function compressImage(file){
+
+  return new Promise(
+    function(resolve,reject){
+
+      const reader =
+        new FileReader();
+
+      reader.onload =
+        function(event){
+
+          const image =
+            new Image();
+
+          image.onload =
+            function(){
+
+              const maxWidth = 900;
+
+              const maxHeight = 900;
+
+              let width =
+                image.width;
+
+              let height =
+                image.height;
+
+
+              if(
+                width > maxWidth ||
+                height > maxHeight
+              ){
+
+                const ratio =
+                  Math.min(
+                    maxWidth / width,
+                    maxHeight / height
+                  );
+
+                width =
+                  Math.round(
+                    width * ratio
+                  );
+
+                height =
+                  Math.round(
+                    height * ratio
+                  );
+
+              }
+
+
+              const canvas =
+                document.createElement(
+                  "canvas"
+                );
+
+              canvas.width =
+                width;
+
+              canvas.height =
+                height;
+
+
+              const ctx =
+                canvas.getContext(
+                  "2d"
+                );
+
+              ctx.drawImage(
+                image,
+                0,
+                0,
+                width,
+                height
+              );
+
+
+              let quality =
+                0.75;
+
+              let result =
+                canvas.toDataURL(
+                  "image/jpeg",
+                  quality
+                );
+
+
+              /*
+              Keep reducing quality
+              if the image is still large.
+              */
+
+              while(
+                result.length > 850000 &&
+                quality > 0.35
+              ){
+
+                quality -= 0.08;
+
+                result =
+                  canvas.toDataURL(
+                    "image/jpeg",
+                    quality
+                  );
+
+              }
+
+
+              /*
+              Firestore documents have a
+              size limit, so reject an
+              unusually large result.
+              */
+
+              if(
+                result.length > 900000
+              ){
+
+                reject(
+                  new Error(
+                    "This photo is still too large."
+                  )
+                );
+
+                return;
+
+              }
+
+
+              resolve(result);
+
+            };
+
+
+          image.onerror =
+            function(){
+
+              reject(
+                new Error(
+                  "Could not read image."
+                )
+              );
+
+            };
+
+
+          image.src =
+            event.target.result;
+
+        };
+
+
+      reader.onerror =
+        function(){
+
+          reject(
+            new Error(
+              "Could not load photo."
+            )
+          );
+
+        };
+
+
+      reader.readAsDataURL(file);
+
+    }
+  );
+
+}
+
+
+/* PHOTO SELECT */
 
 accountPhoto.addEventListener(
   "change",
-  function(){
+  async function(){
 
     const file =
       accountPhoto.files[0];
 
+
     if(!file){
 
-      selectedPhotoFile = null;
-
       return;
+
     }
 
 
@@ -975,9 +1122,11 @@ accountPhoto.addEventListener(
         "error"
       );
 
-      accountPhoto.value = "";
+      accountPhoto.value =
+        "";
 
       return;
+
     }
 
 
@@ -991,39 +1140,78 @@ accountPhoto.addEventListener(
         "error"
       );
 
-      accountPhoto.value = "";
+      accountPhoto.value =
+        "";
 
       return;
+
     }
 
 
-    selectedPhotoFile =
-      file;
+    photoStatus.style.display =
+      "block";
+
+    photoStatus.textContent =
+      "⏳ COMPRESSING PHOTO...";
 
 
-    const reader =
-      new FileReader();
+    try{
+
+      const compressed =
+        await compressImage(file);
 
 
-    reader.onload =
-      function(event){
-
-        selectedPhotoData =
-          event.target.result;
-
-        photoPreview.src =
-          selectedPhotoData;
-
-        photoPreview.style.display =
-          "block";
-
-        removePhotoBtn.style.display =
-          "block";
-
-      };
+      selectedPhotoData =
+        compressed;
 
 
-    reader.readAsDataURL(file);
+      photoPreview.src =
+        selectedPhotoData;
+
+      photoPreview.style.display =
+        "block";
+
+      removePhotoBtn.style.display =
+        "block";
+
+
+      photoStatus.textContent =
+        "✓ PHOTO READY TO SAVE";
+
+
+      formMessage.style.display =
+        "none";
+
+
+    }catch(error){
+
+      console.error(error);
+
+      selectedPhotoData =
+        "";
+
+      photoPreview.src =
+        "";
+
+      photoPreview.style.display =
+        "none";
+
+      removePhotoBtn.style.display =
+        "none";
+
+      photoStatus.style.display =
+        "none";
+
+      showMessage(
+        formMessage,
+        "Could not prepare this photo. Try a smaller image.",
+        "error"
+      );
+
+      accountPhoto.value =
+        "";
+
+    }
 
   }
 );
@@ -1035,18 +1223,25 @@ removePhotoBtn.addEventListener(
   "click",
   function(){
 
-    accountPhoto.value = "";
+    accountPhoto.value =
+      "";
 
-    selectedPhotoFile = null;
+    selectedPhotoData =
+      "";
 
-    selectedPhotoData = "";
+    oldPhotoData =
+      "";
 
-    photoPreview.src = "";
+    photoPreview.src =
+      "";
 
     photoPreview.style.display =
       "none";
 
     removePhotoBtn.style.display =
+      "none";
+
+    photoStatus.style.display =
       "none";
 
   }
@@ -1080,10 +1275,12 @@ loginBtn.addEventListener(
       );
 
       return;
+
     }
 
 
-    loginBtn.disabled = true;
+    loginBtn.disabled =
+      true;
 
     loginBtn.textContent =
       "LOGGING IN...";
@@ -1097,6 +1294,7 @@ loginBtn.addEventListener(
         password
       );
 
+
     }catch(error){
 
       console.error(error);
@@ -1107,7 +1305,8 @@ loginBtn.addEventListener(
         "error"
       );
 
-      loginBtn.disabled = false;
+      loginBtn.disabled =
+        false;
 
       loginBtn.textContent =
         "SECURE LOGIN";
@@ -1145,8 +1344,8 @@ onAuthStateChanged(
 
 
     if(
-      user.email !==
-      ADMIN_EMAIL
+      user.email.toLowerCase() !==
+      ADMIN_EMAIL.toLowerCase()
     ){
 
       await signOut(auth);
@@ -1201,25 +1400,44 @@ function getFormData(){
   return {
 
     game:
-      document.getElementById("game").value,
+      document
+        .getElementById("game")
+        .value,
 
     title:
-      document.getElementById("title").value.trim(),
+      document
+        .getElementById("title")
+        .value
+        .trim(),
 
     level:
-      document.getElementById("level").value.trim(),
+      document
+        .getElementById("level")
+        .value
+        .trim(),
 
     region:
-      document.getElementById("region").value.trim(),
+      document
+        .getElementById("region")
+        .value
+        .trim(),
 
     price:
-      document.getElementById("price").value.trim(),
+      document
+        .getElementById("price")
+        .value
+        .trim(),
 
     status:
-      document.getElementById("status").value,
+      document
+        .getElementById("status")
+        .value,
 
     description:
-      document.getElementById("description").value.trim()
+      document
+        .getElementById("description")
+        .value
+        .trim()
 
   };
 
@@ -1254,11 +1472,11 @@ function clearForm(){
   accountPhoto.value =
     "";
 
-  selectedPhotoFile = null;
+  selectedPhotoData =
+    "";
 
-  selectedPhotoData = "";
-
-  oldPhotoPath = "";
+  oldPhotoData =
+    "";
 
   photoPreview.src =
     "";
@@ -1267,6 +1485,9 @@ function clearForm(){
     "none";
 
   removePhotoBtn.style.display =
+    "none";
+
+  photoStatus.style.display =
     "none";
 
   editingId =
@@ -1282,84 +1503,7 @@ function clearForm(){
     "hidden"
   );
 
-}
-
-
-/* UPLOAD PHOTO */
-
-async function uploadAccountPhoto(
-  file
-){
-
-  const user =
-    auth.currentUser;
-
-  if(!user){
-
-    throw new Error(
-      "You must be logged in."
-    );
-
-  }
-
-
-  const safeName =
-    file.name
-      .replace(
-        /[^a-zA-Z0-9._-]/g,
-        "_"
-      );
-
-
-  const filePath =
-    "accountPhotos/"
-    + Date.now()
-    + "_"
-    + safeName;
-
-
-  const storageRef =
-    ref(
-      storage,
-      filePath
-    );
-
-
-  uploadingMessage.style.display =
-    "block";
-
-  uploadingMessage.textContent =
-    "Uploading photo...";
-
-
-  await uploadBytes(
-    storageRef,
-    file
-  );
-
-
-  const downloadURL =
-    await getDownloadURL(
-      storageRef
-    );
-
-
-  uploadingMessage.textContent =
-    "Photo uploaded successfully.";
-
-
-  return {
-
-    url:downloadURL,
-
-    path:filePath
-
-  };
-
-}
-
-
-/* SAVE ACCOUNT */
+}/* SAVE ACCOUNT */
 
 saveBtn.addEventListener(
   "click",
@@ -1406,38 +1550,12 @@ saveBtn.addEventListener(
       true;
 
     saveBtn.textContent =
-      "SAVING...";
+      editingId
+        ? "SAVING..."
+        : "ADDING...";
 
 
     try{
-
-      let photoUrl =
-        "";
-
-      let photoPath =
-        "";
-
-
-      /*
-      If a NEW photo was selected,
-      upload it first.
-      */
-
-      if(selectedPhotoFile){
-
-        const uploaded =
-          await uploadAccountPhoto(
-            selectedPhotoFile
-          );
-
-        photoUrl =
-          uploaded.url;
-
-        photoPath =
-          uploaded.path;
-
-      }
-
 
       /*
       ADD ACCOUNT
@@ -1455,10 +1573,7 @@ saveBtn.addEventListener(
             ...data,
 
             photoUrl:
-              photoUrl,
-
-            photoPath:
-              photoPath,
+              selectedPhotoData || "",
 
             createdAt:
               serverTimestamp(),
@@ -1475,7 +1590,7 @@ saveBtn.addEventListener(
 
         showMessage(
           formMessage,
-          "Account and photo added successfully.",
+          "Account and photo saved successfully.",
           "success"
         );
 
@@ -1498,13 +1613,15 @@ saveBtn.addEventListener(
         };
 
 
-        if(photoUrl){
+        /*
+        Only replace the old photo
+        if a new photo was selected.
+        */
+
+        if(selectedPhotoData){
 
           updateData.photoUrl =
-            photoUrl;
-
-          updateData.photoPath =
-            photoPath;
+            selectedPhotoData;
 
         }
 
@@ -1519,38 +1636,6 @@ saveBtn.addEventListener(
         );
 
 
-        /*
-        Delete previous photo
-        after new photo succeeds.
-        */
-
-        if(
-          photoUrl &&
-          oldPhotoPath &&
-          oldPhotoPath !== photoPath
-        ){
-
-          try{
-
-            await deleteObject(
-              ref(
-                storage,
-                oldPhotoPath
-              )
-            );
-
-          }catch(error){
-
-            console.warn(
-              "Old photo could not be deleted.",
-              error
-            );
-
-          }
-
-        }
-
-
         showMessage(
           formMessage,
           "Account updated successfully.",
@@ -1560,9 +1645,21 @@ saveBtn.addEventListener(
       }
 
 
-      clearForm();
-
       await loadAccounts();
+
+
+      /*
+      Clear after successful save.
+      */
+
+      setTimeout(
+        function(){
+
+          clearForm();
+
+        },
+        500
+      );
 
 
     }catch(error){
@@ -1571,7 +1668,7 @@ saveBtn.addEventListener(
 
       showMessage(
         formMessage,
-        "Could not save. Make sure Firebase Storage is enabled and your Storage Rules allow the admin to upload.",
+        "Could not save account. Check your Firestore Rules.",
         "error"
       );
 
@@ -1859,13 +1956,12 @@ function editAccount(
     id;
 
 
-  oldPhotoPath =
-    data.photoPath || "";
+  /*
+  Keep the existing photo.
+  */
 
-
-  selectedPhotoFile =
-    null;
-
+  oldPhotoData =
+    data.photoUrl || "";
 
   selectedPhotoData =
     "";
@@ -1886,6 +1982,12 @@ function editAccount(
     removePhotoBtn.style.display =
       "block";
 
+    photoStatus.style.display =
+      "block";
+
+    photoStatus.textContent =
+      "✓ CURRENT PHOTO";
+
   }else{
 
     photoPreview.src =
@@ -1895,6 +1997,9 @@ function editAccount(
       "none";
 
     removePhotoBtn.style.display =
+      "none";
+
+    photoStatus.style.display =
       "none";
 
   }
@@ -1919,7 +2024,7 @@ function editAccount(
 }
 
 
-/* CANCEL */
+/* CANCEL EDIT */
 
 cancelEditBtn.addEventListener(
   "click",
@@ -1948,71 +2053,12 @@ async function deleteAccount(id){
 
   try{
 
-    const accountRef =
+    await deleteDoc(
       doc(
         db,
         "accounts",
         id
-      );
-
-
-    const snapshot =
-      await getDocs(
-        collection(
-          db,
-          "accounts"
-        )
-      );
-
-
-    const item =
-      snapshot.docs.find(
-        function(docItem){
-
-          return docItem.id === id;
-
-        }
-      );
-
-
-    if(item){
-
-      const data =
-        item.data();
-
-
-      /*
-      Delete photo from Storage
-      if it exists.
-      */
-
-      if(data.photoPath){
-
-        try{
-
-          await deleteObject(
-            ref(
-              storage,
-              data.photoPath
-            )
-          );
-
-        }catch(error){
-
-          console.warn(
-            "Photo could not be deleted.",
-            error
-          );
-
-        }
-
-      }
-
-    }
-
-
-    await deleteDoc(
-      accountRef
+      )
     );
 
 
