@@ -11,7 +11,7 @@
 html{scroll-behavior:smooth}
 
 body{
-  background:#030506;
+  background:#000;
   color:#fff;
   font-family:Arial,Helvetica,sans-serif;
   overflow-x:hidden;
@@ -21,12 +21,171 @@ button,input,select,textarea{font:inherit}
 button{cursor:pointer}
 
 :root{
-  --bg:#030506;
+  --bg:#000;
   --panel:#071012;
   --yellow:#ffd400;
   --teal:#00e5d5;
   --teal2:#00aaa5;
   --muted:#9da8ab;
+}
+
+/* =========================
+   WELCOME / LOGIN
+========================= */
+
+#welcomeScreen{
+  position:fixed;
+  inset:0;
+  z-index:9999;
+  display:flex;
+  background:#000;
+  overflow:auto;
+}
+
+.welcome-left{
+  width:50%;
+  min-height:100vh;
+  background:#000;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  padding:30px;
+}
+
+.welcome-picture{
+  width:100%;
+  height:100%;
+  max-height:100vh;
+  object-fit:cover;
+  display:block;
+}
+
+.welcome-right{
+  width:50%;
+  min-height:100vh;
+  background:#000;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  padding:35px;
+}
+
+.welcome-content{
+  width:100%;
+  max-width:430px;
+  text-align:center;
+}
+
+.welcome-content h1{
+  color:var(--yellow);
+  font-size:38px;
+  font-weight:900;
+  margin-bottom:8px;
+}
+
+.welcome-title{
+  color:#fff;
+  font-size:16px;
+  font-weight:bold;
+  letter-spacing:2px;
+  margin-bottom:10px;
+}
+
+.welcome-subtitle{
+  color:#999;
+  font-size:13px;
+  line-height:1.6;
+  margin-bottom:28px;
+}
+
+.welcome-login{
+  display:grid;
+  gap:12px;
+}
+
+.welcome-login button{
+  width:100%;
+  padding:15px;
+  background:#080d0f;
+  border:1px solid var(--teal);
+  color:#fff;
+  font-weight:bold;
+  border-radius:4px;
+}
+
+.welcome-login button:hover{
+  border-color:var(--yellow);
+  color:var(--yellow);
+}
+
+.welcome-divider{
+  display:flex;
+  align-items:center;
+  gap:10px;
+  color:#555;
+  margin:20px 0;
+  font-size:11px;
+}
+
+.welcome-divider:before,
+.welcome-divider:after{
+  content:"";
+  flex:1;
+  height:1px;
+  background:#222;
+}
+
+.welcome-email{
+  display:grid;
+  gap:10px;
+}
+
+.welcome-email input{
+  width:100%;
+  padding:14px;
+  background:#050505;
+  border:1px solid #294448;
+  color:#fff;
+  outline:none;
+  border-radius:4px;
+}
+
+.welcome-email input:focus{
+  border-color:var(--teal);
+}
+
+.welcome-main-btn{
+  width:100%;
+  padding:14px;
+  background:var(--yellow)!important;
+  color:#000!important;
+  border:1px solid var(--yellow)!important;
+}
+
+.welcome-message{
+  min-height:20px;
+  margin-top:12px;
+  color:var(--yellow);
+  font-size:12px;
+}
+
+.welcome-terms{
+  color:#666;
+  font-size:10px;
+  line-height:1.5;
+  margin-top:22px;
+}
+
+.hidden{
+  display:none!important;
+}
+
+/* =========================
+   MAIN SITE
+========================= */
+
+#siteContent{
+  display:none;
 }
 
 header{
@@ -228,7 +387,7 @@ nav a.active:after{
   color:#21d86b;
 }
 
-/* FULL WIDTH HERO */
+/* HERO */
 
 .hero{
   position:relative;
@@ -236,7 +395,7 @@ nav a.active:after{
   height:430px;
   border:1px solid var(--teal);
   overflow:hidden;
-  background:#050a0b;
+  background:#000;
 }
 
 .hero-full-image{
@@ -279,6 +438,8 @@ nav a.active:after{
   margin-top:5px;
 }
 
+/* FILTERS */
+
 .filters{
   display:flex;
   gap:10px;
@@ -301,6 +462,8 @@ nav a.active:after{
   border-color:var(--yellow);
   color:#050708;
 }
+
+/* PRODUCTS */
 
 .game-section{
   scroll-margin-top:105px;
@@ -595,79 +758,6 @@ footer{
   margin-top:4px;
 }
 
-.social-login{
-  display:grid;
-  grid-template-columns:repeat(3,1fr);
-  gap:8px;
-  margin:15px 0;
-}
-
-.social-login button{
-  padding:12px 5px;
-  background:#071619;
-  color:#fff;
-  border:1px solid var(--teal);
-  font-weight:bold;
-}
-
-.social-login button:hover{
-  border-color:var(--yellow);
-  color:var(--yellow);
-}
-
-.divider{
-  display:flex;
-  align-items:center;
-  gap:10px;
-  color:#777;
-  margin:15px 0;
-  font-size:12px;
-}
-
-.divider:before,
-.divider:after{
-  content:"";
-  flex:1;
-  height:1px;
-  background:#21494b;
-}
-
-.search-result{
-  padding:13px;
-  border-bottom:1px solid #173d3d;
-  cursor:pointer;
-}
-
-.search-result:hover{
-  color:var(--yellow);
-}
-
-.cart-item{
-  display:flex;
-  align-items:center;
-  justify-content:space-between;
-  gap:12px;
-  padding:12px 0;
-  border-bottom:1px solid #173d3d;
-}
-
-.cart-price,
-.cart-total{
-  color:var(--yellow);
-}
-
-.cart-total{
-  font-size:20px;
-  font-weight:bold;
-  margin-top:18px;
-}
-
-.empty{
-  color:#999;
-  text-align:center;
-  padding:30px;
-}
-
 /* CUSTOMER */
 
 .customer-profile{
@@ -789,7 +879,7 @@ footer{
   text-align:center;
 }
 
-/* MOBILE DRAWER */
+/* MOBILE */
 
 .mobile-drawer{
   display:none;
@@ -827,24 +917,20 @@ footer{
   height:38px;
 }
 
-/* RESPONSIVE */
-
-@media(max-width:1100px){
-
-  .products{
-    grid-template-columns:repeat(3,1fr);
-  }
-
-  .choice-grid{
-    grid-template-columns:repeat(3,1fr);
-  }
-
-}
-
 @media(max-width:850px){
 
-  header{
-    padding:10px 14px;
+  .welcome-left{
+    width:42%;
+    padding:10px;
+  }
+
+  .welcome-right{
+    width:58%;
+    padding:20px;
+  }
+
+  .welcome-content h1{
+    font-size:28px;
   }
 
   nav{display:none}
@@ -866,17 +952,35 @@ footer{
     grid-template-columns:repeat(2,1fr);
   }
 
-  .features{
-    grid-template-columns:repeat(2,1fr);
-  }
-
 }
 
 @media(max-width:600px){
 
-  header{
-    min-height:70px;
-    gap:7px;
+  #welcomeScreen{
+    display:block;
+    overflow-y:auto;
+  }
+
+  .welcome-left{
+    width:100%;
+    height:42vh;
+    min-height:220px;
+    padding:0;
+  }
+
+  .welcome-picture{
+    max-height:42vh;
+    object-fit:cover;
+  }
+
+  .welcome-right{
+    width:100%;
+    min-height:58vh;
+    padding:28px 20px;
+  }
+
+  .welcome-content h1{
+    font-size:30px;
   }
 
   .logo{
@@ -915,8 +1019,7 @@ footer{
   }
 
   .contact-options,
-  .customer-options,
-  .social-login{
+  .customer-options{
     grid-template-columns:1fr;
   }
 
@@ -935,6 +1038,113 @@ footer{
 </head>
 
 <body>
+
+<!-- =========================
+     FIRST SCREEN
+========================= -->
+
+<section id="welcomeScreen">
+
+  <div class="welcome-left">
+
+    <!-- YOUR EXISTING PICTURE -->
+    <img
+      src="IMG_8370E7FA-ED0F-4AC6-924C-DB8185E9DB47.jpeg"
+      class="welcome-picture"
+      alt="CRISPY SHOP"
+    >
+
+  </div>
+
+  <div class="welcome-right">
+
+    <div class="welcome-content">
+
+      <div class="welcome-title">
+        WELCOME TO
+      </div>
+
+      <h1>
+        CRISPY SHOP
+      </h1>
+
+      <p class="welcome-subtitle">
+        Shop the best gaming accounts.
+        Secure. Fast. Trusted.
+      </p>
+
+      <div class="welcome-login">
+
+        <button
+          onclick="socialLogin('google')"
+        >
+          G&nbsp;&nbsp; CONTINUE WITH GOOGLE
+        </button>
+
+        <button
+          onclick="socialLogin('apple')"
+        >
+          &nbsp;&nbsp; CONTINUE WITH APPLE
+        </button>
+
+      </div>
+
+      <div class="welcome-divider">
+        OR
+      </div>
+
+      <div class="welcome-email">
+
+        <input
+          id="welcomeEmail"
+          type="email"
+          placeholder="Email address"
+          autocomplete="email"
+        >
+
+        <input
+          id="welcomePassword"
+          type="password"
+          placeholder="Password"
+          autocomplete="current-password"
+        >
+
+        <button
+          class="welcome-main-btn"
+          onclick="welcomeLogin()"
+        >
+          LOGIN
+        </button>
+
+        <button
+          onclick="welcomeSignup()"
+        >
+          CREATE ACCOUNT
+        </button>
+
+      </div>
+
+      <div
+        id="welcomeMessage"
+        class="welcome-message"
+      ></div>
+
+      <div class="welcome-terms">
+        By continuing, you agree to use Crispy Shop responsibly.
+      </div>
+
+    </div>
+
+  </div>
+
+</section>
+
+
+<!-- =========================
+     MAIN WEBSITE
+========================= -->
+
+<div id="siteContent">
 
 <header>
 
@@ -1151,8 +1361,6 @@ LEVEL 17 TRADER
 
 <main>
 
-<!-- FULL WIDTH HERO IMAGE -->
-
 <section class="hero">
 
 <img
@@ -1163,8 +1371,6 @@ LEVEL 17 TRADER
 
 </section>
 
-
-<!-- TRUST -->
 
 <section class="trust">
 
@@ -1188,8 +1394,6 @@ LEVEL 17 TRADER
 
 </section>
 
-
-<!-- FILTERS -->
 
 <div class="filters">
 
@@ -1238,8 +1442,6 @@ FC MOBILE
 </div>
 
 
-<!-- ACCOUNTS -->
-
 <section id="accounts">
 
 <div class="section-heading">
@@ -1257,8 +1459,6 @@ VIEW ALL →
 
 </section>
 
-
-<!-- FREE FIRE -->
 
 <section
   class="game-section"
@@ -1312,8 +1512,6 @@ ADD TO CART
 </section>
 
 
-<!-- EFOOTBALL -->
-
 <section
   class="game-section"
   id="efootball-section"
@@ -1362,8 +1560,6 @@ ADD TO CART
 
 </section>
 
-
-<!-- CODM -->
 
 <section
   class="game-section"
@@ -1414,8 +1610,6 @@ ADD TO CART
 </section>
 
 
-<!-- DLS -->
-
 <section
   class="game-section"
   id="dls-section"
@@ -1465,8 +1659,6 @@ ADD TO CART
 </section>
 
 
-<!-- FC MOBILE -->
-
 <section
   class="game-section"
   id="fcmobile-section"
@@ -1514,7 +1706,7 @@ ADD TO CART
 </div>
 
 </section>
-  <!-- TOP UP SECTIONS -->
+
 
 <section
   class="game-section"
@@ -1651,8 +1843,6 @@ SELECT
 </section>
 
 
-<!-- FEATURES -->
-
 <section class="features">
 
 <div class="feature">
@@ -1723,8 +1913,6 @@ LEVEL UP. PLAY MORE. 👑
 
 </main>
 </div>
-
-
 <!-- CUSTOMER ACCOUNT -->
 
 <div
@@ -1774,14 +1962,12 @@ OR CONTINUE WITH
 </div>
 
 
+<!-- GOOGLE + APPLE ONLY -->
+
 <div class="social-login">
 
 <button onclick="socialLogin('google')">
 G GOOGLE
-</button>
-
-<button onclick="socialLogin('facebook')">
-F FACEBOOK
 </button>
 
 <button onclick="socialLogin('apple')">
@@ -2001,8 +2187,7 @@ VERIFIED CUSTOMER
 <div
   id="accountMessage"
   class="message"
->
-</div>
+></div>
 
 </div>
 
@@ -2366,6 +2551,8 @@ Total: ₦0
 </div>
 
 
+<!-- FIREBASE -->
+
 <script type="module">
 
 import {
@@ -2382,7 +2569,6 @@ import {
   signOut,
   updatePassword,
   GoogleAuthProvider,
-  FacebookAuthProvider,
   OAuthProvider,
   signInWithPopup
 }
@@ -2419,21 +2605,214 @@ const firebaseConfig={
 };
 
 
-const app =
-initializeApp(firebaseConfig);
+const app=initializeApp(firebaseConfig);
 
-const auth =
-getAuth(app);
+const auth=getAuth(app);
 
-const db =
-getFirestore(app);
+const db=getFirestore(app);
 
 
-/* CUSTOMER ACCOUNT */
+/* =========================
+   WELCOME LOGIN
+========================= */
+
+window.socialLogin=async function(type){
+
+  const message=
+    document.getElementById(
+      "welcomeMessage"
+    );
+
+  let provider;
+
+  if(type==="google"){
+
+    provider=
+      new GoogleAuthProvider();
+
+  }
+
+  if(type==="apple"){
+
+    provider=
+      new OAuthProvider(
+        "apple.com"
+      );
+
+  }
+
+  if(!provider)return;
+
+  try{
+
+    message.textContent=
+      "Signing in...";
+
+    await signInWithPopup(
+      auth,
+      provider
+    );
+
+    message.textContent=
+      "Login successful.";
+
+    showSite();
+
+  }
+
+  catch(error){
+
+    console.error(error);
+
+    message.textContent=
+      error.message ||
+      "Login failed.";
+
+  }
+
+};
+
+
+window.welcomeLogin=async function(){
+
+  const email=
+    document
+      .getElementById("welcomeEmail")
+      .value
+      .trim();
+
+  const password=
+    document
+      .getElementById("welcomePassword")
+      .value;
+
+  const message=
+    document.getElementById(
+      "welcomeMessage"
+    );
+
+  if(!email||!password){
+
+    message.textContent=
+      "Enter your email and password.";
+
+    return;
+
+  }
+
+  try{
+
+    message.textContent=
+      "Logging in...";
+
+    await signInWithEmailAndPassword(
+      auth,
+      email,
+      password
+    );
+
+    showSite();
+
+  }
+
+  catch(error){
+
+    console.error(error);
+
+    message.textContent=
+      "Login failed. Check your email and password.";
+
+  }
+
+};
+
+
+window.welcomeSignup=async function(){
+
+  const email=
+    document
+      .getElementById("welcomeEmail")
+      .value
+      .trim();
+
+  const password=
+    document
+      .getElementById("welcomePassword")
+      .value;
+
+  const message=
+    document.getElementById(
+      "welcomeMessage"
+    );
+
+  if(!email||!password){
+
+    message.textContent=
+      "Enter an email and password first.";
+
+    return;
+
+  }
+
+  if(password.length<6){
+
+    message.textContent=
+      "Password must be at least 6 characters.";
+
+    return;
+
+  }
+
+  try{
+
+    message.textContent=
+      "Creating account...";
+
+    await createUserWithEmailAndPassword(
+      auth,
+      email,
+      password
+    );
+
+    showSite();
+
+  }
+
+  catch(error){
+
+    console.error(error);
+
+    message.textContent=
+      error.message ||
+      "Could not create account.";
+
+  }
+
+};
+
+
+function showSite(){
+
+  document
+    .getElementById("welcomeScreen")
+    .style.display="none";
+
+  document
+    .getElementById("siteContent")
+    .style.display="block";
+
+}
+
+
+/* =========================
+   CUSTOMER ACCOUNT
+========================= */
 
 window.openCustomerAccount=function(){
 
-  openModal("customerAccountModal");
+  openModal(
+    "customerAccountModal"
+  );
 
   if(auth.currentUser){
 
@@ -2448,8 +2827,6 @@ window.openCustomerAccount=function(){
 };
 
 
-/* SIGNUP */
-
 window.showSignup=function(){
 
   document.getElementById(
@@ -2462,8 +2839,6 @@ window.showSignup=function(){
 
 };
 
-
-/* LOGIN */
 
 window.showLogin=function(){
 
@@ -2497,6 +2872,8 @@ function showCustomerDashboard(){
 
   if(!user)return;
 
+  showSite();
+
   document.getElementById(
     "authChoices"
   ).style.display="none";
@@ -2505,61 +2882,58 @@ function showCustomerDashboard(){
     "customerDashboard"
   ).style.display="block";
 
-
   const name=
     user.displayName ||
     user.email ||
     "Customer";
-
 
   document.getElementById(
     "customerWelcome"
   ).textContent=
     "Welcome back, "+name+" 👋";
 
-
   document.getElementById(
     "customerName"
   ).textContent=name;
-
 
   document.getElementById(
     "customerEmail"
   ).textContent=
     user.email || "";
 
-
   loadCustomerPhoto();
 
 }
 
 
-/* CREATE ACCOUNT */
+/* =========================
+   CUSTOMER EMAIL ACCOUNT
+========================= */
 
 window.createCustomerAccount=
 async function(){
 
   const name=
-    document.getElementById(
-      "signupName"
-    ).value.trim();
+    document
+      .getElementById("signupName")
+      .value
+      .trim();
 
   const email=
-    document.getElementById(
-      "signupEmail"
-    ).value.trim();
+    document
+      .getElementById("signupEmail")
+      .value
+      .trim();
 
   const password=
-    document.getElementById(
-      "signupPassword"
-    ).value;
-
+    document
+      .getElementById("signupPassword")
+      .value;
 
   const message=
     document.getElementById(
       "accountMessage"
     );
-
 
   if(!name||!email||!password){
 
@@ -2570,7 +2944,6 @@ async function(){
 
   }
 
-
   if(password.length<6){
 
     message.textContent=
@@ -2579,7 +2952,6 @@ async function(){
     return;
 
   }
-
 
   try{
 
@@ -2590,7 +2962,6 @@ async function(){
         password
       );
 
-
     await updateProfile(
       result.user,
       {
@@ -2598,10 +2969,8 @@ async function(){
       }
     );
 
-
     message.textContent=
       "Account created successfully!";
-
 
     showCustomerDashboard();
 
@@ -2619,27 +2988,24 @@ async function(){
 };
 
 
-/* CUSTOMER LOGIN */
-
 window.loginCustomer=
 async function(){
 
   const email=
-    document.getElementById(
-      "loginEmail"
-    ).value.trim();
+    document
+      .getElementById("loginEmail")
+      .value
+      .trim();
 
   const password=
-    document.getElementById(
-      "loginPassword"
-    ).value;
-
+    document
+      .getElementById("loginPassword")
+      .value;
 
   const message=
     document.getElementById(
       "accountMessage"
     );
-
 
   if(!email||!password){
 
@@ -2649,7 +3015,6 @@ async function(){
     return;
 
   }
-
 
   try{
 
@@ -2678,77 +3043,9 @@ async function(){
 };
 
 
-/* GOOGLE / FACEBOOK / APPLE */
-
-window.socialLogin=
-async function(type){
-
-  const message=
-    document.getElementById(
-      "accountMessage"
-    );
-
-
-  let provider;
-
-
-  if(type==="google"){
-
-    provider=
-      new GoogleAuthProvider();
-
-  }
-
-
-  if(type==="facebook"){
-
-    provider=
-      new FacebookAuthProvider();
-
-  }
-
-
-  if(type==="apple"){
-
-    provider=
-      new OAuthProvider(
-        "apple.com"
-      );
-
-  }
-
-
-  if(!provider)return;
-
-
-  try{
-
-    await signInWithPopup(
-      auth,
-      provider
-    );
-
-    showCustomerDashboard();
-
-    message.textContent=
-      "Login successful!";
-
-  }
-
-  catch(error){
-
-    console.error(error);
-
-    message.textContent=
-      error.message ||
-      "Social login failed.";
-
-  }
-
-};
-
-
-/* CUSTOMER PHOTO */
+/* =========================
+   CUSTOMER PHOTO
+========================= */
 
 window.uploadCustomerPhoto=
 function(event){
@@ -2757,14 +3054,11 @@ function(event){
 
   if(!user)return;
 
-
   const file=
     event.target.files &&
     event.target.files[0];
 
-
   if(!file)return;
-
 
   if(!file.type.startsWith("image/")){
 
@@ -2774,10 +3068,8 @@ function(event){
 
   }
 
-
   const reader=
     new FileReader();
-
 
   reader.onload=function(){
 
@@ -2786,9 +3078,7 @@ function(event){
       reader.result
     );
 
-
     loadCustomerPhoto();
-
 
     document.getElementById(
       "accountMessage"
@@ -2796,7 +3086,6 @@ function(event){
       "Profile photo updated successfully.";
 
   };
-
 
   reader.readAsDataURL(file);
 
@@ -2809,12 +3098,10 @@ function loadCustomerPhoto(){
 
   if(!user)return;
 
-
   const photo=
     localStorage.getItem(
       "crispyCustomerPhoto_"+user.uid
     );
-
 
   const img=
     document.getElementById(
@@ -2826,6 +3113,7 @@ function loadCustomerPhoto(){
       "customerPhotoPlaceholder"
     );
 
+  if(!img||!placeholder)return;
 
   if(photo){
 
@@ -2848,7 +3136,9 @@ function loadCustomerPhoto(){
 }
 
 
-/* CUSTOMER INFO */
+/* =========================
+   CUSTOMER INFO
+========================= */
 
 window.customerInfo=function(type){
 
@@ -2857,7 +3147,6 @@ window.customerInfo=function(type){
       "customerInfoContent"
     );
 
-
   document.getElementById(
     "customerOptions"
   ).style.display="none";
@@ -2865,7 +3154,6 @@ window.customerInfo=function(type){
   document.getElementById(
     "customerInfo"
   ).style.display="block";
-
 
   if(type==="PROFILE"){
 
@@ -2899,7 +3187,6 @@ window.customerInfo=function(type){
 
   }
 
-
   if(type==="ORDERS"){
 
     content.innerHTML=`
@@ -2915,7 +3202,6 @@ window.customerInfo=function(type){
     `;
 
   }
-
 
   if(type==="PURCHASED"){
 
@@ -2936,7 +3222,6 @@ window.customerInfo=function(type){
 
   }
 
-
   if(type==="TOPUPS"){
 
     content.innerHTML=`
@@ -2955,7 +3240,6 @@ window.customerInfo=function(type){
 
   }
 
-
   if(type==="REVIEWS"){
 
     content.innerHTML=`
@@ -2971,7 +3255,6 @@ window.customerInfo=function(type){
     `;
 
   }
-
 
   if(type==="PASSWORD"){
 
@@ -3025,7 +3308,6 @@ async function(){
       "newCustomerPassword"
     ).value;
 
-
   if(password.length<6){
 
     alert(
@@ -3035,7 +3317,6 @@ async function(){
     return;
 
   }
-
 
   try{
 
@@ -3073,13 +3354,27 @@ async function(){
 };
 
 
+/* =========================
+   AUTH STATE
+========================= */
+
 onAuthStateChanged(
   auth,
   function(user){
 
     if(user){
 
-      showCustomerDashboard();
+      showSite();
+
+    }else{
+
+      document.getElementById(
+        "welcomeScreen"
+      ).style.display="flex";
+
+      document.getElementById(
+        "siteContent"
+      ).style.display="none";
 
     }
 
@@ -3087,7 +3382,9 @@ onAuthStateChanged(
 );
 
 
-/* FIRESTORE ACCOUNTS */
+/* =========================
+   FIRESTORE ACCOUNTS
+========================= */
 
 async function loadShopAccounts(){
 
@@ -3100,7 +3397,6 @@ async function loadShopAccounts(){
           "accounts"
         )
       );
-
 
     snapshot.forEach(function(item){
 
@@ -3133,7 +3429,6 @@ function gameToId(game){
     String(game||"")
     .toLowerCase();
 
-
   if(value.includes("free fire"))
     return "freefire";
 
@@ -3162,30 +3457,24 @@ function applyFirestoreAccount(
   const game=
     gameToId(data.game);
 
-
   if(!game)return;
-
 
   const section=
     document.getElementById(
       game+"-section"
     );
 
-
   if(!section)return;
-
 
   const products=
     section.querySelector(
       ".products"
     );
 
-
   let product=
     document.querySelector(
       '[data-firestore-id="'+id+'"]'
     );
-
 
   if(!product){
 
@@ -3204,11 +3493,9 @@ function applyFirestoreAccount(
 
   }
 
-
   const status=
     data.status ||
     "AVAILABLE";
-
 
   product.innerHTML=`
 
@@ -3278,12 +3565,10 @@ function applyFirestoreAccount(
 
   `;
 
-
   const button=
     product.querySelector(
       ".details-btn"
     );
-
 
   if(status!=="SOLD"){
 
@@ -3386,7 +3671,6 @@ function chooseGame(game){
       game+"-section"
     );
 
-
   if(target){
 
     target.scrollIntoView({
@@ -3415,7 +3699,6 @@ function chooseTopup(id){
   const target=
     document.getElementById(id);
 
-
   if(target){
 
     target.scrollIntoView({
@@ -3440,7 +3723,6 @@ function openReviews(){
 function sendReview(stars){
 
   closeModal("reviewModal");
-
 
   window.open(
     "https://wa.me/"
@@ -3479,7 +3761,6 @@ function openSearch(){
 
   openModal("searchModal");
 
-
   setTimeout(function(){
 
     document
@@ -3501,12 +3782,10 @@ function runSearch(){
     .toLowerCase()
     .trim();
 
-
   const results=
     document.getElementById(
       "searchResults"
     );
-
 
   if(!q){
 
@@ -3519,14 +3798,12 @@ function runSearch(){
 
   }
 
-
   const products=
     Array.from(
       document.querySelectorAll(
         ".product[data-account-id],.product[data-firestore-id]"
       )
     );
-
 
   const matches=
     products.filter(function(product){
@@ -3537,7 +3814,6 @@ function runSearch(){
         .includes(q);
 
     });
-
 
   if(!matches.length){
 
@@ -3550,7 +3826,6 @@ function runSearch(){
 
   }
 
-
   results.innerHTML=
     matches.map(function(product){
 
@@ -3559,12 +3834,10 @@ function runSearch(){
         ?.innerText ||
         "Gaming Account";
 
-
       const price=
         product.querySelector(".price")
         ?.innerText ||
         "₦0";
-
 
       return `
         <div
@@ -3578,7 +3851,6 @@ function runSearch(){
       `;
 
     }).join("");
-
 
   window.searchMatches=
     matches;
@@ -3611,7 +3883,6 @@ function(element){
   const index=
     results.indexOf(element);
 
-
   if(
     !window.searchMatches ||
     !window.searchMatches[index]
@@ -3619,9 +3890,7 @@ function(element){
     return;
   }
 
-
   closeModal("searchModal");
-
 
   window.searchMatches[index]
     .scrollIntoView({
@@ -3652,15 +3921,12 @@ function addToCart(
 
   }
 
-
   cart.push({
     name:name,
     price:price
   });
 
-
   renderCart();
-
 
   showToast(
     name+" added to cart."
@@ -3681,7 +3947,6 @@ function renderCart(){
       "cartTotal"
     );
 
-
   if(!cart.length){
 
     list.innerHTML=
@@ -3696,9 +3961,7 @@ function renderCart(){
 
   }
 
-
   let sum=0;
-
 
   list.innerHTML=
     cart.map(function(item,index){
@@ -3709,9 +3972,7 @@ function renderCart(){
           .replace(/[₦,]/g,"")
         )||0;
 
-
       sum+=value;
-
 
       return `
 
@@ -3755,7 +4016,6 @@ function renderCart(){
 
     `;
 
-
   total.textContent=
     "Total: ₦"
     +sum.toLocaleString();
@@ -3797,7 +4057,6 @@ function checkout(){
 
   if(!cart.length)return;
 
-
   const text=
     "Hello Crispy Shop, I want to buy:\n"
     +
@@ -3810,7 +4069,6 @@ function checkout(){
         +")";
 
     }).join("\n");
-
 
   window.open(
     "https://wa.me/"
@@ -3838,9 +4096,7 @@ function filterProducts(
 
     });
 
-
   button.classList.add("active");
-
 
   document
     .querySelectorAll(
@@ -3903,7 +4159,6 @@ function showToast(message){
       "crispyToast"
     );
 
-
   if(!toast){
 
     toast=
@@ -3911,7 +4166,6 @@ function showToast(message){
 
     toast.id=
       "crispyToast";
-
 
     toast.style.cssText=
       `
@@ -3927,21 +4181,17 @@ function showToast(message){
       border-radius:4px;
       `;
 
-
     document.body.appendChild(
       toast
     );
 
   }
 
-
   toast.textContent=
     message;
 
-
   toast.style.display=
     "block";
-
 
   setTimeout(function(){
 
@@ -3972,7 +4222,6 @@ document
           );
 
         });
-
 
       this.classList.add(
         "active"
