@@ -7,1031 +7,1178 @@
 
 <style>
 *{box-sizing:border-box;margin:0;padding:0}
-
 html{scroll-behavior:smooth}
-
-body{
-  background:#000;
-  color:#fff;
-  font-family:Arial,Helvetica,sans-serif;
-  overflow-x:hidden;
-}
-
-button,input,select,textarea{font:inherit}
+body{background:#000;color:#fff;font-family:Arial,Helvetica,sans-serif;overflow-x:hidden}
+button,input{font:inherit}
 button{cursor:pointer}
 
 :root{
-  --bg:#000;
-  --panel:#071012;
-  --yellow:#ffd400;
-  --teal:#00e5d5;
-  --teal2:#00aaa5;
-  --muted:#9da8ab;
+--yellow:#ffd400;
+--teal:#00e5d5;
+--teal2:#00aaa5;
 }
 
-/* =========================
-   WELCOME / LOGIN
-========================= */
+.hidden{display:none!important}
+
+/* ================= WELCOME ================= */
 
 #welcomeScreen{
-  position:fixed;
-  inset:0;
-  z-index:9999;
-  display:flex;
-  background:#000;
-  overflow:auto;
+position:fixed;
+inset:0;
+z-index:9999;
+display:flex;
+background:#000;
+overflow-y:auto;
+overflow-x:hidden;
+-webkit-overflow-scrolling:touch;
 }
 
 .welcome-left{
-  width:50%;
-  min-height:100vh;
-  background:#000;
-  display:flex;
-  align-items:center;
-  justify-content:center;
-  padding:30px;
+width:50%;
+min-height:100vh;
+display:flex;
+align-items:center;
+justify-content:center;
+padding:30px;
+background:#000;
 }
 
 .welcome-picture{
-  width:100%;
-  height:100%;
-  max-height:100vh;
-  object-fit:cover;
-  display:block;
+width:min(420px,90%);
+height:auto;
+max-height:70vh;
+object-fit:contain;
+display:block;
 }
 
 .welcome-right{
-  width:50%;
-  min-height:100vh;
-  background:#000;
-  display:flex;
-  align-items:center;
-  justify-content:center;
-  padding:35px;
+width:50%;
+min-height:100vh;
+display:flex;
+align-items:center;
+justify-content:center;
+padding:35px;
+background:#000;
 }
 
 .welcome-content{
-  width:100%;
-  max-width:430px;
-  text-align:center;
-}
-
-.welcome-content h1{
-  color:var(--yellow);
-  font-size:38px;
-  font-weight:900;
-  margin-bottom:8px;
+width:100%;
+max-width:430px;
+margin:auto;
+text-align:center;
 }
 
 .welcome-title{
-  color:#fff;
-  font-size:16px;
-  font-weight:bold;
-  letter-spacing:2px;
-  margin-bottom:10px;
+color:#fff;
+font-size:16px;
+font-weight:bold;
+letter-spacing:2px;
+margin-bottom:10px;
+}
+
+.welcome-content h1{
+color:var(--yellow);
+font-size:38px;
+font-weight:900;
+margin-bottom:10px;
 }
 
 .welcome-subtitle{
-  color:#999;
-  font-size:13px;
-  line-height:1.6;
-  margin-bottom:28px;
+color:#999;
+font-size:14px;
+line-height:1.6;
+margin-bottom:28px;
 }
 
-.welcome-login{
-  display:grid;
-  gap:12px;
+.welcome-login,
+.welcome-email{
+display:grid;
+gap:12px;
 }
 
-.welcome-login button{
-  width:100%;
-  padding:15px;
-  background:#080d0f;
-  border:1px solid var(--teal);
-  color:#fff;
-  font-weight:bold;
-  border-radius:4px;
+.welcome-login button,
+.welcome-email button{
+width:100%;
+padding:15px;
+background:#080d0f;
+border:1px solid var(--teal);
+color:#fff;
+font-weight:bold;
+border-radius:5px;
 }
 
-.welcome-login button:hover{
-  border-color:var(--yellow);
-  color:var(--yellow);
+.welcome-login button:hover,
+.welcome-email button:hover{
+border-color:var(--yellow);
+color:var(--yellow);
+}
+
+.welcome-email input{
+width:100%;
+padding:14px;
+background:#050505;
+border:1px solid #294448;
+color:#fff;
+outline:none;
+border-radius:5px;
+}
+
+.welcome-email input:focus{
+border-color:var(--teal);
+}
+
+.welcome-main-btn{
+background:var(--yellow)!important;
+color:#000!important;
+border-color:var(--yellow)!important;
 }
 
 .welcome-divider{
-  display:flex;
-  align-items:center;
-  gap:10px;
-  color:#555;
-  margin:20px 0;
-  font-size:11px;
+display:flex;
+align-items:center;
+gap:10px;
+color:#555;
+margin:20px 0;
+font-size:12px;
 }
 
 .welcome-divider:before,
 .welcome-divider:after{
-  content:"";
-  flex:1;
-  height:1px;
-  background:#222;
-}
-
-.welcome-email{
-  display:grid;
-  gap:10px;
-}
-
-.welcome-email input{
-  width:100%;
-  padding:14px;
-  background:#050505;
-  border:1px solid #294448;
-  color:#fff;
-  outline:none;
-  border-radius:4px;
-}
-
-.welcome-email input:focus{
-  border-color:var(--teal);
-}
-
-.welcome-main-btn{
-  width:100%;
-  padding:14px;
-  background:var(--yellow)!important;
-  color:#000!important;
-  border:1px solid var(--yellow)!important;
+content:"";
+flex:1;
+height:1px;
+background:#222;
 }
 
 .welcome-message{
-  min-height:20px;
-  margin-top:12px;
-  color:var(--yellow);
-  font-size:12px;
+min-height:20px;
+margin-top:12px;
+color:var(--yellow);
+font-size:12px;
 }
 
 .welcome-terms{
-  color:#666;
-  font-size:10px;
-  line-height:1.5;
-  margin-top:22px;
+color:#666;
+font-size:10px;
+line-height:1.5;
+margin-top:22px;
 }
 
-.hidden{
-  display:none!important;
-}
+/* ================= MAIN ================= */
 
-/* =========================
-   MAIN SITE
-========================= */
-
-#siteContent{
-  display:none;
-}
+#siteContent{display:none}
 
 header{
-  min-height:82px;
-  display:flex;
-  align-items:center;
-  gap:18px;
-  padding:10px 28px;
-  background:#030506;
-  border-bottom:2px solid var(--yellow);
-  position:sticky;
-  top:0;
-  z-index:100;
+min-height:82px;
+display:flex;
+align-items:center;
+gap:18px;
+padding:10px 28px;
+background:#030506;
+border-bottom:2px solid var(--yellow);
+position:sticky;
+top:0;
+z-index:100;
 }
 
 .logo{
-  width:155px;
-  height:60px;
-  object-fit:contain;
+width:155px;
+height:60px;
+object-fit:contain;
 }
 
 nav{
-  display:flex;
-  align-items:center;
-  justify-content:center;
-  gap:28px;
-  flex:1;
+display:flex;
+align-items:center;
+justify-content:center;
+gap:28px;
+flex:1;
 }
 
 nav a{
-  color:#fff;
-  text-decoration:none;
-  font-size:13px;
-  font-weight:bold;
-  padding:20px 0;
-  position:relative;
+color:#fff;
+text-decoration:none;
+font-size:13px;
+font-weight:bold;
+padding:20px 0;
+position:relative;
 }
 
 nav a:hover,
-nav a.active{color:var(--yellow)}
+nav a.active{
+color:var(--yellow);
+}
 
 nav a.active:after{
-  content:"";
-  position:absolute;
-  left:0;
-  right:0;
-  bottom:8px;
-  height:3px;
-  background:var(--yellow);
+content:"";
+position:absolute;
+left:0;
+right:0;
+bottom:8px;
+height:3px;
+background:var(--yellow);
 }
 
 .header-actions{
-  display:flex;
-  align-items:center;
-  gap:8px;
+display:flex;
+align-items:center;
+gap:8px;
 }
 
 .header-icon{
-  width:40px;
-  height:40px;
-  background:none;
-  border:1px solid transparent;
-  color:var(--teal);
-  font-size:22px;
-  border-radius:4px;
+width:40px;
+height:40px;
+background:none;
+border:1px solid transparent;
+color:var(--teal);
+font-size:22px;
+border-radius:4px;
 }
 
 .header-icon:hover{
-  border-color:var(--teal);
-  color:var(--yellow);
+border-color:var(--teal);
+color:var(--yellow);
 }
 
 .account-btn,
 .yellow-btn{
-  background:var(--yellow);
-  color:#050708;
-  border:1px solid var(--yellow);
-  padding:12px 17px;
-  border-radius:4px;
-  font-weight:bold;
+background:var(--yellow);
+color:#050708;
+border:1px solid var(--yellow);
+padding:12px 17px;
+border-radius:4px;
+font-weight:bold;
 }
 
 .outline-btn{
-  background:transparent;
-  color:var(--yellow);
-  border:1px solid var(--yellow);
-  padding:12px 17px;
-  border-radius:4px;
-  font-weight:bold;
+background:transparent;
+color:var(--yellow);
+border:1px solid var(--yellow);
+padding:12px 17px;
+border-radius:4px;
+font-weight:bold;
 }
 
 .outline-btn:hover{
-  background:var(--yellow);
-  color:#050708;
+background:var(--yellow);
+color:#000;
 }
 
 .menu-btn{
-  display:none;
-  background:none;
-  border:1px solid var(--yellow);
-  color:var(--yellow);
-  width:40px;
-  height:40px;
-  font-size:23px;
+display:none;
+background:none;
+border:1px solid var(--yellow);
+color:var(--yellow);
+width:40px;
+height:40px;
+font-size:23px;
 }
 
+/* ================= LAYOUT ================= */
+
 .layout{
-  display:grid;
-  grid-template-columns:250px 1fr;
-  gap:18px;
-  padding:18px;
-  max-width:1500px;
-  margin:auto;
+display:grid;
+grid-template-columns:250px 1fr;
+gap:18px;
+padding:18px;
+max-width:1500px;
+margin:auto;
 }
 
 .profile{
-  border:1px solid var(--teal);
-  background:#05090a;
-  padding:18px;
-  height:max-content;
+border:1px solid var(--teal);
+background:#05090a;
+padding:18px;
+height:max-content;
 }
 
 .profile-title{
-  color:var(--yellow);
-  font-size:14px;
-  font-weight:bold;
-  margin-bottom:18px;
+color:var(--yellow);
+font-size:14px;
+font-weight:bold;
+margin-bottom:18px;
 }
 
 .profile-logo{
-  width:175px;
-  height:175px;
-  margin:auto;
-  display:block;
-  object-fit:contain;
-  border-radius:50%;
-  border:3px solid var(--yellow);
-  background:#000;
-  padding:10px;
+width:175px;
+height:175px;
+margin:auto;
+display:block;
+object-fit:contain;
+border-radius:50%;
+border:3px solid var(--yellow);
+background:#000;
+padding:10px;
 }
 
 .profile-level{
-  color:var(--teal);
-  font-weight:bold;
-  margin-top:20px;
+color:var(--teal);
+font-weight:bold;
+margin-top:20px;
 }
 
 .progress{
-  height:5px;
-  background:#20282b;
-  margin-top:10px;
+height:5px;
+background:#20282b;
+margin-top:10px;
 }
 
 .progress span{
-  display:block;
-  width:68%;
-  height:100%;
-  background:var(--yellow);
+display:block;
+width:68%;
+height:100%;
+background:var(--yellow);
 }
 
 .profile-section{
-  border-top:1px solid #153f40;
-  margin-top:20px;
-  padding-top:18px;
+border-top:1px solid #153f40;
+margin-top:20px;
+padding-top:18px;
 }
 
 .profile-section h3{
-  color:var(--teal);
-  font-size:14px;
-  margin-bottom:12px;
+color:var(--teal);
+font-size:14px;
+margin-bottom:12px;
 }
 
 .profile-section p{
-  color:#c0c7c9;
-  margin:9px 0;
-  font-size:13px;
-  line-height:1.5;
+color:#c0c7c9;
+margin:9px 0;
+font-size:13px;
+line-height:1.5;
 }
 
 .profile-section b{
-  float:right;
-  color:#fff;
+float:right;
+color:#fff;
 }
 
-.stars{color:var(--yellow)}
+.stars{
+color:var(--yellow);
+}
 
 .contact{
-  width:100%;
-  padding:12px;
-  margin-top:12px;
-  background:transparent;
-  border:1px solid var(--yellow);
-  color:var(--yellow);
-  font-weight:bold;
+width:100%;
+padding:12px;
+margin-top:12px;
+background:transparent;
+border:1px solid var(--yellow);
+color:var(--yellow);
+font-weight:bold;
 }
 
-.message-btn{
-  border-color:#21d86b;
-  color:#21d86b;
-}
-
-/* HERO */
+/* ================= HERO ================= */
 
 .hero{
-  position:relative;
-  width:100%;
-  height:430px;
-  border:1px solid var(--teal);
-  overflow:hidden;
-  background:#000;
+position:relative;
+width:100%;
+min-height:260px;
+border:1px solid var(--teal);
+overflow:hidden;
+background:#000;
+display:flex;
+align-items:center;
+justify-content:center;
+text-align:center;
+padding:30px;
 }
 
-.hero-full-image{
-  width:100%;
-  height:100%;
-  display:block;
-  object-fit:cover;
-  object-position:center;
+.hero-welcome h2{
+color:#fff;
+font-size:30px;
+margin-bottom:8px;
 }
+
+.hero-welcome strong{
+color:var(--yellow);
+font-size:38px;
+}
+
+.hero-welcome p{
+color:#999;
+margin-top:10px;
+}
+
+/* ================= TRUST ================= */
 
 .trust{
-  display:grid;
-  grid-template-columns:repeat(3,1fr);
-  border:1px solid var(--teal);
-  border-top:0;
+display:grid;
+grid-template-columns:repeat(3,1fr);
+border:1px solid var(--teal);
+border-top:0;
 }
 
 .trust-box{
-  padding:18px;
-  text-align:center;
-  border-right:1px solid #153f40;
+padding:18px;
+text-align:center;
+border-right:1px solid #153f40;
 }
 
-.trust-box:last-child{border-right:0}
+.trust-box:last-child{
+border-right:0;
+}
 
 .trust-icon{
-  color:var(--yellow);
-  font-size:25px;
+color:var(--yellow);
+font-size:25px;
 }
 
 .trust-box h3{
-  color:var(--teal);
-  font-size:14px;
-  margin-top:5px;
+color:var(--teal);
+font-size:14px;
+margin-top:5px;
 }
 
 .trust-box p{
-  color:#999;
-  font-size:12px;
-  margin-top:5px;
+color:#999;
+font-size:12px;
+margin-top:5px;
 }
 
-/* FILTERS */
+/* ================= FILTERS ================= */
 
 .filters{
-  display:flex;
-  gap:10px;
-  overflow-x:auto;
-  padding:20px 0 5px;
+display:flex;
+gap:10px;
+overflow-x:auto;
+padding:20px 0 5px;
 }
 
 .filter{
-  white-space:nowrap;
-  background:#071114;
-  color:var(--teal);
-  border:1px solid var(--teal);
-  padding:11px 17px;
-  border-radius:4px;
-  font-weight:bold;
+white-space:nowrap;
+background:#071114;
+color:var(--teal);
+border:1px solid var(--teal);
+padding:11px 17px;
+border-radius:4px;
+font-weight:bold;
 }
 
 .filter.active{
-  background:var(--yellow);
-  border-color:var(--yellow);
-  color:#050708;
+background:var(--yellow);
+border-color:var(--yellow);
+color:#000;
 }
 
-/* PRODUCTS */
+/* ================= PRODUCTS ================= */
 
 .game-section{
-  scroll-margin-top:105px;
-  margin-top:25px;
+scroll-margin-top:105px;
+margin-top:25px;
 }
 
 .section-heading{
-  display:flex;
-  align-items:center;
-  justify-content:space-between;
-  margin-bottom:12px;
+display:flex;
+align-items:center;
+justify-content:space-between;
+margin-bottom:12px;
 }
 
 .section-heading h2{
-  font-size:22px;
+font-size:22px;
 }
 
 .section-heading h2:after{
-  content:"";
-  display:block;
-  width:40px;
-  height:3px;
-  background:var(--yellow);
-  margin-top:6px;
+content:"";
+display:block;
+width:40px;
+height:3px;
+background:var(--yellow);
+margin-top:6px;
 }
 
 .products{
-  display:grid;
-  grid-template-columns:repeat(4,1fr);
-  gap:12px;
+display:grid;
+grid-template-columns:repeat(4,1fr);
+gap:12px;
 }
 
 .product{
-  position:relative;
-  border:1px solid var(--teal2);
-  background:#070b0d;
-  padding:14px;
-  transition:.2s;
+position:relative;
+border:1px solid var(--teal2);
+background:#070b0d;
+padding:14px;
+transition:.2s;
 }
 
 .product:hover{
-  border-color:var(--yellow);
-  transform:translateY(-3px);
+border-color:var(--yellow);
+transform:translateY(-3px);
 }
 
 .available{
-  position:absolute;
-  top:10px;
-  right:10px;
-  background:var(--yellow);
-  color:#050708;
-  padding:6px 8px;
-  font-size:10px;
-  font-weight:bold;
+position:absolute;
+top:10px;
+right:10px;
+background:var(--yellow);
+color:#000;
+padding:6px 8px;
+font-size:10px;
+font-weight:bold;
 }
 
 .heart{
-  color:#fff;
-  font-size:20px;
+color:#fff;
+font-size:20px;
 }
 
 .account-photo{
-  width:100%;
-  height:180px;
-  object-fit:cover;
-  display:block;
-  margin:10px 0 12px;
-  border:1px solid #153f40;
-  background:#000;
+width:100%;
+height:180px;
+object-fit:cover;
+display:block;
+margin:10px 0 12px;
+border:1px solid #153f40;
+background:#000;
 }
 
 .game{
-  color:#fff;
-  font-size:22px;
-  font-weight:900;
-  font-style:italic;
-  margin:22px 0 12px;
+color:#fff;
+font-size:22px;
+font-weight:900;
+font-style:italic;
+margin:22px 0 12px;
 }
 
 .product h3{
-  font-size:16px;
-  margin-bottom:8px;
+font-size:16px;
+margin-bottom:8px;
 }
 
 .details{
-  color:var(--teal);
-  font-size:13px;
-  margin-bottom:8px;
+color:var(--teal);
+font-size:13px;
+margin-bottom:8px;
 }
 
 .description{
-  color:#999;
-  font-size:12px;
-  min-height:34px;
+color:#999;
+font-size:12px;
+min-height:34px;
 }
 
 .price{
-  color:var(--yellow);
-  font-size:20px;
-  font-weight:bold;
-  margin-top:15px;
+color:var(--yellow);
+font-size:20px;
+font-weight:bold;
+margin-top:15px;
 }
 
 .details-btn{
-  width:100%;
-  margin-top:12px;
-  padding:10px;
-  background:transparent;
-  border:1px solid var(--yellow);
-  color:var(--yellow);
-  font-weight:bold;
+width:100%;
+margin-top:12px;
+padding:10px;
+background:transparent;
+border:1px solid var(--yellow);
+color:var(--yellow);
+font-weight:bold;
 }
 
 .details-btn:disabled{
-  opacity:.5;
-  cursor:not-allowed;
+opacity:.5;
+cursor:not-allowed;
 }
 
+/* ================= FEATURES ================= */
+
 .features{
-  display:grid;
-  grid-template-columns:repeat(4,1fr);
-  margin-top:25px;
-  border:1px solid var(--teal);
+display:grid;
+grid-template-columns:repeat(4,1fr);
+margin-top:25px;
+border:1px solid var(--teal);
 }
 
 .feature{
-  padding:18px;
-  text-align:center;
-  border-right:1px solid #153f40;
+padding:18px;
+text-align:center;
+border-right:1px solid #153f40;
 }
 
-.feature:last-child{border-right:0}
+.feature:last-child{
+border-right:0;
+}
 
 .feature-icon{
-  color:var(--teal);
-  font-size:27px;
+color:var(--teal);
+font-size:27px;
 }
 
 .feature h3{
-  margin-top:8px;
-  font-size:14px;
+margin-top:8px;
+font-size:14px;
 }
 
 .feature p{
-  color:#999;
-  font-size:12px;
-  margin-top:5px;
+color:#999;
+font-size:12px;
+margin-top:5px;
 }
 
+/* ================= FOOTER ================= */
+
 footer{
-  border-top:2px solid var(--yellow);
-  margin-top:18px;
-  padding:20px 5px;
-  display:flex;
-  align-items:center;
-  justify-content:space-between;
-  gap:15px;
+border-top:2px solid var(--yellow);
+margin-top:18px;
+padding:20px 5px;
+display:flex;
+align-items:center;
+justify-content:space-between;
+gap:15px;
 }
 
 .footer-logo{
-  width:120px;
+width:120px;
 }
 
 .socials{
-  display:flex;
-  gap:18px;
+display:flex;
+gap:18px;
 }
 
 .socials a{
-  color:#fff;
-  text-decoration:none;
-  font-weight:bold;
+color:#fff;
+text-decoration:none;
+font-weight:bold;
 }
 
-.socials a:hover{color:var(--yellow)}
+.socials a:hover{
+color:var(--yellow);
+}
 
 .slogan{
-  color:var(--yellow);
-  font-weight:bold;
+color:var(--yellow);
+font-weight:bold;
 }
 
-/* MODALS */
+/* ================= MODALS ================= */
 
 .modal{
-  display:none;
-  position:fixed;
-  inset:0;
-  z-index:2000;
-  background:rgba(0,0,0,.88);
-  align-items:center;
-  justify-content:center;
-  padding:18px;
+display:none;
+position:fixed;
+inset:0;
+z-index:2000;
+background:rgba(0,0,0,.88);
+align-items:center;
+justify-content:center;
+padding:18px;
 }
 
-.modal.show{display:flex}
+.modal.show{
+display:flex;
+}
 
 .modal-box{
-  width:100%;
-  max-width:720px;
-  max-height:90vh;
-  overflow:auto;
-  background:#061012;
-  border:1px solid var(--teal);
-  padding:24px;
+width:100%;
+max-width:720px;
+max-height:90vh;
+overflow:auto;
+background:#061012;
+border:1px solid var(--teal);
+padding:24px;
 }
 
 .modal-box h2{
-  color:var(--yellow);
-  margin-bottom:8px;
+color:var(--yellow);
+margin-bottom:8px;
 }
 
 .modal-box>p{
-  color:#aaa;
-  margin-bottom:18px;
+color:#aaa;
+margin-bottom:18px;
 }
 
 .modal-close{
-  float:right;
-  background:transparent;
-  color:#fff;
-  border:1px solid #555;
-  width:34px;
-  height:34px;
-  font-size:22px;
+float:right;
+background:transparent;
+color:#fff;
+border:1px solid #555;
+width:34px;
+height:34px;
+font-size:22px;
 }
 
 .choice-grid{
-  display:grid;
-  grid-template-columns:repeat(5,1fr);
-  gap:10px;
+display:grid;
+grid-template-columns:repeat(5,1fr);
+gap:10px;
 }
 
 .choice{
-  min-height:120px;
-  background:#071619;
-  color:#fff;
-  border:1px solid var(--teal);
-  padding:15px 8px;
-  display:flex;
-  flex-direction:column;
-  align-items:center;
-  justify-content:center;
-  gap:10px;
-  font-weight:900;
+min-height:120px;
+background:#071619;
+color:#fff;
+border:1px solid var(--teal);
+padding:15px 8px;
+display:flex;
+flex-direction:column;
+align-items:center;
+justify-content:center;
+gap:10px;
+font-weight:900;
 }
 
 .choice:hover{
-  border-color:var(--yellow);
-  color:var(--yellow);
+border-color:var(--yellow);
+color:var(--yellow);
 }
 
 .choice-icon{
-  font-size:28px;
+font-size:28px;
 }
 
 .contact-options{
-  display:grid;
-  grid-template-columns:repeat(2,1fr);
-  gap:12px;
+display:grid;
+grid-template-columns:repeat(2,1fr);
+gap:12px;
 }
 
 .contact-option{
-  display:block;
-  padding:18px;
-  text-align:center;
-  text-decoration:none;
-  color:#fff;
-  border:1px solid var(--teal);
-  background:#071619;
-  font-weight:bold;
+display:block;
+padding:18px;
+text-align:center;
+text-decoration:none;
+color:#fff;
+border:1px solid var(--teal);
+background:#071619;
+font-weight:bold;
 }
 
 .contact-option:hover{
-  border-color:var(--yellow);
-  color:var(--yellow);
+border-color:var(--yellow);
+color:var(--yellow);
 }
 
 .form-input{
-  width:100%;
-  padding:13px;
-  margin-bottom:12px;
-  background:#020506;
-  border:1px solid var(--teal);
-  color:#fff;
-  outline:none;
+width:100%;
+padding:13px;
+margin-bottom:12px;
+background:#020506;
+border:1px solid var(--teal);
+color:#fff;
+outline:none;
 }
 
-.form-input:focus{border-color:var(--yellow)}
+.form-input:focus{
+border-color:var(--yellow);
+}
 
 .full-btn{
-  width:100%;
-  margin-top:4px;
+width:100%;
+margin-top:4px;
 }
 
-/* CUSTOMER */
+.social-login{
+display:grid;
+grid-template-columns:repeat(2,1fr);
+gap:8px;
+margin:15px 0;
+}
+
+.social-login button{
+padding:12px 5px;
+background:#071619;
+color:#fff;
+border:1px solid var(--teal);
+font-weight:bold;
+}
+
+.search-result{
+padding:13px;
+border-bottom:1px solid #173d3d;
+cursor:pointer;
+}
+
+.search-result:hover{
+color:var(--yellow);
+}
+
+.cart-item{
+display:flex;
+align-items:center;
+justify-content:space-between;
+gap:12px;
+padding:12px 0;
+border-bottom:1px solid #173d3d;
+}
+
+.cart-price,
+.cart-total{
+color:var(--yellow);
+}
+
+.cart-total{
+font-size:20px;
+font-weight:bold;
+margin-top:18px;
+}
+
+.empty{
+color:#999;
+text-align:center;
+padding:30px;
+}
+
+/* ================= CUSTOMER ================= */
 
 .customer-profile{
-  display:flex;
-  align-items:center;
-  gap:20px;
-  padding:20px;
-  margin:15px 0 20px;
-  border:1px solid var(--teal);
-  background:#05090a;
+display:flex;
+align-items:center;
+gap:20px;
+padding:20px;
+margin:15px 0 20px;
+border:1px solid var(--teal);
+background:#05090a;
 }
 
 .customer-photo-area{
-  width:145px;
-  text-align:center;
-  flex-shrink:0;
+width:145px;
+text-align:center;
+flex-shrink:0;
 }
 
 .customer-photo-circle{
-  width:120px;
-  height:120px;
-  margin:auto;
-  border-radius:50%;
-  overflow:hidden;
-  display:grid;
-  place-items:center;
-  background:#071619;
-  border:3px solid var(--yellow);
-  color:var(--yellow);
-  font-size:45px;
+width:120px;
+height:120px;
+margin:auto;
+border-radius:50%;
+overflow:hidden;
+display:grid;
+place-items:center;
+background:#071619;
+border:3px solid var(--yellow);
+color:var(--yellow);
+font-size:45px;
 }
 
 .customer-photo-circle img{
-  width:100%;
-  height:100%;
-  object-fit:cover;
+width:100%;
+height:100%;
+object-fit:cover;
 }
 
 .upload-photo-label{
-  display:inline-block;
-  margin-top:12px;
-  padding:9px 10px;
-  font-size:11px;
-  cursor:pointer;
+display:inline-block;
+margin-top:12px;
+padding:9px 10px;
+font-size:11px;
+cursor:pointer;
 }
 
 .customer-details h3{
-  color:var(--yellow);
-  margin-bottom:8px;
-  font-size:20px;
+color:var(--yellow);
+margin-bottom:8px;
+font-size:20px;
 }
 
 .customer-details p{
-  color:#aaa;
-  font-size:13px;
+color:#aaa;
+font-size:13px;
 }
 
 .customer-badge{
-  display:inline-block;
-  margin-top:10px;
-  padding:6px 9px;
-  color:#21d86b;
-  border:1px solid #21d86b;
-  font-size:10px;
-  font-weight:bold;
+display:inline-block;
+margin-top:10px;
+padding:6px 9px;
+color:#21d86b;
+border:1px solid #21d86b;
+font-size:10px;
+font-weight:bold;
 }
 
 .customer-options{
-  display:grid;
-  grid-template-columns:repeat(2,1fr);
-  gap:10px;
+display:grid;
+grid-template-columns:repeat(2,1fr);
+gap:10px;
 }
 
 .customer-option{
-  min-height:80px;
-  background:#071619;
-  border:1px solid var(--teal);
-  color:#fff;
-  font-weight:bold;
-  font-size:13px;
+min-height:80px;
+background:#071619;
+border:1px solid var(--teal);
+color:#fff;
+font-weight:bold;
+font-size:13px;
 }
 
 .customer-option:hover{
-  border-color:var(--yellow);
-  color:var(--yellow);
+border-color:var(--yellow);
+color:var(--yellow);
 }
 
 .logout-option{
-  color:#ff5555;
-  border-color:#ff5555;
+color:#ff5555;
+border-color:#ff5555;
 }
 
 .customer-info{
-  margin-top:20px;
-  padding-top:18px;
-  border-top:1px solid #153f40;
+margin-top:20px;
+padding-top:18px;
+border-top:1px solid #153f40;
 }
 
 .info-card{
-  margin-top:15px;
-  padding:18px;
-  background:#05090a;
-  border:1px solid var(--teal);
+margin-top:15px;
+padding:18px;
+background:#05090a;
+border:1px solid var(--teal);
 }
 
 .info-card h3{
-  color:var(--yellow);
-  margin-bottom:10px;
+color:var(--yellow);
+margin-bottom:10px;
 }
 
 .info-card p{
-  color:#aaa;
-  margin:8px 0;
+color:#aaa;
+margin:8px 0;
 }
 
 .message{
-  color:var(--yellow);
-  margin-top:12px;
-  text-align:center;
+color:var(--yellow);
+margin-top:12px;
+text-align:center;
 }
 
-/* MOBILE */
+/* ================= ACCOUNT DETAILS ================= */
+
+.account-detail-photo{
+width:100%;
+max-height:360px;
+object-fit:contain;
+background:#000;
+border:1px solid #153f40;
+margin:12px 0 18px;
+}
+
+.account-detail-grid{
+display:grid;
+grid-template-columns:1fr 1fr;
+gap:10px;
+margin:15px 0;
+}
+
+.detail-card{
+background:#05090a;
+border:1px solid #153f40;
+padding:14px;
+}
+
+.detail-card span{
+display:block;
+color:#888;
+font-size:11px;
+margin-bottom:5px;
+}
+
+.detail-card strong{
+color:#fff;
+}
+
+.detail-description{
+color:#aaa;
+line-height:1.6;
+margin:15px 0;
+}
+
+.detail-price{
+font-size:26px;
+color:var(--yellow);
+font-weight:bold;
+margin:15px 0;
+}
+
+/* ================= DRAWER ================= */
 
 .mobile-drawer{
-  display:none;
-  position:fixed;
-  inset:0;
-  z-index:3000;
-  background:rgba(0,0,0,.8);
+display:none;
+position:fixed;
+inset:0;
+z-index:3000;
+background:rgba(0,0,0,.8);
 }
 
-.mobile-drawer.open{display:block}
+.mobile-drawer.open{
+display:block;
+}
 
 .drawer-panel{
-  width:min(330px,86vw);
-  height:100%;
-  overflow:auto;
-  background:#05090a;
-  border-right:2px solid var(--yellow);
-  padding:14px;
+width:min(330px,86vw);
+height:100%;
+overflow:auto;
+background:#05090a;
+border-right:2px solid var(--yellow);
+padding:14px;
 }
 
 .drawer-head{
-  display:flex;
-  align-items:center;
-  justify-content:space-between;
-  margin-bottom:15px;
+display:flex;
+align-items:center;
+justify-content:space-between;
+margin-bottom:15px;
 }
 
-.drawer-head strong{color:var(--yellow)}
+.drawer-head strong{
+color:var(--yellow);
+}
 
 .drawer-close{
-  background:none;
-  border:1px solid var(--yellow);
-  color:var(--yellow);
-  width:38px;
-  height:38px;
+background:none;
+border:1px solid var(--yellow);
+color:var(--yellow);
+width:38px;
+height:38px;
+}
+
+/* ================= MOBILE ================= */
+
+@media(max-width:1100px){
+.products{
+grid-template-columns:repeat(3,1fr);
+}
 }
 
 @media(max-width:850px){
 
-  .welcome-left{
-    width:42%;
-    padding:10px;
-  }
+.welcome-left{
+width:42%;
+padding:10px;
+}
 
-  .welcome-right{
-    width:58%;
-    padding:20px;
-  }
+.welcome-right{
+width:58%;
+padding:20px;
+}
 
-  .welcome-content h1{
-    font-size:28px;
-  }
+.welcome-content h1{
+font-size:28px;
+}
 
-  nav{display:none}
+nav{
+display:none;
+}
 
-  .menu-btn{display:block}
+.menu-btn{
+display:block;
+}
 
-  .header-actions{margin-left:auto}
+.header-actions{
+margin-left:auto;
+}
 
-  .layout{
-    grid-template-columns:1fr;
-    padding:10px;
-  }
+.layout{
+grid-template-columns:1fr;
+padding:10px;
+}
 
-  .layout>.profile{
-    display:none;
-  }
+.layout>.profile{
+display:none;
+}
 
-  .products{
-    grid-template-columns:repeat(2,1fr);
-  }
+.products{
+grid-template-columns:repeat(2,1fr);
+}
 
 }
 
 @media(max-width:600px){
 
-  #welcomeScreen{
-    display:block;
-    overflow-y:auto;
-  }
+#welcomeScreen{
+position:fixed;
+inset:0;
+display:block;
+height:100vh;
+overflow-y:auto;
+overflow-x:hidden;
+-webkit-overflow-scrolling:touch;
+}
 
-  .welcome-left{
-    width:100%;
-    height:42vh;
-    min-height:220px;
-    padding:0;
-  }
+.welcome-left{
+width:100%;
+height:auto;
+min-height:300px;
+padding:25px 10px;
+}
 
-  .welcome-picture{
-    max-height:42vh;
-    object-fit:cover;
-  }
+.welcome-picture{
+width:85%;
+max-height:300px;
+}
 
-  .welcome-right{
-    width:100%;
-    min-height:58vh;
-    padding:28px 20px;
-  }
+.welcome-right{
+width:100%;
+min-height:650px;
+padding:40px 20px 70px;
+display:flex;
+align-items:center;
+justify-content:center;
+}
 
-  .welcome-content h1{
-    font-size:30px;
-  }
+.welcome-content{
+width:100%;
+max-width:430px;
+margin:auto;
+text-align:center;
+}
 
-  .logo{
-    width:120px;
-  }
+.welcome-content h1{
+font-size:30px;
+}
 
-  .account-btn{
-    display:none;
-  }
+.logo{
+width:120px;
+}
 
-  .hero{
-    height:300px;
-  }
+.account-btn{
+display:none;
+}
 
-  .trust{
-    grid-template-columns:1fr;
-  }
+.hero{
+min-height:220px;
+}
 
-  .trust-box{
-    border-right:0;
-    border-bottom:1px solid #153f40;
-  }
+.trust{
+grid-template-columns:1fr;
+}
 
-  .products,
-  .features{
-    grid-template-columns:1fr;
-  }
+.trust-box{
+border-right:0;
+border-bottom:1px solid #153f40;
+}
 
-  .feature{
-    border-right:0;
-    border-bottom:1px solid #153f40;
-  }
+.products,
+.features{
+grid-template-columns:1fr;
+}
 
-  .choice-grid{
-    grid-template-columns:1fr 1fr;
-  }
+.feature{
+border-right:0;
+border-bottom:1px solid #153f40;
+}
 
-  .contact-options,
-  .customer-options{
-    grid-template-columns:1fr;
-  }
+.choice-grid{
+grid-template-columns:1fr 1fr;
+}
 
-  .customer-profile{
-    flex-direction:column;
-    text-align:center;
-  }
+.contact-options,
+.customer-options,
+.social-login{
+grid-template-columns:1fr;
+}
 
-  footer{
-    flex-direction:column;
-    text-align:center;
-  }
+.customer-profile{
+flex-direction:column;
+text-align:center;
+}
+
+.account-detail-grid{
+grid-template-columns:1fr;
+}
+
+footer{
+flex-direction:column;
+text-align:center;
+}
 
 }
 </style>
@@ -1039,151 +1186,148 @@ footer{
 
 <body>
 
-<!-- =========================
-     FIRST SCREEN
-========================= -->
+<!-- ================= WELCOME ================= -->
 
 <section id="welcomeScreen">
 
-  <div class="welcome-left">
+<div class="welcome-left">
 
-    <!-- YOUR EXISTING PICTURE -->
-    <img
-      src="IMG_8370E7FA-ED0F-4AC6-924C-DB8185E9DB47.jpeg"
-      class="welcome-picture"
-      alt="CRISPY SHOP"
-    >
+<img
+src="logo.png.jpeg"
+class="welcome-picture"
+alt="CRISPY SHOP"
+>
 
-  </div>
+</div>
 
-  <div class="welcome-right">
+<div class="welcome-right">
 
-    <div class="welcome-content">
+<div class="welcome-content">
 
-      <div class="welcome-title">
-        WELCOME TO
-      </div>
+<div class="welcome-title">
+WELCOME TO
+</div>
 
-      <h1>
-        CRISPY SHOP
-      </h1>
+<h1>
+CRISPY SHOP
+</h1>
 
-      <p class="welcome-subtitle">
-        Shop the best gaming accounts.
-        Secure. Fast. Trusted.
-      </p>
+<p class="welcome-subtitle">
+Shop the best gaming accounts.
+<br>
+Secure. Fast. Trusted.
+</p>
 
-      <div class="welcome-login">
+<div class="welcome-login">
 
-        <button
-          onclick="socialLogin('google')"
-        >
-          G&nbsp;&nbsp; CONTINUE WITH GOOGLE
-        </button>
+<button onclick="socialLogin('google')">
+G&nbsp;&nbsp; CONTINUE WITH GOOGLE
+</button>
 
-        <button
-          onclick="socialLogin('apple')"
-        >
-          &nbsp;&nbsp; CONTINUE WITH APPLE
-        </button>
+<button onclick="socialLogin('apple')">
+&nbsp;&nbsp; CONTINUE WITH APPLE
+</button>
 
-      </div>
+</div>
 
-      <div class="welcome-divider">
-        OR
-      </div>
+<div class="welcome-divider">
+OR
+</div>
 
-      <div class="welcome-email">
+<div class="welcome-email">
 
-        <input
-          id="welcomeEmail"
-          type="email"
-          placeholder="Email address"
-          autocomplete="email"
-        >
+<input
+id="welcomeEmail"
+type="email"
+placeholder="Email address"
+autocomplete="email"
+>
 
-        <input
-          id="welcomePassword"
-          type="password"
-          placeholder="Password"
-          autocomplete="current-password"
-        >
+<input
+id="welcomePassword"
+type="password"
+placeholder="Password"
+autocomplete="current-password"
+>
 
-        <button
-          class="welcome-main-btn"
-          onclick="welcomeLogin()"
-        >
-          LOGIN
-        </button>
+<button
+class="welcome-main-btn"
+onclick="welcomeLogin()"
+>
+LOGIN
+</button>
 
-        <button
-          onclick="welcomeSignup()"
-        >
-          CREATE ACCOUNT
-        </button>
+<button onclick="welcomeSignup()">
+CREATE ACCOUNT
+</button>
 
-      </div>
+<button onclick="welcomeResetPassword()">
+FORGOT PASSWORD?
+</button>
 
-      <div
-        id="welcomeMessage"
-        class="welcome-message"
-      ></div>
+</div>
 
-      <div class="welcome-terms">
-        By continuing, you agree to use Crispy Shop responsibly.
-      </div>
+<div
+id="welcomeMessage"
+class="welcome-message"
+></div>
 
-    </div>
+<div class="welcome-terms">
+By continuing, you agree to use Crispy Shop responsibly.
+</div>
 
-  </div>
+</div>
+
+</div>
 
 </section>
 
 
-<!-- =========================
-     MAIN WEBSITE
-========================= -->
+<!-- ================= MAIN SITE ================= -->
 
 <div id="siteContent">
 
 <header>
 
 <button
-  class="menu-btn"
-  onclick="openDrawer()"
+class="menu-btn"
+onclick="openDrawer()"
 >
 ☰
 </button>
 
 <img
-  src="logo.png.jpeg"
-  class="logo"
-  alt="CRISPY SHOP"
+src="logo.png.jpeg"
+class="logo"
+alt="CRISPY SHOP"
 >
 
 <nav>
 
-<a href="#home" class="active">
+<a
+href="#home"
+class="active"
+>
 HOME
 </a>
 
 <a
-  href="#accounts"
-  onclick="openAccountChoices();return false;"
+href="#accounts"
+onclick="openAccountChoices();return false;"
 >
 ACCOUNTS
 </a>
 
 <a
-  href="#topup"
-  onclick="openTopup();return false;"
+href="#topup"
+onclick="openTopup();return false;"
 >
 TOP UP
 </a>
 
 <a
-  href="#reviews"
-  onclick="openReviews();return false;"
+href="#reviews"
+onclick="openReviews();return false;"
 >
 REVIEWS
 </a>
@@ -1193,24 +1337,22 @@ REVIEWS
 <div class="header-actions">
 
 <button
-  class="header-icon"
-  onclick="openSearch()"
-  aria-label="Search"
+class="header-icon"
+onclick="openSearch()"
 >
 ⌕
 </button>
 
 <button
-  class="header-icon"
-  onclick="openCart()"
-  aria-label="Cart"
+class="header-icon"
+onclick="openCart()"
 >
 🛒
 </button>
 
 <button
-  class="account-btn"
-  onclick="openCustomerAccount()"
+class="account-btn"
+onclick="openCustomerAccount()"
 >
 ♙ MY ACCOUNT
 </button>
@@ -1223,20 +1365,22 @@ REVIEWS
 <!-- MOBILE DRAWER -->
 
 <div
-  class="mobile-drawer"
-  id="drawer"
-  onclick="drawerOutside(event)"
+class="mobile-drawer"
+id="drawer"
+onclick="drawerOutside(event)"
 >
 
 <div class="drawer-panel">
 
 <div class="drawer-head">
 
-<strong>CRISPY SHOP</strong>
+<strong>
+CRISPY SHOP
+</strong>
 
 <button
-  class="drawer-close"
-  onclick="closeDrawer()"
+class="drawer-close"
+onclick="closeDrawer()"
 >
 ×
 </button>
@@ -1244,47 +1388,48 @@ REVIEWS
 </div>
 
 <button
-  class="contact"
-  onclick="openCustomerAccount();closeDrawer()"
+class="contact"
+onclick="openCustomerAccount();closeDrawer()"
 >
 ♙ MY ACCOUNT
 </button>
 
 <button
-  class="contact"
-  onclick="openAccountChoices();closeDrawer()"
+class="contact"
+onclick="openAccountChoices();closeDrawer()"
 >
 🎮 ACCOUNTS
 </button>
 
 <button
-  class="contact"
-  onclick="openTopup();closeDrawer()"
+class="contact"
+onclick="openTopup();closeDrawer()"
 >
 💎 TOP UP
 </button>
 
 <button
-  class="contact"
-  onclick="openReviews();closeDrawer()"
+class="contact"
+onclick="openReviews();closeDrawer()"
 >
 ⭐ REVIEWS
 </button>
 
 <button
-  class="contact"
-  onclick="contactMe();closeDrawer()"
+class="contact"
+onclick="contactMe();closeDrawer()"
 >
 💬 CONTACT ME
 </button>
 
 </div>
+
 </div>
 
 
 <div
-  class="layout"
-  id="home"
+class="layout"
+id="home"
 >
 
 <!-- PROFILE -->
@@ -1296,9 +1441,9 @@ MY PROFILE 👑
 </div>
 
 <img
-  src="logo.png.jpeg"
-  class="profile-logo"
-  alt="CRISPY SHOP"
+src="logo.png.jpeg"
+class="profile-logo"
+alt="CRISPY SHOP"
 >
 
 <div class="profile-level">
@@ -1311,47 +1456,72 @@ LEVEL 17 TRADER
 
 <div class="profile-section">
 
-<h3>ABOUT</h3>
+<h3>
+ABOUT
+</h3>
 
 <p>♙ Trader</p>
 <p>♙ Gaming Account Seller</p>
 <p>▣ Member Since 2024</p>
 
-<p>☆ Shop Rating</p>
+<p>
+☆ Shop Rating
+</p>
 
 <div class="stars">
 ★★★★★
-<span style="color:#fff">5.0</span>
+<span style="color:#fff">
+5.0
+</span>
 </div>
 
 <p>
 ♧ Orders Completed
-<b>250+</b>
+<b>
+250+
+</b>
 </p>
 
 </div>
 
 <div class="profile-section">
 
-<h3>SHOP STATS</h3>
+<h3>
+SHOP STATS
+</h3>
 
-<p>▣ Total Accounts <b>120+</b></p>
-<p>♙ Total Sales <b>1.2K+</b></p>
-<p>♙ Happy Customers <b>980+</b></p>
-<p>✓ Success Rate <b>99%</b></p>
+<p>
+▣ Total Accounts
+<b>120+</b>
+</p>
+
+<p>
+♙ Total Sales
+<b>1.2K+</b>
+</p>
+
+<p>
+♙ Happy Customers
+<b>980+</b>
+</p>
+
+<p>
+✓ Success Rate
+<b>99%</b>
+</p>
 
 </div>
 
 <button
-  class="contact"
-  onclick="openContactOptions()"
+class="contact"
+onclick="openContactOptions()"
 >
 💬 CONTACT ME
 </button>
 
 <button
-  class="contact message-btn"
-  onclick="openContactOptions()"
+class="contact"
+onclick="openContactOptions()"
 >
 ☘ MESSAGE ME
 </button>
@@ -1363,11 +1533,21 @@ LEVEL 17 TRADER
 
 <section class="hero">
 
-<img
-  src="IMG_8370E7FA-ED0F-4AC6-924C-DB8185E9DB47.jpeg"
-  class="hero-full-image"
-  alt="CRISPY SHOP"
->
+<div class="hero-welcome">
+
+<h2>
+WELCOME TO
+</h2>
+
+<strong>
+CRISPY SHOP
+</strong>
+
+<p>
+LEVEL UP. PLAY MORE. 👑
+</p>
+
+</div>
 
 </section>
 
@@ -1375,21 +1555,51 @@ LEVEL 17 TRADER
 <section class="trust">
 
 <div class="trust-box">
-<div class="trust-icon">♢</div>
-<h3>100% SAFE</h3>
-<p>Secure Transactions</p>
+
+<div class="trust-icon">
+♢
+</div>
+
+<h3>
+100% SAFE
+</h3>
+
+<p>
+Secure Transactions
+</p>
+
 </div>
 
 <div class="trust-box">
-<div class="trust-icon">ϟ</div>
-<h3>INSTANT DELIVERY</h3>
-<p>Get it instantly</p>
+
+<div class="trust-icon">
+ϟ
+</div>
+
+<h3>
+INSTANT DELIVERY
+</h3>
+
+<p>
+Get it instantly
+</p>
+
 </div>
 
 <div class="trust-box">
-<div class="trust-icon">♧</div>
-<h3>24/7 SUPPORT</h3>
-<p>We're here to help</p>
+
+<div class="trust-icon">
+♧
+</div>
+
+<h3>
+24/7 SUPPORT
+</h3>
+
+<p>
+We're here to help
+</p>
+
 </div>
 
 </section>
@@ -1398,43 +1608,43 @@ LEVEL 17 TRADER
 <div class="filters">
 
 <button
-  class="filter active"
-  onclick="filterProducts('all',this)"
+class="filter active"
+onclick="filterProducts('all',this)"
 >
 ALL
 </button>
 
 <button
-  class="filter"
-  onclick="filterProducts('freefire',this)"
+class="filter"
+onclick="filterProducts('freefire',this)"
 >
 FREE FIRE
 </button>
 
 <button
-  class="filter"
-  onclick="filterProducts('efootball',this)"
+class="filter"
+onclick="filterProducts('efootball',this)"
 >
 eFOOTBALL
 </button>
 
 <button
-  class="filter"
-  onclick="filterProducts('codm',this)"
+class="filter"
+onclick="filterProducts('codm',this)"
 >
 CODM
 </button>
 
 <button
-  class="filter"
-  onclick="filterProducts('dls',this)"
+class="filter"
+onclick="filterProducts('dls',this)"
 >
 DLS
 </button>
 
 <button
-  class="filter"
-  onclick="filterProducts('fcmobile',this)"
+class="filter"
+onclick="filterProducts('fcmobile',this)"
 >
 FC MOBILE
 </button>
@@ -1446,11 +1656,13 @@ FC MOBILE
 
 <div class="section-heading">
 
-<h2>FEATURED ACCOUNTS</h2>
+<h2>
+FEATURED ACCOUNTS
+</h2>
 
 <button
-  class="outline-btn"
-  onclick="openAccountChoices()"
+class="outline-btn"
+onclick="openAccountChoices()"
 >
 VIEW ALL →
 </button>
@@ -1460,10 +1672,12 @@ VIEW ALL →
 </section>
 
 
+<!-- REAL ACCOUNTS ARE LOADED FROM FIRESTORE -->
+
 <section
-  class="game-section"
-  id="freefire-section"
-  data-game="freefire"
+class="game-section"
+id="freefire-section"
+data-game="freefire"
 >
 
 <div class="section-heading">
@@ -1471,51 +1685,18 @@ VIEW ALL →
 </div>
 
 <div
-  class="products"
-  id="freefire-products"
+class="products"
+id="freefire-products"
 >
-
-<div
-  class="product"
-  data-account-id="freefire-1"
-  data-game="freefire"
->
-
-<span class="heart">♡</span>
-<span class="available">AVAILABLE</span>
-
-<div class="game">FREE F⚡RE</div>
-
-<h3>FREE FIRE ACCOUNT</h3>
-
-<div class="details">
-Level — · REGION
-</div>
-
-<div class="description">
-No account posted yet.
-</div>
-
-<div class="price">₦0</div>
-
-<button
-  class="details-btn"
-  onclick="addToCart('FREE FIRE ACCOUNT','₦0')"
->
-ADD TO CART
-</button>
-
-</div>
-
 </div>
 
 </section>
 
 
 <section
-  class="game-section"
-  id="efootball-section"
-  data-game="efootball"
+class="game-section"
+id="efootball-section"
+data-game="efootball"
 >
 
 <div class="section-heading">
@@ -1523,48 +1704,15 @@ ADD TO CART
 </div>
 
 <div class="products">
-
-<div
-  class="product"
-  data-account-id="efootball-1"
-  data-game="efootball"
->
-
-<span class="heart">♡</span>
-<span class="available">AVAILABLE</span>
-
-<div class="game">eFOOTBALL</div>
-
-<h3>eFOOTBALL ACCOUNT</h3>
-
-<div class="details">
-Level — · REGION
-</div>
-
-<div class="description">
-No account posted yet.
-</div>
-
-<div class="price">₦0</div>
-
-<button
-  class="details-btn"
-  onclick="addToCart('eFOOTBALL ACCOUNT','₦0')"
->
-ADD TO CART
-</button>
-
-</div>
-
 </div>
 
 </section>
 
 
 <section
-  class="game-section"
-  id="codm-section"
-  data-game="codm"
+class="game-section"
+id="codm-section"
+data-game="codm"
 >
 
 <div class="section-heading">
@@ -1572,48 +1720,15 @@ ADD TO CART
 </div>
 
 <div class="products">
-
-<div
-  class="product"
-  data-account-id="codm-1"
-  data-game="codm"
->
-
-<span class="heart">♡</span>
-<span class="available">AVAILABLE</span>
-
-<div class="game">CODM</div>
-
-<h3>CODM ACCOUNT</h3>
-
-<div class="details">
-Level — · REGION
-</div>
-
-<div class="description">
-No account posted yet.
-</div>
-
-<div class="price">₦0</div>
-
-<button
-  class="details-btn"
-  onclick="addToCart('CODM ACCOUNT','₦0')"
->
-ADD TO CART
-</button>
-
-</div>
-
 </div>
 
 </section>
 
 
 <section
-  class="game-section"
-  id="dls-section"
-  data-game="dls"
+class="game-section"
+id="dls-section"
+data-game="dls"
 >
 
 <div class="section-heading">
@@ -1621,48 +1736,15 @@ ADD TO CART
 </div>
 
 <div class="products">
-
-<div
-  class="product"
-  data-account-id="dls-1"
-  data-game="dls"
->
-
-<span class="heart">♡</span>
-<span class="available">AVAILABLE</span>
-
-<div class="game">DLS</div>
-
-<h3>DLS ACCOUNT</h3>
-
-<div class="details">
-Level — · REGION
-</div>
-
-<div class="description">
-No account posted yet.
-</div>
-
-<div class="price">₦0</div>
-
-<button
-  class="details-btn"
-  onclick="addToCart('DLS ACCOUNT','₦0')"
->
-ADD TO CART
-</button>
-
-</div>
-
 </div>
 
 </section>
 
 
 <section
-  class="game-section"
-  id="fcmobile-section"
-  data-game="fcmobile"
+class="game-section"
+id="fcmobile-section"
+data-game="fcmobile"
 >
 
 <div class="section-heading">
@@ -1670,176 +1752,210 @@ ADD TO CART
 </div>
 
 <div class="products">
-
-<div
-  class="product"
-  data-account-id="fcmobile-1"
-  data-game="fcmobile"
->
-
-<span class="heart">♡</span>
-<span class="available">AVAILABLE</span>
-
-<div class="game">FC MOBILE</div>
-
-<h3>FC MOBILE ACCOUNT</h3>
-
-<div class="details">
-Level — · REGION
-</div>
-
-<div class="description">
-No account posted yet.
-</div>
-
-<div class="price">₦0</div>
-
-<button
-  class="details-btn"
-  onclick="addToCart('FC MOBILE ACCOUNT','₦0')"
->
-ADD TO CART
-</button>
-
-</div>
-
 </div>
 
 </section>
 
 
+<!-- TOP UPS -->
+
 <section
-  class="game-section"
-  id="topup-freefire"
-  data-topup-section="freefire"
+class="game-section"
+id="topup-freefire"
+data-topup-section="freefire"
 >
+
 <div class="section-heading">
 <h2>FREE FIRE TOP UP</h2>
 </div>
 
 <div class="products">
+
 <div class="product">
-<div class="game">💎 DIAMONDS</div>
-<h3>FREE FIRE DIAMONDS</h3>
+
+<div class="game">
+💎 DIAMONDS
+</div>
+
+<h3>
+FREE FIRE DIAMONDS
+</h3>
+
 <div class="description">
 Top-up packages will be posted here.
 </div>
+
 <button
-  class="details-btn"
-  onclick="showToast('Free Fire top-up selected')"
+class="details-btn"
+onclick="showToast('Free Fire top-up selected')"
 >
 SELECT
 </button>
+
 </div>
+
 </div>
+
 </section>
 
 
 <section
-  class="game-section"
-  id="topup-efootball"
-  data-topup-section="efootball"
+class="game-section"
+id="topup-efootball"
+data-topup-section="efootball"
 >
+
 <div class="section-heading">
 <h2>eFOOTBALL TOP UP</h2>
 </div>
 
 <div class="products">
+
 <div class="product">
-<div class="game">🪙 COINS</div>
-<h3>eFOOTBALL COINS</h3>
+
+<div class="game">
+🪙 COINS
+</div>
+
+<h3>
+eFOOTBALL COINS
+</h3>
+
 <div class="description">
 Top-up packages will be posted here.
 </div>
+
 <button
-  class="details-btn"
-  onclick="showToast('eFootball top-up selected')"
+class="details-btn"
+onclick="showToast('eFootball top-up selected')"
 >
 SELECT
 </button>
+
 </div>
+
 </div>
+
 </section>
 
 
 <section
-  class="game-section"
-  id="topup-codm"
-  data-topup-section="codm"
+class="game-section"
+id="topup-codm"
+data-topup-section="codm"
 >
+
 <div class="section-heading">
 <h2>CODM TOP UP</h2>
 </div>
 
 <div class="products">
+
 <div class="product">
-<div class="game">🎯 CP</div>
-<h3>CODM CP</h3>
+
+<div class="game">
+🎯 CP
+</div>
+
+<h3>
+CODM CP
+</h3>
+
 <div class="description">
 Top-up packages will be posted here.
 </div>
+
 <button
-  class="details-btn"
-  onclick="showToast('CODM top-up selected')"
+class="details-btn"
+onclick="showToast('CODM top-up selected')"
 >
 SELECT
 </button>
+
 </div>
+
 </div>
+
 </section>
 
 
 <section
-  class="game-section"
-  id="topup-dls"
-  data-topup-section="dls"
+class="game-section"
+id="topup-dls"
+data-topup-section="dls"
 >
+
 <div class="section-heading">
 <h2>DLS TOP UP</h2>
 </div>
 
 <div class="products">
+
 <div class="product">
-<div class="game">💎 DIAMONDS</div>
-<h3>DLS DIAMONDS</h3>
+
+<div class="game">
+💎 DIAMONDS
+</div>
+
+<h3>
+DLS DIAMONDS
+</h3>
+
 <div class="description">
 Top-up packages will be posted here.
 </div>
+
 <button
-  class="details-btn"
-  onclick="showToast('DLS top-up selected')"
+class="details-btn"
+onclick="showToast('DLS top-up selected')"
 >
 SELECT
 </button>
+
 </div>
+
 </div>
+
 </section>
 
 
 <section
-  class="game-section"
-  id="topup-fcmobile"
-  data-topup-section="fcmobile"
+class="game-section"
+id="topup-fcmobile"
+data-topup-section="fcmobile"
 >
+
 <div class="section-heading">
 <h2>FC MOBILE TOP UP</h2>
 </div>
 
 <div class="products">
+
 <div class="product">
-<div class="game">⚽ FC MOBILE</div>
-<h3>FC MOBILE TOP UP</h3>
+
+<div class="game">
+⚽ FC MOBILE
+</div>
+
+<h3>
+FC MOBILE TOP UP
+</h3>
+
 <div class="description">
 Top-up packages will be posted here.
 </div>
+
 <button
-  class="details-btn"
-  onclick="showToast('FC Mobile top-up selected')"
+class="details-btn"
+onclick="showToast('FC Mobile top-up selected')"
 >
 SELECT
 </button>
+
 </div>
+
 </div>
+
 </section>
 
 
@@ -1875,30 +1991,30 @@ SELECT
 <footer>
 
 <img
-  src="logo.png.jpeg"
-  class="footer-logo"
-  alt="CRISPY SHOP"
+src="logo.png.jpeg"
+class="footer-logo"
+alt="CRISPY SHOP"
 >
 
 <div class="socials">
 
 <a
-  href="https://www.tiktok.com/@_itzcrispy"
-  target="_blank"
+href="https://www.tiktok.com/@_itzcrispy"
+target="_blank"
 >
 TikTok
 </a>
 
 <a
-  href="https://x.com/crispysoloss"
-  target="_blank"
+href="https://x.com/crispysoloss"
+target="_blank"
 >
 X
 </a>
 
 <a
-  href="https://t.me/crispyshop_1"
-  target="_blank"
+href="https://t.me/crispyshop_1"
+target="_blank"
 >
 Telegram
 </a>
@@ -1912,24 +2028,31 @@ LEVEL UP. PLAY MORE. 👑
 </footer>
 
 </main>
+
 </div>
-<!-- CUSTOMER ACCOUNT -->
+
+</div>
+
+
+<!-- ================= CUSTOMER ACCOUNT ================= -->
 
 <div
-  class="modal"
-  id="customerAccountModal"
+class="modal"
+id="customerAccountModal"
 >
 
 <div class="modal-box">
 
 <button
-  class="modal-close"
-  onclick="closeModal('customerAccountModal')"
+class="modal-close"
+onclick="closeModal('customerAccountModal')"
 >
 ×
 </button>
 
-<h2>MY ACCOUNT</h2>
+<h2>
+MY ACCOUNT
+</h2>
 
 <p id="customerWelcome">
 Create an account or login to Crispy Shop.
@@ -1941,28 +2064,24 @@ Create an account or login to Crispy Shop.
 <div class="contact-options">
 
 <button
-  class="contact-option"
-  onclick="showSignup()"
+class="contact-option"
+onclick="showSignup()"
 >
 👤 CREATE ACCOUNT
 </button>
 
 <button
-  class="contact-option"
-  onclick="showLogin()"
+class="contact-option"
+onclick="showLogin()"
 >
 🔐 LOGIN
 </button>
 
 </div>
 
-
-<div class="divider">
+<p>
 OR CONTINUE WITH
-</div>
-
-
-<!-- GOOGLE + APPLE ONLY -->
+</p>
 
 <div class="social-login">
 
@@ -1978,34 +2097,34 @@ G GOOGLE
 
 
 <div
-  id="signupBox"
-  style="display:none;margin-top:20px"
+id="signupBox"
+style="display:none;margin-top:20px"
 >
 
 <input
-  id="signupName"
-  class="form-input"
-  type="text"
-  placeholder="Your name"
+id="signupName"
+class="form-input"
+type="text"
+placeholder="Your name"
 >
 
 <input
-  id="signupEmail"
-  class="form-input"
-  type="email"
-  placeholder="Email address"
+id="signupEmail"
+class="form-input"
+type="email"
+placeholder="Email address"
 >
 
 <input
-  id="signupPassword"
-  class="form-input"
-  type="password"
-  placeholder="Password"
+id="signupPassword"
+class="form-input"
+type="password"
+placeholder="Password"
 >
 
 <button
-  class="yellow-btn full-btn"
-  onclick="createCustomerAccount()"
+class="yellow-btn full-btn"
+onclick="createCustomerAccount()"
 >
 CREATE ACCOUNT
 </button>
@@ -2014,29 +2133,37 @@ CREATE ACCOUNT
 
 
 <div
-  id="loginBox"
-  style="display:none;margin-top:20px"
+id="loginBox"
+style="display:none;margin-top:20px"
 >
 
 <input
-  id="loginEmail"
-  class="form-input"
-  type="email"
-  placeholder="Email address"
+id="loginEmail"
+class="form-input"
+type="email"
+placeholder="Email address"
 >
 
 <input
-  id="loginPassword"
-  class="form-input"
-  type="password"
-  placeholder="Password"
+id="loginPassword"
+class="form-input"
+type="password"
+placeholder="Password"
 >
 
 <button
-  class="yellow-btn full-btn"
-  onclick="loginCustomer()"
+class="yellow-btn full-btn"
+onclick="loginCustomer()"
 >
 LOGIN
+</button>
+
+<button
+class="outline-btn full-btn"
+style="margin-top:10px"
+onclick="customerForgotPassword()"
+>
+FORGOT PASSWORD?
 </button>
 
 </div>
@@ -2047,8 +2174,8 @@ LOGIN
 <!-- CUSTOMER DASHBOARD -->
 
 <div
-  id="customerDashboard"
-  style="display:none"
+id="customerDashboard"
+style="display:none"
 >
 
 <div class="customer-profile">
@@ -2058,10 +2185,10 @@ LOGIN
 <div class="customer-photo-circle">
 
 <img
-  id="customerPhotoPreview"
-  src=""
-  alt="Profile photo"
-  style="display:none"
+id="customerPhotoPreview"
+src=""
+alt="Profile photo"
+style="display:none"
 >
 
 <span id="customerPhotoPlaceholder">
@@ -2071,18 +2198,18 @@ LOGIN
 </div>
 
 <label
-  for="customerPhoto"
-  class="yellow-btn upload-photo-label"
+for="customerPhoto"
+class="yellow-btn upload-photo-label"
 >
 📸 UPLOAD / CHANGE PHOTO
 </label>
 
 <input
-  id="customerPhoto"
-  type="file"
-  accept="image/*"
-  style="display:none"
-  onchange="uploadCustomerPhoto(event)"
+id="customerPhoto"
+type="file"
+accept="image/*"
+style="display:none"
+onchange="uploadCustomerPhoto(event)"
 >
 
 </div>
@@ -2108,55 +2235,55 @@ VERIFIED CUSTOMER
 
 
 <div
-  id="customerOptions"
-  class="customer-options"
+id="customerOptions"
+class="customer-options"
 >
 
 <button
-  class="customer-option"
-  onclick="customerInfo('PROFILE')"
+class="customer-option"
+onclick="customerInfo('PROFILE')"
 >
 👤 MY PROFILE
 </button>
 
 <button
-  class="customer-option"
-  onclick="customerInfo('ORDERS')"
+class="customer-option"
+onclick="customerInfo('ORDERS')"
 >
 🛒 MY ORDERS
 </button>
 
 <button
-  class="customer-option"
-  onclick="customerInfo('PURCHASED')"
+class="customer-option"
+onclick="customerInfo('PURCHASED')"
 >
 🎮 MY PURCHASED ACCOUNTS
 </button>
 
 <button
-  class="customer-option"
-  onclick="customerInfo('TOPUPS')"
+class="customer-option"
+onclick="customerInfo('TOPUPS')"
 >
 💎 MY TOP-UPS
 </button>
 
 <button
-  class="customer-option"
-  onclick="customerInfo('REVIEWS')"
+class="customer-option"
+onclick="customerInfo('REVIEWS')"
 >
 ⭐ MY REVIEWS
 </button>
 
 <button
-  class="customer-option"
-  onclick="customerInfo('PASSWORD')"
+class="customer-option"
+onclick="customerInfo('PASSWORD')"
 >
 🔐 CHANGE PASSWORD
 </button>
 
 <button
-  class="customer-option logout-option"
-  onclick="customerLogout()"
+class="customer-option logout-option"
+onclick="customerLogout()"
 >
 🚪 LOGOUT
 </button>
@@ -2165,28 +2292,28 @@ VERIFIED CUSTOMER
 
 
 <div
-  id="customerInfo"
-  class="customer-info"
-  style="display:none"
+id="customerInfo"
+class="customer-info"
+style="display:none"
 >
 
 <button
-  class="outline-btn"
-  onclick="backCustomerOptions()"
+class="outline-btn"
+onclick="backCustomerOptions()"
 >
 ← BACK
 </button>
 
-<div id="customerInfoContent"></div>
-
+<div id="customerInfoContent">
 </div>
 
 </div>
 
+</div>
 
 <div
-  id="accountMessage"
-  class="message"
+id="accountMessage"
+class="message"
 ></div>
 
 </div>
@@ -2194,23 +2321,25 @@ VERIFIED CUSTOMER
 </div>
 
 
-<!-- ACCOUNT CHOICES -->
+<!-- ================= ACCOUNT CHOICES ================= -->
 
 <div
-  class="modal"
-  id="accountModal"
+class="modal"
+id="accountModal"
 >
 
 <div class="modal-box">
 
 <button
-  class="modal-close"
-  onclick="closeModal('accountModal')"
+class="modal-close"
+onclick="closeModal('accountModal')"
 >
 ×
 </button>
 
-<h2>CHOOSE YOUR GAME</h2>
+<h2>
+CHOOSE YOUR GAME
+</h2>
 
 <p>
 Choose the game account you want.
@@ -2219,40 +2348,40 @@ Choose the game account you want.
 <div class="choice-grid">
 
 <button
-  class="choice"
-  onclick="chooseGame('freefire')"
+class="choice"
+onclick="chooseGame('freefire')"
 >
 <span class="choice-icon">🔥</span>
 FREE FIRE
 </button>
 
 <button
-  class="choice"
-  onclick="chooseGame('efootball')"
+class="choice"
+onclick="chooseGame('efootball')"
 >
 <span class="choice-icon">⚽</span>
 eFOOTBALL
 </button>
 
 <button
-  class="choice"
-  onclick="chooseGame('codm')"
+class="choice"
+onclick="chooseGame('codm')"
 >
 <span class="choice-icon">🎯</span>
 CODM
 </button>
 
 <button
-  class="choice"
-  onclick="chooseGame('dls')"
+class="choice"
+onclick="chooseGame('dls')"
 >
 <span class="choice-icon">💎</span>
 DLS
 </button>
 
 <button
-  class="choice"
-  onclick="chooseGame('fcmobile')"
+class="choice"
+onclick="chooseGame('fcmobile')"
 >
 <span class="choice-icon">⚽</span>
 FC MOBILE
@@ -2265,23 +2394,25 @@ FC MOBILE
 </div>
 
 
-<!-- TOP UP CHOICES -->
+<!-- ================= TOP UP ================= -->
 
 <div
-  class="modal"
-  id="topupModal"
+class="modal"
+id="topupModal"
 >
 
 <div class="modal-box">
 
 <button
-  class="modal-close"
-  onclick="closeModal('topupModal')"
+class="modal-close"
+onclick="closeModal('topupModal')"
 >
 ×
 </button>
 
-<h2>CHOOSE TOP UP</h2>
+<h2>
+CHOOSE TOP UP
+</h2>
 
 <p>
 Each game has its own top-up section.
@@ -2290,40 +2421,40 @@ Each game has its own top-up section.
 <div class="choice-grid">
 
 <button
-  class="choice"
-  onclick="chooseTopup('topup-freefire')"
+class="choice"
+onclick="chooseTopup('topup-freefire')"
 >
 💎
 FREE FIRE
 </button>
 
 <button
-  class="choice"
-  onclick="chooseTopup('topup-efootball')"
+class="choice"
+onclick="chooseTopup('topup-efootball')"
 >
 🪙
 eFOOTBALL
 </button>
 
 <button
-  class="choice"
-  onclick="chooseTopup('topup-codm')"
+class="choice"
+onclick="chooseTopup('topup-codm')"
 >
 🎯
 CODM
 </button>
 
 <button
-  class="choice"
-  onclick="chooseTopup('topup-dls')"
+class="choice"
+onclick="chooseTopup('topup-dls')"
 >
 💎
 DLS
 </button>
 
 <button
-  class="choice"
-  onclick="chooseTopup('topup-fcmobile')"
+class="choice"
+onclick="chooseTopup('topup-fcmobile')"
 >
 ⚽
 FC MOBILE
@@ -2336,23 +2467,25 @@ FC MOBILE
 </div>
 
 
-<!-- REVIEWS -->
+<!-- ================= REVIEWS ================= -->
 
 <div
-  class="modal"
-  id="reviewModal"
+class="modal"
+id="reviewModal"
 >
 
 <div class="modal-box">
 
 <button
-  class="modal-close"
-  onclick="closeModal('reviewModal')"
+class="modal-close"
+onclick="closeModal('reviewModal')"
 >
 ×
 </button>
 
-<h2>RATE CRISPY SHOP</h2>
+<h2>
+RATE CRISPY SHOP
+</h2>
 
 <p>
 How would you rate your experience?
@@ -2361,8 +2494,8 @@ How would you rate your experience?
 <div class="choice-grid">
 
 <button
-  class="choice"
-  onclick="sendReview(5)"
+class="choice"
+onclick="sendReview(5)"
 >
 ★★★★★
 <br>
@@ -2370,8 +2503,8 @@ How would you rate your experience?
 </button>
 
 <button
-  class="choice"
-  onclick="sendReview(4)"
+class="choice"
+onclick="sendReview(4)"
 >
 ★★★★
 <br>
@@ -2379,8 +2512,8 @@ How would you rate your experience?
 </button>
 
 <button
-  class="choice"
-  onclick="sendReview(3)"
+class="choice"
+onclick="sendReview(3)"
 >
 ★★★
 <br>
@@ -2388,8 +2521,8 @@ How would you rate your experience?
 </button>
 
 <button
-  class="choice"
-  onclick="sendReview(2)"
+class="choice"
+onclick="sendReview(2)"
 >
 ★★
 <br>
@@ -2397,8 +2530,8 @@ How would you rate your experience?
 </button>
 
 <button
-  class="choice"
-  onclick="sendReview(1)"
+class="choice"
+onclick="sendReview(1)"
 >
 ★
 <br>
@@ -2412,23 +2545,25 @@ How would you rate your experience?
 </div>
 
 
-<!-- CONTACT -->
+<!-- ================= CONTACT ================= -->
 
 <div
-  class="modal"
-  id="contactModal"
+class="modal"
+id="contactModal"
 >
 
 <div class="modal-box">
 
 <button
-  class="modal-close"
-  onclick="closeModal('contactModal')"
+class="modal-close"
+onclick="closeModal('contactModal')"
 >
 ×
 </button>
 
-<h2>CONTACT CRISPY SHOP</h2>
+<h2>
+CONTACT CRISPY SHOP
+</h2>
 
 <p>
 Choose how you want to contact me.
@@ -2437,33 +2572,33 @@ Choose how you want to contact me.
 <div class="contact-options">
 
 <a
-  class="contact-option"
-  href="https://wa.me/2347051885555"
-  target="_blank"
+class="contact-option"
+href="https://wa.me/2347051885555"
+target="_blank"
 >
 💬 WHATSAPP
 </a>
 
 <a
-  class="contact-option"
-  href="https://www.tiktok.com/@_itzcrispy"
-  target="_blank"
+class="contact-option"
+href="https://www.tiktok.com/@_itzcrispy"
+target="_blank"
 >
 🎵 TIKTOK
 </a>
 
 <a
-  class="contact-option"
-  href="https://x.com/crispysoloss"
-  target="_blank"
+class="contact-option"
+href="https://x.com/crispysoloss"
+target="_blank"
 >
 𝕏 X
 </a>
 
 <a
-  class="contact-option"
-  href="https://t.me/crispyshop_1"
-  target="_blank"
+class="contact-option"
+href="https://t.me/crispyshop_1"
+target="_blank"
 >
 ✈ TELEGRAM
 </a>
@@ -2475,30 +2610,31 @@ Choose how you want to contact me.
 </div>
 
 
-<!-- SEARCH -->
+<!-- ================= SEARCH ================= -->
 
 <div
-  class="modal"
-  id="searchModal"
+class="modal"
+id="searchModal"
 >
 
 <div class="modal-box">
 
 <button
-  class="modal-close"
-  onclick="closeModal('searchModal')"
+class="modal-close"
+onclick="closeModal('searchModal')"
 >
 ×
 </button>
 
-<h2>SEARCH CRISPY SHOP</h2>
+<h2>
+SEARCH CRISPY SHOP
+</h2>
 
 <input
-  id="searchInput"
-  class="form-input"
-  type="search"
-  placeholder="Search accounts, games or top ups..."
-  oninput="runSearch()"
+id="searchInput"
+class="form-input"
+type="search"
+placeholder="Search accounts, games or top ups..."
 >
 
 <div id="searchResults">
@@ -2514,34 +2650,36 @@ Type something to search.
 </div>
 
 
-<!-- CART -->
+<!-- ================= CART ================= -->
 
 <div
-  class="modal"
-  id="cartModal"
+class="modal"
+id="cartModal"
 >
 
 <div class="modal-box">
 
 <button
-  class="modal-close"
-  onclick="closeModal('cartModal')"
+class="modal-close"
+onclick="closeModal('cartModal')"
 >
 ×
 </button>
 
-<h2>YOUR CART 🛒</h2>
+<h2>
+YOUR CART 🛒
+</h2>
 
 <div
-  id="cartList"
-  class="empty"
+id="cartList"
+class="empty"
 >
 Your cart is empty.
 </div>
 
 <div
-  id="cartTotal"
-  class="cart-total"
+id="cartTotal"
+class="cart-total"
 >
 Total: ₦0
 </div>
@@ -2551,1050 +2689,1255 @@ Total: ₦0
 </div>
 
 
-<!-- FIREBASE -->
+<!-- ================= ACCOUNT DETAILS ================= -->
+
+<div
+class="modal"
+id="accountDetailsModal"
+>
+
+<div class="modal-box">
+
+<button
+class="modal-close"
+onclick="closeModal('accountDetailsModal')"
+>
+×
+</button>
+
+<h2 id="detailTitle">
+ACCOUNT DETAILS
+</h2>
+
+<img
+id="detailPhoto"
+class="account-detail-photo"
+src=""
+alt="Account image"
+style="display:none"
+>
+
+<div class="account-detail-grid">
+
+<div class="detail-card">
+<span>GAME</span>
+<strong id="detailGame"></strong>
+</div>
+
+<div class="detail-card">
+<span>STATUS</span>
+<strong id="detailStatus"></strong>
+</div>
+
+<div class="detail-card">
+<span>LEVEL</span>
+<strong id="detailLevel"></strong>
+</div>
+
+<div class="detail-card">
+<span>REGION</span>
+<strong id="detailRegion"></strong>
+</div>
+
+</div>
+
+<div
+id="detailDescription"
+class="detail-description"
+>
+</div>
+
+<div
+id="detailPrice"
+class="detail-price"
+>
+</div>
+
+<button
+id="detailCartButton"
+class="yellow-btn full-btn"
+>
+ADD TO CART
+</button>
+
+</div>
+
+</div>
+
+
+<!-- ================= FIREBASE ================= -->
 
 <script type="module">
 
 import {
-  initializeApp
+initializeApp
 }
 from "https://www.gstatic.com/firebasejs/10.12.2/firebase-app.js";
 
 import {
-  getAuth,
-  createUserWithEmailAndPassword,
-  signInWithEmailAndPassword,
-  updateProfile,
-  onAuthStateChanged,
-  signOut,
-  updatePassword,
-  GoogleAuthProvider,
-  OAuthProvider,
-  signInWithPopup
+getAuth,
+createUserWithEmailAndPassword,
+signInWithEmailAndPassword,
+updateProfile,
+onAuthStateChanged,
+signOut,
+sendPasswordResetEmail,
+GoogleAuthProvider,
+OAuthProvider,
+signInWithPopup
 }
 from "https://www.gstatic.com/firebasejs/10.12.2/firebase-auth.js";
 
 import {
-  getFirestore,
-  collection,
-  getDocs
+getFirestore,
+collection,
+getDocs
 }
 from "https://www.gstatic.com/firebasejs/10.12.2/firebase-firestore.js";
 
 
 const firebaseConfig={
 
-  apiKey:
-  "AIzaSyC9FNL08mvrtbcjXXj_JBWPHvdUORioYr8",
+apiKey:
+"AIzaSyC9FNL08mvrtbcjXXj_JBWPHvdUORioYr8",
 
-  authDomain:
-  "crispy-shop-25644.firebaseapp.com",
+authDomain:
+"crispy-shop-25644.firebaseapp.com",
 
-  projectId:
-  "crispy-shop-25644",
+projectId:
+"crispy-shop-25644",
 
-  storageBucket:
-  "crispy-shop-25644.firebasestorage.app",
+storageBucket:
+"crispy-shop-25644.firebasestorage.app",
 
-  messagingSenderId:
-  "311251480323",
+messagingSenderId:
+"311251480323",
 
-  appId:
-  "1:311251480323:web:b0d9e14c947a0528ccc336"
+appId:
+"1:311251480323:web:b0d9e14c947a0528ccc336"
 
 };
 
 
 const app=initializeApp(firebaseConfig);
-
 const auth=getAuth(app);
-
 const db=getFirestore(app);
 
 
-/* =========================
-   WELCOME LOGIN
-========================= */
+/* ================= LOGIN ================= */
 
 window.socialLogin=async function(type){
 
-  const message=
-    document.getElementById(
-      "welcomeMessage"
-    );
+const message=
+document.getElementById("welcomeMessage");
 
-  let provider;
+let provider;
 
-  if(type==="google"){
+if(type==="google"){
+provider=new GoogleAuthProvider();
+}
 
-    provider=
-      new GoogleAuthProvider();
+if(type==="apple"){
+provider=new OAuthProvider("apple.com");
+}
 
-  }
+if(!provider)return;
 
-  if(type==="apple"){
+try{
 
-    provider=
-      new OAuthProvider(
-        "apple.com"
-      );
+message.textContent="Signing in...";
 
-  }
+await signInWithPopup(auth,provider);
 
-  if(!provider)return;
+message.textContent="Login successful.";
 
-  try{
+showSite();
 
-    message.textContent=
-      "Signing in...";
+}
 
-    await signInWithPopup(
-      auth,
-      provider
-    );
+catch(error){
 
-    message.textContent=
-      "Login successful.";
+console.error(error);
 
-    showSite();
+message.textContent=
+error.message||"Login failed.";
 
-  }
-
-  catch(error){
-
-    console.error(error);
-
-    message.textContent=
-      error.message ||
-      "Login failed.";
-
-  }
+}
 
 };
 
 
 window.welcomeLogin=async function(){
 
-  const email=
-    document
-      .getElementById("welcomeEmail")
-      .value
-      .trim();
+const email=
+document.getElementById("welcomeEmail").value.trim();
 
-  const password=
-    document
-      .getElementById("welcomePassword")
-      .value;
+const password=
+document.getElementById("welcomePassword").value;
 
-  const message=
-    document.getElementById(
-      "welcomeMessage"
-    );
+const message=
+document.getElementById("welcomeMessage");
 
-  if(!email||!password){
+if(!email||!password){
 
-    message.textContent=
-      "Enter your email and password.";
+message.textContent=
+"Enter your email and password.";
 
-    return;
+return;
 
-  }
+}
 
-  try{
+try{
 
-    message.textContent=
-      "Logging in...";
+message.textContent="Logging in...";
 
-    await signInWithEmailAndPassword(
-      auth,
-      email,
-      password
-    );
+await signInWithEmailAndPassword(
+auth,
+email,
+password
+);
 
-    showSite();
+showSite();
 
-  }
+}
 
-  catch(error){
+catch(error){
 
-    console.error(error);
+console.error(error);
 
-    message.textContent=
-      "Login failed. Check your email and password.";
+message.textContent=
+"Login failed. Check your email and password.";
 
-  }
+}
 
 };
 
 
 window.welcomeSignup=async function(){
 
-  const email=
-    document
-      .getElementById("welcomeEmail")
-      .value
-      .trim();
+const email=
+document.getElementById("welcomeEmail").value.trim();
 
-  const password=
-    document
-      .getElementById("welcomePassword")
-      .value;
+const password=
+document.getElementById("welcomePassword").value;
 
-  const message=
-    document.getElementById(
-      "welcomeMessage"
-    );
+const message=
+document.getElementById("welcomeMessage");
 
-  if(!email||!password){
+if(!email||!password){
 
-    message.textContent=
-      "Enter an email and password first.";
+message.textContent=
+"Enter an email and password first.";
 
-    return;
+return;
 
-  }
+}
 
-  if(password.length<6){
+if(password.length<6){
 
-    message.textContent=
-      "Password must be at least 6 characters.";
+message.textContent=
+"Password must be at least 6 characters.";
 
-    return;
+return;
 
-  }
+}
 
-  try{
+try{
 
-    message.textContent=
-      "Creating account...";
+message.textContent="Creating account...";
 
-    await createUserWithEmailAndPassword(
-      auth,
-      email,
-      password
-    );
+await createUserWithEmailAndPassword(
+auth,
+email,
+password
+);
 
-    showSite();
+showSite();
 
-  }
+}
 
-  catch(error){
+catch(error){
 
-    console.error(error);
+console.error(error);
 
-    message.textContent=
-      error.message ||
-      "Could not create account.";
+message.textContent=
+error.message||"Could not create account.";
 
-  }
+}
+
+};
+
+
+window.welcomeResetPassword=async function(){
+
+const email=
+document.getElementById("welcomeEmail").value.trim();
+
+const message=
+document.getElementById("welcomeMessage");
+
+if(!email){
+
+message.textContent=
+"Enter your Gmail/email address first.";
+
+return;
+
+}
+
+try{
+
+await sendPasswordResetEmail(
+auth,
+email
+);
+
+message.textContent=
+"Password reset email sent. Check your Gmail inbox.";
+
+}
+
+catch(error){
+
+console.error(error);
+
+message.textContent=
+"Could not send the reset email. Check the email address.";
+
+}
 
 };
 
 
 function showSite(){
 
-  document
-    .getElementById("welcomeScreen")
-    .style.display="none";
-
-  document
-    .getElementById("siteContent")
-    .style.display="block";
+document.getElementById("welcomeScreen").style.display="none";
+document.getElementById("siteContent").style.display="block";
 
 }
 
 
-/* =========================
-   CUSTOMER ACCOUNT
-========================= */
+/* ================= CUSTOMER ACCOUNT ================= */
 
 window.openCustomerAccount=function(){
 
-  openModal(
-    "customerAccountModal"
-  );
+openModal("customerAccountModal");
 
-  if(auth.currentUser){
+if(auth.currentUser){
 
-    showCustomerDashboard();
+showCustomerDashboard();
 
-  }else{
+}else{
 
-    showAuthChoices();
+showAuthChoices();
 
-  }
+}
 
 };
 
 
 window.showSignup=function(){
 
-  document.getElementById(
-    "signupBox"
-  ).style.display="block";
-
-  document.getElementById(
-    "loginBox"
-  ).style.display="none";
+document.getElementById("signupBox").style.display="block";
+document.getElementById("loginBox").style.display="none";
 
 };
 
 
 window.showLogin=function(){
 
-  document.getElementById(
-    "signupBox"
-  ).style.display="none";
-
-  document.getElementById(
-    "loginBox"
-  ).style.display="block";
+document.getElementById("signupBox").style.display="none";
+document.getElementById("loginBox").style.display="block";
 
 };
 
 
 function showAuthChoices(){
 
-  document.getElementById(
-    "authChoices"
-  ).style.display="block";
+document.getElementById("authChoices").style.display="block";
+document.getElementById("customerDashboard").style.display="none";
 
-  document.getElementById(
-    "customerDashboard"
-  ).style.display="none";
-
-}
+};
 
 
 function showCustomerDashboard(){
 
-  const user=auth.currentUser;
+const user=auth.currentUser;
 
-  if(!user)return;
+if(!user)return;
 
-  showSite();
+showSite();
 
-  document.getElementById(
-    "authChoices"
-  ).style.display="none";
+document.getElementById("authChoices").style.display="none";
+document.getElementById("customerDashboard").style.display="block";
 
-  document.getElementById(
-    "customerDashboard"
-  ).style.display="block";
+const name=
+user.displayName||
+user.email||
+"Customer";
 
-  const name=
-    user.displayName ||
-    user.email ||
-    "Customer";
+document.getElementById("customerWelcome").textContent=
+"Welcome back, "+name+" 👋";
 
-  document.getElementById(
-    "customerWelcome"
-  ).textContent=
-    "Welcome back, "+name+" 👋";
+document.getElementById("customerName").textContent=name;
 
-  document.getElementById(
-    "customerName"
-  ).textContent=name;
+document.getElementById("customerEmail").textContent=
+user.email||"";
 
-  document.getElementById(
-    "customerEmail"
-  ).textContent=
-    user.email || "";
+loadCustomerPhoto();
 
-  loadCustomerPhoto();
+};
+
+
+/* ================= CUSTOMER CREATE ================= */
+
+window.createCustomerAccount=async function(){
+
+const name=
+document.getElementById("signupName").value.trim();
+
+const email=
+document.getElementById("signupEmail").value.trim();
+
+const password=
+document.getElementById("signupPassword").value;
+
+const message=
+document.getElementById("accountMessage");
+
+if(!name||!email||!password){
+
+message.textContent=
+"Please fill in everything.";
+
+return;
 
 }
 
+if(password.length<6){
 
-/* =========================
-   CUSTOMER EMAIL ACCOUNT
-========================= */
+message.textContent=
+"Password must be at least 6 characters.";
 
-window.createCustomerAccount=
-async function(){
+return;
 
-  const name=
-    document
-      .getElementById("signupName")
-      .value
-      .trim();
+}
 
-  const email=
-    document
-      .getElementById("signupEmail")
-      .value
-      .trim();
+try{
 
-  const password=
-    document
-      .getElementById("signupPassword")
-      .value;
+const result=
+await createUserWithEmailAndPassword(
+auth,
+email,
+password
+);
 
-  const message=
-    document.getElementById(
-      "accountMessage"
-    );
+await updateProfile(
+result.user,
+{
+displayName:name
+}
+);
 
-  if(!name||!email||!password){
+message.textContent=
+"Account created successfully!";
 
-    message.textContent=
-      "Please fill in everything.";
+showCustomerDashboard();
 
-    return;
+}
 
-  }
+catch(error){
 
-  if(password.length<6){
+console.error(error);
 
-    message.textContent=
-      "Password must be at least 6 characters.";
+message.textContent=error.message;
 
-    return;
-
-  }
-
-  try{
-
-    const result=
-      await createUserWithEmailAndPassword(
-        auth,
-        email,
-        password
-      );
-
-    await updateProfile(
-      result.user,
-      {
-        displayName:name
-      }
-    );
-
-    message.textContent=
-      "Account created successfully!";
-
-    showCustomerDashboard();
-
-  }
-
-  catch(error){
-
-    console.error(error);
-
-    message.textContent=
-      error.message;
-
-  }
+}
 
 };
 
 
-window.loginCustomer=
-async function(){
+/* ================= CUSTOMER LOGIN ================= */
 
-  const email=
-    document
-      .getElementById("loginEmail")
-      .value
-      .trim();
+window.loginCustomer=async function(){
 
-  const password=
-    document
-      .getElementById("loginPassword")
-      .value;
+const email=
+document.getElementById("loginEmail").value.trim();
 
-  const message=
-    document.getElementById(
-      "accountMessage"
-    );
+const password=
+document.getElementById("loginPassword").value;
 
-  if(!email||!password){
+const message=
+document.getElementById("accountMessage");
 
-    message.textContent=
-      "Enter your email and password.";
+if(!email||!password){
 
-    return;
+message.textContent=
+"Enter your email and password.";
 
-  }
+return;
 
-  try{
+}
 
-    await signInWithEmailAndPassword(
-      auth,
-      email,
-      password
-    );
+try{
 
-    showCustomerDashboard();
+await signInWithEmailAndPassword(
+auth,
+email,
+password
+);
 
-    message.textContent=
-      "Login successful!";
+showCustomerDashboard();
 
-  }
+message.textContent=
+"Login successful!";
 
-  catch(error){
+}
 
-    console.error(error);
+catch(error){
 
-    message.textContent=
-      "Login failed. Check your email and password.";
+console.error(error);
 
-  }
+message.textContent=
+"Login failed. Check your email and password.";
+
+}
 
 };
 
 
-/* =========================
-   CUSTOMER PHOTO
-========================= */
+/* ================= CUSTOMER PASSWORD RESET ================= */
 
-window.uploadCustomerPhoto=
-function(event){
+window.customerForgotPassword=async function(){
 
-  const user=auth.currentUser;
+const email=
+document.getElementById("loginEmail").value.trim();
 
-  if(!user)return;
+const message=
+document.getElementById("accountMessage");
 
-  const file=
-    event.target.files &&
-    event.target.files[0];
+if(!email){
 
-  if(!file)return;
+message.textContent=
+"Enter your email address first.";
 
-  if(!file.type.startsWith("image/")){
+return;
 
-    alert("Please select an image.");
+}
 
-    return;
+try{
 
-  }
+await sendPasswordResetEmail(
+auth,
+email
+);
 
-  const reader=
-    new FileReader();
+message.textContent=
+"Password reset email sent to your Gmail. Check your inbox.";
 
-  reader.onload=function(){
+}
 
-    localStorage.setItem(
-      "crispyCustomerPhoto_"+user.uid,
-      reader.result
-    );
+catch(error){
 
-    loadCustomerPhoto();
+console.error(error);
 
-    document.getElementById(
-      "accountMessage"
-    ).textContent=
-      "Profile photo updated successfully.";
+message.textContent=
+"Could not send the password reset email.";
 
-  };
+}
 
-  reader.readAsDataURL(file);
+};
+
+
+/* ================= PHOTO ================= */
+
+window.uploadCustomerPhoto=function(event){
+
+const user=auth.currentUser;
+
+if(!user)return;
+
+const file=
+event.target.files&&event.target.files[0];
+
+if(!file)return;
+
+if(!file.type.startsWith("image/")){
+
+alert("Please select an image.");
+
+return;
+
+}
+
+const reader=new FileReader();
+
+reader.onload=function(){
+
+localStorage.setItem(
+"crispyCustomerPhoto_"+user.uid,
+reader.result
+);
+
+loadCustomerPhoto();
+
+document.getElementById(
+"accountMessage"
+).textContent=
+"Profile photo updated successfully.";
+
+};
+
+reader.readAsDataURL(file);
 
 };
 
 
 function loadCustomerPhoto(){
 
-  const user=auth.currentUser;
+const user=auth.currentUser;
 
-  if(!user)return;
+if(!user)return;
 
-  const photo=
-    localStorage.getItem(
-      "crispyCustomerPhoto_"+user.uid
-    );
+const photo=
+localStorage.getItem(
+"crispyCustomerPhoto_"+user.uid
+);
 
-  const img=
-    document.getElementById(
-      "customerPhotoPreview"
-    );
+const img=
+document.getElementById(
+"customerPhotoPreview"
+);
 
-  const placeholder=
-    document.getElementById(
-      "customerPhotoPlaceholder"
-    );
+const placeholder=
+document.getElementById(
+"customerPhotoPlaceholder"
+);
 
-  if(!img||!placeholder)return;
+if(!img||!placeholder)return;
 
-  if(photo){
+if(photo){
 
-    img.src=photo;
+img.src=photo;
+img.style.display="block";
+placeholder.style.display="none";
 
-    img.style.display="block";
+}else{
 
-    placeholder.style.display="none";
+img.src="";
+img.style.display="none";
+placeholder.style.display="block";
 
-  }else{
-
-    img.src="";
-
-    img.style.display="none";
-
-    placeholder.style.display="block";
-
-  }
+}
 
 }
 
 
-/* =========================
-   CUSTOMER INFO
-========================= */
+/* ================= CUSTOMER INFO ================= */
 
 window.customerInfo=function(type){
 
-  const content=
-    document.getElementById(
-      "customerInfoContent"
-    );
+const content=
+document.getElementById(
+"customerInfoContent"
+);
 
-  document.getElementById(
-    "customerOptions"
-  ).style.display="none";
+document.getElementById(
+"customerOptions"
+).style.display="none";
 
-  document.getElementById(
-    "customerInfo"
-  ).style.display="block";
+document.getElementById(
+"customerInfo"
+).style.display="block";
 
-  if(type==="PROFILE"){
 
-    const user=auth.currentUser;
+if(type==="PROFILE"){
 
-    content.innerHTML=`
+const user=auth.currentUser;
 
-      <div class="info-card">
+content.innerHTML=`
 
-        <h3>MY PROFILE</h3>
+<div class="info-card">
 
-        <p>
-          👤 Name:
-          ${escapeHtml(
-            user.displayName||"Customer"
-          )}
-        </p>
+<h3>MY PROFILE</h3>
 
-        <p>
-          📧 Email:
-          ${escapeHtml(
-            user.email||""
-          )}
-        </p>
+<p>
+👤 Name:
+${escapeHtml(user.displayName||"Customer")}
+</p>
 
-        <p>✅ Account: Active</p>
+<p>
+📧 Email:
+${escapeHtml(user.email||"")}
+</p>
 
-      </div>
+<p>
+✅ Account: Active
+</p>
 
-    `;
+</div>
 
-  }
+`;
 
-  if(type==="ORDERS"){
+}
 
-    content.innerHTML=`
 
-      <div class="info-card">
+if(type==="ORDERS"){
 
-        <h3>MY ORDERS</h3>
+content.innerHTML=`
 
-        <p>Your orders will appear here.</p>
+<div class="info-card">
 
-      </div>
+<h3>MY ORDERS</h3>
 
-    `;
+<p>
+Your orders will appear here.
+</p>
 
-  }
+</div>
 
-  if(type==="PURCHASED"){
+`;
 
-    content.innerHTML=`
+}
 
-      <div class="info-card">
 
-        <h3>MY PURCHASED ACCOUNTS</h3>
+if(type==="PURCHASED"){
 
-        <p>
-          Your purchased gaming accounts
-          will appear here.
-        </p>
+content.innerHTML=`
 
-      </div>
+<div class="info-card">
 
-    `;
+<h3>MY PURCHASED ACCOUNTS</h3>
 
-  }
+<p>
+Your purchased gaming accounts
+will appear here.
+</p>
 
-  if(type==="TOPUPS"){
+</div>
 
-    content.innerHTML=`
+`;
 
-      <div class="info-card">
+}
 
-        <h3>MY TOP-UPS</h3>
 
-        <p>
-          Your top-up history will appear here.
-        </p>
+if(type==="TOPUPS"){
 
-      </div>
+content.innerHTML=`
 
-    `;
+<div class="info-card">
 
-  }
+<h3>MY TOP-UPS</h3>
 
-  if(type==="REVIEWS"){
+<p>
+Your top-up history will appear here.
+</p>
 
-    content.innerHTML=`
+</div>
 
-      <div class="info-card">
+`;
 
-        <h3>MY REVIEWS</h3>
+}
 
-        <p>Your reviews will appear here.</p>
 
-      </div>
+if(type==="REVIEWS"){
 
-    `;
+content.innerHTML=`
 
-  }
+<div class="info-card">
 
-  if(type==="PASSWORD"){
+<h3>MY REVIEWS</h3>
 
-    content.innerHTML=`
+<p>
+Your reviews will appear here.
+</p>
 
-      <div class="info-card">
+</div>
 
-        <h3>CHANGE PASSWORD</h3>
+`;
 
-        <input
-          id="newCustomerPassword"
-          class="form-input"
-          type="password"
-          placeholder="New password"
-        >
+}
 
-        <button
-          class="yellow-btn full-btn"
-          onclick="changeCustomerPassword()"
-        >
-          CHANGE PASSWORD
-        </button>
 
-      </div>
+if(type==="PASSWORD"){
 
-    `;
+content.innerHTML=`
 
-  }
+<div class="info-card">
+
+<h3>CHANGE PASSWORD</h3>
+
+<p>
+We will send a password reset email to
+your account email.
+</p>
+
+<button
+class="yellow-btn full-btn"
+onclick="sendDashboardPasswordReset()"
+>
+SEND PASSWORD RESET EMAIL
+</button>
+
+</div>
+
+`;
+
+}
+
+};
+
+
+window.sendDashboardPasswordReset=
+async function(){
+
+const user=auth.currentUser;
+
+if(!user||!user.email){
+
+alert("Please log in first.");
+
+return;
+
+}
+
+try{
+
+await sendPasswordResetEmail(
+auth,
+user.email
+);
+
+alert(
+"Password reset email sent to "+user.email+
+". Check your Gmail inbox."
+);
+
+}
+
+catch(error){
+
+console.error(error);
+
+alert(
+"Could not send the password reset email."
+);
+
+}
 
 };
 
 
 window.backCustomerOptions=function(){
 
-  document.getElementById(
-    "customerOptions"
-  ).style.display="grid";
+document.getElementById(
+"customerOptions"
+).style.display="grid";
 
-  document.getElementById(
-    "customerInfo"
-  ).style.display="none";
-
-};
-
-
-window.changeCustomerPassword=
-async function(){
-
-  const password=
-    document.getElementById(
-      "newCustomerPassword"
-    ).value;
-
-  if(password.length<6){
-
-    alert(
-      "Password must be at least 6 characters."
-    );
-
-    return;
-
-  }
-
-  try{
-
-    await updatePassword(
-      auth.currentUser,
-      password
-    );
-
-    alert(
-      "Password changed successfully."
-    );
-
-  }
-
-  catch(error){
-
-    alert(
-      "Please log in again before changing your password."
-    );
-
-  }
+document.getElementById(
+"customerInfo"
+).style.display="none";
 
 };
 
 
-window.customerLogout=
-async function(){
+window.customerLogout=async function(){
 
-  await signOut(auth);
+await signOut(auth);
 
-  closeModal(
-    "customerAccountModal"
-  );
+closeModal(
+"customerAccountModal"
+);
 
 };
 
 
-/* =========================
-   AUTH STATE
-========================= */
+/* ================= AUTH STATE ================= */
 
 onAuthStateChanged(
-  auth,
-  function(user){
+auth,
+function(user){
 
-    if(user){
+if(user){
 
-      showSite();
+showSite();
 
-    }else{
+}else{
 
-      document.getElementById(
-        "welcomeScreen"
-      ).style.display="flex";
+document.getElementById(
+"welcomeScreen"
+).style.display="flex";
 
-      document.getElementById(
-        "siteContent"
-      ).style.display="none";
+document.getElementById(
+"siteContent"
+).style.display="none";
 
-    }
+}
 
-  }
+}
 );
 
 
-/* =========================
-   FIRESTORE ACCOUNTS
-========================= */
+/* ================= FIRESTORE ================= */
 
 async function loadShopAccounts(){
 
-  try{
+try{
 
-    const snapshot=
-      await getDocs(
-        collection(
-          db,
-          "accounts"
-        )
-      );
+const snapshot=
+await getDocs(
+collection(
+db,
+"accounts"
+)
+);
 
-    snapshot.forEach(function(item){
+snapshot.forEach(function(item){
 
-      const data=item.data();
+applyFirestoreAccount(
+item.id,
+item.data()
+);
 
-      applyFirestoreAccount(
-        item.id,
-        data
-      );
+});
 
-    });
+cleanupEmptyGameSections();
 
-  }
+}
 
-  catch(error){
+catch(error){
 
-    console.error(
-      "Could not load shop accounts:",
-      error
-    );
+console.error(
+"Could not load shop accounts:",
+error
+);
 
-  }
+cleanupEmptyGameSections();
+
+}
 
 }
 
 
 function gameToId(game){
 
-  const value=
-    String(game||"")
-    .toLowerCase();
+const value=
+String(game||"").toLowerCase();
 
-  if(value.includes("free fire"))
-    return "freefire";
+if(
+value.includes("free fire")||
+value.includes("freefire")
+)
+return "freefire";
 
-  if(value.includes("efootball"))
-    return "efootball";
+if(
+value.includes("efootball")||
+value.includes("e-football")
+)
+return "efootball";
 
-  if(value.includes("cod"))
-    return "codm";
+if(value.includes("cod"))
+return "codm";
 
-  if(value.includes("dls"))
-    return "dls";
+if(value.includes("dls"))
+return "dls";
 
-  if(value.includes("fc"))
-    return "fcmobile";
+if(value.includes("fc"))
+return "fcmobile";
 
-  return "";
+return "";
 
 }
 
 
 function applyFirestoreAccount(
-  id,
-  data
+id,
+data
 ){
 
-  const game=
-    gameToId(data.game);
+const game=
+gameToId(data.game);
 
-  if(!game)return;
+if(!game)return;
 
-  const section=
-    document.getElementById(
-      game+"-section"
-    );
+const section=
+document.getElementById(
+game+"-section"
+);
 
-  if(!section)return;
+if(!section)return;
 
-  const products=
-    section.querySelector(
-      ".products"
-    );
+const products=
+section.querySelector(".products");
 
-  let product=
-    document.querySelector(
-      '[data-firestore-id="'+id+'"]'
-    );
+let product=
+document.querySelector(
+'[data-firestore-id="'+CSS.escape(id)+'"]'
+);
 
-  if(!product){
+if(!product){
 
-    product=
-      document.createElement("div");
+product=
+document.createElement("div");
 
-    product.className=
-      "product";
+product.className="product";
 
-    product.dataset.firestoreId=
-      id;
+product.dataset.firestoreId=id;
 
-    products.appendChild(
-      product
-    );
+products.appendChild(product);
 
-  }
+}
 
-  const status=
-    data.status ||
-    "AVAILABLE";
+const status=
+String(
+data.status||"AVAILABLE"
+).toUpperCase();
 
-  product.innerHTML=`
+const price=
+data.price||"₦0";
 
-    <span class="heart">♡</span>
+product.innerHTML=`
 
-    <span class="available">
-      ${escapeHtml(status)}
-    </span>
+<span class="heart">
+♡
+</span>
 
-    ${
-      data.photoUrl
-      ?
-      `
-      <img
-        class="account-photo"
-        src="${escapeHtml(data.photoUrl)}"
-        alt="${escapeHtml(data.title||"Gaming account")}"
-      >
-      `
-      :
-      ""
-    }
+<span class="available">
+${escapeHtml(status)}
+</span>
 
-    <div class="game">
-      ${game==="freefire"
-        ?"FREE F⚡RE"
-        :escapeHtml(data.game||game.toUpperCase())}
-    </div>
+${
+data.photoUrl
+?
+`
+<img
+class="account-photo"
+src="${escapeHtml(data.photoUrl)}"
+alt="${escapeHtml(data.title||"Gaming account")}"
+>
+`
+:
+""
+}
 
-    <h3>
-      ${escapeHtml(
-        data.title||"Gaming Account"
-      )}
-    </h3>
+<div class="game">
 
-    <div class="details">
-      Level
-      ${escapeHtml(data.level||"—")}
-      ·
-      ${escapeHtml(data.region||"REGION")}
-    </div>
+${
+game==="freefire"
+?
+"FREE F⚡RE"
+:
+escapeHtml(
+data.game||game.toUpperCase()
+)
+}
 
-    <div class="description">
-      ${escapeHtml(
-        data.description||""
-      )}
-    </div>
+</div>
 
-    <div class="price">
-      ${escapeHtml(data.price||"₦0")}
-    </div>
+<h3>
+${escapeHtml(
+data.title||"Gaming Account"
+)}
+</h3>
 
-    <button
-      class="details-btn"
-      ${
-        status==="SOLD"
-        ?"disabled"
-        :""
-      }
-    >
-      ${
-        status==="SOLD"
-        ?"SOLD OUT"
-        :"ADD TO CART"
-      }
-    </button>
+<div class="details">
+Level
+${escapeHtml(data.level||"—")}
+·
+${escapeHtml(data.region||"REGION")}
+</div>
 
-  `;
+<div class="description">
+${escapeHtml(data.description||"")}
+</div>
 
-  const button=
-    product.querySelector(
-      ".details-btn"
-    );
+<div class="price">
+${escapeHtml(price)}
+</div>
 
-  if(status!=="SOLD"){
+<button
+class="details-btn"
+${status==="SOLD"?"disabled":""}
+>
+${status==="SOLD"
+?"SOLD OUT"
+:"VIEW DETAILS"}
+</button>
 
-    button.onclick=
-      function(){
+`;
 
-        addToCart(
-          data.title||"Gaming Account",
-          data.price||"₦0"
-        );
+const button=
+product.querySelector(".details-btn");
 
-      };
+if(status!=="SOLD"){
 
-  }
+button.onclick=function(){
+
+openAccountDetails({
+
+id:id,
+
+game:
+data.game||game,
+
+title:
+data.title||"Gaming Account",
+
+level:
+data.level||"—",
+
+region:
+data.region||"REGION",
+
+description:
+data.description||"",
+
+price:price,
+
+photoUrl:
+data.photoUrl||"",
+
+status:status
+
+});
+
+};
+
+}
+
+section.style.display="block";
 
 }
 
 
+function cleanupEmptyGameSections(){
+
+document
+.querySelectorAll(
+".game-section[data-game]"
+)
+.forEach(function(section){
+
+const real=
+section.querySelectorAll(
+"[data-firestore-id]"
+);
+
+section.style.display=
+real.length
+?"block"
+:"none";
+
+});
+
+}
+
+
+/* ================= ACCOUNT DETAILS ================= */
+
+window.openAccountDetails=function(account){
+
+const photo=
+document.getElementById(
+"detailPhoto"
+);
+
+document.getElementById(
+"detailTitle"
+).textContent=
+account.title;
+
+document.getElementById(
+"detailGame"
+).textContent=
+account.game;
+
+document.getElementById(
+"detailStatus"
+).textContent=
+account.status;
+
+document.getElementById(
+"detailLevel"
+).textContent=
+account.level;
+
+document.getElementById(
+"detailRegion"
+).textContent=
+account.region;
+
+document.getElementById(
+"detailDescription"
+).textContent=
+account.description||
+"No description provided.";
+
+document.getElementById(
+"detailPrice"
+).textContent=
+account.price;
+
+if(account.photoUrl){
+
+photo.src=account.photoUrl;
+photo.style.display="block";
+
+}else{
+
+photo.src="";
+photo.style.display="none";
+
+}
+
+const button=
+document.getElementById(
+"detailCartButton"
+);
+
+button.disabled=
+account.status==="SOLD"||
+account.price==="₦0";
+
+button.textContent=
+account.status==="SOLD"
+?
+"SOLD OUT"
+:
+"ADD TO CART";
+
+button.onclick=function(){
+
+if(!button.disabled){
+
+addToCart(
+account.title,
+account.price
+);
+
+closeModal(
+"accountDetailsModal"
+);
+
+}
+
+};
+
+openModal(
+"accountDetailsModal"
+);
+
+};
+
+
 function escapeHtml(value){
 
-  return String(value)
-    .replaceAll("&","&amp;")
-    .replaceAll("<","&lt;")
-    .replaceAll(">","&gt;")
-    .replaceAll('"',"&quot;")
-    .replaceAll("'","&#039;");
+return String(value)
+.replaceAll("&","&amp;")
+.replaceAll("<","&lt;")
+.replaceAll(">","&gt;")
+.replaceAll('"',"&quot;")
+.replaceAll("'","&#039;");
 
 }
 
@@ -3604,9 +3947,9 @@ loadShopAccounts();
 </script>
 
 
-<script>
+<!-- ================= NORMAL JAVASCRIPT ================= -->
 
-/* CONSTANTS */
+<script>
 
 const WHATSAPP=
 "2347051885555";
@@ -3616,22 +3959,22 @@ const WHATSAPP=
 
 function openModal(id){
 
-  const modal=
-    document.getElementById(id);
+const modal=
+document.getElementById(id);
 
-  if(modal)
-    modal.classList.add("show");
+if(modal)
+modal.classList.add("show");
 
 }
 
 
 function closeModal(id){
 
-  const modal=
-    document.getElementById(id);
+const modal=
+document.getElementById(id);
 
-  if(modal)
-    modal.classList.remove("show");
+if(modal)
+modal.classList.remove("show");
 
 }
 
@@ -3640,45 +3983,54 @@ document
 .querySelectorAll(".modal")
 .forEach(function(modal){
 
-  modal.addEventListener(
-    "click",
-    function(e){
+modal.addEventListener(
+"click",
+function(e){
 
-      if(e.target===modal)
-        modal.classList.remove("show");
+if(e.target===modal)
+modal.classList.remove("show");
 
-    }
-  );
+}
+);
 
 });
 
 
-/* ACCOUNT CHOICES */
+/* ACCOUNT */
 
 function openAccountChoices(){
 
-  openModal("accountModal");
+openModal("accountModal");
 
 }
 
 
 function chooseGame(game){
 
-  closeModal("accountModal");
+closeModal("accountModal");
 
-  const target=
-    document.getElementById(
-      game+"-section"
-    );
+const target=
+document.getElementById(
+game+"-section"
+);
 
-  if(target){
+if(
+target&&
+target.style.display!=="none"
+){
 
-    target.scrollIntoView({
-      behavior:"smooth",
-      block:"start"
-    });
+target.scrollIntoView({
+behavior:"smooth",
+block:"start"
+});
 
-  }
+}else{
+
+showToast(
+"No accounts available for this game yet."
+);
+
+}
 
 }
 
@@ -3687,26 +4039,26 @@ function chooseGame(game){
 
 function openTopup(){
 
-  openModal("topupModal");
+openModal("topupModal");
 
 }
 
 
 function chooseTopup(id){
 
-  closeModal("topupModal");
+closeModal("topupModal");
 
-  const target=
-    document.getElementById(id);
+const target=
+document.getElementById(id);
 
-  if(target){
+if(target){
 
-    target.scrollIntoView({
-      behavior:"smooth",
-      block:"start"
-    });
+target.scrollIntoView({
+behavior:"smooth",
+block:"start"
+});
 
-  }
+}
 
 }
 
@@ -3715,26 +4067,26 @@ function chooseTopup(id){
 
 function openReviews(){
 
-  openModal("reviewModal");
+openModal("reviewModal");
 
 }
 
 
 function sendReview(stars){
 
-  closeModal("reviewModal");
+closeModal("reviewModal");
 
-  window.open(
-    "https://wa.me/"
-    +WHATSAPP
-    +"?text="
-    +encodeURIComponent(
-      "Hello Crispy Shop, I want to leave a "
-      +stars
-      +" star review."
-    ),
-    "_blank"
-  );
+window.open(
+"https://wa.me/"+
+WHATSAPP+
+"?text="+
+encodeURIComponent(
+"Hello Crispy Shop, I want to leave a "+
+stars+
+" star review."
+),
+"_blank"
+);
 
 }
 
@@ -3743,14 +4095,14 @@ function sendReview(stars){
 
 function openContactOptions(){
 
-  openModal("contactModal");
+openModal("contactModal");
 
 }
 
 
 function contactMe(){
 
-  openContactOptions();
+openContactOptions();
 
 }
 
@@ -3759,113 +4111,128 @@ function contactMe(){
 
 function openSearch(){
 
-  openModal("searchModal");
+openModal("searchModal");
 
-  setTimeout(function(){
+setTimeout(
+function(){
 
-    document
-      .getElementById("searchInput")
-      .focus();
+document
+.getElementById("searchInput")
+.focus();
 
-  },100);
+},
+100
+);
 
 }
 
 
 function runSearch(){
 
-  const q=
-    document.getElementById(
-      "searchInput"
-    )
-    .value
-    .toLowerCase()
-    .trim();
+const q=
+document
+.getElementById("searchInput")
+.value
+.toLowerCase()
+.trim();
 
-  const results=
-    document.getElementById(
-      "searchResults"
-    );
+const results=
+document.getElementById(
+"searchResults"
+);
 
-  if(!q){
+if(!q){
 
-    results.innerHTML=
-      '<div class="search-result">'
-      +'Type something to search.'
-      +'</div>';
+results.innerHTML=
+'<div class="search-result">'+
+'Type something to search.'+
+'</div>';
 
-    return;
+return;
 
-  }
+}
 
-  const products=
-    Array.from(
-      document.querySelectorAll(
-        ".product[data-account-id],.product[data-firestore-id]"
-      )
-    );
+const products=
+Array.from(
+document.querySelectorAll(
+".product[data-firestore-id]"
+)
+);
 
-  const matches=
-    products.filter(function(product){
+const matches=
+products.filter(
+function(product){
 
-      return product
-        .innerText
-        .toLowerCase()
-        .includes(q);
+return product.innerText
+.toLowerCase()
+.includes(q);
 
-    });
+}
+);
 
-  if(!matches.length){
+if(!matches.length){
 
-    results.innerHTML=
-      '<div class="search-result">'
-      +'No matching account found.'
-      +'</div>';
+results.innerHTML=
+'<div class="search-result">'+
+'No matching account found.'+
+'</div>';
 
-    return;
+return;
 
-  }
+}
 
-  results.innerHTML=
-    matches.map(function(product){
+results.innerHTML=
+matches.map(
+function(product){
 
-      const title=
-        product.querySelector("h3")
-        ?.innerText ||
-        "Gaming Account";
+const title=
+product.querySelector("h3")
+?.innerText||
+"Gaming Account";
 
-      const price=
-        product.querySelector(".price")
-        ?.innerText ||
-        "₦0";
+const price=
+product.querySelector(".price")
+?.innerText||
+"₦0";
 
-      return `
-        <div
-          class="search-result"
-          onclick="goToProduct(this)"
-        >
-          ${escapeSearch(title)}
-          —
-          ${escapeSearch(price)}
-        </div>
-      `;
+return `
 
-    }).join("");
+<div
+class="search-result"
+onclick="goToProduct(this)"
+>
+${escapeSearch(title)}
+—
+${escapeSearch(price)}
+</div>
 
-  window.searchMatches=
-    matches;
+`;
+
+}
+).join("");
+
+window.searchMatches=
+matches;
 
 }
 
 
+document
+.getElementById("searchInput")
+.addEventListener(
+"input",
+runSearch
+);
+
+
 function escapeSearch(value){
 
-  return String(value)
-    .replaceAll("&","&amp;")
-    .replaceAll("<","&lt;")
-    .replaceAll(">","&gt;")
-    .replaceAll('"',"&quot;")
-    .replaceAll("'","&#039;");
+return String(value)
+.replaceAll("&","&amp;")
+.replaceAll("<","&lt;")
+.replaceAll(">","&gt;")
+.replaceAll('"',"&quot;")
+.replaceAll("'","&#039;");
 
 }
 
@@ -3873,210 +4240,213 @@ function escapeSearch(value){
 window.goToProduct=
 function(element){
 
-  const results=
-    Array.from(
-      document.querySelectorAll(
-        "#searchResults .search-result"
-      )
-    );
+const results=
+Array.from(
+document.querySelectorAll(
+"#searchResults .search-result"
+)
+);
 
-  const index=
-    results.indexOf(element);
+const index=
+results.indexOf(element);
 
-  if(
-    !window.searchMatches ||
-    !window.searchMatches[index]
-  ){
-    return;
-  }
+if(
+!window.searchMatches||
+!window.searchMatches[index]
+)
+return;
 
-  closeModal("searchModal");
+closeModal("searchModal");
 
-  window.searchMatches[index]
-    .scrollIntoView({
-      behavior:"smooth",
-      block:"center"
-    });
+window.searchMatches[index]
+.scrollIntoView({
+behavior:"smooth",
+block:"center"
+});
 
 };
 
 
-/* CART */
+/* ================= CART ================= */
 
 let cart=[];
 
 
 function addToCart(
-  name,
-  price
+name,
+price
 ){
 
-  if(price==="₦0"){
+if(price==="₦0"){
 
-    showToast(
-      "This account has not been posted yet."
-    );
+showToast(
+"This account has not been posted yet."
+);
 
-    return;
+return;
 
-  }
+}
 
-  cart.push({
-    name:name,
-    price:price
-  });
+cart.push({
+name:name,
+price:price
+});
 
-  renderCart();
+renderCart();
 
-  showToast(
-    name+" added to cart."
-  );
+showToast(
+name+
+" added to cart."
+);
 
 }
 
 
 function renderCart(){
 
-  const list=
-    document.getElementById(
-      "cartList"
-    );
+const list=
+document.getElementById(
+"cartList"
+);
 
-  const total=
-    document.getElementById(
-      "cartTotal"
-    );
+const total=
+document.getElementById(
+"cartTotal"
+);
 
-  if(!cart.length){
+if(!cart.length){
 
-    list.innerHTML=
-      '<div class="empty">'
-      +'Your cart is empty.'
-      +'</div>';
+list.innerHTML=
+'<div class="empty">'+
+'Your cart is empty.'+
+'</div>';
 
-    total.textContent=
-      "Total: ₦0";
+total.textContent=
+"Total: ₦0";
 
-    return;
+return;
 
-  }
+}
 
-  let sum=0;
+let sum=0;
 
-  list.innerHTML=
-    cart.map(function(item,index){
+list.innerHTML=
+cart.map(
+function(item,index){
 
-      const value=
-        Number(
-          String(item.price)
-          .replace(/[₦,]/g,"")
-        )||0;
+const value=
+Number(
+String(item.price)
+.replace(/[₦,]/g,"")
+)||0;
 
-      sum+=value;
+sum+=value;
 
-      return `
+return `
 
-        <div class="cart-item">
+<div class="cart-item">
 
-          <span>
-            ${escapeCart(item.name)}
-          </span>
+<span>
+${escapeCart(item.name)}
+</span>
 
-          <strong class="cart-price">
-            ${escapeCart(item.price)}
-          </strong>
+<strong class="cart-price">
+${escapeCart(item.price)}
+</strong>
 
-          <button
-            onclick="removeCart(${index})"
-            style="
-              background:none;
-              border:0;
-              color:#ff5555;
-              font-size:22px;
-            "
-          >
-            ×
-          </button>
+<button
+onclick="removeCart(${index})"
+style="
+background:none;
+border:0;
+color:#ff5555;
+font-size:22px;
+"
+>
+×
+</button>
 
-        </div>
+</div>
 
-      `;
+`;
 
-    }).join("")
-    +
-    `
+}
+).join("")
++
+`
 
-      <button
-        class="yellow-btn"
-        style="width:100%;margin-top:18px"
-        onclick="checkout()"
-      >
-        CHECKOUT ON WHATSAPP
-      </button>
+<button
+class="yellow-btn"
+style="width:100%;margin-top:18px"
+onclick="checkout()"
+>
+CHECKOUT ON WHATSAPP
+</button>
 
-    `;
+`;
 
-  total.textContent=
-    "Total: ₦"
-    +sum.toLocaleString();
+total.textContent=
+"Total: ₦"+
+sum.toLocaleString();
 
 }
 
 
 function escapeCart(value){
 
-  return String(value)
-    .replaceAll("&","&amp;")
-    .replaceAll("<","&lt;")
-    .replaceAll(">","&gt;")
-    .replaceAll('"',"&quot;")
-    .replaceAll("'","&#039;");
+return String(value)
+.replaceAll("&","&amp;")
+.replaceAll("<","&lt;")
+.replaceAll(">","&gt;")
+.replaceAll('"',"&quot;")
+.replaceAll("'","&#039;");
 
 }
 
 
 function removeCart(index){
 
-  cart.splice(index,1);
+cart.splice(index,1);
 
-  renderCart();
+renderCart();
 
 }
 
 
 function openCart(){
 
-  renderCart();
+renderCart();
 
-  openModal("cartModal");
+openModal("cartModal");
 
 }
 
 
 function checkout(){
 
-  if(!cart.length)return;
+if(!cart.length)return;
 
-  const text=
-    "Hello Crispy Shop, I want to buy:\n"
-    +
-    cart.map(function(item){
+const text=
+"Hello Crispy Shop, I want to buy:\n"+
+cart.map(
+function(item){
 
-      return "- "
-        +item.name
-        +" ("
-        +item.price
-        +")";
+return "- "+
+item.name+
+" ("+
+item.price+
+")";
 
-    }).join("\n");
+}
+).join("\n");
 
-  window.open(
-    "https://wa.me/"
-    +WHATSAPP
-    +"?text="
-    +encodeURIComponent(text),
-    "_blank"
-  );
+window.open(
+"https://wa.me/"+
+WHATSAPP+
+"?text="+
+encodeURIComponent(text),
+"_blank"
+);
 
 }
 
@@ -4084,40 +4454,46 @@ function checkout(){
 /* FILTER */
 
 function filterProducts(
-  game,
-  button
+game,
+button
 ){
 
-  document
-    .querySelectorAll(".filter")
-    .forEach(function(x){
+document
+.querySelectorAll(".filter")
+.forEach(
+function(x){
 
-      x.classList.remove("active");
+x.classList.remove("active");
 
-    });
+}
+);
 
-  button.classList.add("active");
+button.classList.add("active");
 
-  document
-    .querySelectorAll(
-      ".game-section[data-game]"
-    )
-    .forEach(function(section){
+document
+.querySelectorAll(
+".game-section[data-game]"
+)
+.forEach(
+function(section){
 
-      if(
-        game==="all" ||
-        section.dataset.game===game
-      ){
+const hasAccounts=
+section.querySelectorAll(
+"[data-firestore-id]"
+).length>0;
 
-        section.style.display="block";
+section.style.display=
+(
+game==="all"||
+section.dataset.game===game
+)&&hasAccounts
+?
+"block"
+:
+"none";
 
-      }else{
-
-        section.style.display="none";
-
-      }
-
-    });
+}
+);
 
 }
 
@@ -4126,26 +4502,26 @@ function filterProducts(
 
 function openDrawer(){
 
-  document
-    .getElementById("drawer")
-    .classList.add("open");
+document
+.getElementById("drawer")
+.classList.add("open");
 
 }
 
 
 function closeDrawer(){
 
-  document
-    .getElementById("drawer")
-    .classList.remove("open");
+document
+.getElementById("drawer")
+.classList.remove("open");
 
 }
 
 
 function drawerOutside(e){
 
-  if(e.target.id==="drawer")
-    closeDrawer();
+if(e.target.id==="drawer")
+closeDrawer();
 
 }
 
@@ -4154,51 +4530,48 @@ function drawerOutside(e){
 
 function showToast(message){
 
-  let toast=
-    document.getElementById(
-      "crispyToast"
-    );
+let toast=
+document.getElementById(
+"crispyToast"
+);
 
-  if(!toast){
+if(!toast){
 
-    toast=
-      document.createElement("div");
+toast=
+document.createElement("div");
 
-    toast.id=
-      "crispyToast";
+toast.id="crispyToast";
 
-    toast.style.cssText=
-      `
-      position:fixed;
-      z-index:5000;
-      left:50%;
-      bottom:25px;
-      transform:translateX(-50%);
-      padding:13px 20px;
-      background:#ffd400;
-      color:#050708;
-      font-weight:bold;
-      border-radius:4px;
-      `;
+toast.style.cssText=
+`
+position:fixed;
+z-index:5000;
+left:50%;
+bottom:25px;
+transform:translateX(-50%);
+padding:13px 20px;
+background:#ffd400;
+color:#050708;
+font-weight:bold;
+border-radius:4px;
+`;
 
-    document.body.appendChild(
-      toast
-    );
+document.body.appendChild(toast);
 
-  }
+}
 
-  toast.textContent=
-    message;
+toast.textContent=message;
 
-  toast.style.display=
-    "block";
+toast.style.display="block";
 
-  setTimeout(function(){
+setTimeout(
+function(){
 
-    toast.style.display=
-      "none";
+toast.style.display="none";
 
-  },2500);
+},
+2500
+);
 
 }
 
@@ -4207,30 +4580,30 @@ function showToast(message){
 
 document
 .querySelectorAll("nav a")
-.forEach(function(link){
+.forEach(
+function(link){
 
-  link.addEventListener(
-    "click",
-    function(){
+link.addEventListener(
+"click",
+function(){
 
-      document
-        .querySelectorAll("nav a")
-        .forEach(function(a){
+document
+.querySelectorAll("nav a")
+.forEach(
+function(a){
 
-          a.classList.remove(
-            "active"
-          );
+a.classList.remove("active");
 
-        });
+}
+);
 
-      this.classList.add(
-        "active"
-      );
+this.classList.add("active");
 
-    }
-  );
+}
+);
 
-});
+}
+);
 
 </script>
 
