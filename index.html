@@ -23,7 +23,14 @@ button{cursor:pointer}
 /* ================= WELCOME ================= */
 
 #welcomeScreen{
-display:none;
+position:fixed;
+inset:0;
+z-index:9999;
+display:flex;
+background:#000;
+overflow-y:auto;
+overflow-x:hidden;
+-webkit-overflow-scrolling:touch;
 }
 
 .welcome-left{
@@ -159,7 +166,7 @@ margin-top:22px;
 
 /* ================= MAIN ================= */
 
-#siteContent{display:block}
+#siteContent{display:none}
 
 header{
 min-height:82px;
@@ -2204,13 +2211,6 @@ onclick="showAllAndScroll()"
 SHOP NOW
 </button>
 
-<button
-class="outline-btn"
-onclick="openCustomerAccount()"
->
-MY ACCOUNT
-</button>
-
 </div>
 
 </div>
@@ -2249,22 +2249,50 @@ ALL
 <span>⌄</span>
 </button>
 
-<div
-class="all-menu"
-id="allMenu"
->
+<div id="allMenu" class="compact-all-menu">
 
 <button
+type="button"
+class="compact-all-button"
+onclick="showAllMenu()"
+>
+<span class="compact-all-icon">▦</span>
+<span>
+<strong>ALL</strong>
+<small>Accounts & Top Up</small>
+</span>
+<span class="compact-all-arrow">›</span>
+</button>
+
+<div id="allChoices" class="all-choices">
+
+<button
+type="button"
+class="all-choice"
 onclick="showCategoryPage('account')"
 >
-🎮 ACCOUNT
+<span class="all-choice-icon">🎮</span>
+<span>
+<strong>ACCOUNT</strong>
+<small>5 game sections</small>
+</span>
+<span>›</span>
 </button>
 
 <button
+type="button"
+class="all-choice"
 onclick="showCategoryPage('topup')"
 >
-💎 TOP UP
+<span class="all-choice-icon">💎</span>
+<span>
+<strong>TOP UP</strong>
+<small>5 game sections</small>
+</span>
+<span>›</span>
 </button>
+
+</div>
 
 </div>
 
@@ -2450,6 +2478,30 @@ onclick="openGameProducts('topup','FC Mobile')">
 
 </div>
 
+
+
+<!-- ================= GAME PRODUCTS PAGE ================= -->
+
+<div id="gameProductsPage" class="category-page">
+
+<button type="button" class="category-page-back" onclick="backFromGameProducts()">
+← BACK
+</button>
+
+<div class="game-products-title">
+<h2 id="gameProductsTitle">GAME</h2>
+<p id="gameProductsSubtitle">Select an item</p>
+</div>
+
+<div id="gameProductsEmpty" class="game-products-empty">
+<div class="empty-icon">◈</div>
+<strong id="gameEmptyTitle">No items yet</strong>
+<small id="gameEmptyText">You haven't added any items for this game.</small>
+</div>
+
+<div id="gameProductsList" class="game-products-list"></div>
+
+</div>
 
 <!-- ================= FEATURES ================= -->
 
@@ -3107,91 +3159,50 @@ modal.classList.remove("show");
 
 function showAllMenu(){
 
-const menu =
-document.getElementById("allMenu");
+const choices =
+document.getElementById("allChoices");
 
-const accountSections =
-document.getElementById("accountSections");
-
-const topupSections =
-document.getElementById("topupSections");
-
-const accountHeader =
-document.getElementById("accountHeader");
-
-const topupHeader =
-document.getElementById("topupHeader");
-
-if(accountSections)
-accountSections.classList.remove("show");
-
-if(topupSections)
-topupSections.classList.remove("show");
-
-if(accountHeader)
-accountHeader.classList.remove("show");
-
-if(topupHeader)
-topupHeader.classList.remove("show");
-
-document.body.classList.remove(
-"purchase-account",
-"purchase-topup"
-);
-
-document.body.classList.add("purchase-none");
-
-if(menu)
-menu.classList.toggle("show");
+if(choices)
+choices.classList.toggle("show");
 
 }
 
 
 
+
 function showCategoryPage(type){
-
-const chooser =
-document.getElementById("allMenu");
-
-const accountPage =
-document.getElementById("accountPage");
-
-const topupPage =
-document.getElementById("topupPage");
-
-if(chooser)
-chooser.classList.remove("show");
-
-if(accountPage)
-accountPage.classList.remove("show");
-
-if(topupPage)
-topupPage.classList.remove("show");
-
-const target =
-type === "account"
-?
-accountPage
-:
-topupPage;
-
-if(target)
-target.classList.add("show");
-
-const area =
-document.getElementById("purchaseArea");
-
-if(area){
-area.classList.add("page-view");
-area.scrollIntoView({
-behavior:"smooth",
-block:"start"
+  const home=document.getElementById("home");
+  const purchase=document.getElementById("purchaseArea");
+  const accountPage=document.getElementById("accountPage");
+  const topupPage=document.getElementById("topupPage");
+  const allMenu=document.getElementById("allMenu");
+  if(home) home.style.display="none";
+  if(purchase) purchase.style.display="none";
+  if(allMenu) allMenu.style.display="none";
+  if(accountPage) accountPage.style.display = type==="account" ? "block" : "none";
+  if(topupPage) topupPage.style.display = type==="topup" ? "block" : "none";
+  window.scrollTo({top:0,behavior:"smooth"});
 });
 }
 
 }
 
 function backToChooser(){
+  const home=document.getElementById("home");
+  const purchase=document.getElementById("purchaseArea");
+  const accountPage=document.getElementById("accountPage");
+  const topupPage=document.getElementById("topupPage");
+  if(accountPage) accountPage.style.display="none";
+  if(topupPage) topupPage.style.display="none";
+  if(home) home.style.display="block";
+  if(purchase) purchase.style.display="block";
+  window.scrollTo({top:0,behavior:"smooth"});
+}
+
+function openGameProducts(type, game){
+
+window.selectedGameType = type;
+window.selectedGame = game;
 
 const accountPage =
 document.getElementById("accountPage");
@@ -3199,81 +3210,83 @@ document.getElementById("accountPage");
 const topupPage =
 document.getElementById("topupPage");
 
+const gamePage =
+document.getElementById("gameProductsPage");
+
 if(accountPage)
 accountPage.classList.remove("show");
 
 if(topupPage)
 topupPage.classList.remove("show");
 
-const menu =
-document.getElementById("allMenu");
+if(gamePage)
+gamePage.classList.add("show");
 
-if(menu)
-menu.classList.add("show");
+const title =
+document.getElementById("gameProductsTitle");
 
-}
+const subtitle =
+document.getElementById("gameProductsSubtitle");
 
-function openGameProducts(type, game){
+const emptyTitle =
+document.getElementById("gameEmptyTitle");
 
-/* Keep the selected game ready for the product-listing layer. */
-window.selectedGameType = type;
-window.selectedGame = game;
+const emptyText =
+document.getElementById("gameEmptyText");
 
-const target =
-type === "account"
+if(type === "topup"){
+
+if(title)
+title.textContent =
+game === "Free Fire"
 ?
-document.getElementById("accountPage")
+"FREE FIRE DIAMONDS"
 :
-document.getElementById("topupPage");
+game === "eFootball"
+?
+"EFOOTBALL COINS"
+:
+game === "CODM"
+?
+"CODM CP"
+:
+game === "DLS"
+?
+"DLS DIAMONDS"
+:
+"FC MOBILE";
 
-if(target){
-target.classList.add("show");
-target.scrollIntoView({
-behavior:"smooth",
-block:"start"
-});
+if(subtitle)
+subtitle.textContent =
+"Select a package";
+
+if(emptyTitle)
+emptyTitle.textContent =
+"No packages yet";
+
+if(emptyText)
+emptyText.textContent =
+"You haven't added any packages for this game.";
+
+}else{
+
+if(title)
+title.textContent =
+game.toUpperCase();
+
+if(subtitle)
+subtitle.textContent =
+"Select an account";
+
+if(emptyTitle)
+emptyTitle.textContent =
+"No accounts posted yet";
+
+if(emptyText)
+emptyText.textContent =
+"You haven't added any accounts for this game.";
+
 }
-
-}
-
-function showAllAndScroll(){
-
-const menu =
-document.getElementById("allMenu");
-
-const accountSections =
-document.getElementById("accountSections");
-
-const topupSections =
-document.getElementById("topupSections");
-
-const accountHeader =
-document.getElementById("accountHeader");
-
-const topupHeader =
-document.getElementById("topupHeader");
-
-if(accountSections)
-accountSections.classList.remove("show");
-
-if(topupSections)
-topupSections.classList.remove("show");
-
-if(accountHeader)
-accountHeader.classList.remove("show");
-
-if(topupHeader)
-topupHeader.classList.remove("show");
-
-document.body.classList.remove(
-"purchase-account",
-"purchase-topup"
-);
-
-document.body.classList.add("purchase-none");
-
-if(menu)
-menu.classList.add("show");
 
 const area =
 document.getElementById("purchaseArea");
@@ -3282,6 +3295,39 @@ if(area)
 area.scrollIntoView({
 behavior:"smooth",
 block:"start"
+});
+
+}
+
+function backFromGameProducts(){
+
+const gamePage =
+document.getElementById("gameProductsPage");
+
+if(gamePage)
+gamePage.classList.remove("show");
+
+const type =
+window.selectedGameType;
+
+const target =
+type === "topup"
+?
+document.getElementById("topupPage")
+:
+document.getElementById("accountPage");
+
+if(target)
+target.classList.add("show");
+
+}
+
+}
+
+function showAllAndScroll(){
+  const area=document.getElementById("purchaseArea");
+  if(area) area.scrollIntoView({behavior:"smooth",block:"start"});
+  showAllMenu();
 });
 
 }
@@ -4161,10 +4207,344 @@ font-size:21px;
 </style>
 
 <style>
-header .logo,
-.profile-logo,
-.footer-logo{
-  object-fit:contain !important;
-  display:block !important;
+/* ================= COMPACT ALL MENU ================= */
+
+.compact-all-menu{
+margin:14px 0 20px;
+}
+
+.compact-all-button{
+width:100%;
+min-height:64px;
+display:flex;
+align-items:center;
+gap:11px;
+padding:10px 13px;
+border:1px solid var(--yellow);
+border-radius:9px;
+background:#05090a;
+color:#fff;
+text-align:left;
+cursor:pointer;
+-webkit-tap-highlight-color:transparent;
+}
+
+.compact-all-button:active,
+.all-choice:active{
+transform:scale(.985);
+}
+
+.compact-all-icon{
+width:38px;
+height:38px;
+display:flex;
+align-items:center;
+justify-content:center;
+border-radius:8px;
+background:#101719;
+color:var(--yellow);
+font-size:23px;
+}
+
+.compact-all-button span:nth-child(2){
+flex:1;
+display:flex;
+flex-direction:column;
+gap:2px;
+}
+
+.compact-all-button strong{
+font-size:16px;
+color:var(--yellow);
+}
+
+.compact-all-button small{
+font-size:10px;
+color:#999;
+}
+
+.compact-all-arrow{
+font-size:28px;
+color:#fff;
+}
+
+.all-choices{
+display:none;
+margin-top:9px;
+gap:8px;
+}
+
+.all-choices.show{
+display:grid;
+grid-template-columns:1fr 1fr;
+}
+
+.all-choice{
+min-height:62px;
+display:flex;
+align-items:center;
+gap:8px;
+padding:9px 10px;
+border:1px solid var(--teal);
+border-radius:8px;
+background:#05090a;
+color:#fff;
+text-align:left;
+cursor:pointer;
+-webkit-tap-highlight-color:transparent;
+}
+
+.all-choice > span:nth-child(2){
+flex:1;
+display:flex;
+flex-direction:column;
+gap:2px;
+}
+
+.all-choice strong{
+font-size:13px;
+color:var(--yellow);
+}
+
+.all-choice small{
+font-size:9px;
+color:#999;
+}
+
+.all-choice > span:last-child{
+font-size:24px;
+}
+
+.all-choice-icon{
+font-size:22px;
+}
+
+@media(max-width:600px){
+.all-choices.show{
+grid-template-columns:1fr 1fr;
+}
+
+.compact-all-button{
+min-height:58px;
+}
+
+.all-choice{
+min-height:58px;
+}
+}
+</style>
+
+<style>
+#accountSections,
+#topupSections{
+display:block;
+margin-top:10px;
+}
+
+.category-page{
+display:none;
+}
+
+.category-page.show{
+display:block;
+}
+
+.category-page-title{
+padding:12px 10px;
+margin-bottom:9px;
+}
+
+.category-page-title h2{
+font-size:21px;
+}
+
+.account-category-card,
+.topup-category-card{
+min-height:64px;
+margin-top:8px;
+padding:9px 10px;
+border-radius:7px;
+}
+
+.category-card-icon{
+width:36px;
+min-width:36px;
+height:36px;
+font-size:22px;
+}
+
+.category-card-text strong{
+font-size:13px;
+}
+
+.category-card-text small{
+font-size:9px;
+}
+
+.category-card-arrow{
+font-size:25px;
+}
+</style>
+
+<style>
+/* ===== REQUESTED CRISPY SHOP FLOW ===== */
+.compact-all-menu{margin:12px 0 16px}
+.compact-all-button{
+width:100%;min-height:58px;display:flex;align-items:center;gap:10px;
+padding:9px 12px;border:1px solid var(--teal);border-radius:9px;
+background:#05090a;color:#fff;text-align:left;cursor:pointer
+}
+.compact-all-icon{
+width:36px;height:36px;display:flex;align-items:center;justify-content:center;
+border-radius:8px;background:#101719;color:var(--yellow);font-size:22px
+}
+.compact-all-button span:nth-child(2){flex:1;display:flex;flex-direction:column;gap:2px}
+.compact-all-button strong{color:var(--yellow);font-size:15px}
+.compact-all-button small{color:#999;font-size:10px}
+.compact-all-arrow{font-size:26px}
+.all-choices{display:none;margin-top:8px;grid-template-columns:1fr 1fr;gap:8px}
+.all-choices.show{display:grid}
+.all-choice{
+min-height:60px;display:flex;align-items:center;gap:8px;padding:9px;
+border:1px solid var(--teal);border-radius:8px;background:#05090a;color:#fff;
+text-align:left;cursor:pointer
+}
+.all-choice-icon{font-size:22px}
+.all-choice span:nth-child(2){flex:1;display:flex;flex-direction:column;gap:2px}
+.all-choice strong{color:var(--yellow);font-size:13px}
+.all-choice small{color:#999;font-size:9px}
+.all-choice span:last-child{font-size:23px}
+
+.category-page{display:none}
+.category-page.show{display:block}
+.category-page-title{
+border:1px solid var(--teal);background:#05090a;padding:13px 10px;
+margin-bottom:9px;text-align:center
+}
+.category-page-title h2{color:#fff;font-size:22px;margin:0 0 4px}
+.category-page-title p{color:#999;font-size:11px;margin:0}
+
+.category-page-back{
+display:inline-flex;align-items:center;gap:5px;margin-bottom:9px;padding:7px 10px;
+border:1px solid var(--teal);border-radius:7px;background:#05090a;color:#fff;
+font-weight:800;cursor:pointer
+}
+
+.account-category-card,.topup-category-card{
+width:100%;min-height:62px;display:flex;align-items:center;gap:9px;
+margin-top:8px;padding:8px 10px;border:1px solid var(--teal);
+border-radius:7px;background:#05090a;color:#fff;text-align:left;
+cursor:pointer
+}
+.category-card-icon{
+width:36px;min-width:36px;height:36px;display:flex;align-items:center;
+justify-content:center;border-radius:8px;background:#0b1214;font-size:21px
+}
+.category-card-text{flex:1;display:flex;flex-direction:column;gap:2px}
+.category-card-text strong{color:var(--yellow);font-size:13px}
+.category-card-text small{color:#999;font-size:9px}
+.category-card-arrow{font-size:24px}
+
+@media(max-width:600px){
+.all-choices.show{grid-template-columns:1fr 1fr}
+.category-page-title h2{font-size:20px}
+}
+</style>
+
+<style>
+.game-products-title{
+text-align:center;
+padding:10px 8px 7px;
+margin-bottom:7px;
+}
+
+.game-products-title h2{
+font-size:18px;
+color:#fff;
+margin:0 0 3px;
+}
+
+.game-products-title p{
+font-size:9px;
+color:#999;
+margin:0;
+}
+
+.game-products-empty{
+width:78%;
+max-width:300px;
+margin:24px auto;
+padding:18px 10px;
+text-align:center;
+border:1px solid #1b3032;
+border-radius:7px;
+background:#05090a;
+display:flex;
+flex-direction:column;
+gap:5px;
+}
+
+.game-products-empty .empty-icon{
+font-size:25px;
+color:var(--yellow);
+}
+
+.game-products-empty strong{
+font-size:13px;
+color:#fff;
+}
+
+.game-products-empty small{
+font-size:9px;
+color:#888;
+line-height:1.35;
+}
+
+.game-products-list{
+width:82%;
+max-width:320px;
+margin:0 auto;
+display:flex;
+flex-direction:column;
+gap:5px;
+}
+
+.game-product-row{
+min-height:42px;
+display:flex;
+align-items:center;
+gap:7px;
+padding:5px 7px;
+border:1px solid #1b3032;
+border-radius:6px;
+background:#05090a;
+color:#fff;
+}
+
+.game-product-row .game-product-name{
+flex:1;
+font-size:11px;
+font-weight:700;
+}
+
+.game-product-row .game-product-price{
+font-size:11px;
+font-weight:900;
+color:var(--yellow);
+}
+
+.game-product-row .game-product-cart{
+font-size:16px;
+color:var(--yellow);
+}
+</style>
+
+<style>
+#gameProductsPage{
+display:none;
+}
+
+#gameProductsPage.show{
+display:block;
 }
 </style>
