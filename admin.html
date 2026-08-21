@@ -1,0 +1,2508 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+
+<meta charset="UTF-8">
+
+<meta
+  name="viewport"
+  content="width=device-width, initial-scale=1.0"
+>
+
+<title>CRISPY SHOP — Admin</title>
+
+<style>
+
+*{
+  box-sizing:border-box;
+  margin:0;
+  padding:0;
+}
+
+html,
+body{
+  width:100%;
+  min-height:100%;
+}
+
+body{
+  background:#050708;
+  color:#fff;
+  font-family:Arial,Helvetica,sans-serif;
+  padding:20px;
+}
+
+button,
+input,
+select,
+textarea{
+  font-family:inherit;
+}
+
+/* PREVENT IPHONE INPUT ZOOM */
+
+input,
+select,
+textarea,
+button{
+  font-size:16px !important;
+}
+
+button{
+  cursor:pointer;
+}
+
+.hidden{
+  display:none!important;
+}
+
+.container{
+  width:100%;
+  max-width:1200px;
+  margin:auto;
+}
+
+header{
+  display:flex;
+  align-items:center;
+  justify-content:space-between;
+  gap:15px;
+  padding:18px 0;
+  border-bottom:2px solid #ffd400;
+  margin-bottom:20px;
+}
+
+header h1{
+  color:#ffd400;
+  font-size:24px;
+}
+
+header p{
+  color:#999;
+  font-size:12px;
+}
+
+.form-box{
+  border:1px solid #00e5d5;
+  background:#071012;
+  padding:20px;
+  margin-bottom:20px;
+}
+
+.form-box h3{
+  color:#ffd400;
+  margin-bottom:18px;
+}
+
+.form-grid{
+  display:grid;
+  grid-template-columns:repeat(2,1fr);
+  gap:15px;
+}
+
+.form-grid .full{
+  grid-column:1 / -1;
+}
+
+label{
+  display:block;
+  color:#00e5d5;
+  font-size:12px;
+  font-weight:bold;
+  margin-bottom:7px;
+}
+
+input,
+select,
+textarea{
+  width:100%;
+  padding:13px;
+  background:#030607;
+  color:#fff;
+  border:1px solid #294448;
+  outline:none;
+  border-radius:4px;
+}
+
+input:focus,
+select:focus,
+textarea:focus{
+  border-color:#00e5d5;
+}
+
+textarea{
+  min-height:120px;
+  resize:vertical;
+}
+
+.actions{
+  display:flex;
+  flex-wrap:wrap;
+  gap:10px;
+  margin-top:18px;
+}
+
+.primary{
+  background:#ffd400;
+  color:#000;
+  border:1px solid #ffd400;
+  padding:13px 18px;
+  border-radius:4px;
+  font-weight:bold;
+}
+
+.secondary{
+  background:transparent;
+  color:#00e5d5;
+  border:1px solid #00e5d5;
+  padding:13px 18px;
+  border-radius:4px;
+  font-weight:bold;
+}
+
+.danger{
+  background:transparent;
+  color:#ff5555;
+  border:1px solid #ff5555;
+  padding:13px 18px;
+  border-radius:4px;
+  font-weight:bold;
+}
+
+.primary:hover{
+  background:#fff;
+}
+
+.secondary:hover{
+  background:#00e5d5;
+  color:#000;
+}
+
+.danger:hover{
+  background:#ff5555;
+  color:#000;
+}
+
+.message{
+  min-height:20px;
+  margin-top:12px;
+  font-size:12px;
+}
+
+.topup-box{
+  border-color:#ffd400;
+}
+
+.topbar{
+  display:flex;
+  align-items:center;
+  justify-content:space-between;
+  gap:12px;
+  margin:25px 0 12px;
+}
+
+.topbar h2{
+  color:#fff;
+  font-size:20px;
+}
+
+.accounts{
+  display:grid;
+  grid-template-columns:repeat(2,1fr);
+  gap:12px;
+}
+
+.account-card,
+.topup-card{
+  background:#071012;
+  border:1px solid #00e5d5;
+  padding:18px;
+}
+
+.account-card h3,
+.topup-card h3{
+  color:#ffd400;
+  margin-bottom:8px;
+}
+
+.account-meta,
+.topup-meta{
+  color:#00e5d5;
+  font-size:12px;
+  margin-bottom:10px;
+}
+
+.account-price,
+.topup-price{
+  color:#ffd400;
+  font-size:20px;
+  font-weight:bold;
+  margin:12px 0;
+}
+
+.account-description,
+.topup-description{
+  color:#999;
+  font-size:12px;
+  line-height:1.5;
+}
+
+.account-actions,
+.topup-actions{
+  display:flex;
+  gap:8px;
+  flex-wrap:wrap;
+  margin-top:15px;
+}
+
+
+/* PHOTO UPLOAD */
+
+.photo-box{
+  display:flex;
+  flex-direction:column;
+  gap:8px;
+}
+
+.photo-label{
+  color:#00e5d5;
+  font-weight:bold;
+}
+
+.photo-input{
+  width:100%;
+}
+
+.photo-preview{
+  display:none;
+  width:100%;
+  max-width:300px;
+  max-height:220px;
+  object-fit:cover;
+  margin-top:5px;
+  border:1px solid #00e5d5;
+  background:#000;
+}
+
+
+/* MOBILE */
+
+@media(max-width:700px){
+
+  body{
+    padding:10px;
+  }
+
+  header{
+    flex-direction:column;
+    align-items:flex-start;
+  }
+
+  /*
+    KEEP FORM FIELDS SIDE BY SIDE
+  */
+
+  .form-grid{
+    grid-template-columns:repeat(2,1fr);
+  }
+
+  .accounts{
+    grid-template-columns:1fr;
+  }
+
+}
+
+@media(max-width:430px){
+
+  .form-grid{
+    grid-template-columns:repeat(2,minmax(0,1fr));
+    gap:8px;
+  }
+
+  .form-box{
+    padding:12px;
+  }
+
+  input,
+  select,
+  textarea{
+    padding:11px 8px;
+  }
+
+  .actions{
+    flex-direction:column;
+  }
+
+  .actions button{
+    width:100%;
+  }
+
+}
+
+</style>
+
+</head>
+
+<body>
+
+<div class="container">
+
+<header>
+
+<div>
+  <h1>CRISPY SHOP — ADMIN</h1>
+  <p>Manage gaming accounts and top-up products</p>
+</div>
+
+<button
+  id="logoutBtn"
+  class="secondary"
+>
+  LOGOUT
+</button>
+
+</header>
+
+
+<!-- ================= ACCOUNT MANAGEMENT ================= -->
+
+<div class="form-box">
+
+<h3 id="formTitle">
+ADD GAMING ACCOUNT
+</h3>
+
+<div class="form-grid">
+
+
+<!-- GAME -->
+
+<div>
+
+<label for="game">
+GAME
+</label>
+
+<select id="game">
+
+<option value="Free Fire">
+Free Fire
+</option>
+
+<option value="eFootball">
+eFootball
+</option>
+
+<option value="COD Mobile">
+COD Mobile
+</option>
+
+<option value="DLS">
+DLS
+</option>
+
+<option value="FC Mobile">
+FC Mobile
+</option>
+
+</select>
+
+</div>
+
+
+<!-- TITLE -->
+
+<div>
+
+<label for="title">
+ACCOUNT TITLE
+</label>
+
+<input
+  id="title"
+  type="text"
+  placeholder="Royal Vault 09"
+>
+
+</div>
+
+
+<!-- LEVEL -->
+
+<div>
+
+<label for="level">
+LEVEL
+</label>
+
+<input
+  id="level"
+  type="number"
+  placeholder="86"
+>
+
+</div>
+
+
+<!-- REGION -->
+
+<div>
+
+<label for="region">
+REGION
+</label>
+
+<input
+  id="region"
+  type="text"
+  placeholder="SEA"
+>
+
+</div>
+
+
+<!-- PRICE -->
+
+<div>
+
+<label for="price">
+PRICE
+</label>
+
+<input
+  id="price"
+  type="text"
+  placeholder="₦425,000"
+>
+
+</div>
+
+
+<!-- STATUS -->
+
+<div>
+
+<label for="status">
+STATUS
+</label>
+
+<select id="status">
+
+<option value="AVAILABLE">
+AVAILABLE
+</option>
+
+<option value="SOLD">
+SOLD
+</option>
+
+<option value="RESERVED">
+RESERVED
+</option>
+
+</select>
+
+</div>
+
+
+<!-- ACCOUNT PHOTO -->
+
+<div class="full photo-box">
+
+<label
+  class="photo-label"
+  for="accountPhoto"
+>
+  📷 UPLOAD ACCOUNT PHOTO
+</label>
+
+<input
+  id="accountPhoto"
+  class="photo-input"
+  type="file"
+  accept="image/jpeg,image/png,image/webp,image/gif"
+>
+
+<img
+  id="photoPreview"
+  class="photo-preview"
+  alt="Account photo preview"
+>
+
+<button
+  type="button"
+  id="removePhotoBtn"
+  class="secondary"
+  style="display:none"
+>
+  REMOVE PHOTO
+</button>
+
+</div>
+
+
+<!-- DESCRIPTION -->
+
+<div class="full">
+
+<label for="description">
+DESCRIPTION
+</label>
+
+<textarea
+  id="description"
+  placeholder="12 Evo Weapons, Booyah Pass..."
+></textarea>
+
+</div>
+
+</div>
+
+
+<div class="actions">
+
+<button
+  id="saveBtn"
+  class="primary"
+>
+ADD ACCOUNT
+</button>
+
+<button
+  id="cancelEditBtn"
+  class="secondary hidden"
+>
+CANCEL EDIT
+</button>
+
+</div>
+
+
+<div
+  id="formMessage"
+  class="message"
+></div>
+
+</div>
+
+
+<!-- ================= TOPUP MANAGEMENT ================= -->
+
+<div class="form-box topup-box">
+
+<h3>
+TOPUP MANAGEMENT
+</h3>
+
+<div class="form-grid">
+
+
+<!-- TOPUP GAME -->
+
+<div>
+
+<label for="topupGame">
+TOPUP GAME
+</label>
+
+<select id="topupGame">
+
+<option value="Free Fire">
+🔥 Free Fire Diamonds
+</option>
+
+<option value="eFootball">
+⚽ eFootball Coins
+</option>
+
+<option value="COD Mobile">
+🎯 COD Mobile CP
+</option>
+
+<option value="DLS">
+💎 DLS Diamonds
+</option>
+
+<option value="FC Mobile">
+🟦 FC Mobile
+</option>
+
+</select>
+
+</div>
+
+
+<!-- PACKAGE -->
+
+<div>
+
+<label for="topupPackage">
+PACKAGE
+</label>
+
+<input
+  id="topupPackage"
+  type="text"
+  placeholder="e.g. 100 Diamonds"
+>
+
+</div>
+
+
+<!-- PRICE -->
+
+<div>
+
+<label for="topupPrice">
+PRICE
+</label>
+
+<input
+  id="topupPrice"
+  type="text"
+  placeholder="₦2,000"
+>
+
+</div>
+
+
+<!-- STATUS -->
+
+<div>
+
+<label for="topupStatus">
+STATUS
+</label>
+
+<select id="topupStatus">
+
+<option value="AVAILABLE">
+AVAILABLE
+</option>
+
+<option value="SOLD OUT">
+SOLD OUT
+</option>
+
+<option value="HIDDEN">
+HIDDEN
+</option>
+
+</select>
+
+</div>
+
+
+<!-- TOPUP PHOTO -->
+
+<div class="full photo-box">
+
+<label
+  class="photo-label"
+  for="topupPhoto"
+>
+  📷 UPLOAD TOPUP PHOTO
+</label>
+
+<input
+  id="topupPhoto"
+  class="photo-input"
+  type="file"
+  accept="image/jpeg,image/png,image/webp,image/gif"
+>
+
+<img
+  id="topupPhotoPreview"
+  class="photo-preview"
+  alt="Topup photo preview"
+>
+
+<button
+  type="button"
+  id="removeTopupPhotoBtn"
+  class="secondary"
+  style="display:none"
+>
+  REMOVE PHOTO
+</button>
+
+</div>
+
+
+<!-- DESCRIPTION -->
+
+<div class="full">
+
+<label for="topupDescription">
+DESCRIPTION
+</label>
+
+<textarea
+  id="topupDescription"
+  placeholder="Describe this topup package..."
+></textarea>
+
+</div>
+
+</div>
+
+
+<div class="actions">
+
+<button
+  id="saveTopupBtn"
+  class="primary"
+>
+POST TOPUP
+</button>
+
+<button
+  id="cancelTopupEditBtn"
+  class="secondary hidden"
+>
+CANCEL EDIT
+</button>
+
+</div>
+
+
+<div
+  id="topupMessage"
+  class="message"
+></div>
+
+</div>
+
+
+<!-- ================= TOPUP PRODUCTS ================= -->
+
+<div class="topbar">
+
+<h2>
+TOPUP PRODUCTS
+</h2>
+
+<button
+  id="refreshTopupsBtn"
+  class="secondary"
+>
+↻ REFRESH
+</button>
+
+</div>
+
+<div
+  id="topupsList"
+  class="accounts"
+>
+
+<p style="color:#999">
+Loading topups...
+</p>
+
+</div>
+
+
+<!-- ================= SHOP ACCOUNTS ================= -->
+
+<div class="topbar">
+
+<h2>
+SHOP ACCOUNTS
+</h2>
+
+<button
+  id="refreshBtn"
+  class="secondary"
+>
+↻ REFRESH
+</button>
+
+</div>
+
+<div
+  id="accountsList"
+  class="accounts"
+>
+
+<p style="color:#999">
+Loading accounts...
+</p>
+
+</div>
+
+</div>
+<script type="module">
+
+import {
+  initializeApp
+}
+from
+"https://www.gstatic.com/firebasejs/11.0.2/firebase-app.js";
+
+import {
+  getFirestore,
+  collection,
+  addDoc,
+  getDocs,
+  doc,
+  updateDoc,
+  deleteDoc
+}
+from
+"https://www.gstatic.com/firebasejs/11.0.2/firebase-firestore.js";
+
+
+/* ================= FIREBASE ================= */
+
+const firebaseConfig = {
+
+  apiKey:
+    "YOUR_API_KEY",
+
+  authDomain:
+    "YOUR_PROJECT.firebaseapp.com",
+
+  projectId:
+    "YOUR_PROJECT",
+
+  storageBucket:
+    "YOUR_PROJECT.firebasestorage.app",
+
+  messagingSenderId:
+    "YOUR_MESSAGING_SENDER_ID",
+
+  appId:
+    "YOUR_APP_ID"
+
+};
+
+
+const app =
+  initializeApp(
+    firebaseConfig
+  );
+
+const db =
+  getFirestore(app);
+
+
+/* ================= ACCOUNT ELEMENTS ================= */
+
+const game =
+  document.getElementById("game");
+
+const title =
+  document.getElementById("title");
+
+const level =
+  document.getElementById("level");
+
+const region =
+  document.getElementById("region");
+
+const price =
+  document.getElementById("price");
+
+const status =
+  document.getElementById("status");
+
+const description =
+  document.getElementById("description");
+
+const saveBtn =
+  document.getElementById("saveBtn");
+
+const cancelEditBtn =
+  document.getElementById("cancelEditBtn");
+
+const refreshBtn =
+  document.getElementById("refreshBtn");
+
+const accountsList =
+  document.getElementById("accountsList");
+
+const formMessage =
+  document.getElementById("formMessage");
+
+let editingId = null;
+
+
+/* ================= PHOTO ELEMENTS ================= */
+
+const accountPhoto =
+  document.getElementById(
+    "accountPhoto"
+  );
+
+const photoPreview =
+  document.getElementById(
+    "photoPreview"
+  );
+
+const removePhotoBtn =
+  document.getElementById(
+    "removePhotoBtn"
+  );
+
+let selectedPhotoData = "";
+
+
+/* ================= MESSAGE ================= */
+
+function showMessage(
+  element,
+  message,
+  type="success"
+){
+
+  if(!element){
+    return;
+  }
+
+  element.textContent =
+    message;
+
+  element.style.color =
+    type === "error"
+      ? "#ff5555"
+      : "#00e5d5";
+
+}
+
+
+/* ================= CLEAR ACCOUNT FORM ================= */
+
+function clearForm(){
+
+  game.value =
+    "Free Fire";
+
+  title.value =
+    "";
+
+  level.value =
+    "";
+
+  region.value =
+    "";
+
+  price.value =
+    "";
+
+  status.value =
+    "AVAILABLE";
+
+  description.value =
+    "";
+
+  editingId =
+    null;
+
+  selectedPhotoData =
+    "";
+
+  accountPhoto.value =
+    "";
+
+  photoPreview.src =
+    "";
+
+  photoPreview.style.display =
+    "none";
+
+  removePhotoBtn.style.display =
+    "none";
+
+  document.getElementById(
+    "formTitle"
+  ).textContent =
+    "ADD GAMING ACCOUNT";
+
+  saveBtn.textContent =
+    "ADD ACCOUNT";
+
+  cancelEditBtn.classList.add(
+    "hidden"
+  );
+
+}
+
+
+/* ================= GET ACCOUNT DATA ================= */
+
+function getAccountData(){
+
+  return {
+
+    game:
+      game.value,
+
+    title:
+      title.value.trim(),
+
+    level:
+      level.value.trim(),
+
+    region:
+      region.value.trim(),
+
+    price:
+      price.value.trim(),
+
+    status:
+      status.value,
+
+    description:
+      description.value.trim(),
+
+    photoUrl:
+      selectedPhotoData
+
+  };
+
+}
+
+
+/* ================= LOAD ACCOUNTS ================= */
+
+async function loadAccounts(){
+
+  if(!accountsList){
+    return;
+  }
+
+  accountsList.innerHTML =
+    "<p style='color:#999'>Loading accounts...</p>";
+
+  try{
+
+    const snapshot =
+      await getDocs(
+        collection(
+          db,
+          "accounts"
+        )
+      );
+
+    if(snapshot.empty){
+
+      accountsList.innerHTML =
+        "<p style='color:#999'>No accounts posted yet.</p>";
+
+      return;
+
+    }
+
+    accountsList.innerHTML =
+      "";
+
+    snapshot.forEach(
+      function(item){
+
+        const data =
+          item.data();
+
+        const card =
+          document.createElement(
+            "div"
+          );
+
+        card.className =
+          "account-card";
+
+
+        let photoHTML = "";
+
+        if(data.photoUrl){
+
+          photoHTML = `
+            <img
+              src="${data.photoUrl}"
+              alt="Account photo"
+              style="
+                width:100%;
+                max-height:220px;
+                object-fit:cover;
+                margin-bottom:12px;
+                border:1px solid #00e5d5;
+              "
+            >
+          `;
+
+        }
+
+
+        card.innerHTML = `
+
+          ${photoHTML}
+
+          <h3>
+            ${escapeHtml(
+              data.title ||
+              "Gaming Account"
+            )}
+          </h3>
+
+          <div class="account-meta">
+
+            ${escapeHtml(
+              data.game ||
+              ""
+            )}
+
+            ·
+
+            LEVEL
+            ${escapeHtml(
+              data.level ||
+              ""
+            )}
+
+            ·
+
+            ${escapeHtml(
+              data.region ||
+              ""
+            )}
+
+          </div>
+
+          <div class="account-price">
+
+            ${escapeHtml(
+              data.price ||
+              ""
+            )}
+
+          </div>
+
+          <div class="account-description">
+
+            ${escapeHtml(
+              data.description ||
+              ""
+            )}
+
+          </div>
+
+          <div class="account-actions">
+
+            <button
+              class="secondary"
+              data-edit="${item.id}"
+            >
+              EDIT
+            </button>
+
+            <button
+              class="danger"
+              data-delete="${item.id}"
+            >
+              DELETE
+            </button>
+
+          </div>
+
+        `;
+
+
+        accountsList.appendChild(
+          card
+        );
+
+      }
+    );
+
+
+    document
+      .querySelectorAll(
+        "[data-edit]"
+      )
+      .forEach(
+        function(button){
+
+          button.addEventListener(
+            "click",
+            function(){
+
+              editAccount(
+                button.dataset.edit,
+                snapshot
+              );
+
+            }
+          );
+
+        }
+      );
+
+
+    document
+      .querySelectorAll(
+        "[data-delete]"
+      )
+      .forEach(
+        function(button){
+
+          button.addEventListener(
+            "click",
+            function(){
+
+              deleteAccount(
+                button.dataset.delete
+              );
+
+            }
+          );
+
+        }
+      );
+
+
+  }catch(error){
+
+    console.error(
+      "Load accounts:",
+      error
+    );
+
+    accountsList.innerHTML =
+      "<p style='color:#ff5555'>Could not load accounts.</p>";
+
+  }
+
+}
+
+
+/* ================= EDIT ACCOUNT ================= */
+
+function editAccount(
+  id,
+  snapshot
+){
+
+  const item =
+    snapshot.docs.find(
+      function(docItem){
+
+        return docItem.id === id;
+
+      }
+    );
+
+  if(!item){
+    return;
+  }
+
+  const data =
+    item.data();
+
+
+  game.value =
+    data.game ||
+    "Free Fire";
+
+  title.value =
+    data.title ||
+    "";
+
+  level.value =
+    data.level ||
+    "";
+
+  region.value =
+    data.region ||
+    "";
+
+  price.value =
+    data.price ||
+    "";
+
+  status.value =
+    data.status ||
+    "AVAILABLE";
+
+  description.value =
+    data.description ||
+    "";
+
+
+  selectedPhotoData =
+    data.photoUrl ||
+    "";
+
+
+  if(data.photoUrl){
+
+    photoPreview.src =
+      data.photoUrl;
+
+    photoPreview.style.display =
+      "block";
+
+    removePhotoBtn.style.display =
+      "inline-block";
+
+  }else{
+
+    photoPreview.src =
+      "";
+
+    photoPreview.style.display =
+      "none";
+
+    removePhotoBtn.style.display =
+      "none";
+
+  }
+
+
+  editingId =
+    id;
+
+
+  document.getElementById(
+    "formTitle"
+  ).textContent =
+    "EDIT GAMING ACCOUNT";
+
+
+  saveBtn.textContent =
+    "SAVE CHANGES";
+
+
+  cancelEditBtn.classList.remove(
+    "hidden"
+  );
+
+
+  window.scrollTo({
+    top:0,
+    behavior:"smooth"
+  });
+
+}
+
+
+/* ================= SAVE ACCOUNT ================= */
+
+saveBtn.addEventListener(
+  "click",
+  async function(){
+
+    const data =
+      getAccountData();
+
+
+    if(!data.title){
+
+      showMessage(
+        formMessage,
+        "Please enter an account title.",
+        "error"
+      );
+
+      return;
+
+    }
+
+
+    if(!data.price){
+
+      showMessage(
+        formMessage,
+        "Please enter a price.",
+        "error"
+      );
+
+      return;
+
+    }
+
+
+    saveBtn.disabled =
+      true;
+
+
+    try{
+
+      if(editingId){
+
+        await updateDoc(
+          doc(
+            db,
+            "accounts",
+            editingId
+          ),
+          data
+        );
+
+
+        showMessage(
+          formMessage,
+          "Account updated successfully."
+        );
+
+      }else{
+
+        await addDoc(
+          collection(
+            db,
+            "accounts"
+          ),
+          data
+        );
+
+
+        showMessage(
+          formMessage,
+          "Account posted successfully."
+        );
+
+      }
+
+
+      clearForm();
+
+      await loadAccounts();
+
+
+    }catch(error){
+
+      console.error(
+        error
+      );
+
+      showMessage(
+        formMessage,
+        "Could not save account.",
+        "error"
+      );
+
+    }
+
+
+    saveBtn.disabled =
+      false;
+
+  }
+);
+
+
+/* ================= CANCEL EDIT ================= */
+
+cancelEditBtn.addEventListener(
+  "click",
+  function(){
+
+    clearForm();
+
+  }
+);
+
+
+/* ================= DELETE ACCOUNT ================= */
+
+async function deleteAccount(
+  id
+){
+
+  const confirmed =
+    confirm(
+      "Delete this gaming account?"
+    );
+
+
+  if(!confirmed){
+    return;
+  }
+
+
+  try{
+
+    await deleteDoc(
+      doc(
+        db,
+        "accounts",
+        id
+      )
+    );
+
+
+    await loadAccounts();
+
+
+    showMessage(
+      formMessage,
+      "Account deleted successfully."
+    );
+
+
+  }catch(error){
+
+    console.error(
+      error
+    );
+
+    showMessage(
+      formMessage,
+      "Could not delete account.",
+      "error"
+    );
+
+  }
+
+}
+
+
+/* ================= ACCOUNT PHOTO ================= */
+
+accountPhoto.addEventListener(
+  "change",
+  async function(){
+
+    const file =
+      accountPhoto.files[0];
+
+
+    if(!file){
+      return;
+    }
+
+
+    if(
+      !file.type.startsWith(
+        "image/"
+      )
+    ){
+
+      showMessage(
+        formMessage,
+        "Please choose an image file.",
+        "error"
+      );
+
+      accountPhoto.value =
+        "";
+
+      return;
+
+    }
+
+
+    if(
+      file.size >
+      10 * 1024 * 1024
+    ){
+
+      showMessage(
+        formMessage,
+        "Photo must be smaller than 10MB.",
+        "error"
+      );
+
+      accountPhoto.value =
+        "";
+
+      return;
+
+    }
+
+
+    const reader =
+      new FileReader();
+
+
+    reader.onload =
+      function(){
+
+        selectedPhotoData =
+          reader.result;
+
+        photoPreview.src =
+          reader.result;
+
+        photoPreview.style.display =
+          "block";
+
+        removePhotoBtn.style.display =
+          "inline-block";
+
+      };
+
+
+    reader.onerror =
+      function(){
+
+        showMessage(
+          formMessage,
+          "Could not prepare this photo.",
+          "error"
+        );
+
+      };
+
+
+    reader.readAsDataURL(
+      file
+    );
+
+  }
+);
+
+
+/* ================= REMOVE ACCOUNT PHOTO ================= */
+
+removePhotoBtn.addEventListener(
+  "click",
+  function(){
+
+    accountPhoto.value =
+      "";
+
+    selectedPhotoData =
+      "";
+
+    photoPreview.src =
+      "";
+
+    photoPreview.style.display =
+      "none";
+
+    removePhotoBtn.style.display =
+      "none";
+
+  }
+);
+
+
+/* ================= REFRESH ACCOUNTS ================= */
+
+refreshBtn.addEventListener(
+  "click",
+  loadAccounts
+);
+
+
+/* ================= TOPUP ELEMENTS ================= */
+
+const topupGame =
+  document.getElementById(
+    "topupGame"
+  );
+
+const topupPackage =
+  document.getElementById(
+    "topupPackage"
+  );
+
+const topupPrice =
+  document.getElementById(
+    "topupPrice"
+  );
+
+const topupStatus =
+  document.getElementById(
+    "topupStatus"
+  );
+
+const topupDescription =
+  document.getElementById(
+    "topupDescription"
+  );
+
+const saveTopupBtn =
+  document.getElementById(
+    "saveTopupBtn"
+  );
+
+const cancelTopupEditBtn =
+  document.getElementById(
+    "cancelTopupEditBtn"
+  );
+
+const refreshTopupsBtn =
+  document.getElementById(
+    "refreshTopupsBtn"
+  );
+
+const topupsList =
+  document.getElementById(
+    "topupsList"
+  );
+
+const topupMessage =
+  document.getElementById(
+    "topupMessage"
+  );
+
+let editingTopupId =
+  null;
+
+
+/* ================= TOPUP PHOTO ================= */
+
+const topupPhoto =
+  document.getElementById(
+    "topupPhoto"
+  );
+
+const topupPhotoPreview =
+  document.getElementById(
+    "topupPhotoPreview"
+  );
+
+const removeTopupPhotoBtn =
+  document.getElementById(
+    "removeTopupPhotoBtn"
+  );
+
+let selectedTopupPhotoData =
+  "";
+
+
+/* ================= CLEAR TOPUP ================= */
+
+function clearTopupForm(){
+
+  topupGame.value =
+    "Free Fire";
+
+  topupPackage.value =
+    "";
+
+  topupPrice.value =
+    "";
+
+  topupStatus.value =
+    "AVAILABLE";
+
+  topupDescription.value =
+    "";
+
+  editingTopupId =
+    null;
+
+  selectedTopupPhotoData =
+    "";
+
+  topupPhoto.value =
+    "";
+
+  topupPhotoPreview.src =
+    "";
+
+  topupPhotoPreview.style.display =
+    "none";
+
+  removeTopupPhotoBtn.style.display =
+    "none";
+
+  saveTopupBtn.textContent =
+    "POST TOPUP";
+
+  cancelTopupEditBtn.classList.add(
+    "hidden"
+  );
+
+}
+
+
+/* ================= TOPUP DATA ================= */
+
+function getTopupData(){
+
+  return {
+
+    game:
+      topupGame.value,
+
+    package:
+      topupPackage.value.trim(),
+
+    price:
+      topupPrice.value.trim(),
+
+    status:
+      topupStatus.value,
+
+    description:
+      topupDescription.value.trim(),
+
+    photoUrl:
+      selectedTopupPhotoData
+
+  };
+
+}
+
+
+/* ================= LOAD TOPUPS ================= */
+
+async function loadTopups(){
+
+  if(!topupsList){
+    return;
+  }
+
+  topupsList.innerHTML =
+    "<p style='color:#999'>Loading topups...</p>";
+
+
+  try{
+
+    const snapshot =
+      await getDocs(
+        collection(
+          db,
+          "topups"
+        )
+      );
+
+
+    if(snapshot.empty){
+
+      topupsList.innerHTML =
+        "<p style='color:#999'>No topups posted yet.</p>";
+
+      return;
+
+    }
+
+
+    topupsList.innerHTML =
+      "";
+
+
+    snapshot.forEach(
+      function(item){
+
+        const data =
+          item.data();
+
+
+        const card =
+          document.createElement(
+            "div"
+          );
+
+        card.className =
+          "topup-card";
+
+
+        let photoHTML =
+          "";
+
+        if(data.photoUrl){
+
+          photoHTML = `
+            <img
+              src="${data.photoUrl}"
+              alt="Topup photo"
+              style="
+                width:100%;
+                max-height:220px;
+                object-fit:cover;
+                margin-bottom:12px;
+                border:1px solid #00e5d5;
+              "
+            >
+          `;
+
+        }
+
+
+        card.innerHTML = `
+
+          ${photoHTML}
+
+          <h3>
+            ${escapeHtml(
+              data.game ||
+              "Topup"
+            )}
+          </h3>
+
+          <div class="topup-meta">
+
+            ${escapeHtml(
+              data.package ||
+              ""
+            )}
+
+            ·
+
+            ${escapeHtml(
+              data.status ||
+              "AVAILABLE"
+            )}
+
+          </div>
+
+          <div class="topup-price">
+
+            ${escapeHtml(
+              data.price ||
+              ""
+            )}
+
+          </div>
+
+          <div class="topup-description">
+
+            ${escapeHtml(
+              data.description ||
+              ""
+            )}
+
+          </div>
+
+          <div class="topup-actions">
+
+            <button
+              class="secondary"
+              data-topup-edit="${item.id}"
+            >
+              EDIT
+            </button>
+
+            <button
+              class="danger"
+              data-topup-delete="${item.id}"
+            >
+              DELETE
+            </button>
+
+          </div>
+
+        `;
+
+
+        topupsList.appendChild(
+          card
+        );
+
+      }
+    );
+
+
+    document
+      .querySelectorAll(
+        "[data-topup-edit]"
+      )
+      .forEach(
+        function(button){
+
+          button.addEventListener(
+            "click",
+            function(){
+
+              editTopup(
+                button.dataset.topupEdit,
+                snapshot
+              );
+
+            }
+          );
+
+        }
+      );
+
+
+    document
+      .querySelectorAll(
+        "[data-topup-delete]"
+      )
+      .forEach(
+        function(button){
+
+          button.addEventListener(
+            "click",
+            function(){
+
+              deleteTopup(
+                button.dataset.topupDelete
+              );
+
+            }
+          );
+
+        }
+      );
+
+
+  }catch(error){
+
+    console.error(
+      "Load topups:",
+      error
+    );
+
+    topupsList.innerHTML =
+      "<p style='color:#ff5555'>Could not load topups.</p>";
+
+  }
+
+}
+  function editTopup(
+  id,
+  snapshot
+){
+
+  const item =
+    snapshot.docs.find(
+      function(docItem){
+
+        return docItem.id === id;
+
+      }
+    );
+
+  if(!item){
+    return;
+  }
+
+  const data =
+    item.data();
+
+
+  topupGame.value =
+    data.game ||
+    "Free Fire";
+
+  topupPackage.value =
+    data.package ||
+    "";
+
+  topupPrice.value =
+    data.price ||
+    "";
+
+  topupStatus.value =
+    data.status ||
+    "AVAILABLE";
+
+  topupDescription.value =
+    data.description ||
+    "";
+
+
+  selectedTopupPhotoData =
+    data.photoUrl ||
+    "";
+
+
+  if(data.photoUrl){
+
+    topupPhotoPreview.src =
+      data.photoUrl;
+
+    topupPhotoPreview.style.display =
+      "block";
+
+    removeTopupPhotoBtn.style.display =
+      "inline-block";
+
+  }else{
+
+    topupPhotoPreview.src =
+      "";
+
+    topupPhotoPreview.style.display =
+      "none";
+
+    removeTopupPhotoBtn.style.display =
+      "none";
+
+  }
+
+
+  editingTopupId =
+    id;
+
+
+  saveTopupBtn.textContent =
+    "SAVE CHANGES";
+
+
+  cancelTopupEditBtn.classList.remove(
+    "hidden"
+  );
+
+
+  window.scrollTo({
+    top:0,
+    behavior:"smooth"
+  });
+
+}
+
+
+/* ================= SAVE TOPUP ================= */
+
+saveTopupBtn.addEventListener(
+  "click",
+  async function(){
+
+    const data =
+      getTopupData();
+
+
+    if(!data.package){
+
+      showMessage(
+        topupMessage,
+        "Please enter a topup package.",
+        "error"
+      );
+
+      return;
+
+    }
+
+
+    if(!data.price){
+
+      showMessage(
+        topupMessage,
+        "Please enter a topup price.",
+        "error"
+      );
+
+      return;
+
+    }
+
+
+    saveTopupBtn.disabled =
+      true;
+
+
+    try{
+
+      if(editingTopupId){
+
+        await updateDoc(
+          doc(
+            db,
+            "topups",
+            editingTopupId
+          ),
+          data
+        );
+
+
+        showMessage(
+          topupMessage,
+          "Topup updated successfully."
+        );
+
+      }else{
+
+        await addDoc(
+          collection(
+            db,
+            "topups"
+          ),
+          data
+        );
+
+
+        showMessage(
+          topupMessage,
+          "Topup posted successfully."
+        );
+
+      }
+
+
+      clearTopupForm();
+
+      await loadTopups();
+
+
+    }catch(error){
+
+      console.error(
+        error
+      );
+
+      showMessage(
+        topupMessage,
+        "Could not save topup.",
+        "error"
+      );
+
+    }
+
+
+    saveTopupBtn.disabled =
+      false;
+
+  }
+);
+
+
+/* ================= CANCEL TOPUP EDIT ================= */
+
+cancelTopupEditBtn.addEventListener(
+  "click",
+  function(){
+
+    clearTopupForm();
+
+  }
+);
+
+
+/* ================= DELETE TOPUP ================= */
+
+async function deleteTopup(
+  id
+){
+
+  const confirmed =
+    confirm(
+      "Delete this topup?"
+    );
+
+
+  if(!confirmed){
+    return;
+  }
+
+
+  try{
+
+    await deleteDoc(
+      doc(
+        db,
+        "topups",
+        id
+      )
+    );
+
+
+    await loadTopups();
+
+
+    showMessage(
+      topupMessage,
+      "Topup deleted successfully."
+    );
+
+
+  }catch(error){
+
+    console.error(
+      error
+    );
+
+    showMessage(
+      topupMessage,
+      "Could not delete topup.",
+      "error"
+    );
+
+  }
+
+}
+
+
+/* ================= TOPUP PHOTO SELECT ================= */
+
+topupPhoto.addEventListener(
+  "change",
+  function(){
+
+    const file =
+      topupPhoto.files[0];
+
+
+    if(!file){
+      return;
+    }
+
+
+    if(
+      !file.type.startsWith(
+        "image/"
+      )
+    ){
+
+      showMessage(
+        topupMessage,
+        "Please choose an image file.",
+        "error"
+      );
+
+      topupPhoto.value =
+        "";
+
+      return;
+
+    }
+
+
+    if(
+      file.size >
+      10 * 1024 * 1024
+    ){
+
+      showMessage(
+        topupMessage,
+        "Photo must be smaller than 10MB.",
+        "error"
+      );
+
+      topupPhoto.value =
+        "";
+
+      return;
+
+    }
+
+
+    const reader =
+      new FileReader();
+
+
+    reader.onload =
+      function(){
+
+        selectedTopupPhotoData =
+          reader.result;
+
+
+        topupPhotoPreview.src =
+          reader.result;
+
+
+        topupPhotoPreview.style.display =
+          "block";
+
+
+        removeTopupPhotoBtn.style.display =
+          "inline-block";
+
+      };
+
+
+    reader.onerror =
+      function(){
+
+        showMessage(
+          topupMessage,
+          "Could not prepare this photo.",
+          "error"
+        );
+
+      };
+
+
+    reader.readAsDataURL(
+      file
+    );
+
+  }
+);
+
+
+/* ================= REMOVE TOPUP PHOTO ================= */
+
+removeTopupPhotoBtn.addEventListener(
+  "click",
+  function(){
+
+    topupPhoto.value =
+      "";
+
+    selectedTopupPhotoData =
+      "";
+
+    topupPhotoPreview.src =
+      "";
+
+    topupPhotoPreview.style.display =
+      "none";
+
+    removeTopupPhotoBtn.style.display =
+      "none";
+
+  }
+);
+
+
+/* ================= REFRESH TOPUPS ================= */
+
+refreshTopupsBtn.addEventListener(
+  "click",
+  loadTopups
+);
+
+
+/* ================= ESCAPE HTML ================= */
+
+function escapeHtml(
+  value
+){
+
+  return String(value)
+    .replaceAll(
+      "&",
+      "&amp;"
+    )
+    .replaceAll(
+      "<",
+      "&lt;"
+    )
+    .replaceAll(
+      ">",
+      "&gt;"
+    )
+    .replaceAll(
+      '"',
+      "&quot;"
+    )
+    .replaceAll(
+      "'",
+      "&#039;"
+    );
+
+}
+
+
+/* ================= LOGOUT ================= */
+
+const logoutBtn =
+  document.getElementById(
+    "logoutBtn"
+  );
+
+
+if(logoutBtn){
+
+  logoutBtn.addEventListener(
+    "click",
+    function(){
+
+      window.location.href =
+        "index.html";
+
+    }
+  );
+
+}
+
+
+/* ================= START ================= */
+
+loadAccounts();
+
+loadTopups();
+
+</script>
+
+</body>
+</html>
