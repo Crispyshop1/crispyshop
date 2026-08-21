@@ -461,11 +461,42 @@ border-color:var(--yellow);
 color:#000;
 }
 
+/* ================= ALL CHOICES ================= */
+
+.all-choices{
+display:none;
+grid-template-columns:1fr 1fr;
+gap:12px;
+margin-top:15px;
+}
+
+.all-choices.show{
+display:grid;
+}
+
+.all-choice{
+padding:18px;
+background:#071619;
+border:1px solid var(--teal);
+color:#fff;
+font-weight:bold;
+font-size:14px;
+}
+
+.all-choice:hover{
+border-color:var(--yellow);
+color:var(--yellow);
+}
+
 /* ================= PRODUCTS ================= */
 
 .game-section{
 scroll-margin-top:105px;
 margin-top:25px;
+}
+
+.game-section.is-hidden{
+display:none!important;
 }
 
 .section-heading{
@@ -1166,6 +1197,10 @@ grid-template-columns:1fr 1fr;
 grid-template-columns:1fr;
 }
 
+.all-choices{
+grid-template-columns:1fr;
+}
+
 .customer-profile{
 flex-direction:column;
 text-align:center;
@@ -1282,7 +1317,6 @@ By continuing, you agree to use Crispy Shop responsibly.
 
 </section>
 
-
 <!-- ================= MAIN SITE ================= -->
 
 <div id="siteContent">
@@ -1361,8 +1395,7 @@ onclick="openCustomerAccount()"
 
 </header>
 
-
-<!-- MOBILE DRAWER -->
+<!-- ================= MOBILE DRAWER ================= -->
 
 <div
 class="mobile-drawer"
@@ -1426,13 +1459,12 @@ onclick="contactMe();closeDrawer()"
 
 </div>
 
-
 <div
 class="layout"
 id="home"
 >
 
-<!-- PROFILE -->
+<!-- ================= PROFILE ================= -->
 
 <aside class="profile">
 
@@ -1528,7 +1560,6 @@ onclick="openContactOptions()"
 
 </aside>
 
-
 <main>
 
 <section class="hero">
@@ -1550,7 +1581,6 @@ LEVEL UP. PLAY MORE. 👑
 </div>
 
 </section>
-
 
 <section class="trust">
 
@@ -1604,55 +1634,84 @@ We're here to help
 
 </section>
 
+<!-- ================= FILTERS ================= -->
 
 <div class="filters">
 
 <button
 class="filter active"
-onclick="filterProducts('all',this)"
+onclick="showAllChoices(this)"
 >
 ALL
 </button>
 
 <button
 class="filter"
-onclick="filterProducts('freefire',this)"
+onclick="showAccountSections(this)"
 >
 FREE FIRE
 </button>
 
 <button
 class="filter"
-onclick="filterProducts('efootball',this)"
+onclick="showAccountSections(this);scrollToGame('efootball-section')"
 >
 eFOOTBALL
 </button>
 
 <button
 class="filter"
-onclick="filterProducts('codm',this)"
+onclick="showAccountSections(this);scrollToGame('codm-section')"
 >
 CODM
 </button>
 
 <button
 class="filter"
-onclick="filterProducts('dls',this)"
+onclick="showAccountSections(this);scrollToGame('dls-section')"
 >
 DLS
 </button>
 
 <button
 class="filter"
-onclick="filterProducts('fcmobile',this)"
+onclick="showAccountSections(this);scrollToGame('fcmobile-section')"
 >
 FC MOBILE
 </button>
 
 </div>
 
+<!-- ================= ALL CHOICES ================= -->
 
-<section id="accounts">
+<div
+id="allChoices"
+class="all-choices"
+>
+
+<button
+class="all-choice"
+onclick="showAccountSections()"
+>
+🎮 ACCOUNT
+</button>
+
+<button
+class="all-choice"
+onclick="showTopupSections()"
+>
+💎 TOP UP
+</button>
+
+</div>
+
+<!-- ================= FEATURED ACCOUNTS ================= -->
+
+<section
+id="accounts"
+class="game-section is-hidden"
+data-section-type="account"
+>
 
 <div class="section-heading">
 
@@ -1671,11 +1730,10 @@ VIEW ALL →
 
 </section>
 
-
-<!-- REAL ACCOUNTS ARE LOADED FROM FIRESTORE -->
+<!-- ================= REAL ACCOUNT SECTIONS ================= -->
 
 <section
-class="game-section"
+class="game-section account-section is-hidden"
 id="freefire-section"
 data-game="freefire"
 >
@@ -1692,9 +1750,8 @@ id="freefire-products"
 
 </section>
 
-
 <section
-class="game-section"
+class="game-section account-section is-hidden"
 id="efootball-section"
 data-game="efootball"
 >
@@ -1708,9 +1765,8 @@ data-game="efootball"
 
 </section>
 
-
 <section
-class="game-section"
+class="game-section account-section is-hidden"
 id="codm-section"
 data-game="codm"
 >
@@ -1724,9 +1780,8 @@ data-game="codm"
 
 </section>
 
-
 <section
-class="game-section"
+class="game-section account-section is-hidden"
 id="dls-section"
 data-game="dls"
 >
@@ -1740,9 +1795,8 @@ data-game="dls"
 
 </section>
 
-
 <section
-class="game-section"
+class="game-section account-section is-hidden"
 id="fcmobile-section"
 data-game="fcmobile"
 >
@@ -1756,11 +1810,10 @@ data-game="fcmobile"
 
 </section>
 
-
-<!-- TOP UPS -->
+<!-- ================= TOP UPS ================= -->
 
 <section
-class="game-section"
+class="game-section topup-section is-hidden"
 id="topup-freefire"
 data-topup-section="freefire"
 >
@@ -1798,9 +1851,8 @@ SELECT
 
 </section>
 
-
 <section
-class="game-section"
+class="game-section topup-section is-hidden"
 id="topup-efootball"
 data-topup-section="efootball"
 >
@@ -1838,9 +1890,8 @@ SELECT
 
 </section>
 
-
 <section
-class="game-section"
+class="game-section topup-section is-hidden"
 id="topup-codm"
 data-topup-section="codm"
 >
@@ -1878,9 +1929,8 @@ SELECT
 
 </section>
 
-
 <section
-class="game-section"
+class="game-section topup-section is-hidden"
 id="topup-dls"
 data-topup-section="dls"
 >
@@ -1918,9 +1968,8 @@ SELECT
 
 </section>
 
-
 <section
-class="game-section"
+class="game-section topup-section is-hidden"
 id="topup-fcmobile"
 data-topup-section="fcmobile"
 >
@@ -1957,7 +2006,7 @@ SELECT
 </div>
 
 </section>
-
+<!-- ================= FEATURES ================= -->
 
 <section class="features">
 
@@ -1986,7 +2035,6 @@ SELECT
 </div>
 
 </section>
-
 
 <footer>
 
@@ -2824,6 +2872,177 @@ const auth=getAuth(app);
 const db=getFirestore(app);
 
 
+/* ================= ALL / SECTION CONTROL ================= */
+
+const accountSections=[
+"accounts",
+"freefire-section",
+"efootball-section",
+"codm-section",
+"dls-section",
+"fcmobile-section"
+];
+
+const topupSections=[
+"topup-freefire",
+"topup-efootball",
+"topup-codm",
+"topup-dls",
+"topup-fcmobile"
+];
+
+function hideSections(list){
+
+list.forEach(id=>{
+
+const section=document.getElementById(id);
+
+if(section){
+section.classList.add("is-hidden");
+}
+
+});
+
+}
+
+function showSections(list){
+
+list.forEach(id=>{
+
+const section=document.getElementById(id);
+
+if(section){
+section.classList.remove("is-hidden");
+}
+
+});
+
+}
+
+function clearFilterActive(){
+
+document.querySelectorAll(".filter").forEach(btn=>{
+btn.classList.remove("active");
+});
+
+}
+
+window.showAllChoices=function(button){
+
+hideSections(accountSections);
+hideSections(topupSections);
+
+const choices=document.getElementById("allChoices");
+
+if(choices){
+choices.classList.add("show");
+}
+
+clearFilterActive();
+
+if(button){
+button.classList.add("active");
+}
+
+window.scrollTo({
+top:document.querySelector(".filters").offsetTop-90,
+behavior:"smooth"
+});
+
+};
+
+window.showAccountSections=function(button){
+
+hideSections(topupSections);
+showSections(accountSections);
+
+const choices=document.getElementById("allChoices");
+
+if(choices){
+choices.classList.remove("show");
+}
+
+clearFilterActive();
+
+if(button){
+button.classList.add("active");
+}else{
+
+const allButton=document.querySelector(".filter");
+
+if(allButton){
+allButton.classList.add("active");
+}
+
+}
+
+};
+
+window.showTopupSections=function(){
+
+hideSections(accountSections);
+showSections(topupSections);
+
+const choices=document.getElementById("allChoices");
+
+if(choices){
+choices.classList.remove("show");
+}
+
+clearFilterActive();
+
+const allButton=document.querySelector(".filter");
+
+if(allButton){
+allButton.classList.add("active");
+}
+
+};
+
+window.scrollToGame=function(id){
+
+const element=document.getElementById(id);
+
+if(element){
+
+setTimeout(()=>{
+
+element.scrollIntoView({
+behavior:"smooth",
+block:"start"
+});
+
+},50);
+
+}
+
+};
+
+
+/* ================= INITIAL STATE ================= */
+
+function initializeSectionView(){
+
+hideSections(accountSections);
+hideSections(topupSections);
+
+const choices=document.getElementById("allChoices");
+
+if(choices){
+choices.classList.remove("show");
+}
+
+const allButton=document.querySelector(".filter");
+
+if(allButton){
+allButton.classList.add("active");
+}
+
+}
+
+initializeSectionView();
+
+
 /* ================= LOGIN ================= */
 
 window.socialLogin=async function(type){
@@ -2880,8 +3099,7 @@ document.getElementById("welcomeMessage");
 
 if(!email||!password){
 
-message.textContent=
-"Enter your email and password.";
+message.textContent="Enter your email and password.";
 
 return;
 
@@ -2897,6 +3115,8 @@ email,
 password
 );
 
+message.textContent="Login successful.";
+
 showSite();
 
 }
@@ -2906,64 +3126,20 @@ catch(error){
 console.error(error);
 
 message.textContent=
-"Login failed. Check your email and password.";
+error.message||"Login failed.";
 
 }
 
 };
 
 
-window.welcomeSignup=async function(){
+window.welcomeSignup=function(){
 
-const email=
-document.getElementById("welcomeEmail").value.trim();
+openCustomerAccount();
 
-const password=
-document.getElementById("welcomePassword").value;
-
-const message=
-document.getElementById("welcomeMessage");
-
-if(!email||!password){
-
-message.textContent=
-"Enter an email and password first.";
-
-return;
-
-}
-
-if(password.length<6){
-
-message.textContent=
-"Password must be at least 6 characters.";
-
-return;
-
-}
-
-try{
-
-message.textContent="Creating account...";
-
-await createUserWithEmailAndPassword(
-auth,
-email,
-password
-);
-
-showSite();
-
-}
-
-catch(error){
-
-console.error(error);
-
-message.textContent=
-error.message||"Could not create account.";
-
-}
+setTimeout(()=>{
+showSignup();
+},100);
 
 };
 
@@ -2979,7 +3155,7 @@ document.getElementById("welcomeMessage");
 if(!email){
 
 message.textContent=
-"Enter your Gmail/email address first.";
+"Enter your email first.";
 
 return;
 
@@ -2987,13 +3163,10 @@ return;
 
 try{
 
-await sendPasswordResetEmail(
-auth,
-email
-);
+await sendPasswordResetEmail(auth,email);
 
 message.textContent=
-"Password reset email sent. Check your Gmail inbox.";
+"Password reset email sent.";
 
 }
 
@@ -3002,39 +3175,43 @@ catch(error){
 console.error(error);
 
 message.textContent=
-"Could not send the reset email. Check the email address.";
+error.message||"Unable to send reset email.";
 
 }
 
 };
 
 
-function showSite(){
+window.showSite=function(){
 
 document.getElementById("welcomeScreen").style.display="none";
 document.getElementById("siteContent").style.display="block";
 
+initializeSectionView();
+
+};
+
+
+onAuthStateChanged(auth,user=>{
+
+if(user){
+
+showSite();
+
 }
+
+});
 
 
 /* ================= CUSTOMER ACCOUNT ================= */
 
 window.openCustomerAccount=function(){
 
-openModal("customerAccountModal");
-
-if(auth.currentUser){
-
-showCustomerDashboard();
-
-}else{
-
-showAuthChoices();
-
-}
+document
+.getElementById("customerAccountModal")
+.classList.add("show");
 
 };
-
 
 window.showSignup=function(){
 
@@ -3043,53 +3220,12 @@ document.getElementById("loginBox").style.display="none";
 
 };
 
-
 window.showLogin=function(){
 
-document.getElementById("signupBox").style.display="none";
 document.getElementById("loginBox").style.display="block";
+document.getElementById("signupBox").style.display="none";
 
 };
-
-
-function showAuthChoices(){
-
-document.getElementById("authChoices").style.display="block";
-document.getElementById("customerDashboard").style.display="none";
-
-};
-
-
-function showCustomerDashboard(){
-
-const user=auth.currentUser;
-
-if(!user)return;
-
-showSite();
-
-document.getElementById("authChoices").style.display="none";
-document.getElementById("customerDashboard").style.display="block";
-
-const name=
-user.displayName||
-user.email||
-"Customer";
-
-document.getElementById("customerWelcome").textContent=
-"Welcome back, "+name+" 👋";
-
-document.getElementById("customerName").textContent=name;
-
-document.getElementById("customerEmail").textContent=
-user.email||"";
-
-loadCustomerPhoto();
-
-};
-
-
-/* ================= CUSTOMER CREATE ================= */
 
 window.createCustomerAccount=async function(){
 
@@ -3108,22 +3244,15 @@ document.getElementById("accountMessage");
 if(!name||!email||!password){
 
 message.textContent=
-"Please fill in everything.";
-
-return;
-
-}
-
-if(password.length<6){
-
-message.textContent=
-"Password must be at least 6 characters.";
+"Please fill in all fields.";
 
 return;
 
 }
 
 try{
+
+message.textContent="Creating account...";
 
 const result=
 await createUserWithEmailAndPassword(
@@ -3132,17 +3261,14 @@ email,
 password
 );
 
-await updateProfile(
-result.user,
-{
+await updateProfile(result.user,{
 displayName:name
-}
-);
+});
 
 message.textContent=
-"Account created successfully!";
+"Account created successfully.";
 
-showCustomerDashboard();
+showCustomerDashboard(result.user);
 
 }
 
@@ -3150,14 +3276,13 @@ catch(error){
 
 console.error(error);
 
-message.textContent=error.message;
+message.textContent=
+error.message||"Account creation failed.";
 
 }
 
 };
 
-
-/* ================= CUSTOMER LOGIN ================= */
 
 window.loginCustomer=async function(){
 
@@ -3181,16 +3306,18 @@ return;
 
 try{
 
+message.textContent="Logging in...";
+
+const result=
 await signInWithEmailAndPassword(
 auth,
 email,
 password
 );
 
-showCustomerDashboard();
+message.textContent="Login successful.";
 
-message.textContent=
-"Login successful!";
+showCustomerDashboard(result.user);
 
 }
 
@@ -3199,14 +3326,12 @@ catch(error){
 console.error(error);
 
 message.textContent=
-"Login failed. Check your email and password.";
+error.message||"Login failed.";
 
 }
 
 };
 
-
-/* ================= CUSTOMER PASSWORD RESET ================= */
 
 window.customerForgotPassword=async function(){
 
@@ -3219,7 +3344,7 @@ document.getElementById("accountMessage");
 if(!email){
 
 message.textContent=
-"Enter your email address first.";
+"Enter your email first.";
 
 return;
 
@@ -3227,13 +3352,10 @@ return;
 
 try{
 
-await sendPasswordResetEmail(
-auth,
-email
-);
+await sendPasswordResetEmail(auth,email);
 
 message.textContent=
-"Password reset email sent to your Gmail. Check your inbox.";
+"Password reset email sent.";
 
 }
 
@@ -3242,49 +3364,397 @@ catch(error){
 console.error(error);
 
 message.textContent=
-"Could not send the password reset email.";
+error.message||"Unable to send reset email.";
 
 }
 
 };
 
 
-/* ================= PHOTO ================= */
+function showCustomerDashboard(user){
+
+document.getElementById("authChoices").style.display="none";
+document.getElementById("customerDashboard").style.display="block";
+
+document.getElementById("customerName").textContent=
+user.displayName||"Customer";
+
+document.getElementById("customerEmail").textContent=
+user.email||"Email";
+
+}
+
+
+window.customerLogout=async function(){
+
+try{
+
+await signOut(auth);
+
+document.getElementById("customerDashboard").style.display="none";
+document.getElementById("authChoices").style.display="block";
+
+document.getElementById("customerWelcome").textContent=
+"Create an account or login to Crispy Shop.";
+
+}
+catch(error){
+
+console.error(error);
+
+}
+
+};
+
+
+/* ================= CUSTOMER INFO ================= */
+
+window.customerInfo=function(type){
+
+const options=
+document.getElementById("customerOptions");
+
+const info=
+document.getElementById("customerInfo");
+
+const content=
+document.getElementById("customerInfoContent");
+
+options.style.display="none";
+info.style.display="block";
+
+let html="";
+
+if(type==="PROFILE"){
+
+html=`
+<div class="info-card">
+<h3>MY PROFILE</h3>
+<p>Your Crispy Shop customer profile.</p>
+</div>
+`;
+
+}
+
+if(type==="ORDERS"){
+
+html=`
+<div class="info-card">
+<h3>MY ORDERS</h3>
+<p>Your orders will appear here.</p>
+</div>
+`;
+
+}
+
+if(type==="PURCHASED"){
+
+html=`
+<div class="info-card">
+<h3>MY PURCHASED ACCOUNTS</h3>
+<p>Your purchased gaming accounts will appear here.</p>
+</div>
+`;
+
+}
+
+if(type==="TOPUPS"){
+
+html=`
+<div class="info-card">
+<h3>MY TOP-UPS</h3>
+<p>Your top-up history will appear here.</p>
+</div>
+`;
+
+}
+
+if(type==="REVIEWS"){
+
+html=`
+<div class="info-card">
+<h3>MY REVIEWS</h3>
+<p>Your reviews will appear here.</p>
+</div>
+`;
+
+}
+
+if(type==="PASSWORD"){
+
+html=`
+<div class="info-card">
+<h3>CHANGE PASSWORD</h3>
+<p>Use the forgot-password option to reset your password.</p>
+</div>
+`;
+
+}
+
+content.innerHTML=html;
+
+};
+
+
+window.backCustomerOptions=function(){
+
+document.getElementById("customerInfo").style.display="none";
+document.getElementById("customerOptions").style.display="grid";
+
+};
+
+
+/* ================= MODAL HELPERS ================= */
+
+window.closeModal=function(id){
+
+const modal=document.getElementById(id);
+
+if(modal){
+modal.classList.remove("show");
+}
+
+};
+
+
+window.openAccountChoices=function(){
+
+closeModal("topupModal");
+
+document
+.getElementById("accountModal")
+.classList.add("show");
+
+};
+
+
+window.openTopup=function(){
+
+closeModal("accountModal");
+
+document
+.getElementById("topupModal")
+.classList.add("show");
+
+};
+
+
+window.openReviews=function(){
+
+document
+.getElementById("reviewModal")
+.classList.add("show");
+
+};
+
+
+window.openContactOptions=function(){
+
+document
+.getElementById("contactModal")
+.classList.add("show");
+
+};
+
+
+window.contactMe=function(){
+
+openContactOptions();
+
+};
+
+
+window.openSearch=function(){
+
+document
+.getElementById("searchModal")
+.classList.add("show");
+
+const input=
+document.getElementById("searchInput");
+
+if(input){
+
+setTimeout(()=>{
+input.focus();
+},100);
+
+}
+
+};
+
+
+window.openCart=function(){
+
+document
+.getElementById("cartModal")
+.classList.add("show");
+
+};
+
+
+/* ================= ACCOUNT / TOPUP NAVIGATION ================= */
+
+window.chooseGame=function(game){
+
+closeModal("accountModal");
+
+showAccountSections();
+
+const target=
+document.getElementById(game+"-section");
+
+if(target){
+
+setTimeout(()=>{
+
+target.scrollIntoView({
+behavior:"smooth",
+block:"start"
+});
+
+},100);
+
+}
+
+};
+
+
+window.chooseTopup=function(id){
+
+closeModal("topupModal");
+
+showTopupSections();
+
+const target=
+document.getElementById(id);
+
+if(target){
+
+setTimeout(()=>{
+
+target.scrollIntoView({
+behavior:"smooth",
+block:"start"
+});
+
+},100);
+
+}
+
+};
+
+
+/* ================= DRAWER ================= */
+
+window.openDrawer=function(){
+
+document
+.getElementById("drawer")
+.classList.add("open");
+
+};
+
+
+window.closeDrawer=function(){
+
+document
+.getElementById("drawer")
+.classList.remove("open");
+
+};
+
+
+window.drawerOutside=function(event){
+
+if(event.target.id==="drawer"){
+
+closeDrawer();
+
+}
+
+};
+
+
+/* ================= REVIEWS ================= */
+
+window.sendReview=function(stars){
+
+closeModal("reviewModal");
+
+showToast(
+"Thanks for your "+stars+" star review!"
+);
+
+};
+
+
+/* ================= TOAST ================= */
+
+window.showToast=function(message){
+
+let toast=document.getElementById("crispyToast");
+
+if(!toast){
+
+toast=document.createElement("div");
+
+toast.id="crispyToast";
+
+toast.style.position="fixed";
+toast.style.left="50%";
+toast.style.bottom="25px";
+toast.style.transform="translateX(-50%)";
+toast.style.background="#071619";
+toast.style.color="#ffd400";
+toast.style.border="1px solid #00e5d5";
+toast.style.padding="12px 18px";
+toast.style.zIndex="99999";
+toast.style.fontWeight="bold";
+
+document.body.appendChild(toast);
+
+}
+
+toast.textContent=message;
+toast.style.display="block";
+
+clearTimeout(window.toastTimer);
+
+window.toastTimer=
+setTimeout(()=>{
+
+toast.style.display="none";
+
+},2500);
+
+};
+
+
+/* ================= CUSTOMER PHOTO ================= */
 
 window.uploadCustomerPhoto=function(event){
-
-const user=auth.currentUser;
-
-if(!user)return;
 
 const file=
 event.target.files&&event.target.files[0];
 
 if(!file)return;
 
-if(!file.type.startsWith("image/")){
-
-alert("Please select an image.");
-
-return;
-
-}
-
-const reader=new FileReader();
+const reader=
+new FileReader();
 
 reader.onload=function(){
 
-localStorage.setItem(
-"crispyCustomerPhoto_"+user.uid,
-reader.result
-);
+const preview=
+document.getElementById("customerPhotoPreview");
 
-loadCustomerPhoto();
+const placeholder=
+document.getElementById("customerPhotoPlaceholder");
 
-document.getElementById(
-"accountMessage"
-).textContent=
-"Profile photo updated successfully.";
+preview.src=reader.result;
+preview.style.display="block";
+
+placeholder.style.display="none";
 
 };
 
@@ -3293,475 +3763,198 @@ reader.readAsDataURL(file);
 };
 
 
-function loadCustomerPhoto(){
+/* ================= SEARCH ================= */
 
-const user=auth.currentUser;
+const searchInput=
+document.getElementById("searchInput");
 
-if(!user)return;
+if(searchInput){
 
-const photo=
-localStorage.getItem(
-"crispyCustomerPhoto_"+user.uid
-);
+searchInput.addEventListener("input",function(){
 
-const img=
-document.getElementById(
-"customerPhotoPreview"
-);
+const query=
+this.value.trim().toLowerCase();
 
-const placeholder=
-document.getElementById(
-"customerPhotoPlaceholder"
-);
+const results=
+document.getElementById("searchResults");
 
-if(!img||!placeholder)return;
+if(!query){
 
-if(photo){
-
-img.src=photo;
-img.style.display="block";
-placeholder.style.display="none";
-
-}else{
-
-img.src="";
-img.style.display="none";
-placeholder.style.display="block";
-
-}
-
-}
-
-
-/* ================= CUSTOMER INFO ================= */
-
-window.customerInfo=function(type){
-
-const content=
-document.getElementById(
-"customerInfoContent"
-);
-
-document.getElementById(
-"customerOptions"
-).style.display="none";
-
-document.getElementById(
-"customerInfo"
-).style.display="block";
-
-
-if(type==="PROFILE"){
-
-const user=auth.currentUser;
-
-content.innerHTML=`
-
-<div class="info-card">
-
-<h3>MY PROFILE</h3>
-
-<p>
-👤 Name:
-${escapeHtml(user.displayName||"Customer")}
-</p>
-
-<p>
-📧 Email:
-${escapeHtml(user.email||"")}
-</p>
-
-<p>
-✅ Account: Active
-</p>
-
+results.innerHTML=`
+<div class="search-result">
+Type something to search.
 </div>
-
 `;
-
-}
-
-
-if(type==="ORDERS"){
-
-content.innerHTML=`
-
-<div class="info-card">
-
-<h3>MY ORDERS</h3>
-
-<p>
-Your orders will appear here.
-</p>
-
-</div>
-
-`;
-
-}
-
-
-if(type==="PURCHASED"){
-
-content.innerHTML=`
-
-<div class="info-card">
-
-<h3>MY PURCHASED ACCOUNTS</h3>
-
-<p>
-Your purchased gaming accounts
-will appear here.
-</p>
-
-</div>
-
-`;
-
-}
-
-
-if(type==="TOPUPS"){
-
-content.innerHTML=`
-
-<div class="info-card">
-
-<h3>MY TOP-UPS</h3>
-
-<p>
-Your top-up history will appear here.
-</p>
-
-</div>
-
-`;
-
-}
-
-
-if(type==="REVIEWS"){
-
-content.innerHTML=`
-
-<div class="info-card">
-
-<h3>MY REVIEWS</h3>
-
-<p>
-Your reviews will appear here.
-</p>
-
-</div>
-
-`;
-
-}
-
-
-if(type==="PASSWORD"){
-
-content.innerHTML=`
-
-<div class="info-card">
-
-<h3>CHANGE PASSWORD</h3>
-
-<p>
-We will send a password reset email to
-your account email.
-</p>
-
-<button
-class="yellow-btn full-btn"
-onclick="sendDashboardPasswordReset()"
->
-SEND PASSWORD RESET EMAIL
-</button>
-
-</div>
-
-`;
-
-}
-
-};
-
-
-window.sendDashboardPasswordReset=
-async function(){
-
-const user=auth.currentUser;
-
-if(!user||!user.email){
-
-alert("Please log in first.");
 
 return;
 
 }
 
-try{
-
-await sendPasswordResetEmail(
-auth,
-user.email
+const matches=[
+"Free Fire",
+"eFootball",
+"CODM",
+"DLS",
+"FC Mobile",
+"Free Fire Top Up",
+"eFootball Top Up",
+"CODM Top Up",
+"DLS Top Up",
+"FC Mobile Top Up"
+].filter(item=>
+item.toLowerCase().includes(query)
 );
 
-alert(
-"Password reset email sent to "+user.email+
-". Check your Gmail inbox."
-);
+if(!matches.length){
+
+results.innerHTML=`
+<div class="search-result">
+No results found.
+</div>
+`;
+
+return;
 
 }
 
-catch(error){
+results.innerHTML=
+matches.map(item=>`
+<div class="search-result"
+onclick="showToast('${item} selected')">
+${item}
+</div>
+`).join("");
 
-console.error(error);
-
-alert(
-"Could not send the password reset email."
-);
-
-}
-
-};
-
-
-window.backCustomerOptions=function(){
-
-document.getElementById(
-"customerOptions"
-).style.display="grid";
-
-document.getElementById(
-"customerInfo"
-).style.display="none";
-
-};
-
-
-window.customerLogout=async function(){
-
-await signOut(auth);
-
-closeModal(
-"customerAccountModal"
-);
-
-};
-
-
-/* ================= AUTH STATE ================= */
-
-onAuthStateChanged(
-auth,
-function(user){
-
-if(user){
-
-showSite();
-
-}else{
-
-document.getElementById(
-"welcomeScreen"
-).style.display="flex";
-
-document.getElementById(
-"siteContent"
-).style.display="none";
+});
 
 }
 
+
+/* ================= CLOSE MODALS ON BACKDROP ================= */
+
+document.querySelectorAll(".modal").forEach(modal=>{
+
+modal.addEventListener("click",function(event){
+
+if(event.target===modal){
+
+modal.classList.remove("show");
+
 }
-);
+
+});
+
+});
 
 
-/* ================= FIRESTORE ================= */
+/* ================= LOAD FIRESTORE ACCOUNTS ================= */
 
-async function loadShopAccounts(){
+async function loadAccounts(){
 
 try{
 
 const snapshot=
-await getDocs(
-collection(
-db,
-"accounts"
-)
-);
+await getDocs(collection(db,"accounts"));
 
-snapshot.forEach(function(item){
+snapshot.forEach(doc=>{
 
-applyFirestoreAccount(
-item.id,
-item.data()
-);
+const data=doc.data();
+
+renderFirestoreAccount(data,doc.id);
 
 });
 
-cleanupEmptyGameSections();
-
 }
-
 catch(error){
 
 console.error(
-"Could not load shop accounts:",
+"Unable to load accounts:",
 error
 );
 
-cleanupEmptyGameSections();
-
 }
 
 }
 
 
-function gameToId(game){
-
-const value=
-String(game||"").toLowerCase();
-
-if(
-value.includes("free fire")||
-value.includes("freefire")
-)
-return "freefire";
-
-if(
-value.includes("efootball")||
-value.includes("e-football")
-)
-return "efootball";
-
-if(value.includes("cod"))
-return "codm";
-
-if(value.includes("dls"))
-return "dls";
-
-if(value.includes("fc"))
-return "fcmobile";
-
-return "";
-
-}
-
-
-function applyFirestoreAccount(
-id,
-data
-){
+function renderFirestoreAccount(data,id){
 
 const game=
-gameToId(data.game);
+String(data.game||"freefire").toLowerCase();
 
-if(!game)return;
+const container=
+document.getElementById(game+"-products");
 
-const section=
-document.getElementById(
-game+"-section"
-);
+if(!container)return;
 
-if(!section)return;
-
-const products=
-section.querySelector(".products");
-
-let product=
-document.querySelector(
-'[data-firestore-id="'+CSS.escape(id)+'"]'
-);
-
-if(!product){
-
-product=
+const product=
 document.createElement("div");
 
 product.className="product";
 
-product.dataset.firestoreId=id;
-
-products.appendChild(product);
-
-}
-
 const status=
-String(
-data.status||"AVAILABLE"
-).toUpperCase();
+data.status||"AVAILABLE";
+
+const level=
+data.level||"N/A";
+
+const region=
+data.region||"N/A";
+
+const name=
+data.name||"Gaming Account";
 
 const price=
-data.price||"₦0";
+data.price||"Contact";
+
+const description=
+data.description||"Gaming account available now.";
+
+const image=
+data.image||"";
 
 product.innerHTML=`
 
-<span class="heart">
+<div class="available">
+${status}
+</div>
+
+<div class="heart">
 ♡
-</span>
+</div>
 
-<span class="available">
-${escapeHtml(status)}
-</span>
-
-${
-data.photoUrl
-?
-`
+${image?`
 <img
 class="account-photo"
-src="${escapeHtml(data.photoUrl)}"
-alt="${escapeHtml(data.title||"Gaming account")}"
+src="${image}"
+alt="${name}"
 >
-`
-:
-""
-}
+`:""}
 
 <div class="game">
-
-${
-game==="freefire"
-?
-"FREE F⚡RE"
-:
-escapeHtml(
-data.game||game.toUpperCase()
-)
-}
-
+${game.toUpperCase()}
 </div>
 
 <h3>
-${escapeHtml(
-data.title||"Gaming Account"
-)}
+${name}
 </h3>
 
 <div class="details">
-Level
-${escapeHtml(data.level||"—")}
-·
-${escapeHtml(data.region||"REGION")}
+Level: ${level} · ${region}
 </div>
 
 <div class="description">
-${escapeHtml(data.description||"")}
+${description}
 </div>
 
 <div class="price">
-${escapeHtml(price)}
+₦${price}
 </div>
 
 <button
 class="details-btn"
-${status==="SOLD"?"disabled":""}
 >
-${status==="SOLD"
-?"SOLD OUT"
-:"VIEW DETAILS"}
+VIEW DETAILS
 </button>
 
 `;
@@ -3769,500 +3962,70 @@ ${status==="SOLD"
 const button=
 product.querySelector(".details-btn");
 
-if(status!=="SOLD"){
-
-button.onclick=function(){
+button.addEventListener("click",()=>{
 
 openAccountDetails({
-
-id:id,
-
-game:
-data.game||game,
-
-title:
-data.title||"Gaming Account",
-
-level:
-data.level||"—",
-
-region:
-data.region||"REGION",
-
-description:
-data.description||"",
-
-price:price,
-
-photoUrl:
-data.photoUrl||"",
-
-status:status
+...data,
+id
+});
 
 });
 
-};
-
-}
-
-section.style.display="block";
-
-}
-
-
-function cleanupEmptyGameSections(){
-
-document
-.querySelectorAll(
-".game-section[data-game]"
-)
-.forEach(function(section){
-
-const real=
-section.querySelectorAll(
-"[data-firestore-id]"
-);
-
-section.style.display=
-real.length
-?"block"
-:"none";
-
-});
+container.appendChild(product);
 
 }
 
 
 /* ================= ACCOUNT DETAILS ================= */
 
-window.openAccountDetails=function(account){
+window.openAccountDetails=function(data){
+
+const modal=
+document.getElementById("accountDetailsModal");
+
+document.getElementById("detailTitle").textContent=
+data.name||"ACCOUNT DETAILS";
+
+document.getElementById("detailGame").textContent=
+data.game||"N/A";
+
+document.getElementById("detailStatus").textContent=
+data.status||"AVAILABLE";
+
+document.getElementById("detailLevel").textContent=
+data.level||"N/A";
+
+document.getElementById("detailRegion").textContent=
+data.region||"N/A";
+
+document.getElementById("detailDescription").textContent=
+data.description||"";
+
+document.getElementById("detailPrice").textContent=
+data.price?`₦${data.price}`:"Contact";
 
 const photo=
-document.getElementById(
-"detailPhoto"
-);
+document.getElementById("detailPhoto");
 
-document.getElementById(
-"detailTitle"
-).textContent=
-account.title;
+if(data.image){
 
-document.getElementById(
-"detailGame"
-).textContent=
-account.game;
-
-document.getElementById(
-"detailStatus"
-).textContent=
-account.status;
-
-document.getElementById(
-"detailLevel"
-).textContent=
-account.level;
-
-document.getElementById(
-"detailRegion"
-).textContent=
-account.region;
-
-document.getElementById(
-"detailDescription"
-).textContent=
-account.description||
-"No description provided.";
-
-document.getElementById(
-"detailPrice"
-).textContent=
-account.price;
-
-if(account.photoUrl){
-
-photo.src=account.photoUrl;
+photo.src=data.image;
 photo.style.display="block";
 
 }else{
 
-photo.src="";
 photo.style.display="none";
 
 }
 
-const button=
-document.getElementById(
-"detailCartButton"
-);
-
-button.disabled=
-account.status==="SOLD"||
-account.price==="₦0";
-
-button.textContent=
-account.status==="SOLD"
-?
-"SOLD OUT"
-:
-"ADD TO CART";
-
-button.onclick=function(){
-
-if(!button.disabled){
-
-addToCart(
-account.title,
-account.price
-);
-
-closeModal(
-"accountDetailsModal"
-);
-
-}
-
-};
-
-openModal(
-"accountDetailsModal"
-);
-
-};
-
-
-function escapeHtml(value){
-
-return String(value)
-.replaceAll("&","&amp;")
-.replaceAll("<","&lt;")
-.replaceAll(">","&gt;")
-.replaceAll('"',"&quot;")
-.replaceAll("'","&#039;");
-
-}
-
-
-loadShopAccounts();
-
-</script>
-
-
-<!-- ================= NORMAL JAVASCRIPT ================= -->
-
-<script>
-
-const WHATSAPP=
-"2347051885555";
-
-
-/* MODALS */
-
-function openModal(id){
-
-const modal=
-document.getElementById(id);
-
-if(modal)
-modal.classList.add("show");
-
-}
-
-
-function closeModal(id){
-
-const modal=
-document.getElementById(id);
-
-if(modal)
-modal.classList.remove("show");
-
-}
-
-
-document
-.querySelectorAll(".modal")
-.forEach(function(modal){
-
-modal.addEventListener(
-"click",
-function(e){
-
-if(e.target===modal)
-modal.classList.remove("show");
-
-}
-);
-
-});
-
-
-/* ACCOUNT */
-
-function openAccountChoices(){
-
-openModal("accountModal");
-
-}
-
-
-function chooseGame(game){
-
-closeModal("accountModal");
-
-const target=
-document.getElementById(
-game+"-section"
-);
-
-if(
-target&&
-target.style.display!=="none"
-){
-
-target.scrollIntoView({
-behavior:"smooth",
-block:"start"
-});
-
-}else{
-
-showToast(
-"No accounts available for this game yet."
-);
-
-}
-
-}
-
-
-/* TOP UP */
-
-function openTopup(){
-
-openModal("topupModal");
-
-}
-
-
-function chooseTopup(id){
-
-closeModal("topupModal");
-
-const target=
-document.getElementById(id);
-
-if(target){
-
-target.scrollIntoView({
-behavior:"smooth",
-block:"start"
-});
-
-}
-
-}
-
-
-/* REVIEWS */
-
-function openReviews(){
-
-openModal("reviewModal");
-
-}
-
-
-function sendReview(stars){
-
-closeModal("reviewModal");
-
-window.open(
-"https://wa.me/"+
-WHATSAPP+
-"?text="+
-encodeURIComponent(
-"Hello Crispy Shop, I want to leave a "+
-stars+
-" star review."
-),
-"_blank"
-);
-
-}
-
-
-/* CONTACT */
-
-function openContactOptions(){
-
-openModal("contactModal");
-
-}
-
-
-function contactMe(){
-
-openContactOptions();
-
-}
-
-
-/* SEARCH */
-
-function openSearch(){
-
-openModal("searchModal");
-
-setTimeout(
+document.getElementById("detailCartButton").onclick=
 function(){
 
-document
-.getElementById("searchInput")
-.focus();
+addToCart(data);
 
-},
-100
-);
+};
 
-}
-
-
-function runSearch(){
-
-const q=
-document
-.getElementById("searchInput")
-.value
-.toLowerCase()
-.trim();
-
-const results=
-document.getElementById(
-"searchResults"
-);
-
-if(!q){
-
-results.innerHTML=
-'<div class="search-result">'+
-'Type something to search.'+
-'</div>';
-
-return;
-
-}
-
-const products=
-Array.from(
-document.querySelectorAll(
-".product[data-firestore-id]"
-)
-);
-
-const matches=
-products.filter(
-function(product){
-
-return product.innerText
-.toLowerCase()
-.includes(q);
-
-}
-);
-
-if(!matches.length){
-
-results.innerHTML=
-'<div class="search-result">'+
-'No matching account found.'+
-'</div>';
-
-return;
-
-}
-
-results.innerHTML=
-matches.map(
-function(product){
-
-const title=
-product.querySelector("h3")
-?.innerText||
-"Gaming Account";
-
-const price=
-product.querySelector(".price")
-?.innerText||
-"₦0";
-
-return `
-
-<div
-class="search-result"
-onclick="goToProduct(this)"
->
-${escapeSearch(title)}
-—
-${escapeSearch(price)}
-</div>
-
-`;
-
-}
-).join("");
-
-window.searchMatches=
-matches;
-
-}
-
-
-document
-.getElementById("searchInput")
-.addEventListener(
-"input",
-runSearch
-);
-
-
-function escapeSearch(value){
-
-return String(value)
-.replaceAll("&","&amp;")
-.replaceAll("<","&lt;")
-.replaceAll(">","&gt;")
-.replaceAll('"',"&quot;")
-.replaceAll("'","&#039;");
-
-}
-
-
-window.goToProduct=
-function(element){
-
-const results=
-Array.from(
-document.querySelectorAll(
-"#searchResults .search-result"
-)
-);
-
-const index=
-results.indexOf(element);
-
-if(
-!window.searchMatches||
-!window.searchMatches[index]
-)
-return;
-
-closeModal("searchModal");
-
-window.searchMatches[index]
-.scrollIntoView({
-behavior:"smooth",
-block:"center"
-});
+modal.classList.add("show");
 
 };
 
@@ -4271,55 +4034,33 @@ block:"center"
 
 let cart=[];
 
+window.addToCart=function(data){
 
-function addToCart(
-name,
-price
-){
-
-if(price==="₦0"){
-
-showToast(
-"This account has not been posted yet."
-);
-
-return;
-
-}
-
-cart.push({
-name:name,
-price:price
-});
+cart.push(data);
 
 renderCart();
 
-showToast(
-name+
-" added to cart."
-);
+closeModal("accountDetailsModal");
 
-}
+showToast("Added to cart.");
+
+};
 
 
 function renderCart(){
 
 const list=
-document.getElementById(
-"cartList"
-);
+document.getElementById("cartList");
 
 const total=
-document.getElementById(
-"cartTotal"
-);
+document.getElementById("cartTotal");
 
 if(!cart.length){
 
+list.className="empty";
+
 list.innerHTML=
-'<div class="empty">'+
-'Your cart is empty.'+
-'</div>';
+"Your cart is empty.";
 
 total.textContent=
 "Total: ₦0";
@@ -4328,282 +4069,67 @@ return;
 
 }
 
+list.className="";
+
 let sum=0;
 
 list.innerHTML=
-cart.map(
-function(item,index){
+cart.map((item,index)=>{
 
-const value=
+const numeric=
 Number(
-String(item.price)
-.replace(/[₦,]/g,"")
+String(item.price||0)
+.replace(/[^0-9.]/g,"")
 )||0;
 
-sum+=value;
+sum+=numeric;
 
 return `
 
 <div class="cart-item">
 
-<span>
-${escapeCart(item.name)}
-</span>
-
-<strong class="cart-price">
-${escapeCart(item.price)}
+<div>
+<strong>
+${item.name||"Gaming Account"}
 </strong>
 
+<div class="cart-price">
+₦${item.price||0}
+</div>
+
+</div>
+
 <button
-onclick="removeCart(${index})"
-style="
-background:none;
-border:0;
-color:#ff5555;
-font-size:22px;
-"
+class="outline-btn"
+onclick="removeFromCart(${index})"
 >
-×
+REMOVE
 </button>
 
 </div>
 
 `;
 
-}
-).join("")
-+
-`
-
-<button
-class="yellow-btn"
-style="width:100%;margin-top:18px"
-onclick="checkout()"
->
-CHECKOUT ON WHATSAPP
-</button>
-
-`;
+}).join("");
 
 total.textContent=
-"Total: ₦"+
-sum.toLocaleString();
+"Total: ₦"+sum.toLocaleString();
 
 }
 
 
-function escapeCart(value){
-
-return String(value)
-.replaceAll("&","&amp;")
-.replaceAll("<","&lt;")
-.replaceAll(">","&gt;")
-.replaceAll('"',"&quot;")
-.replaceAll("'","&#039;");
-
-}
-
-
-function removeCart(index){
+window.removeFromCart=function(index){
 
 cart.splice(index,1);
 
 renderCart();
 
-}
+};
 
 
-function openCart(){
+/* ================= START ================= */
 
-renderCart();
-
-openModal("cartModal");
-
-}
-
-
-function checkout(){
-
-if(!cart.length)return;
-
-const text=
-"Hello Crispy Shop, I want to buy:\n"+
-cart.map(
-function(item){
-
-return "- "+
-item.name+
-" ("+
-item.price+
-")";
-
-}
-).join("\n");
-
-window.open(
-"https://wa.me/"+
-WHATSAPP+
-"?text="+
-encodeURIComponent(text),
-"_blank"
-);
-
-}
-
-
-/* FILTER */
-
-function filterProducts(
-game,
-button
-){
-
-document
-.querySelectorAll(".filter")
-.forEach(
-function(x){
-
-x.classList.remove("active");
-
-}
-);
-
-button.classList.add("active");
-
-document
-.querySelectorAll(
-".game-section[data-game]"
-)
-.forEach(
-function(section){
-
-const hasAccounts=
-section.querySelectorAll(
-"[data-firestore-id]"
-).length>0;
-
-section.style.display=
-(
-game==="all"||
-section.dataset.game===game
-)&&hasAccounts
-?
-"block"
-:
-"none";
-
-}
-);
-
-}
-
-
-/* DRAWER */
-
-function openDrawer(){
-
-document
-.getElementById("drawer")
-.classList.add("open");
-
-}
-
-
-function closeDrawer(){
-
-document
-.getElementById("drawer")
-.classList.remove("open");
-
-}
-
-
-function drawerOutside(e){
-
-if(e.target.id==="drawer")
-closeDrawer();
-
-}
-
-
-/* TOAST */
-
-function showToast(message){
-
-let toast=
-document.getElementById(
-"crispyToast"
-);
-
-if(!toast){
-
-toast=
-document.createElement("div");
-
-toast.id="crispyToast";
-
-toast.style.cssText=
-`
-position:fixed;
-z-index:5000;
-left:50%;
-bottom:25px;
-transform:translateX(-50%);
-padding:13px 20px;
-background:#ffd400;
-color:#050708;
-font-weight:bold;
-border-radius:4px;
-`;
-
-document.body.appendChild(toast);
-
-}
-
-toast.textContent=message;
-
-toast.style.display="block";
-
-setTimeout(
-function(){
-
-toast.style.display="none";
-
-},
-2500
-);
-
-}
-
-
-/* NAV */
-
-document
-.querySelectorAll("nav a")
-.forEach(
-function(link){
-
-link.addEventListener(
-"click",
-function(){
-
-document
-.querySelectorAll("nav a")
-.forEach(
-function(a){
-
-a.classList.remove("active");
-
-}
-);
-
-this.classList.add("active");
-
-}
-);
-
-}
-);
+loadAccounts();
 
 </script>
 
