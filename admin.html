@@ -56,6 +56,10 @@ button:disabled{
   cursor:not-allowed;
 }
 
+.hidden{
+  display:none !important;
+}
+
 .logout{
   background:transparent;
   border:1px solid #ffd400;
@@ -286,18 +290,26 @@ textarea{
     width:100%!important;
   }
 }
+
+.logo-fallback{
+  display:none;
+  color:#00e5d5;
+  font-weight:900;
+  letter-spacing:2px;
+  font-size:18px;
+}
+
+.logo-fallback-large{
+  text-align:center;
+  font-size:28px;
+  margin:0 auto 20px;
+}
 </style>
 </head>
 
 <body>
 
 <header>
-
-<img
-  src="logo.png.jpeg"
-  class="logo"
-  alt="CRISPY SHOP"
->
 
 <div class="header-right">
 
@@ -327,7 +339,7 @@ textarea{
 >
 
 <img
-  src="logo.png.jpeg"
+  src="YOUR_EMBEDDED_LOGO_HERE"
   class="logo-large"
   alt="CRISPY SHOP"
 >
@@ -377,15 +389,6 @@ textarea{
 </button>
 
 <button
-  id="forgotPasswordBtn"
-  type="button"
-  class="secondary"
-  style="width:100%;margin-top:12px;"
->
-  FORGOT PASSWORD?
-</button>
-
-<button
   id="passkeyLoginBtn"
   class="passkey-btn"
 >
@@ -411,6 +414,7 @@ textarea{
 ></div>
 
 </section>
+
 <!-- ADMIN AREA -->
 
 <section
@@ -821,27 +825,13 @@ const photoStatus =
 
 
 let editingId = null;
-
 let selectedPhotoData = "";
-
 let oldPhotoData = "";
 
 
 /* =========================
    FACE ID / PASSKEY
 ========================= */
-
-/*
-IMPORTANT:
-
-This is a device passkey convenience layer.
-
-Firebase email/password remains
-the real authentication method.
-
-The WebAuthn credential is stored
-locally on this browser/device.
-*/
 
 const PASSKEY_STORAGE =
   "crispyShopAdminPasskey";
@@ -1019,7 +1009,6 @@ async function registerPasskey(){
 
               alg:
                 -7
-
             },
 
             {
@@ -1028,7 +1017,6 @@ async function registerPasskey(){
 
               alg:
                 -257
-
             }
 
           ],
@@ -1209,20 +1197,6 @@ async function passkeyLogin(){
     }
 
 
-    /*
-    IMPORTANT SECURITY NOTE:
-
-    This browser-side convenience check
-    proves the local device credential was
-    unlocked.
-
-    Firebase authentication still needs
-    to be established before Firestore
-    access is granted.
-
-    Therefore we do NOT bypass Firebase.
-    */
-
     showMessage(
       loginMessage,
       "✓ Device verified. Enter your admin password to complete Firebase login.",
@@ -1284,48 +1258,36 @@ passkeyLoginBtn.addEventListener(
   passkeyLogin
 );
 
-
 registerPasskeyBtn.addEventListener(
   "click",
   registerPasskey
 );
-
-document
-  .getElementById("forgotPasswordBtn")
-  .addEventListener(
-    "click",
-    forgotPassword
-  );
 
 
 /* SHOW/HIDE PASSKEY SETUP */
 
 function updatePasskeyButtons(){
 
-  if(
-    !passkeySupported()
-  ){
+  if(!passkeySupported()){
 
-    passkeyLoginBtn.style.display =
-      "none";
-
-    registerPasskeyBtn.style.display =
-      "none";
+    passkeyLoginBtn.classList.add("hidden");
+    registerPasskeyBtn.classList.add("hidden");
 
     return;
 
   }
 
-
-  passkeyLoginBtn.style.display =
-    "block";
-
+  passkeyLoginBtn.classList.remove("hidden");
 
   if(
-    hasSavedPasskey()
+    auth.currentUser &&
+    auth.currentUser.email &&
+    auth.currentUser.email.toLowerCase() ===
+      ADMIN_EMAIL.toLowerCase() &&
+    !hasSavedPasskey()
   ){
 
-    registerPasskeyBtn.classList.add(
+    registerPasskeyBtn.classList.remove(
       "hidden"
     );
 
@@ -1338,7 +1300,6 @@ function updatePasskeyButtons(){
   }
 
 }
-
 
 updatePasskeyButtons();
 
@@ -1380,7 +1341,6 @@ function compressImage(file){
             function(){
 
               const maxWidth = 900;
-
               const maxHeight = 900;
 
               let width =
@@ -1430,6 +1390,7 @@ function compressImage(file){
                 canvas.getContext(
                   "2d"
                 );
+
 
               ctx.drawImage(
                 image,
@@ -1535,9 +1496,7 @@ accountPhoto.addEventListener(
 
 
     if(!file){
-
       return;
-
     }
 
 
@@ -1630,6 +1589,7 @@ accountPhoto.addEventListener(
 
       photoStatus.style.display =
         "none";
+
 
       showMessage(
         formMessage,
@@ -1730,7 +1690,7 @@ loginBtn.addEventListener(
 
       showMessage(
         loginMessage,
-        "Login failed. Check your email and password.",
+        "Login failed. Check your Firebase email/password and Authentication setup.",
         "error"
       );
 
@@ -1813,13 +1773,18 @@ forgotPasswordBtn.addEventListener(
         "success"
       );
 
+
     }catch(error){
 
-      console.error(error);
+      console.error(
+        "Password reset:",
+        error
+      );
+
 
       showMessage(
         loginMessage,
-        "Could not send password reset email.",
+        "Could not send password reset email. Check Firebase Authentication settings.",
         "error"
       );
 
@@ -1844,6 +1809,8 @@ onAuthStateChanged(
 
     if(!user){
 
+      updatePasskeyButtons();
+
       loginArea.style.display =
         "block";
 
@@ -1857,15 +1824,6 @@ onAuthStateChanged(
       adminEmail.textContent =
         "";
 
-      if(
-        passkeySupported()
-      ){
-
-        passkeyLoginBtn.style.display =
-          "block";
-
-      }
-
       return;
 
     }
@@ -1874,7 +1832,7 @@ onAuthStateChanged(
     if(
       !user.email ||
       user.email.toLowerCase() !==
-      ADMIN_EMAIL.toLowerCase()
+        ADMIN_EMAIL.toLowerCase()
     ){
 
       await signOut(auth);
@@ -1890,6 +1848,8 @@ onAuthStateChanged(
     }
 
 
+    updatePasskeyButtons();
+
     loginArea.style.display =
       "none";
 
@@ -1903,11 +1863,6 @@ onAuthStateChanged(
     adminEmail.textContent =
       user.email || "";
 
-
-    /*
-    Show passkey registration after
-    successful normal Firebase login.
-    */
 
     if(
       passkeySupported() &&
