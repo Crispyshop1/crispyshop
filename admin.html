@@ -255,162 +255,7 @@ textarea{
   margin-bottom:10px;
 }
 
-/* PHOTO */
-
-.photo-box{
-  border:1px dashed #00e5d5;
-  background:#05090a;
-  padding:18px;
-  text-align:center;
-  margin-bottom:5px;
-}
-
-.photo-box:hover{
-  border-color:#ffd400;
-}
-
-.photo-label{
-  display:block;
-  color:#ffd400;
-  font-size:15px;
-  font-weight:bold;
-  margin:0 0 12px;
-}
-
-.photo-input{
-  width:100%;
-  padding:12px;
-  background:#020405;
-  border:1px solid #00d9d0;
-  color:#fff;
-}
-
-.photo-help{
-  color:#888;
-  font-size:12px;
-  margin-top:9px;
-  line-height:1.5;
-}
-
-.photo-preview{
-  display:none;
-  width:100%;
-  max-width:360px;
-  height:220px;
-  object-fit:cover;
-  margin:15px auto 0;
-  border:2px solid #ffd400;
-  background:#000;
-}
-
-.remove-photo{
-  display:none;
-  margin:10px auto 0;
-  padding:9px 14px;
-  background:transparent;
-  border:1px solid #ff5555;
-  color:#ff5555;
-}
-
-.photo-status{
-  display:none;
-  margin-top:10px;
-  color:#21d86b;
-  font-size:12px;
-  font-weight:bold;
-}
-
-.actions{
-  display:flex;
-  gap:10px;
-  flex-wrap:wrap;
-  margin-top:15px;
-}
-
-.accounts{
-  display:grid;
-  gap:12px;
-}
-
-.account{
-  border:1px solid #21494b;
-  background:
-    linear-gradient(
-      rgba(0,217,208,.05) 1px,
-      transparent 1px
-    ),
-    linear-gradient(
-      90deg,
-      rgba(0,217,208,.05) 1px,
-      transparent 1px
-    ),
-    #070b0d;
-  background-size:25px 25px;
-  padding:16px;
-}
-
-.account-head{
-  display:flex;
-  justify-content:space-between;
-  gap:10px;
-  align-items:center;
-}
-
-.account h3{
-  color:#fff;
-}
-
-.account-photo{
-  width:100%;
-  max-width:320px;
-  height:190px;
-  object-fit:cover;
-  display:block;
-  margin:14px 0;
-  border:1px solid #00d9d0;
-  background:#000;
-}
-
-.account-meta{
-  color:#00e5d5;
-  font-size:13px;
-  margin-top:8px;
-}
-
-.account-description{
-  color:#999;
-  font-size:13px;
-  margin-top:8px;
-}
-
-.account-price{
-  color:#ffd400;
-  font-size:18px;
-  font-weight:bold;
-  margin-top:10px;
-}
-
-.account-status{
-  display:inline-block;
-  padding:5px 8px;
-  background:#ffd400;
-  color:#050708;
-  font-size:10px;
-  font-weight:bold;
-}
-
-.account-actions{
-  display:flex;
-  gap:8px;
-  margin-top:13px;
-}
-
-.hidden{
-  display:none!important;
-}
-
 @media(max-width:650px){
-
   header{
     flex-direction:column;
     gap:12px;
@@ -465,7 +310,7 @@ textarea{
   id="logoutBtn"
   class="logout hidden"
 >
-LOG OUT
+  LOG OUT
 </button>
 
 </div>
@@ -490,11 +335,11 @@ LOG OUT
 <h1>ADMIN PANEL</h1>
 
 <p class="subtitle">
-Authorized administrators only
+  Authorized administrators only
 </p>
 
 <label for="email">
-ADMIN EMAIL
+  ADMIN EMAIL
 </label>
 
 <input
@@ -505,7 +350,7 @@ ADMIN EMAIL
 >
 
 <label for="password">
-PASSWORD
+  PASSWORD
 </label>
 
 <input
@@ -519,9 +364,10 @@ PASSWORD
   id="loginBtn"
   class="primary"
 >
-SECURE LOGIN
+  SECURE LOGIN
 </button>
-  <button
+
+<button
   type="button"
   id="forgotPasswordBtn"
   class="secondary"
@@ -529,6 +375,7 @@ SECURE LOGIN
 >
   FORGOT PASSWORD?
 </button>
+
 <button
   id="forgotPasswordBtn"
   type="button"
@@ -537,24 +384,25 @@ SECURE LOGIN
 >
   FORGOT PASSWORD?
 </button>
+
 <button
   id="passkeyLoginBtn"
   class="passkey-btn"
 >
-🔐 USE FACE ID / PASSKEY
+  🔐 USE FACE ID / PASSKEY
 </button>
 
 <button
   id="registerPasskeyBtn"
   class="passkey-register hidden"
 >
-📱 SET UP FACE ID / PASSKEY
+  📱 SET UP FACE ID / PASSKEY
 </button>
 
 <div class="passkey-info">
-After your first normal admin login, you can register this device
-and use Face ID, Touch ID, Windows Hello, or your device passkey
-for a quicker unlock.
+  After your first normal admin login, you can register this device
+  and use Face ID, Touch ID, Windows Hello, or your device passkey
+  for a quicker unlock.
 </div>
 
 <div
@@ -563,7 +411,6 @@ for a quicker unlock.
 ></div>
 
 </section>
-
 <!-- ADMIN AREA -->
 
 <section
@@ -576,11 +423,11 @@ for a quicker unlock.
 <div>
 
 <h2>
-⚙ CRISPY SHOP ADMIN
+  ⚙ CRISPY SHOP ADMIN
 </h2>
 
 <div class="status">
-● SECURE ADMIN SESSION
+  ● SECURE ADMIN SESSION
 </div>
 
 </div>
@@ -592,7 +439,7 @@ for a quicker unlock.
 <div class="form-box">
 
 <h3 id="formTitle">
-ADD GAMING ACCOUNT
+  ADD GAMING ACCOUNT
 </h3>
 
 <div class="form-grid">
@@ -607,7 +454,7 @@ ADD GAMING ACCOUNT
   class="photo-label"
   for="accountPhoto"
 >
-📷 UPLOAD ACCOUNT PHOTO
+  📷 UPLOAD ACCOUNT PHOTO
 </label>
 
 <input
@@ -618,7 +465,7 @@ ADD GAMING ACCOUNT
 >
 
 <div class="photo-help">
-Choose an account picture. It will be compressed automatically so it can be stored on the free Firebase plan.
+  Choose an account picture. It will be compressed automatically so it can be stored on the free Firebase plan.
 </div>
 
 <img
@@ -632,14 +479,14 @@ Choose an account picture. It will be compressed automatically so it can be stor
   id="removePhotoBtn"
   class="remove-photo"
 >
-REMOVE PHOTO
+  REMOVE PHOTO
 </button>
 
 <div
   id="photoStatus"
   class="photo-status"
 >
-✓ PHOTO READY
+  ✓ PHOTO READY
 </div>
 
 </div>
@@ -651,29 +498,29 @@ REMOVE PHOTO
 <div>
 
 <label for="game">
-GAME
+  GAME
 </label>
 
 <select id="game">
 
 <option value="Free Fire">
-Free Fire
+  Free Fire
 </option>
 
 <option value="eFootball">
-eFootball
+  eFootball
 </option>
 
 <option value="COD Mobile">
-COD Mobile
+  COD Mobile
 </option>
 
 <option value="DLS">
-DLS
+  DLS
 </option>
 
 <option value="FC Mobile">
-FC Mobile
+  FC Mobile
 </option>
 
 </select>
@@ -685,7 +532,7 @@ FC Mobile
 <div>
 
 <label for="title">
-ACCOUNT TITLE
+  ACCOUNT TITLE
 </label>
 
 <input
@@ -701,7 +548,7 @@ ACCOUNT TITLE
 <div>
 
 <label for="level">
-LEVEL
+  LEVEL
 </label>
 
 <input
@@ -717,7 +564,7 @@ LEVEL
 <div>
 
 <label for="region">
-REGION
+  REGION
 </label>
 
 <input
@@ -733,7 +580,7 @@ REGION
 <div>
 
 <label for="price">
-PRICE
+  PRICE
 </label>
 
 <input
@@ -749,21 +596,21 @@ PRICE
 <div>
 
 <label for="status">
-STATUS
+  STATUS
 </label>
 
 <select id="status">
 
 <option value="AVAILABLE">
-AVAILABLE
+  AVAILABLE
 </option>
 
 <option value="SOLD">
-SOLD
+  SOLD
 </option>
 
 <option value="RESERVED">
-RESERVED
+  RESERVED
 </option>
 
 </select>
@@ -775,7 +622,7 @@ RESERVED
 <div class="full">
 
 <label for="description">
-DESCRIPTION
+  DESCRIPTION
 </label>
 
 <textarea
@@ -794,14 +641,14 @@ DESCRIPTION
   class="primary"
   style="width:auto;margin-top:0"
 >
-ADD ACCOUNT
+  ADD ACCOUNT
 </button>
 
 <button
   id="cancelEditBtn"
   class="secondary hidden"
 >
-CANCEL EDIT
+  CANCEL EDIT
 </button>
 
 </div>
@@ -818,14 +665,14 @@ CANCEL EDIT
 <div class="topbar">
 
 <h2>
-SHOP ACCOUNTS
+  SHOP ACCOUNTS
 </h2>
 
 <button
   id="refreshBtn"
   class="secondary"
 >
-↻ REFRESH
+  ↻ REFRESH
 </button>
 
 </div>
@@ -836,7 +683,7 @@ SHOP ACCOUNTS
 >
 
 <p style="color:#999">
-Loading accounts...
+  Loading accounts...
 </p>
 
 </div>
@@ -926,7 +773,8 @@ const adminArea =
 
 const loginBtn =
   document.getElementById("loginBtn");
-  const forgotPasswordBtn =
+
+const forgotPasswordBtn =
   document.getElementById("forgotPasswordBtn");
 
 const passkeyLoginBtn =
@@ -1110,7 +958,7 @@ async function registerPasskey(){
     !user ||
     !user.email ||
     user.email.toLowerCase() !==
-    ADMIN_EMAIL.toLowerCase()
+      ADMIN_EMAIL.toLowerCase()
   ){
 
     showMessage(
@@ -1441,12 +1289,14 @@ registerPasskeyBtn.addEventListener(
   "click",
   registerPasskey
 );
+
 document
   .getElementById("forgotPasswordBtn")
   .addEventListener(
     "click",
     forgotPassword
   );
+
 
 /* SHOW/HIDE PASSKEY SETUP */
 
@@ -1893,7 +1743,10 @@ loginBtn.addEventListener(
     }
 
   }
-);/* FORGOT PASSWORD */
+);
+
+
+/* FORGOT PASSWORD */
 
 forgotPasswordBtn.addEventListener(
   "click",
@@ -1904,6 +1757,7 @@ forgotPasswordBtn.addEventListener(
         .getElementById("email")
         .value
         .trim();
+
 
     if(!email){
 
@@ -1921,6 +1775,7 @@ forgotPasswordBtn.addEventListener(
 
     }
 
+
     if(
       email.toLowerCase() !==
       ADMIN_EMAIL.toLowerCase()
@@ -1936,11 +1791,13 @@ forgotPasswordBtn.addEventListener(
 
     }
 
+
     forgotPasswordBtn.disabled =
       true;
 
     forgotPasswordBtn.textContent =
       "SENDING...";
+
 
     try{
 
@@ -1948,6 +1805,7 @@ forgotPasswordBtn.addEventListener(
         auth,
         email
       );
+
 
       showMessage(
         loginMessage,
@@ -1966,6 +1824,7 @@ forgotPasswordBtn.addEventListener(
       );
 
     }
+
 
     forgotPasswordBtn.disabled =
       false;
